@@ -1,0 +1,44 @@
+#side-menu{
+    height: 100vh;
+}
+main{
+    margin: 0;
+}
+#main-menu{
+    background-color: #f3f2f1;
+}
+.nav-item{
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+li{
+    list-style-type: none;
+}
+
+/* NAVBAR */
+.dashboard-nav{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: .1rem solid gray; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.dashboard-nav .nav-list{
+    margin: 0;
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+}
+footer{
+    border-top: .1rem solid lightgray;
+    margin-top: 3rem;
+    color: gray;
+    background-color: white;
+}
+footer a{
+    color: gray;
+    margin: 0;
+}

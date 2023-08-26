@@ -1,0 +1,60 @@
+<%- include('./layouts/header'); -%>
+<nav class="navbar navbar-expand-lg px-5 py-4">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-3 fw-semibold" href="/"><img src="/img/logo.png" alt="" width="30"> Magang Portal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/">Jobseeker</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold" href="/employer">Employer</a>
+          </li>
+        </ul>
+        <div class="d-flex gap-4" role="search">
+          <a href="/login"><button class="btn btn-outline-primary" type="button">Masuk</button></a>
+          <a href="/sign-up"><button class="btn btn-primary hiring" type="button">Daftar</button></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="my-5">
+    <div class="text-center">
+        <p class="fs-5 fw-semibold">Selamat datang di Magang Portal!</p>
+        <p>Pertama-tama, apa tujuan Anda di sini?</p>
+    </div>
+    <div class="px-5 signup justify-content-center my-5 mx-auto">
+        <div class="candidate py-5">
+            <p class="fs-4 fw-semibold">Saya sedang mencari pekerjaan</p>
+            <p class="text-center my-4">Buat akun <b>pencari kerja</b></p>
+            <a href="/jobseeker/sign-up"><button class="btn btn-primary hiring w-100" type="button">MULAI MELIHAT LIHAT LOWONGAN</button></a>
+            <p class="mt-4" style="font-size: .85rem;">Anda juga dapat mendaftar menggunakan
+                <a href="">Google</a>,
+                <a href="">Apple</a>, atau 
+                <a href="">Facebook</a>
+            </p>
+        </div>
+        <div class="vr"></div>
+        <div class="employer py-5">
+            <p class="fs-4 fw-semibold">Saya sedang mencari Kandidat</p>
+            <p class="text-center my-4">Buat akun <b>perusahaan</b></p>
+            <a href="/employer/hiring"><button class="btn btn-success hiring w-100" type="button">PERMINTAAN UNTUK DEMO</button></a>
+        </div>
+    </div>
+    <p class="text-center" style="font-size: .9rem; margin-top: 5rem;">Sudah mempunyai akun? <a href="/login">Masuk</a></p>
+    <p class="text-center" style="font-size: .7rem;">Dengan membuat akun Kalibrr, Anda setuju dengan <a href="">Syarat dan Ketentuan</a>, <a href="">Kebijakan Privasi</a> dan <a href="">persetujuan pengguna</a> kami.</p>
+  </main>
+
+<%- include('./layouts/footer'); -%>
+  <!-- <script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+            minimumResultsForSearch: -1,
+            placeholder: 'How many employees do you have?'
+        });
+    });
+  </script> -->

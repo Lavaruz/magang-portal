@@ -25,6 +25,7 @@ if (config.use_env_variable) {
           rejectUnauthorized: true,
         },
       },
+      logging: false
     }
   );
   console.log("db run on host");

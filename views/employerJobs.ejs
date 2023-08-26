@@ -1,0 +1,60 @@
+<%- include('./layouts/header'); -%>
+<link rel="stylesheet" href="/css/dashboard.css">
+<main class="d-flex">
+  <%- include('./layouts/employerSidebar'); -%>
+  <section id="main-menu" class="col">
+
+    <!-- Navbar untuk dashboard -->
+    <div class="dashboard-nav px-5 py-4 mb-3">
+      <a class="navbar-brand d-flex align-items-center gap-3 fw-semibold" href="/"><img src="/img/logo.png" alt="" width="30"> Magang Portal</a>
+      <ul class="nav-list">
+        <div class="vr"></div>
+        <li>assamim80@gmail.com</li>
+        <li><div class="vr"></div></li>
+        <li style="cursor: pointer;"><div class="dropdown">
+          <div class="dropdown">
+            <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Assami Muzaki
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Header dashboard jobs dan button untuk membuat jobs baru -->
+    <div class="d-flex justify-content-between mb-4 px-5">
+      <div class="">
+        <h2>Jobs</h2>
+      </div>
+
+      <div class="d-flex justify-content-end mb-5 gap-3">
+        <a href="/employer/hiring">
+          <button type="button" class="btn btn-secondary fw-semibold" style="font-size: 1.2rem;">
+            <i class="uil uil-user-plus"></i> Post a Jobs
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main dashboard -->
+    <div class="text-center">
+      <img src="/img/jobs.png" alt="/img/jobs.png" width="50%">
+      <p class="fw-semibold fs-4">Get up to 4x applications. Post your first job directly on Indeed.</p>
+      <p style="font-size: 1.1rem;" class="text-secondary">Indeed Apply brings you up to four times more applications than redirecting applications to your career website. Make it simpler. Hire faster.</p>
+      <a href="/employer/hiring">
+        <button type="button" class="btn btn-secondary fw-semibold mt-3" style="font-size: 1.2rem;">
+          <i class="uil uil-user-plus"></i> Post a Jobs
+        </button>
+      </a>
+    </div>
+
+    <%- include('./layouts/dashboardFooter'); -%>
+  </section>
+</main>
+<%- include('./layouts/footer'); -%>
