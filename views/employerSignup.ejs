@@ -2,21 +2,21 @@
 <%- include('./layouts/jobseekerNavbar'); -%>
 
   <main class="px-5 d-flex justify-content-center my-5">
-    <form id="sign-up" class="signup-form py-3 px-5">
+    <form id="signup-form" class="signup-form py-3 px-5">
         <p class="text-center fs-5 my-4">Daftar</p>
         <div class="row">
             <div class="col mb-3">
-                <input type="text" class="form-control signup-jobseeker" placeholder="Nama Depan">
+                <input name="firstname" type="text" class="form-control signup-jobseeker" placeholder="Nama Depan">
             </div>
             <div class="col mb-3">
-                <input type="text" class="form-control signup-jobseeker" placeholder="Nama Belakang">
+                <input name="lastname" type="text" class="form-control signup-jobseeker" placeholder="Nama Belakang">
             </div>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control signup-jobseeker" placeholder="me@example.com">
+            <input name="email" type="email" class="form-control signup-jobseeker" placeholder="me@example.com">
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control signup-jobseeker" placeholder="***************">
+            <input name="password" type="password" class="form-control signup-jobseeker" placeholder="***************">
         </div>
         <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
             <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 50%"></div>
@@ -29,17 +29,10 @@
               Saya telah membaca dan menyetujui <a href="">Syarat dan Ketentuan</a>, <a href="">Kebijakan Privasi</a>, dan <a href="">Persetujuan Pengguna</a> Kalibrr.
             </label>
         </div>
-        <button type="button" class="btn btn-primary w-100 my-3">Daftar</button>
+        <button type="submit" class="btn btn-primary w-100 my-3" disabled>Daftar</button>
         <p class="text-center" style="font-size: .85rem;">Sudah mempunyai akun? <a href="/login">Masuk</a></p>
     </form>
   </main>
 
 <%- include('./layouts/footer'); -%>
-  <!-- <script>
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2({
-            minimumResultsForSearch: -1,
-            placeholder: 'How many employees do you have?'
-        });
-    });
-  </script> -->
+<script src="/js/jobseekerSignup.js"></script>

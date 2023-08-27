@@ -23,15 +23,15 @@
   </nav>
 
   <main class="px-5 d-flex justify-content-center my-5">
-    <form id="login-form" class="login-form py-3 px-5">
-        <p class="text-center fs-5 my-3">Masuk Magang.co.id</p>
+    <form id="login-form" class="login-form py-3 px-5" style="position: relative;">
+        <p class="text-center fs-5 my-3 head">Masuk Magang.co.id</p>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="me@example.com">
+            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="me@example.com">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleFormControlInput2" placeholder="************">
+            <input name="password" type="password" class="form-control" id="exampleFormControlInput2" placeholder="************">
         </div>
         <div class="login-helper d-flex justify-content-between mt-4">
             <div class="form-check">
@@ -42,7 +42,7 @@
             </div>
             <a href="">Lupa kata sandi?</a>
         </div>
-        <button type="button" class="btn btn-primary w-100 my-3">Masuk</button>
+        <button type="submit" class="btn btn-primary w-100 my-3">Masuk</button>
         <div class="container my-3">
             <div class="row">
               <div class="col">
@@ -52,22 +52,17 @@
               </div>
             </div>
         </div>
-        <button type="button" class="btn w-100 my-3 login-google d-flex">
-            <img src="/img/google_logo.svg" alt="" width="25px">
-            <div class="w-100">
-                <span class="text-center">MASUK DENGAN GOOGLE</span>
-            </div>
-        </button>
+        <a href="/api/users/google">
+          <button type="button" class="btn w-100 my-3 login-google d-flex">
+              <img src="/img/google_logo.svg" alt="" width="25px">
+              <div class="w-100">
+                  <span class="text-center">MASUK DENGAN GOOGLE</span>
+              </div>
+          </button>
+        </a>
         <p class="text-center" style="font-size: .85rem;">Belum mempunyai akun magang? <a href="/sign-up">Daftar</a></p>
     </form>
   </main>
 
 <%- include('./layouts/footer'); -%>
-  <!-- <script>
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2({
-            minimumResultsForSearch: -1,
-            placeholder: 'How many employees do you have?'
-        });
-    });
-  </script> -->
+<script src="/js/Login.js"></script>

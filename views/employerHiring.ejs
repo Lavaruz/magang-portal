@@ -24,7 +24,7 @@
 
   <main class="px-5 py-5">
     <section id="hiring" class="">
-        <form id="hiring-form"">
+        <form id="hiring-form">
             <div class="hiring-head text-center">
                 <h1 style="font-size: 3rem;" class="fw-bold">Hi Recruiter!.</h1>
                 <h5 class="text-secondary">Here are the next steps:</h5>
@@ -33,12 +33,12 @@
                 <h4 class="mb-4 fw-bold">Basic Information</h4>
                 <div class="hiring-basic-form">
                     <div class="">
-                        <label for="exampleFormControlInput1" class="form-label">Fullname<span style="color: #ff4c4c"> *</span></label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="fullname">
+                        <label for="fullname" class="form-label">Fullname<span style="color: #ff4c4c"> *</span></label>
+                        <input type="text" class="form-control" id="fullname" name="fullname">
                     </div>
                     <div class="">
-                        <label for="exampleFormControlInput1" class="form-label">Work Email<span style="color: #ff4c4c"> *</span></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="work_email">
+                        <label for="email" class="form-label">Work Email<span style="color: #ff4c4c"> *</span></label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="work_email">
                     </div>
                     <div class="">
                         <label for="exampleFormControlInput1" class="form-label">Your Position<span style="color: #ff4c4c"> *</span></label>
@@ -124,15 +124,33 @@
                 <a href="/employer"><button class="btn btn-outline-primary hiring"><i class="uil uil-backward"></i> Back</button></a>
                 <div class="preview">
                     <button class="btn me-4" type="button">Preview <i class="uil uil-eye"></i></button>
-                    <button class="btn btn-primary hiring" type="submit">Confirm <i class="uil uil-forward"></i></button>
+                    <button class="btn btn-primary hiring" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Confirm <i class="uil uil-forward"></i></button>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Posting</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure want to post this job?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Post job</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </form>
     </section>
   </main>
+  
 
 <%- include('./layouts/footer'); -%>
-<script src="/js/hiringEmployer.js"></script>
+<script src="/js/employerHiring.js"></script>
   <script>
     $(document).ready(function() {
         $('.js-example-basic-single').select2({
@@ -140,4 +158,4 @@
             placeholder: 'How many employees do you have?'
         });
     });
-  </script>
+</script>

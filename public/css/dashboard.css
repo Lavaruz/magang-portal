@@ -5,6 +5,7 @@ main{
     margin: 0;
 }
 #main-menu{
+    position: relative;
     background-color: #f3f2f1;
 }
 .nav-item{
@@ -32,9 +33,14 @@ li{
     display: flex;
     gap: 1rem;
 }
+.jobs-main{
+    margin-bottom: 10rem;
+}
 footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     border-top: .1rem solid lightgray;
-    margin-top: 3rem;
     color: gray;
     background-color: white;
 }

@@ -1,6 +1,14 @@
-const { Company, Employer, Job } = require("../models");
+const { Company, Employer, Job, User } = require("../models");
 const response = require("./response");
 
+User.hasMany(Company, {
+  foreignKey: "user_id",
+  constraints: false,
+});
+Company.belongsTo(User, {
+  foreignKey: "user_id",
+  constraints: false,
+});
 Company.hasMany(Employer, {
   foreignKey: "company_id",
   constraints: false,
@@ -20,7 +28,6 @@ Job.belongsTo(Company, {
 
 async function makePost(req, res) {
   try {
-    console.log(req.body);
     let employer = {
       fullname: req.body.fullname,
       work_email: req.body.work_email,
@@ -50,6 +57,15 @@ async function makePost(req, res) {
     await Employer.create(employer).then(result => {
       result.setCompany(createdCompany);
     });
+
+    await User.findOne({
+      where:{
+        email: req.user.email
+      }
+    })
+      .then(result => {
+        createdCompany.setUser(result)
+      })
 
     response(200, "Data successfully created", null, res);
   } catch (error) {
