@@ -4,28 +4,29 @@ const morgan = require("morgan");
 const cookieParse = require("cookie-parser");
 const path = require("path");
 const app = express();
-// const session = require('express-session')
-// const passport = require('passport')
-// require('./src/utils/auth')
+const session = require('express-session')
+const passport = require('passport')
+require('./src/utils/auth')
 
 app.use(cors());
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.enable("trust proxy");
 app.use(cookieParse())
 
 // // konfigurasi untuk session passport
-// app.use(session({
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: true,
-//   cookie: { secure: false }
-// }))
+app.use(session({
+  name:"express-session",
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 
 // // konfigurasi untuk passport
-// app.use(passport.initialize())
-// app.use(passport.session())
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use("/", express.static(path.join(__dirname, "public")));
 

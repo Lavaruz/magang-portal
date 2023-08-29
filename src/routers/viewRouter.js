@@ -17,31 +17,33 @@ router.get("/jobseeker/apply", (req, res) => {
 router.get("/employer", (req, res) => {
   res.render("employerIndex");
 });
-router.get("/employer/jobs",validateRedirect, (req, res) => {
+router.get("/employer/jobs", isAuthentication, (req, res) => {
   res.render("employerJobs");
 });
-router.get("/employer/hiring", (req, res) => {
+router.get("/employer/hiring",isAuthentication, (req, res) => {
   res.render("employerHiring");
 });
 router.get("/employer/sign-up", (req, res) => {
+  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
   res.render("employerSignup");
 });
 
 // AUTH
 
 router.get("/login", (req, res) => {
-  const accessToken = req.cookies["access-token"];
-  if (accessToken) {
-    return res.redirect("/employer/jobs");
-  }
+  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
   res.render("Login");
 });
 router.get("/sign-up", (req, res) => {
-  const accessToken = req.cookies["access-token"];
-  if (accessToken) {
-    return res.redirect("/employer/jobs");
-  }
+  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
   res.render("Signup");
 });
+
+
+// MIDDLEWARE AUTHENTICATION
+function isAuthentication(req,res,next){
+  if(req.isAuthenticated()) return next()
+  else return res.redirect('/login')
+}
 
 module.exports = router;

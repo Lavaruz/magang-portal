@@ -70,8 +70,16 @@ function register(req, res) {
   }
   
   async function logout(req, res, next) {
-    res.clearCookie("access-token");
-    res.redirect("/");
+    if (req.user && req.user.googleAccessToken) {
+      const googleRevokeUrl = `https://accounts.google.com/o/oauth2/revoke?token=${req.user.googleAccessToken}`;
+      await fetch(googleRevokeUrl);
+  
+      console.log('Google token revoked');
+    }
+    req.logout(function(err) {
+      if (err) { return next(err); }
+      res.redirect('/');
+    });
   }
 
   async function getAllUser(req, res){
@@ -106,8 +114,10 @@ function register(req, res) {
       );
     }
   }
+
   async function getUserByToken(req, res){
     try {
+      console.log(req.user);
       await User.findOne({
         where:{
           email: req.user.email

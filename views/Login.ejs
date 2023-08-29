@@ -23,11 +23,11 @@
   </nav>
 
   <main class="px-5 d-flex justify-content-center my-5">
-    <form id="login-form" class="login-form py-3 px-5" style="position: relative;">
+    <form action="/api/users/login" method="post" class="login-form py-3 px-5" style="position: relative;">
         <p class="text-center fs-5 my-3 head">Masuk Magang.co.id</p>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Email</label>
-            <input name="email" type="email" class="form-control" id="exampleFormControlInput1" placeholder="me@example.com">
+            <input name="username" type="email" class="form-control" id="exampleFormControlInput1" placeholder="me@example.com">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput2" class="form-label">Password</label>
