@@ -5,7 +5,7 @@ require("dotenv").config({ path: path.resolve(__dirname + "/./../../.env") });
 const Sequelize = require("sequelize");
 const basename = path.basename(__filename);
 let env = process.env.ENV_TYPE || "development";
-const config = require(__dirname + "/../config/dbConfig.json")[env];
+const config = require(__dirname + "/../config/config.js")[env];
 const db = {};
 
 let sequelize;
@@ -14,21 +14,11 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USERNAME,
-    process.env.DB_PASSWORD,
-    {
-      host: process.env.DB_HOST,
-      dialect: "mysql",
-      dialectOptions: {
-        ssl: {
-          rejectUnauthorized: true,
-        },
-      },
-      logging: false
-    }
+    config.database,
+    config.username,
+    config.password,
+    config
   );
-  console.log("db run on host");
 }
 
 fs.readdirSync(__dirname)

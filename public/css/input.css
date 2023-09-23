@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: #222;
+    font-family: 'Inconsolata', monospace;
+}
+.overlay{
+    background-color: rgba(0, 0, 0, .2);
+    backdrop-filter: blur(150px);
+}
+.overlay-tale{
+    background-color: rgba(61, 209, 219, 0.08);
+}
+.font-second{
+    font-family: 'Manrope', sans-serif;
+}
+.porto{
+    border: 1px solid #3D3D3D;
+    background-color: #222;
+    border-radius: 8px;
+}

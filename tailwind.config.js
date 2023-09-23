@@ -1,0 +1,20 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./views/**/*.{html,js,ejs}"],
+  theme: {
+    extend: {
+      colors: {
+        'white-60': 'rgba(255, 255, 255, 0.60);',
+        'white-80': 'rgba(255, 255, 255, 0.8);',
+        'teal-100': '#3DD1DB',
+        'teal-8': '#243031',
+        'card-grey': '#2A2A2A',
+        'background-gary': '#222222',
+        'darkest-gray': '#1B1B1B',
+        'header': '#1E1E1E',
+        'body': '#2B2B2B',
+      },
+    },
+  },
+  plugins: [],
+}

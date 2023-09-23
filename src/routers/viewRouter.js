@@ -2,30 +2,7 @@ const router = require("express").Router();
 const {validateRedirect} = require('../utils/JWT')
 
 router.get("/", (req, res) => {
-  res.render("jobseekerIndex");
-});
-router.get("/jobseeker/job-board", (req, res) => {
-  res.render("jobseekerJobs");
-});
-router.get("/jobseeker/apply", (req, res) => {
-  res.render("jobseekerApply");
-});
-
-
-// EMPLOYER
-
-router.get("/employer", (req, res) => {
-  res.render("employerIndex");
-});
-router.get("/employer/jobs", isAuthentication, (req, res) => {
-  res.render("employerJobs");
-});
-router.get("/employer/hiring",isAuthentication, (req, res) => {
-  res.render("employerHiring");
-});
-router.get("/employer/sign-up", (req, res) => {
-  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
-  res.render("employerSignup");
+  res.render("ProfilePage");
 });
 
 // AUTH

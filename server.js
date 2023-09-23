@@ -35,15 +35,9 @@ app.set("views", path.join(__dirname, "views"));
 
 const db = require("./src/models");
 const viewRouter = require("./src/routers/viewRouter");
-const hiringRouter = require("./src/routers/hiringRouter");
-const companyRouter = require("./src/routers/companyRouter");
-const userRouter = require('./src/routers/userRouter');
 
 const VERSION_API = "v1";
 app.use("/", viewRouter);
-app.use(`/api/hiring`, hiringRouter);
-app.use(`/api/companys`, companyRouter);
-app.use(`/api/users`, userRouter);
 
 let PORT = process.env.PORT || 3000;
 db.sequelize.sync({ alter: true }).then(() => {
