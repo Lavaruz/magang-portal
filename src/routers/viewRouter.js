@@ -2,7 +2,10 @@ const router = require("express").Router();
 const {validateRedirect} = require('../utils/JWT')
 
 router.get("/", (req, res) => {
-  res.render("ProfilePage");
+  res.render("SeekerProfilePage");
+});
+router.get("/1", (req, res) => {
+  res.render("SeekerInternshipPage");
 });
 
 // AUTH
