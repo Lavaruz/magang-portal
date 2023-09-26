@@ -1,7 +1,7 @@
 <%- include('./layouts/header'); -%>
 <%- include('./layouts/navbar'); -%>
 
-<section id="main" class="px-20 pb-20">
+<section id="main" class="px-48 pb-20">
     <p class="pb-3 pt-8 text-white text-xl font-bold">Hi, Jarwo</p>
     <div class="grid grid-cols-[1fr_.6fr] gap-5">
         <div class="flex flex-col gap-3">
@@ -61,7 +61,7 @@
                     <div class="text-center">
                         <p class="font-bold text-base text-white">Write your profile summary here!</p>
                         <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">This is your chance to put a good word about yourself, so that recruiters could catch a glimpse of you as a candidate.</p>
-                        <button class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <button id="button-profile-summary" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                             <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
                           </svg> Add Profile Summary</button>
                     </div>
@@ -80,7 +80,7 @@
                     <div class="text-center">
                         <p class="font-bold text-base text-white">Add your experiences here!</p>
                         <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">The heart of your profile. You can add any experiences from university organizations, event committees, internships, and more!</p>
-                        <button class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <button id="button-experiences" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                             <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
                           </svg> Add Experiences</button>
                     </div>
@@ -99,7 +99,7 @@
                     <div class="text-center">
                         <p class="font-bold text-base text-white">Add your education here!</p>
                         <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">Just as important as experiences, your education will show recruiters what your capable of!</p>
-                        <button class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <button id="button-education" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                             <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
                           </svg> Add Education</button>
                     </div>
@@ -112,23 +112,23 @@
                 <p class="font-extrabold text-4xl text-white mt-3 mb-2">0%</p>
                 <p class="font-second text-sm text-white-60 font-semibold">Complete your profile to differentiate yourself from other candidates!</p>
                 <div class="flex flex-col gap-2 text-sm text-teal-100 font-medium font-second mt-2">
-                    <p class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="completion-profile-picture" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
                         <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                         </svg>Add a Profile Picture</p>
-                    <p class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="completion-profile-summary" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
                         <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                         </svg>Add Profile Summary</p>
-                    <p class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="completion-experiences" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
                         <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                         </svg>Add Experiences</p>
-                    <p class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="completion-education" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
                         <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                         </svg>Add Education</p>
-                    <p class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="completion-resume" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
                         <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
                         </svg>Add Resume/CV</p>
@@ -139,7 +139,7 @@
                     <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V5C5 4.08333 5.32639 3.29861 5.97917 2.64583C6.63194 1.99305 7.41667 1.66667 8.33333 1.66667C9.25 1.66667 10.0347 1.99305 10.6875 2.64583C11.3403 3.29861 11.6667 4.08333 11.6667 5V12.9167C11.6667 13.5 11.4653 13.9931 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.9931 7.5 13.5 7.5 12.9167V5.625C7.5 5.44444 7.55903 5.29514 7.67708 5.17708C7.79514 5.05903 7.94444 5 8.125 5C8.30556 5 8.45486 5.05903 8.57292 5.17708C8.69097 5.29514 8.75 5.44444 8.75 5.625V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V5C10.4167 4.41667 10.2153 3.92361 9.8125 3.52083C9.40972 3.11805 8.91667 2.91667 8.33333 2.91667C7.75 2.91667 7.25694 3.11805 6.85417 3.52083C6.45139 3.92361 6.25 4.41667 6.25 5V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.625C12.9167 5.44444 12.9757 5.29514 13.0938 5.17708C13.2118 5.05903 13.3611 5 13.5417 5C13.7222 5 13.8715 5.05903 13.9896 5.17708C14.1076 5.29514 14.1667 5.44444 14.1667 5.625V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
                       </svg> ATTACHMENTS</p>
-                    <p class="cursor-pointer text-teal-100 text-xs font-second flex items-center gap-2">Edit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                    <p id="edit-attachment" class="cursor-pointer text-teal-100 text-xs font-second flex items-center gap-2">Edit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                         <path d="M12.8667 6.45001L10.0333 3.65001L10.9667 2.71668C11.2222 2.46112 11.5361 2.33334 11.9083 2.33334C12.2806 2.33334 12.5944 2.46112 12.85 2.71668L13.7833 3.65001C14.0389 3.90557 14.1722 4.2139 14.1833 4.57501C14.1944 4.93612 14.0722 5.24445 13.8167 5.50001L12.8667 6.45001ZM2.66667 14.5C2.47778 14.5 2.31944 14.4361 2.19167 14.3083C2.06389 14.1806 2 14.0222 2 13.8333V11.95C2 11.8611 2.01667 11.775 2.05 11.6917C2.08333 11.6083 2.13333 11.5333 2.2 11.4667L9.06667 4.60001L11.9 7.43334L5.03333 14.3C4.96667 14.3667 4.89167 14.4167 4.80833 14.45C4.725 14.4833 4.63889 14.5 4.55 14.5H2.66667Z" fill="#3DD1DB"/>
                       </svg></p>
                 </div>
@@ -471,26 +471,93 @@
             </div>
         </div>
     </div>
+    <div class="popup popup-attachments border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V4.99999C5 4.08332 5.32639 3.2986 5.97917 2.64582C6.63194 1.99305 7.41667 1.66666 8.33333 1.66666C9.25 1.66666 10.0347 1.99305 10.6875 2.64582C11.3403 3.2986 11.6667 4.08332 11.6667 4.99999V12.9167C11.6667 13.5 11.4653 13.993 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.993 7.5 13.5 7.5 12.9167V5.62499C7.5 5.44443 7.55903 5.29513 7.67708 5.17707C7.79514 5.05902 7.94444 4.99999 8.125 4.99999C8.30556 4.99999 8.45486 5.05902 8.57292 5.17707C8.69097 5.29513 8.75 5.44443 8.75 5.62499V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V4.99999C10.4167 4.41666 10.2153 3.9236 9.8125 3.52082C9.40972 3.11805 8.91667 2.91666 8.33333 2.91666C7.75 2.91666 7.25694 3.11805 6.85417 3.52082C6.45139 3.9236 6.25 4.41666 6.25 4.99999V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.62499C12.9167 5.44443 12.9757 5.29513 13.0938 5.17707C13.2118 5.05902 13.3611 4.99999 13.5417 4.99999C13.7222 4.99999 13.8715 5.05902 13.9896 5.17707C14.1076 5.29513 14.1667 5.44443 14.1667 5.62499V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
+              </svg> EDITING ATTACHMENTS</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+            <div class="divide-y divide-header">
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-1">Attachments</p>
+                    <p class="text-white-60 text-sm font-second font-medium">Here, you can upload your resume or portfolio to showcase your works from past Experiences!</p>
+                </div>
+                <div class="divide-y divide-header px-5">
+                    <div class="flex items-start gap-3 py-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20.0003 23.3333C20.917 23.3333 21.7017 23.007 22.3545 22.3542C23.0073 21.7014 23.3337 20.9167 23.3337 20C23.3337 19.0833 23.0073 18.2986 22.3545 17.6458C21.7017 16.9931 20.917 16.6667 20.0003 16.6667C19.0837 16.6667 18.2989 16.9931 17.6462 17.6458C16.9934 18.2986 16.667 19.0833 16.667 20C16.667 20.9167 16.9934 21.7014 17.6462 22.3542C18.2989 23.007 19.0837 23.3333 20.0003 23.3333ZM13.3337 30H26.667V29.0417C26.667 28.375 26.4864 27.7639 26.1253 27.2083C25.7642 26.6528 25.2642 26.2361 24.6253 25.9583C23.9031 25.6528 23.16 25.4167 22.3962 25.25C21.6323 25.0833 20.8337 25 20.0003 25C19.167 25 18.3684 25.0833 17.6045 25.25C16.8406 25.4167 16.0975 25.6528 15.3753 25.9583C14.7364 26.2361 14.2364 26.6528 13.8753 27.2083C13.5142 27.7639 13.3337 28.375 13.3337 29.0417V30ZM30.8337 36.6667H9.16699C8.50033 36.6667 7.91699 36.4167 7.41699 35.9167C6.91699 35.4167 6.66699 34.8333 6.66699 34.1667V5.83334C6.66699 5.16668 6.91699 4.58334 7.41699 4.08334C7.91699 3.58334 8.50033 3.33334 9.16699 3.33334H22.3337C22.667 3.33334 22.9934 3.40279 23.3128 3.54168C23.6323 3.68057 23.9031 3.86112 24.1253 4.08334L32.5837 12.5417C32.8059 12.7639 32.9864 13.0347 33.1253 13.3542C33.2642 13.6736 33.3337 14 33.3337 14.3333V34.1667C33.3337 34.8333 33.0837 35.4167 32.5837 35.9167C32.0837 36.4167 31.5003 36.6667 30.8337 36.6667Z" fill="white"/>
+                        </svg>
+                        <div class="">
+                            <p class="text-white font-bold text-lg">Resume*</p>
+                            <p class="font-second text-white-60 text-sm font-medium">Keep in mind that some companies still require you to upload your resume in digital copy. However, they will be seeing your profile first, not your resume!</p>
+                            <div class="flex items-center gap-2 mt-3">
+                                <button class="flex items-center gap-1 py-2 px-4 bg-teal-8 text-teal-100 rounded-lg font-second text-sm font-medium">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M9.16634 15.8333H10.833V12.3542L12.1663 13.6875L13.333 12.5L9.99967 9.16666L6.66634 12.5L7.85384 13.6667L9.16634 12.3542V15.8333ZM4.99967 18.3333C4.54134 18.3333 4.14898 18.1701 3.82259 17.8437C3.4962 17.5174 3.33301 17.125 3.33301 16.6667V3.33332C3.33301 2.87499 3.4962 2.48263 3.82259 2.15624C4.14898 1.82985 4.54134 1.66666 4.99967 1.66666H11.6663L16.6663 6.66666V16.6667C16.6663 17.125 16.5031 17.5174 16.1768 17.8437C15.8504 18.1701 15.458 18.3333 14.9997 18.3333H4.99967ZM10.833 7.49999H14.9997L10.833 3.33332V7.49999Z" fill="#3DD1DB"/>
+                                    </svg>
+                                    Upload Resume
+                                </button>
+                                <p class="font-second text-sm font-medium text-white-60">Accepted file is only in PDF. Maximum file size 2 MB.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 py-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M20.0003 23.3333C20.917 23.3333 21.7017 23.007 22.3545 22.3542C23.0073 21.7014 23.3337 20.9167 23.3337 20C23.3337 19.0833 23.0073 18.2986 22.3545 17.6458C21.7017 16.9931 20.917 16.6667 20.0003 16.6667C19.0837 16.6667 18.2989 16.9931 17.6462 17.6458C16.9934 18.2986 16.667 19.0833 16.667 20C16.667 20.9167 16.9934 21.7014 17.6462 22.3542C18.2989 23.007 19.0837 23.3333 20.0003 23.3333ZM13.3337 30H26.667V29.0417C26.667 28.375 26.4864 27.7639 26.1253 27.2083C25.7642 26.6528 25.2642 26.2361 24.6253 25.9583C23.9031 25.6528 23.16 25.4167 22.3962 25.25C21.6323 25.0833 20.8337 25 20.0003 25C19.167 25 18.3684 25.0833 17.6045 25.25C16.8406 25.4167 16.0975 25.6528 15.3753 25.9583C14.7364 26.2361 14.2364 26.6528 13.8753 27.2083C13.5142 27.7639 13.3337 28.375 13.3337 29.0417V30ZM30.8337 36.6667H9.16699C8.50033 36.6667 7.91699 36.4167 7.41699 35.9167C6.91699 35.4167 6.66699 34.8333 6.66699 34.1667V5.83334C6.66699 5.16668 6.91699 4.58334 7.41699 4.08334C7.91699 3.58334 8.50033 3.33334 9.16699 3.33334H22.3337C22.667 3.33334 22.9934 3.40279 23.3128 3.54168C23.6323 3.68057 23.9031 3.86112 24.1253 4.08334L32.5837 12.5417C32.8059 12.7639 32.9864 13.0347 33.1253 13.3542C33.2642 13.6736 33.3337 14 33.3337 14.3333V34.1667C33.3337 34.8333 33.0837 35.4167 32.5837 35.9167C32.0837 36.4167 31.5003 36.6667 30.8337 36.6667Z" fill="white"/>
+                        </svg>
+                        <div class="">
+                            <p class="text-white font-bold text-lg">Portfolio</p>
+                            <p class="font-second text-white-60 text-sm font-medium">Might be required if the job post says so. You can add a link to your portfolio from another website (GitHub, Behance, Google Drive, etc.)</p>
+                            <label class="flex items-center gap-3 mt-3">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LINK</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" value="www.drive.google.com/file" class="block w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white-60 font-second
+                                  focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancle</button>
+                <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+            </div>
+        </div>
+    </div>
 </section>
 
 <%- include('./layouts/footer'); -%>
 <script>
-    $("#edit-basic-info").click(function(){
+
+    // Open popup on edit button and profile completion
+
+    $("#edit-basic-info, #completion-profile-picture").click(function(){
         $("#popup").removeClass("hidden")
         $(".popup-basic").removeClass("hidden")
     })
-    $("#edit-profile-summary").click(function(){
+    $("#edit-profile-summary, #completion-profile-summary, #button-profile-summary").click(function(){
         $("#popup").removeClass("hidden")
         $(".popup-summary").removeClass("hidden")
     })
-    $("#edit-experiences").click(function(){
+    $("#edit-experiences, #completion-experiences, #button-experiences").click(function(){
         $("#popup").removeClass("hidden")
         $(".popup-experiences").removeClass("hidden")
     })
-    $("#edit-education").click(function(){
+    $("#edit-education, #completion-education, #button-education").click(function(){
         $("#popup").removeClass("hidden")
         $(".popup-education").removeClass("hidden")
     })
+    $("#edit-attachment, #completion-resume").click(function(){
+        $("#popup").removeClass("hidden")
+        $(".popup-attachments").removeClass("hidden")
+    })
+
+    // Close button to close popup
+
     $(".close-x").click(function(){
         $(this).closest('.popup').addClass("hidden")
         $(this).closest('#popup').addClass("hidden")

@@ -688,6 +688,10 @@ video {
   width: 100%;
 }
 
+.w-\[360px\] {
+  width: 360px;
+}
+
 .cursor-default {
   cursor: default;
 }
@@ -834,9 +838,8 @@ video {
   background-color: rgb(59 59 59 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#3DD1DB\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(61 209 219 / var(--tw-bg-opacity));
+.bg-\[\#3DD1DB\]\/20 {
+  background-color: rgb(61 209 219 / 0.2);
 }
 
 .bg-\[\#DB3D3D\]\/20 {
@@ -875,10 +878,6 @@ video {
 .bg-teal-8 {
   --tw-bg-opacity: 1;
   background-color: rgb(36 48 49 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#3DD1DB\]\/20 {
-  background-color: rgb(61 209 219 / 0.2);
 }
 
 .bg-white\/20 {
@@ -932,6 +931,11 @@ video {
   padding-right: 1rem;
 }
 
+.px-40 {
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
@@ -965,6 +969,16 @@ video {
 .py-\[2px\] {
   padding-top: 2px;
   padding-bottom: 2px;
+}
+
+.px-48 {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pb-20 {
@@ -1057,6 +1071,11 @@ video {
   letter-spacing: 1.6px;
 }
 
+.text-\[\#3DD1DB\] {
+  --tw-text-opacity: 1;
+  color: rgb(61 209 219 / var(--tw-text-opacity));
+}
+
 .text-\[\#A5A5A5\] {
   --tw-text-opacity: 1;
   color: rgb(165 165 165 / var(--tw-text-opacity));
@@ -1093,11 +1112,6 @@ video {
 
 .text-white-80 {
   color: rgba(255, 255, 255, 0.8);;
-}
-
-.text-\[\#3DD1DB\] {
-  --tw-text-opacity: 1;
-  color: rgb(61 209 219 / var(--tw-text-opacity));
 }
 
 .placeholder-white-60::-moz-placeholder {
