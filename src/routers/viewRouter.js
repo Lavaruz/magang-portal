@@ -11,8 +11,7 @@ router.get("/1", (req, res) => {
 // AUTH
 
 router.get("/login", (req, res) => {
-  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
-  res.render("Login");
+  res.render("LoginRegisterPage");
 });
 router.get("/sign-up", (req, res) => {
   if(req.isAuthenticated()) return res.redirect('/employer/jobs')
