@@ -1353,6 +1353,11 @@ body{
   border-radius: 8px;
 }
 
+.selected{
+  font-weight: bold;
+  color: white;
+}
+
 .after\:absolute::after {
   content: var(--tw-content);
   position: absolute;

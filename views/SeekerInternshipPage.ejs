@@ -3,10 +3,10 @@
 
 <section id="main" class="px-[200px] pb-20">
     <div class="menu flex px-5 py-3 rounded-lg gap-10 bg-card-grey border-[1px] border-[#3b3b3b] mt-6 mb-5 text-white-60 font-normal">
-        <p class="cursor-pointer font-bold text-white">FOR YOU ✨</p>
-        <p class="cursor-pointer">EXPLORE</p>
-        <p class="cursor-pointer">SAVED (3)</p>
-        <p class="cursor-pointer">APPLIED (2)</p>
+        <p id="menu-foryou" class="cursor-pointer selected">FOR YOU ✨</p>
+        <p id="menu-explore" class="cursor-pointer">EXPLORE</p>
+        <p id="menu-saved" class="cursor-pointer">SAVED (3)</p>
+        <p id="menu-applied" class="cursor-pointer">APPLIED (2)</p>
     </div>
     <section id="foryou" class="">
         <p class="text-xl text-white font-bold">Hi, Jarwo! 👋 Here are our recommended vacancies for you.</p>
@@ -355,7 +355,7 @@
             </div>
         </div>
     </section>
-    <section id="foryou" class="hidden">
+    <section id="saved" class="hidden">
         <p class="text-xl text-white font-bold">Saved Vacancies</p>
         <p class="font-second text-base text-medium text-white-60">Here are vacancies that you have saved before, you can apply to each by clicking on the vacancy!</p>
         <div class="grid grid-cols-3 gap-4 mt-6">
@@ -596,5 +596,45 @@
 
 <%- include('./layouts/footer'); -%>
 <script>
-    // 
+    $(".navbar-internship").addClass("selected")
+    $("#menu-foryou").click(function(){
+        $("#foryou").removeClass("hidden")
+        $("#explore").addClass("hidden")
+        $("#saved").addClass("hidden")
+        $("#applied").addClass("hidden")
+        $("#menu-foryou").addClass("selected")
+        $("#menu-explore").removeClass("selected")
+        $("#menu-saved").removeClass("selected")
+        $("#menu-applied").removeClass("selected")
+    })
+    $("#menu-explore").click(function(){
+        $("#foryou").addClass("hidden")
+        $("#explore").removeClass("hidden")
+        $("#saved").addClass("hidden")
+        $("#applied").addClass("hidden")
+        $("#menu-foryou").removeClass("selected")
+        $("#menu-explore").addClass("selected")
+        $("#menu-saved").removeClass("selected")
+        $("#menu-applied").removeClass("selected")
+    })
+    $("#menu-saved").click(function(){
+        $("#foryou").addClass("hidden")
+        $("#explore").addClass("hidden")
+        $("#saved").removeClass("hidden")
+        $("#applied").addClass("hidden")
+        $("#menu-foryou").removeClass("selected")
+        $("#menu-explore").removeClass("selected")
+        $("#menu-saved").addClass("selected")
+        $("#menu-applied").removeClass("selected")
+    })
+    $("#menu-applied").click(function(){
+        $("#foryou").addClass("hidden")
+        $("#explore").addClass("hidden")
+        $("#saved").addClass("hidden")
+        $("#applied").removeClass("hidden")
+        $("#menu-foryou").removeClass("selected")
+        $("#menu-explore").removeClass("selected")
+        $("#menu-saved").removeClass("selected")
+        $("#menu-applied").addClass("selected")
+    })
 </script>
