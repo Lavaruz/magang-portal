@@ -4,18 +4,13 @@ const {validateRedirect} = require('../utils/JWT')
 router.get("/", (req, res) => {
   res.render("SeekerProfilePage");
 });
-router.get("/1", (req, res) => {
+router.get("/internships", (req, res) => {
   res.render("SeekerInternshipPage");
 });
 
 // AUTH
-
 router.get("/login", (req, res) => {
   res.render("LoginRegisterPage");
-});
-router.get("/sign-up", (req, res) => {
-  if(req.isAuthenticated()) return res.redirect('/employer/jobs')
-  res.render("Signup");
 });
 
 

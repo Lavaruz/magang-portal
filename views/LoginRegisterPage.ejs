@@ -59,11 +59,11 @@
         <div class="divide divide-header w-[540px] m-auto p-5 bg-[#222] rounded-lg">
             <div class="flex flex-col gap-3">
                 <p class="text-white font-second font-bold text-xl mb-4">Sign In to your account.</p>
-                <button class="text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5">Sign in with Email</button>
-                <button class="mb-3 text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5 justify-center flex items-center gap-1">Sign in with Google <img src="/img/Google.svg" width="20px" alt=""></button>
+                <button id="signin-email" class="text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5">Sign in with Email</button>
+                <button id="signin-google" class="mb-3 text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5 justify-center flex items-center gap-1">Sign in with Google <img src="/img/Google.svg" width="20px" alt=""></button>
             </div>
             <div class="">
-                <button class="my-3 w-full text-base font-second font-medium text-[#000]/80 bg-teal-100 rounded-lg py-5 justify-center flex items-center gap-1">Create Account</button>
+                <button id="create-account" class="my-3 w-full text-base font-second font-medium text-[#000]/80 bg-teal-100 rounded-lg py-5 justify-center flex items-center gap-1">Create Account</button>
                 <p class="text-white-60 font-second text-sm font-normal">By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</p>
             </div>
         </div>
@@ -81,7 +81,150 @@
     </section>
 </section>
 
+<section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
+    <div class="popup popup-signin-email w-[400px] hidden">
+        <div class="header bg-header w-full flex justify-between px-5 py-3 rounded-t-2xl">
+            <p class="flex gap-1 items-center text-white text-base tracking-[1.6px] font-normal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.99998 9.99998C9.08331 9.99998 8.29859 9.67359 7.64581 9.02081C6.99304 8.36803 6.66665 7.58331 6.66665 6.66665C6.66665 5.74998 6.99304 4.96526 7.64581 4.31248C8.29859 3.6597 9.08331 3.33331 9.99998 3.33331C10.9166 3.33331 11.7014 3.6597 12.3541 4.31248C13.0069 4.96526 13.3333 5.74998 13.3333 6.66665C13.3333 7.58331 13.0069 8.36803 12.3541 9.02081C11.7014 9.67359 10.9166 9.99998 9.99998 9.99998ZM4.99998 16.6666C4.54165 16.6666 4.14929 16.5035 3.8229 16.1771C3.49651 15.8507 3.33331 15.4583 3.33331 15V14.3333C3.33331 13.8611 3.45484 13.4271 3.6979 13.0312C3.94095 12.6354 4.26387 12.3333 4.66665 12.125C5.52776 11.6944 6.40276 11.3715 7.29165 11.1562C8.18053 10.941 9.08331 10.8333 9.99998 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1562C13.5972 11.3715 14.4722 11.6944 15.3333 12.125C15.7361 12.3333 16.059 12.6354 16.3021 13.0312C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5035 15.8507 16.1771 16.1771C15.8507 16.5035 15.4583 16.6666 15 16.6666H4.99998Z" fill="white"/>
+              </svg> SIGN IN WITH EMAIL</p>
+            <p class="close-x text-teal-100 font-second text-sm font-medium cursor-pointer">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl p-5 pb-6">
+            <p class="text-white text-lg font-bold mb-5">Please enter your login information</p>
+            <label class="block">
+                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
+                <!-- Using form state modifiers, the classes can be identical for every input -->
+                <input type="text" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                  focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                "/>
+            </label>
+            <label class="block">
+                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">PASSWORD</span>
+                <!-- Using form state modifiers, the classes can be identical for every input -->
+                <input type="password" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                  focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                "/>
+            </label>
+            <p class="text-white-60 font-second text-xs font-normal mt-3">Forgot your password? Click <a href="#" class="text-teal-100">here</a></p>
+            <button class="text-[#000]/80 font-second text-base font-medium py-3 text-center bg-teal-100 rounded-lg w-full mt-9">Sign In</button>
+        </div>
+    </div>
+    <div class="popup popup-create-account w-[720px] border-2 border-header hidden">
+        <div class="header bg-header w-full flex justify-between px-5 py-3 rounded-t-2xl">
+            <p class="flex gap-1 items-center text-white text-base tracking-[1.6px] font-normal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.99998 9.99998C9.08331 9.99998 8.29859 9.67359 7.64581 9.02081C6.99304 8.36803 6.66665 7.58331 6.66665 6.66665C6.66665 5.74998 6.99304 4.96526 7.64581 4.31248C8.29859 3.6597 9.08331 3.33331 9.99998 3.33331C10.9166 3.33331 11.7014 3.6597 12.3541 4.31248C13.0069 4.96526 13.3333 5.74998 13.3333 6.66665C13.3333 7.58331 13.0069 8.36803 12.3541 9.02081C11.7014 9.67359 10.9166 9.99998 9.99998 9.99998ZM4.99998 16.6666C4.54165 16.6666 4.14929 16.5035 3.8229 16.1771C3.49651 15.8507 3.33331 15.4583 3.33331 15V14.3333C3.33331 13.8611 3.45484 13.4271 3.6979 13.0312C3.94095 12.6354 4.26387 12.3333 4.66665 12.125C5.52776 11.6944 6.40276 11.3715 7.29165 11.1562C8.18053 10.941 9.08331 10.8333 9.99998 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1562C13.5972 11.3715 14.4722 11.6944 15.3333 12.125C15.7361 12.3333 16.059 12.6354 16.3021 13.0312C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5035 15.8507 16.1771 16.1771C15.8507 16.5035 15.4583 16.6666 15 16.6666H4.99998Z" fill="white"/>
+              </svg> CREATE ACCOUNT</p>
+            <p class="close-x text-teal-100 font-second text-sm font-medium cursor-pointer">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl p-5 pb-6 divide divide-header h-[500px] overflow-y-scroll">
+            <div class="create-basic-info pb-5">
+                <p class="font-bold text-lg text-white mb-3">Basic Information</p>
+                <div class="flex gap-5 mb-4">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+                <div class="flex gap-5">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DOMICILE</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE OF BIRTH</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="date" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+            </div>
+            <div class="create-login-info pt-3">
+                <p class="font-bold text-lg text-white mb-3">Login Information</p>
+                <div class="flex gap-5 mb-4">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="email" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MOBILE</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+                <div class="flex gap-5">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">PASSWORD</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">CONFIRM PASSWORD</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+            </div>
+            <p class="text-white-60 font-second text-xs font-normal mt-3">Password must include:
+                <ul class="list-disc ms-4 text-white-60 font-second text-xs font-normal">
+                    <li>Capital Letters</li>
+                    <li>Number</li>
+                    <li>Symbol</li>
+                </ul>
+            </p>
+            <div class="flex gap-3 justify-end mt-8">
+                <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancle</button>
+                <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Create Account</button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <%- include('./layouts/footer'); -%>
 <script>
-    // 
+    $("#signin-email").click(function(){
+        $("#popup").removeClass("hidden")
+        $(".popup-signin-email").removeClass("hidden")
+    })
+    $("#create-account").click(function(){
+        $("#popup").removeClass("hidden")
+        $(".popup-create-account").removeClass("hidden")
+    })
+
+    $(".close-x").click(function(){
+        $(this).closest('.popup').addClass("hidden")
+        $(this).closest('#popup').addClass("hidden")
+    })
 </script>
