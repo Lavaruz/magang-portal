@@ -747,6 +747,10 @@ video {
   width: max-content;
 }
 
+.w-\[1\.4\%\] {
+  width: 1.4%;
+}
+
 .cursor-default {
   cursor: default;
 }
@@ -1097,6 +1101,11 @@ video {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.px-\[14\%\] {
+  padding-left: 14%;
+  padding-right: 14%;
 }
 
 .px-\[200px\] {
