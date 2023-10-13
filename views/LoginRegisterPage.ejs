@@ -1,0 +1,230 @@
+<%- include('./layouts/header'); -%>
+
+<section id="main" class="bg-no-repeat bg-cover pb-[125px]" style="background-image: url('/img/Login.png')">
+    <section id="navbar" class="text-white py-2.5 px-[14%] overlay">
+        <div class="flex justify-between items-center">
+            <div class="left flex items-center">
+                <div class="brand">
+                    <a href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="33" viewBox="0 0 70 33" fill="none">
+                        <g clip-path="url(#clip0_14_24)">
+                        <path d="M42.3998 9.84899L41.1918 27.203L35.9716 26.8363L35.4603 23.8813C33.5053 25.9427 31.276 26.8855 28.7723 26.7097C27.8709 26.6464 27.0284 26.4608 26.2448 26.153C25.4861 25.847 24.9231 25.441 24.5558 24.935C24.3497 24.6425 24.2226 23.9385 24.1745 22.8231C24.1514 21.7095 24.2186 20.0208 24.3762 17.7573L25.0117 8.62757L31.4336 9.07868L30.8034 18.1329C30.7684 18.6359 30.7397 19.2279 30.7175 19.9087C30.6953 20.5895 30.7406 21.0224 30.8536 21.2072C31.0113 21.471 31.5033 21.632 32.3295 21.69L32.933 21.6945C33.6358 21.7186 34.3732 21.6061 35.1454 21.357L35.9778 9.39788L42.3998 9.84899Z" fill="white"/>
+                        <path d="M55.8706 10.4161C57.6733 10.5428 59.0583 11.2466 60.0259 12.5277C61.0202 13.7854 61.414 15.8982 61.2074 18.866C61.0534 21.0792 60.7145 22.8751 60.1908 24.2537C59.6689 25.6071 59.1168 26.4908 58.5345 26.9048C57.9521 27.3188 56.9628 27.6158 55.5665 27.7957C54.1953 27.9774 52.7836 28.0172 51.3314 27.9152C50.9058 27.8853 50.194 27.8101 49.196 27.6894L48.8231 33.0465L42.3828 32.8595L43.9768 9.95977L49.2346 10.3291L49.6866 13.0525C50.4023 12.1676 51.2802 11.4837 52.3202 11.0008C53.3852 10.5196 54.5687 10.3247 55.8706 10.4161ZM53.4545 23.4393C53.7439 23.2574 53.9836 22.7056 54.1736 21.7838C54.3653 20.8369 54.4909 19.9359 54.5504 19.0807C54.6485 17.6723 54.5459 16.6162 54.2426 15.9125C53.9394 15.2088 53.262 14.8201 52.2104 14.7462C51.4593 14.6934 50.753 14.7196 50.0916 14.8248L49.5086 23.2L50.5522 23.3871C50.876 23.4351 51.3383 23.4802 51.9391 23.5224C52.7904 23.5822 53.2955 23.5545 53.4545 23.4393Z" fill="white"/>
+                        <path d="M63.1179 20.1754C63.2114 18.1095 63.3268 13.9222 63.464 7.61341L63.5326 5.00239L69.6402 5.09023C69.6302 5.595 69.591 6.33782 69.5228 7.3187C69.3407 9.93438 69.0002 13.0191 68.5012 16.5729C68.289 18.1755 68.1546 19.2023 68.0981 19.6533C66.849 20.2479 65.2472 20.4892 63.2926 20.3772L63.1179 20.1754ZM64.8746 29.094C64.0484 29.036 63.3783 28.7236 62.8642 28.1567C62.377 27.5664 62.1657 26.806 62.2305 25.8755C62.2865 25.0706 62.6092 24.4109 63.1986 23.8963C63.8129 23.3834 64.5332 23.156 65.3594 23.214C66.1606 23.2703 66.8048 23.5936 67.2921 24.1838C67.8044 24.7758 68.0325 25.4743 67.9765 26.2791C67.9117 27.2097 67.5972 27.9331 67.0329 28.4495C66.4704 28.9408 65.7509 29.1556 64.8746 29.094Z" fill="white"/>
+                        <path d="M2.31979 0.837579L9.75458 1.35983L9.15426 9.98378L8.82395 14.729L8.11735 24.8797L0.682567 24.3574L2.31979 0.837579Z" fill="white"/>
+                        <path d="M15.5211 10.431L16.1214 1.80707L23.5562 2.32932L21.9189 25.8492L14.4842 25.3269L15.1908 15.1762L15.5211 10.431Z" fill="white"/>
+                        <path d="M14.7714 12.7728C14.7714 14.2413 13.5863 15.7273 12.1244 15.7273C10.6624 15.7273 9.47729 14.2413 9.47729 12.7728C9.47729 11.3042 10.6624 9.96594 12.1244 9.96594C13.5863 9.96594 14.7714 11.3042 14.7714 12.7728Z" fill="white"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_14_24">
+                            <rect width="70" height="33" fill="white"/>
+                        </clipPath>
+                        </defs>
+                    </svg>
+                    </a>
+                </div>
+                <div class="list">
+                    <ul class="flex gap-x-10 ml-32 text-white-60">
+                        <li class="list-none"><a href="">HOME</a></li>
+                        <li class="list-none"><a href="/internships">INTERNSHIP</a></li>
+                        <li class="list-none"><a href="">ORGS</a></li>
+                        <li class="list-none"><a href="">EVENTS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a href="/" class="py-2 px-10 bg-white font-second text-base font-medium text-[#000]/80 rounded-lg">
+                Signin
+            </a>
+        </div>
+    </section>
+    <section id="login">
+        <div class="flex items-center gap-20 w-[1000px] m-auto my-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="238" height="112" viewBox="0 0 238 112" fill="none">
+                <g clip-path="url(#clip0_173_762)">
+                  <path d="M143.77 33.4269L139.674 92.3253L121.973 91.0807L120.24 81.0515C113.611 88.0481 106.051 91.2479 97.5618 90.651C94.5056 90.4361 91.6488 89.8064 88.9915 88.7618C86.4191 87.7232 84.5101 86.3452 83.2646 84.6278C82.5658 83.6351 82.1348 81.246 81.9715 77.4603C81.8931 73.6806 82.1211 67.9495 82.6554 60.2671L84.8103 29.2814L106.586 30.8125L104.449 61.5421C104.33 63.2493 104.233 65.2582 104.158 67.5689C104.082 69.8796 104.236 71.3486 104.619 71.976C105.154 72.8714 106.822 73.4175 109.624 73.6145L111.67 73.6297C114.053 73.7115 116.554 73.3298 119.172 72.4845L121.995 31.8958L143.77 33.4269Z" fill="white"/>
+                  <path d="M189.448 35.3517C195.56 35.7815 200.257 38.1704 203.537 42.5183C206.909 46.7869 208.244 53.9575 207.544 64.0299C207.021 71.5416 205.872 77.6368 204.097 82.3155C202.327 86.9088 200.455 89.9081 198.48 91.3132C196.506 92.7184 193.151 93.7263 188.417 94.337C183.767 94.9536 178.98 95.0888 174.056 94.7426C172.613 94.6411 170.199 94.3857 166.815 93.9762L165.551 112.158L143.713 111.523L149.118 33.8028L166.946 35.0563L168.479 44.2994C170.906 41.2962 173.882 38.9751 177.409 37.3359C181.02 35.7027 185.033 35.0413 189.448 35.3517ZM181.255 79.5515C182.236 78.9343 183.049 77.0614 183.693 73.933C184.343 70.7191 184.769 67.6611 184.971 64.7589C185.303 59.9787 184.956 56.3945 183.927 54.0062C182.899 51.6179 180.602 50.2984 177.036 50.0477C174.49 49.8686 172.095 49.9576 169.852 50.3146L167.875 78.7394L171.414 79.3742C172.512 79.5372 174.079 79.6903 176.117 79.8336C179.003 80.0365 180.716 79.9425 181.255 79.5515Z" fill="white"/>
+                  <path d="M214.022 68.474C214.339 61.4626 214.73 47.2511 215.195 25.8394L215.428 16.9778L236.138 17.2759C236.104 18.9891 235.971 21.5102 235.74 24.8392C235.122 33.7167 233.968 44.1861 232.276 56.2475C231.556 61.6867 231.1 65.1715 230.909 66.702C226.673 68.7202 221.242 69.5392 214.614 69.159L214.022 68.474ZM219.979 98.7434C217.177 98.5464 214.905 97.486 213.162 95.5621C211.51 93.5588 210.793 90.9781 211.013 87.8197C211.203 85.0882 212.297 82.8491 214.295 81.1025C216.379 79.3619 218.821 78.5901 221.622 78.7871C224.339 78.9781 226.524 80.0752 228.176 82.0785C229.913 84.0877 230.686 86.4581 230.497 89.1896C230.277 92.3479 229.21 94.8034 227.297 96.5559C225.389 98.2232 222.95 98.9523 219.979 98.7434Z" fill="white"/>
+                  <path d="M7.86607 2.84269L33.0761 4.61519L31.0406 33.8843L29.9205 49.9894L27.5246 84.4401L2.31452 82.6676L7.86607 2.84269Z" fill="white"/>
+                  <path d="M52.6293 35.4022L54.6649 6.13307L79.8749 7.90557L74.3234 87.7305L49.1133 85.958L51.5093 51.5072L52.6293 35.4022Z" fill="white"/>
+                  <path d="M50.0874 43.3499C50.0874 48.3342 46.0688 53.3774 41.1116 53.3774C36.1545 53.3774 32.1359 48.3342 32.1359 43.3499C32.1359 38.3656 36.1545 33.8237 41.1116 33.8237C46.0688 33.8237 50.0874 38.3656 50.0874 43.3499Z" fill="white"/>
+                </g>
+                <defs>
+                  <clipPath id="clip0_173_762">
+                    <rect width="237.358" height="112" fill="white"/>
+                  </clipPath>
+                </defs>
+            </svg>
+            <p class="text-white text-[32px] font-bold">Join our movement in shaping the future of jobs for young adults.</p>
+        </div>
+        <div class="divide divide-header w-[540px] m-auto p-5 bg-[#222] rounded-lg">
+            <div class="flex flex-col gap-3">
+                <p class="text-white font-second font-bold text-xl mb-4">Sign In to your account.</p>
+                <button id="signin-email" class="text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5">Sign in with Email</button>
+                <button id="signin-google" class="mb-3 text-base font-second font-medium text-[#000]/80 bg-white rounded-lg py-5 justify-center flex items-center gap-1">Sign in with Google <img src="/img/Google.svg" width="20px" alt=""></button>
+            </div>
+            <div class="">
+                <button id="create-account" class="my-3 w-full text-base font-second font-medium text-[#000]/80 bg-teal-100 rounded-lg py-5 justify-center flex items-center gap-1">Create Account</button>
+                <p class="text-white-60 font-second text-sm font-normal">By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.</p>
+            </div>
+        </div>
+    </section>
+    <section id="tip">
+        <div class="flex gap-2 items-center w-[540px] m-auto  bg-[#3b3b3b]/80 mt-3 rounded-lg p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+            </svg>
+            <div class="">
+                <p class="text-teal-100 tracking-[1.6px] text-base font-normal">TIP</p>
+                <p class="text-white font-second text-sm font-medium">If you are a recruiter, you will be able to apply for a Recruiter Profile after you have created your account.</p>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
+    <div class="popup popup-signin-email w-[400px] hidden">
+        <div class="header bg-header w-full flex justify-between px-5 py-3 rounded-t-2xl">
+            <p class="flex gap-1 items-center text-white text-base tracking-[1.6px] font-normal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.99998 9.99998C9.08331 9.99998 8.29859 9.67359 7.64581 9.02081C6.99304 8.36803 6.66665 7.58331 6.66665 6.66665C6.66665 5.74998 6.99304 4.96526 7.64581 4.31248C8.29859 3.6597 9.08331 3.33331 9.99998 3.33331C10.9166 3.33331 11.7014 3.6597 12.3541 4.31248C13.0069 4.96526 13.3333 5.74998 13.3333 6.66665C13.3333 7.58331 13.0069 8.36803 12.3541 9.02081C11.7014 9.67359 10.9166 9.99998 9.99998 9.99998ZM4.99998 16.6666C4.54165 16.6666 4.14929 16.5035 3.8229 16.1771C3.49651 15.8507 3.33331 15.4583 3.33331 15V14.3333C3.33331 13.8611 3.45484 13.4271 3.6979 13.0312C3.94095 12.6354 4.26387 12.3333 4.66665 12.125C5.52776 11.6944 6.40276 11.3715 7.29165 11.1562C8.18053 10.941 9.08331 10.8333 9.99998 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1562C13.5972 11.3715 14.4722 11.6944 15.3333 12.125C15.7361 12.3333 16.059 12.6354 16.3021 13.0312C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5035 15.8507 16.1771 16.1771C15.8507 16.5035 15.4583 16.6666 15 16.6666H4.99998Z" fill="white"/>
+              </svg> SIGN IN WITH EMAIL</p>
+            <p class="close-x text-teal-100 font-second text-sm font-medium cursor-pointer">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl p-5 pb-6">
+            <p class="text-white text-lg font-bold mb-5">Please enter your login information</p>
+            <label class="block">
+                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
+                <!-- Using form state modifiers, the classes can be identical for every input -->
+                <input type="text" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                  focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                "/>
+            </label>
+            <label class="block">
+                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">PASSWORD</span>
+                <!-- Using form state modifiers, the classes can be identical for every input -->
+                <input type="password" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                  focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                  focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                "/>
+            </label>
+            <p class="text-white-60 font-second text-xs font-normal mt-3">Forgot your password? Click <a href="#" class="text-teal-100">here</a></p>
+            <button class="text-[#000]/80 font-second text-base font-medium py-3 text-center bg-teal-100 rounded-lg w-full mt-9">Sign In</button>
+        </div>
+    </div>
+    <div class="popup popup-create-account w-[720px] border-2 border-header hidden">
+        <div class="header bg-header w-full flex justify-between px-5 py-3 rounded-t-2xl">
+            <p class="flex gap-1 items-center text-white text-base tracking-[1.6px] font-normal"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.99998 9.99998C9.08331 9.99998 8.29859 9.67359 7.64581 9.02081C6.99304 8.36803 6.66665 7.58331 6.66665 6.66665C6.66665 5.74998 6.99304 4.96526 7.64581 4.31248C8.29859 3.6597 9.08331 3.33331 9.99998 3.33331C10.9166 3.33331 11.7014 3.6597 12.3541 4.31248C13.0069 4.96526 13.3333 5.74998 13.3333 6.66665C13.3333 7.58331 13.0069 8.36803 12.3541 9.02081C11.7014 9.67359 10.9166 9.99998 9.99998 9.99998ZM4.99998 16.6666C4.54165 16.6666 4.14929 16.5035 3.8229 16.1771C3.49651 15.8507 3.33331 15.4583 3.33331 15V14.3333C3.33331 13.8611 3.45484 13.4271 3.6979 13.0312C3.94095 12.6354 4.26387 12.3333 4.66665 12.125C5.52776 11.6944 6.40276 11.3715 7.29165 11.1562C8.18053 10.941 9.08331 10.8333 9.99998 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1562C13.5972 11.3715 14.4722 11.6944 15.3333 12.125C15.7361 12.3333 16.059 12.6354 16.3021 13.0312C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5035 15.8507 16.1771 16.1771C15.8507 16.5035 15.4583 16.6666 15 16.6666H4.99998Z" fill="white"/>
+              </svg> CREATE ACCOUNT</p>
+            <p class="close-x text-teal-100 font-second text-sm font-medium cursor-pointer">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl p-5 pb-6 divide divide-header h-[500px] overflow-y-scroll">
+            <div class="create-basic-info pb-5">
+                <p class="font-bold text-lg text-white mb-3">Basic Information</p>
+                <div class="flex gap-5 mb-4">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+                <div class="flex gap-5">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DOMICILE</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE OF BIRTH</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="date" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+            </div>
+            <div class="create-login-info pt-3">
+                <p class="font-bold text-lg text-white mb-3">Login Information</p>
+                <div class="flex gap-5 mb-4">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="email" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MOBILE</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="text" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+                <div class="flex gap-5">
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">PASSWORD</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                    <label class="block">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">CONFIRM PASSWORD</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <input type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                        "/>
+                    </label>
+                </div>
+            </div>
+            <p class="text-white-60 font-second text-xs font-normal mt-3">Password must include:
+                <ul class="list-disc ms-4 text-white-60 font-second text-xs font-normal">
+                    <li>Capital Letters</li>
+                    <li>Number</li>
+                    <li>Symbol</li>
+                </ul>
+            </p>
+            <div class="flex gap-3 justify-end mt-8">
+                <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Create Account</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script>
+    $("#signin-email").click(function(){
+        $("#popup").removeClass("hidden")
+        $(".popup-signin-email").removeClass("hidden")
+    })
+    $("#create-account").click(function(){
+        $("#popup").removeClass("hidden")
+        $(".popup-create-account").removeClass("hidden")
+    })
+
+    $(".close-x").click(function(){
+        $(this).closest('.popup').addClass("hidden")
+        $(this).closest('#popup').addClass("hidden")
+    })
+</script>
