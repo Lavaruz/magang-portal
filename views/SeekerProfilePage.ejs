@@ -1,8 +1,10 @@
 <%- include('./layouts/header'); -%>
 <%- include('./layouts/navbar'); -%>
 
+<p id="user_id" style="display: none;"><%= user.id %></p>
+
 <section id="main" class="w-[1036px] m-auto pb-14">
-    <p class="pb-3 pt-8 text-white text-xl font-bold">Hi, Jarwo</p>
+    <p id="header-firstname" class="pb-3 pt-8 text-white text-xl font-bold">Hi, Jarwo</p>
     <div class="grid grid-cols-[1fr_.6fr] gap-5">
         <div class="flex flex-col gap-3">
             <div class="basic-info rounded-2xl">
@@ -19,29 +21,29 @@
                         <img src="/img/Ellipse 3.svg" alt="">
                         <div class="divide-y divide-header">
                             <div class="mb-4">
-                                <p class="font-bold text-xl text-white">Jarwo Slebew</p>
+                                <p id="basic-fullname" class="font-bold text-xl text-white">Jarwo Slebew</p>
                                 <p class="text-sm text-white-60 font-second font-normal">Current Position</p>
                             </div>
                             <div class="grid grid-cols-2 gap-x-9 gap-y-4 pt-4 text-white">
                                 <div class="">
                                     <span class="text-white-60 font-normal text-sm">EMAIL</span>
-                                    <p class="font-second font-medium text-sm">jarwoslebew007@gmail.com</p>
+                                    <p id="basic-email" class="font-second font-medium text-sm">jarwoslebew007@gmail.com</p>
                                 </div>
                                 <div class="">
                                     <span class="text-white-60 font-normal text-sm">MOBILE</span>
-                                    <p class="font-second font-medium text-sm">0857-1206-2191</p>
+                                    <p id="basic-mobile" class="font-second font-medium text-sm">0857-1206-2191</p>
                                 </div>
                                 <div class="">
                                     <span class="text-white-60 font-normal text-sm">BIRTHDATE</span>
-                                    <p class="font-second font-medium text-sm">18 October 2001</p>
+                                    <p id="basic-birthdate" class="font-second font-medium text-sm">18 October 2001</p>
                                 </div>
                                 <div class="">
                                     <span class="text-white-60 font-normal text-sm">SEX</span>
-                                    <p class="font-second font-medium text-sm">Male</p>
+                                    <p id="basic-sex" class="font-second font-medium text-sm">Male</p>
                                 </div>
                                 <div class="">
                                     <span class="text-white-60 font-normal text-sm">DOMICILE</span>
-                                    <p class="font-second font-medium text-sm">Jakarta</p>
+                                    <p id="basic-domicile" class="font-second font-medium text-sm">Jakarta</p>
                                 </div>
                             </div>
                         </div>
@@ -245,7 +247,7 @@
                     <label class="block">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="text" value="Jarwo" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-firstname" type="text" value="Jarwo" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
@@ -253,7 +255,7 @@
                     <label class="block">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="text" value="Slebew" class="block w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-lastname" type="text" value="Slebew" class="block border-0 w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
@@ -263,7 +265,7 @@
                     <label class="block">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DOMICILE</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="text" value="Jakarta" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-domicile" type="text" value="Jakarta" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
@@ -271,12 +273,26 @@
                     <label class="">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE OF BIRTH</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="date" value="2013-01-08" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-birthdate" type="date" value="" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
                     </label>
                 </div>
+                <label class="block mt-4">
+                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">SEX</span>
+                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                    <div class="flex gap-4">
+                        <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                            <input id="default-radio-1" type="radio" value="female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-1" class="text-white-60 font-second text-xs font-medium">Female</label>
+                        </div>
+                        <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                            <input id="default-radio-2" type="radio" value="male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="default-radio-2" class="text-white-60 font-second text-xs font-medium">Male</label>
+                        </div>
+                    </div>
+                </label>
             </div>
             <div class="p-5">
                 <p class="font-bold text-lg text-white mb-3">Contact Information</p>
@@ -284,7 +300,7 @@
                     <label class="block">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="text" value="Jarwo" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-email" type="text" value="Jarwo" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
@@ -292,7 +308,7 @@
                     <label class="block">
                         <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MOBILE</span>
                         <!-- Using form state modifiers, the classes can be identical for every input -->
-                        <input type="text" value="Slebew" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                        <input id="popup-mobile" type="text" value="Slebew" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                           focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                           focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                         "/>
@@ -315,7 +331,7 @@
         <div class="body bg-body rounded-b-2xl p-5 pb-6">
             <p class="font-bold text-lg text-white">Your Profile Summary</p>
             <p class="text-white-60 font-second font-medium text-sm mb-3">Your profile summary is your chance to make a lasting impression on potential employers! <a href="" class="text-teal-100">Here</a> is a helpful article on how to create an attractive profile summary.</p>        
-            <textarea id="message" rows="4" class="block resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your thoughts here..."></textarea>
+            <textarea id="message" rows="4" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your thoughts here..."></textarea>
             <div class="flex gap-3 justify-end mt-8">
                 <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
                 <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
@@ -513,7 +529,7 @@
                             <label class="flex items-center gap-3 mt-3">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LINK</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input type="text" value="www.drive.google.com/file" class="block w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white-60 font-second
+                                <input type="text" value="www.drive.google.com/file" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white-60 font-second
                                   focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                                   focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                                 "/>
@@ -563,3 +579,4 @@
         $(this).closest('#popup').addClass("hidden")
     })
 </script>
+<script src="/js/SeekerProfilePage.js"></script>

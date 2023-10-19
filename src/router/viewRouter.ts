@@ -1,14 +1,17 @@
-import express from "express";
+import express, {Response, Request} from "express";
+import { validateToken } from "../config/JTW";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.render("SeekerProfilePage");
+router.get("/",validateToken, (req: Request, res: Response) => {
+  res.render("SeekerProfilePage", {
+    user: req.user
+  });
 });
-router.get("/internships", (req, res) => {
+router.get("/internships",validateToken, (req, res) => {
   res.render("SeekerInternshipPage");
 });
-router.get("/recruiter-post", (req, res) => {
+router.get("/recruiter-post",validateToken, (req, res) => {
   res.render("RecruiterPost");
 });
 

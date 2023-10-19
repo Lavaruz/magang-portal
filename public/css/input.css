@@ -28,3 +28,29 @@ body {
 div::-webkit-scrollbar {
   display: none;
 }
+.popup-text-header {
+    @apply font-normal text-white text-base tracking-[1.6px] flex items-center gap-2;
+}
+.popup-close {
+    @apply cursor-pointer font-second font-medium text-sm text-teal-100;
+}
+.popup-header {
+    @apply bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center;
+}
+.popup-body{
+    @apply divide-y divide-header bg-body rounded-b-2xl max-h-[500px] overflow-y-scroll
+}
+.text-head{
+    @apply font-bold text-lg text-white mb-2
+}
+.text-body{
+    @apply text-white-60 font-second text-sm font-medium mb-3
+}
+.label{
+    @apply text-white-60 tracking-[1.4px] font-normal text-sm
+}
+.input{
+    @apply block px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-none
+}
