@@ -97,7 +97,7 @@
                     <!-- Using form state modifiers, the classes can be identical for every input -->
                     <input type="text" name="email" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                       focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                      focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] outline-none border-0 ring-0
                     "/>
                 </label>
                 <label class="block">
@@ -105,7 +105,7 @@
                     <!-- Using form state modifiers, the classes can be identical for every input -->
                     <input type="password" name="password" class="block w-full px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
                       focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                      focus:invalid:border-pink-500 focus:invalid:ring-pink-500 outline-none border-0 ring-0
+                      focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] outline-none border-0 ring-0
                     "/>
                 </label>
                 <p class="text-white-60 font-second text-xs font-normal mt-3">Forgot your password? Click <a href="#" class="text-teal-100">here</a></p>
@@ -122,24 +122,23 @@
         </div>
         <form id="form-signup">
             <div class="body bg-body rounded-b-2xl p-5 pb-6 max-h-[500px] overflow-y-scroll">
-                <div class="body-percent divide divide-header">
+                <div class="popup-create-account-basic body-percent divide divide-header">
                     <div class="create-basic-info pb-5">
                         <p class="font-bold text-lg text-white mb-3">Basic Information</p>
                         <div class="flex gap-5 mb-4">
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="first_name" type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
-                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                <input name="first_name" type="text" value="" placeholder="Jhon" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                                    focus:outline-1 focus:ring-1 focus:ring-white-60 border-0
                                 "/>
                             </label>
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="last_name" type="text" value="" class="block w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                <input name="last_name" type="text" value="" placeholder="Doe" class="block w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
                                 "/>
                             </label>
                         </div>
@@ -147,20 +146,21 @@
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DOMICILE</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="domicile" type="text" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                <input name="domicile" type="text" value="" placeholder="Jakarta" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
                                 "/>
                             </label>
                             <label class="">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE OF BIRTH</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="date_of_birth" type="date" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                <input name="date_of_birth" type="date" placeholder="09-14-2001" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
                                 "/>
                             </label>
                         </div>
+                        
                     </div>
                     <div class="create-login-info pt-3">
                         <p class="font-bold text-lg text-white mb-3">Login Information</p>
@@ -168,17 +168,17 @@
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="email" type="email" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                <input id="create-account-email" name="email" type="email" value="" placeholder="jhon.doe@domain.com" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0 border-[#FC4545]
                                 "/>
                             </label>
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MOBILE</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="mobile" type="text" value="" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                <input name="mobile" type="number" value="" placeholder="085712062121" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
                                 "/>
                             </label>
                         </div>
@@ -186,18 +186,36 @@
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">PASSWORD</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="password" type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
-                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
-                                "/>
+                                <div id="input-password-create" class="flex pr-3 py-0.5 bg-header rounded-lg text-base placeholder-white-60 text-white border-[#FC4545]">
+                                    <input
+                                      type="password"
+                                      name="password"
+                                      class="bg-transparent border-0 focus:ring-0"
+                                      id="password1"
+                                      placeholder="•••••••••"
+                                      pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$"
+                                    />
+                                    <button type="button" class="show-password" data-input="#password1"
+                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 13.3333C11.0417 13.3333 11.9271 12.9687 12.6563 12.2396C13.3855 11.5104 13.75 10.625 13.75 9.58333C13.75 8.54166 13.3855 7.65625 12.6563 6.92708C11.9271 6.19791 11.0417 5.83333 10 5.83333C8.95837 5.83333 8.07296 6.19791 7.34379 6.92708C6.61462 7.65625 6.25004 8.54166 6.25004 9.58333C6.25004 10.625 6.61462 11.5104 7.34379 12.2396C8.07296 12.9687 8.95837 13.3333 10 13.3333ZM10 11.8333C9.37504 11.8333 8.84379 11.6146 8.40629 11.1771C7.96879 10.7396 7.75004 10.2083 7.75004 9.58333C7.75004 8.95833 7.96879 8.42708 8.40629 7.98958C8.84379 7.55208 9.37504 7.33333 10 7.33333C10.625 7.33333 11.1563 7.55208 11.5938 7.98958C12.0313 8.42708 12.25 8.95833 12.25 9.58333C12.25 10.2083 12.0313 10.7396 11.5938 11.1771C11.1563 11.6146 10.625 11.8333 10 11.8333ZM10 15.8333C7.97226 15.8333 6.12504 15.2674 4.45837 14.1354C2.79171 13.0035 1.58337 11.4861 0.833374 9.58333C1.58337 7.68055 2.79171 6.16319 4.45837 5.03124C6.12504 3.8993 7.97226 3.33333 10 3.33333C12.0278 3.33333 13.875 3.8993 15.5417 5.03124C17.2084 6.16319 18.4167 7.68055 19.1667 9.58333C18.4167 11.4861 17.2084 13.0035 15.5417 14.1354C13.875 15.2674 12.0278 15.8333 10 15.8333Z" fill="white"/>
+                                        </svg></button>
+                                </div>
                             </label>
                             <label class="block">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">CONFIRM PASSWORD</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input type="password" value="" class="block w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
-                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
-                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-0
-                                "/>
+                                <div id="input-confirm-password-create" class="flex pr-3 py-0.5 bg-header rounded-lg text-base placeholder-white-60 text-white border-[#FC4545] border-0">
+                                    <input
+                                      type="password"
+                                      class="bg-transparent border-0 focus:ring-0"
+                                      id="password2"
+                                      placeholder="•••••••••"
+                                    />
+                                    <button type="button" class="show-password" data-input="#password2"
+                                    ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                        <path d="M10 13.3333C11.0417 13.3333 11.9271 12.9687 12.6563 12.2396C13.3855 11.5104 13.75 10.625 13.75 9.58333C13.75 8.54166 13.3855 7.65625 12.6563 6.92708C11.9271 6.19791 11.0417 5.83333 10 5.83333C8.95837 5.83333 8.07296 6.19791 7.34379 6.92708C6.61462 7.65625 6.25004 8.54166 6.25004 9.58333C6.25004 10.625 6.61462 11.5104 7.34379 12.2396C8.07296 12.9687 8.95837 13.3333 10 13.3333ZM10 11.8333C9.37504 11.8333 8.84379 11.6146 8.40629 11.1771C7.96879 10.7396 7.75004 10.2083 7.75004 9.58333C7.75004 8.95833 7.96879 8.42708 8.40629 7.98958C8.84379 7.55208 9.37504 7.33333 10 7.33333C10.625 7.33333 11.1563 7.55208 11.5938 7.98958C12.0313 8.42708 12.25 8.95833 12.25 9.58333C12.25 10.2083 12.0313 10.7396 11.5938 11.1771C11.1563 11.6146 10.625 11.8333 10 11.8333ZM10 15.8333C7.97226 15.8333 6.12504 15.2674 4.45837 14.1354C2.79171 13.0035 1.58337 11.4861 0.833374 9.58333C1.58337 7.68055 2.79171 6.16319 4.45837 5.03124C6.12504 3.8993 7.97226 3.33333 10 3.33333C12.0278 3.33333 13.875 3.8993 15.5417 5.03124C17.2084 6.16319 18.4167 7.68055 19.1667 9.58333C18.4167 11.4861 17.2084 13.0035 15.5417 14.1354C13.875 15.2674 12.0278 15.8333 10 15.8333Z" fill="white"/>
+                                        </svg></button>
+                                </div>
                             </label>
                         </div>
                     </div>
@@ -210,7 +228,7 @@
                     </p>
                     <div class="flex gap-3 justify-end mt-8">
                         <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
-                        <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Create Account</button>
+                        <button id="button-create-account-basic" type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base disabled:bg-teal-100/50">Create Account</button>
                     </div>
                 </div>
                 <div class="body-percent hidden">
@@ -219,15 +237,27 @@
                     <div class="mt-3 flex flex-col gap-2">
                         <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
                             <label for="default-radio-1" class="text-white-60 font-second text-xs font-medium">I'm an active student</label>
-                            <input id="default-radio-1" type="radio" value="seeker" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="default-radio-1" type="radio" value="I'm an active student" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked>
                         </div>
                         <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
                             <label for="default-radio-2" class="text-white-60 font-second text-xs font-medium">I'm a fresh-graduate (max. 1 year after graduation)</label>
-                            <input id="default-radio-2" type="radio" value="seeker" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="default-radio-2" type="radio" value="I'm a fresh-graduate (max. 1 year after graduation)" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </div>
                         <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
                             <label for="default-radio-3" class="text-white-60 font-second text-xs font-medium">I'm a representative of my company to hire candidates</label>
-                            <input id="default-radio-3" type="radio" value="seeker" name="role" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <input id="default-radio-3" type="radio" value="I'm a representative of my company to hire candidates" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                        <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                            <label for="default-radio-4" class="text-white-60 font-second text-xs font-medium">I'm currently a high school student</label>
+                            <input id="default-radio-4" type="radio" value="I'm currently a high school student" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                        <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                            <label for="default-radio-5" class="text-white-60 font-second text-xs font-medium">I'm a high school fresh-graduate (max. 1 year after graduation)</label>
+                            <input id="default-radio-5" type="radio" value="I'm a high school fresh-graduate (max. 1 year after graduation)" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        </div>
+                        <div class="flex items-center w-[352px] justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                            <label for="default-radio-6" class="text-white-60 font-second text-xs font-medium">None of the above</label>
+                            <input id="default-radio-6" type="radio" value="None of the above" name="current_status" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </div>
                     </div>
                     <div class="flex gap-3 justify-end mt-8">
@@ -257,6 +287,16 @@
 
 <%- include('./layouts/footer'); -%>
 <script>
+    const registeredEmail = []
+    const REGEX_PATTERN = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/
+    //   Append semua email yang telah terdaftar dalam Database untuk pengecekan lebih lanjut
+    $.get("/api/v1/seeker", function(obj){
+        const email = obj.datas.forEach(data => {
+            registeredEmail.push(data.email)
+        })
+    })
+
+    // Semua interactive function jquery
     $("#signin-email").click(function(){
         $("#popup").removeClass("hidden")
         $(".popup-signin-email").removeClass("hidden")
@@ -283,6 +323,101 @@
         $(".body-percent").eq(body_percent_idx).addClass("hidden")
         $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
     })
+
+    if($(".popup-create-account-basic").find("input:empty").length !== 0){
+        $("#button-create-account-basic").prop("disabled", true)
+    }
+
+    $(".popup-create-account-basic").find("input").on("input",function(){
+        const nonEmptyInputs = $(".popup-create-account-basic").find("input").filter(function() {
+            return $(this).val().length > 0;
+        });
+        
+        // Check confirm password
+        const password = $("#password1").val();
+        const confirmPassword = $("#password2").val();
+        let passwordMatch = false
+        let passwordValid = false
+        const isValid = REGEX_PATTERN.test(password)
+
+        if(!isValid){
+            $("#input-password-create").removeClass("border-0")
+            $("#input-password-create").addClass("border")
+            if($("#password-not-valid").length == 0){
+                $(`<p id="password-not-valid" class="mt-2 text-[#FC4545] font-second text-xs font-medium">Password doesn't valid</p>`).insertAfter( "#input-password-create" );
+            }
+            passwordValid = false
+        }else{
+            $("#input-password-create").removeClass("border")
+            $("#input-password-create").addClass("border-0")
+            $("#password-not-valid").remove()
+            passwordValid = true
+        }
+
+        if(password !== confirmPassword){
+            $("#input-confirm-password-create").removeClass("border-0")
+            $("#input-confirm-password-create").addClass("border")
+            if($("#password-not-match").length == 0){
+                $(`<p id="password-not-match" class="mt-2 text-[#FC4545] font-second text-xs font-medium">Password doesn't match</p>`).insertAfter( "#input-confirm-password-create" );
+            }
+            passwordMatch = false
+        }else{
+            $("#input-confirm-password-create").removeClass("border")
+            $("#input-confirm-password-create").addClass("border-0")
+            $("#password-not-match").remove()
+            passwordMatch = true
+        }
+
+
+        // Interactive di email untuk melihat apakah ada email yang sama
+        let emailAvailable = false
+        let emailInput = $("#create-account-email").val()
+        if(registeredEmail.includes(emailInput)){
+            $("#create-account-email").removeClass("border-0")
+            $("#create-account-email").addClass("border")
+            if($("#email-used").length == 0){
+                $(`<p id="email-used" class="mt-2 text-[#FC4545] font-second text-xs font-medium">Email already used !</p>`).insertAfter( "#create-account-email" );
+            }
+            emailAvailable = false
+        }else{
+            $("#create-account-email").removeClass("border")
+            $("#create-account-email").addClass("border-0")
+            $("#email-used").remove()
+            emailAvailable = true
+        }
+
+
+        // disable button next
+        if (nonEmptyInputs.length === 8 && passwordMatch && emailAvailable && passwordValid) {
+            $("#button-create-account-basic").prop("disabled", false);
+        }else{
+            $("#button-create-account-basic").prop("disabled", true);
+        }
+    })
+
+    // Show Password
+    $(document).ready(function () {
+    $(".show-password").click(function () {
+      const inputId = $(this).data("input");
+      const passwordInput = $(inputId);
+
+      if (passwordInput.attr("type") === "password") {
+        passwordInput.attr("type", "text");
+        $(this).html("Hide");
+      } else {
+        passwordInput.attr("type", "password");
+        $(this).html(`<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 13.3333C11.0417 13.3333 11.9271 12.9687 12.6563 12.2396C13.3855 11.5104 13.75 10.625 13.75 9.58333C13.75 8.54166 13.3855 7.65625 12.6563 6.92708C11.9271 6.19791 11.0417 5.83333 10 5.83333C8.95837 5.83333 8.07296 6.19791 7.34379 6.92708C6.61462 7.65625 6.25004 8.54166 6.25004 9.58333C6.25004 10.625 6.61462 11.5104 7.34379 12.2396C8.07296 12.9687 8.95837 13.3333 10 13.3333ZM10 11.8333C9.37504 11.8333 8.84379 11.6146 8.40629 11.1771C7.96879 10.7396 7.75004 10.2083 7.75004 9.58333C7.75004 8.95833 7.96879 8.42708 8.40629 7.98958C8.84379 7.55208 9.37504 7.33333 10 7.33333C10.625 7.33333 11.1563 7.55208 11.5938 7.98958C12.0313 8.42708 12.25 8.95833 12.25 9.58333C12.25 10.2083 12.0313 10.7396 11.5938 11.1771C11.1563 11.6146 10.625 11.8333 10 11.8333ZM10 15.8333C7.97226 15.8333 6.12504 15.2674 4.45837 14.1354C2.79171 13.0035 1.58337 11.4861 0.833374 9.58333C1.58337 7.68055 2.79171 6.16319 4.45837 5.03124C6.12504 3.8993 7.97226 3.33333 10 3.33333C12.0278 3.33333 13.875 3.8993 15.5417 5.03124C17.2084 6.16319 18.4167 7.68055 19.1667 9.58333C18.4167 11.4861 17.2084 13.0035 15.5417 14.1354C13.875 15.2674 12.0278 15.8333 10 15.8333Z" fill="white"/>
+                    </svg>`);
+      }
+    });
+
+
+  });
+
+  
+    
+    
 
     const form_signup = document.getElementById("form-signup");
     $("#form-signup").submit(function(e){
@@ -334,4 +469,12 @@
             },
         });
     })
+
+    // Prevent enter untuk sebumit form !!!
+    $('form').bind("keypress", function(e) {
+        if (e.keyCode == 13) {               
+            e.preventDefault();
+            return false;
+        }
+    });
 </script>

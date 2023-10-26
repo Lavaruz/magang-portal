@@ -51,6 +51,8 @@ Seeker.init(
     sex: {
       type: DataTypes.STRING,
     },
+    current_status: DataTypes.TEXT,
+    profile_summary: DataTypes.TEXT
   },
   {
     tableName: "seeker", // Nama tabel di database

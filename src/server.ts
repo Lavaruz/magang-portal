@@ -3,6 +3,7 @@ import fs from "fs"
 import path from "path";
 import multer from 'multer';
 import cookieParser from "cookie-parser"
+import cors from "cors"
 const app = express();
 
 // for image upload
@@ -31,6 +32,7 @@ import { connectToDatabase } from "./models";
 import viewRouter from "./router/viewRouter";
 import seekerRouter from "./router/seeker.router";
 
+app.use(cors())
 app.use(express.json());
 app.use(cookieParser());
 app.use(multer({ storage: storage, limits: { fileSize: 1000000 } }).any());
@@ -44,7 +46,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 
 // konfigurasi sequelize dengan option alter
-let PORT = process.env.PORT || 3000;
+let PORT = process.env.PORT || 8080;
 connectToDatabase()
   .then(() => {
     // set router

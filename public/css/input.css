@@ -54,3 +54,15 @@ div::-webkit-scrollbar {
     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
     focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-none
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

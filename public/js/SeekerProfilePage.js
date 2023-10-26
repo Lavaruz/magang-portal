@@ -14,6 +14,43 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#popup-birthdate").val(`${seekerData.date_of_birth}`)
     $("#popup-domicile").val(`${seekerData.domicile}`)
     $("input[name=sex][value='male']").prop("checked",true);
+    
+    if(seekerData.profile_summary){
+      let paragraph = seekerData.profile_summary.split('\n')
+      $("#profile-summary").html(paragraph.join("</br>")).addClass("font-second text-sm text-white font-medium")
+      $("#popup-summary-textarea").val(`${seekerData.profile_summary}`)
+    }
+})
+
+
+// Open popup on edit button and profile completion
+
+$("#edit-basic-info, #completion-profile-picture").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-basic").removeClass("hidden")
+})
+$("#edit-profile-summary, #completion-profile-summary, #button-profile-summary").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-summary").removeClass("hidden")
+})
+$("#edit-experiences, #completion-experiences, #button-experiences").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-experiences").removeClass("hidden")
+})
+$("#edit-education, #completion-education, #button-education").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-education").removeClass("hidden")
+})
+$("#edit-attachment, #completion-resume").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-attachments").removeClass("hidden")
+})
+
+// Close button to close popup
+
+$(".close-x").click(function(){
+    $(this).closest('.popup').addClass("hidden")
+    $(this).closest('#popup').addClass("hidden")
 })
 
 

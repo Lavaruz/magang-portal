@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/",validateToken, (req: Request, res: Response) => {
   res.render("SeekerProfilePage", {
-    user: req.user
+    id: req.user.id
   });
 });
 router.get("/internships",validateToken, (req, res) => {

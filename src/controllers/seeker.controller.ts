@@ -1,8 +1,18 @@
 import { Request, Response } from "express";
-import Seeker from "../models/Seeker"; // Pastikan Anda telah mengimpor model User yang sesuai
+import Seeker from "../models/Seeker";
+import Experience from "../models/Experience";
+import Education from "../models/Education";
 import response from "./response";
 import * as bcrypt from 'bcrypt';
 import { createToken } from "../config/JTW";
+
+// One to Many relationship
+Seeker.hasMany(Experience, { as: 'experiences' });
+Experience.belongsTo(Seeker);
+// One to Many relationship
+Seeker.hasMany(Education, { as: 'educations' });
+Education.belongsTo(Seeker);
+
 
 // Fungsi ini mengambil semua pengguna
 export const getAllSeeker = async (req: Request, res: Response) => {
@@ -35,6 +45,7 @@ export const getSeekerById = async (req: Request, res: Response) => {
 // Fungsi ini membuat pengguna baru
 export const createSeeker = async (req: Request, res: Response) => {
   const seekerData = req.body; // Anda akan mendapatkan data pengguna dari permintaan POST
+  seekerData.role = "seeker"
   try {
     hashPassword(seekerData.password)
       .then(async(hashedPassword) => {
@@ -94,7 +105,7 @@ export const updateSeeker = async (req: Request, res: Response) => {
     const seeker = await Seeker.findByPk(seekerId);
     if (seeker) {
       await seeker.update(updatedSeeker);
-      res.status(200).json(seeker);
+      response(200, "Success update pengguna", seeker, res)
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }
