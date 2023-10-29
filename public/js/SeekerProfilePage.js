@@ -1,4 +1,5 @@
 const id = $("#user_id").text()
+
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#nav-username").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
@@ -14,11 +15,54 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#popup-birthdate").val(`${seekerData.date_of_birth}`)
     $("#popup-domicile").val(`${seekerData.domicile}`)
     $("input[name=sex][value='male']").prop("checked",true);
+    $("#profile-viewers").text(seekerData.profile_viewers)
     
+    
+    // PROFILE SUMMARY
     if(seekerData.profile_summary){
       let paragraph = seekerData.profile_summary.split('\n')
-      $("#profile-summary").html(paragraph.join("</br>")).addClass("font-second text-sm text-white font-medium")
+      $("#profile-summary").html(paragraph.join("</br>")).addClass("font-second text-sm text-white-80 font-medium")
       $("#popup-summary-textarea").val(`${seekerData.profile_summary}`)
+    }
+
+    // EXPERIENCES
+    if(seekerData.experiences.length !== 0){
+        $("#experiences").html("")
+        $("#experiences").removeClass("p-5")
+        $("#experiences").addClass("pt-2 px-5")
+        seekerData.experiences.forEach(experience => {
+            $("#experiences").append(experience_html(experience))
+            $("#popup-body-experiences").append(experience_html_edit(experience))
+        })
+    }
+
+    // EDUCATIONS
+    if(seekerData.educations.length !== 0){
+        $("#educations").html("")
+        $("#educations").removeClass("p-5")
+        $("#educations").addClass("pt-2 px-5")
+        seekerData.educations.forEach(education => {
+            $("#educations").append(education_html(education))
+            $("#popup-body-educations").append(education_html_menu(education))
+        })
+    }
+
+    // ATTACHMENTS
+    if(seekerData.attachment){
+        const atc_portfolio = seekerData.attachment.atc_portfolio;
+        $("#portfolio span").text(`${atc_portfolio.length > 28 ? atc_portfolio.substring(0, 28) + "..." : atc_portfolio}`)
+        $("#portfolio").attr("href", `${atc_portfolio}`)
+        $("#portfolio-type").text(getDomainName(atc_portfolio))
+        $("#popup-body-portfolio").val(atc_portfolio)
+    }
+
+    if(seekerData.active_search){
+        $("#active-search").prop("checked", true)
+        $("#active-search-status").text("ActiveSearch is on.")
+    }else{
+        $("#active-search").prop("checked", false)
+        $("#active-search-status").text("ActiveSearch is off.")
+        $("#active-search-status").removeClass("text-green-500").addClass("text-red-500")
     }
 })
 
@@ -76,4 +120,189 @@ function formatDate(inputDate) {
   
     return formattedDate;
   }
+
+function calculateMonthDifference(startDate, endDate) {
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+
+    let yearDiff = end.getFullYear() - start.getFullYear();
+    let monthDiff = end.getMonth() - start.getMonth();
+
+    if (monthDiff < 0) {
+        yearDiff -= 1;
+        monthDiff += 12;
+    }
+
+    if (yearDiff === 0) {
+        return `${monthDiff} Month`;
+    } else if (yearDiff === 1) {
+        return `1 Year ${monthDiff} Month`;
+    } else {
+        return `${yearDiff} Years ${monthDiff} Month`;
+    }
+}
+
+function getDomainName(url) {
+    // Hapus protokol (http://, https://) jika ada
+  const withoutProtocol = url.replace(/(^\w+:|^)\/\//, '');
+
+  // Pisahkan berdasarkan tanda '/' pertama
+  const parts = withoutProtocol.split('/');
+
+  // Ambil bagian pertama setelah pemisahan
+  const domainWithExtension = parts[0];
+
+  // Hapus ekstensi jika ada
+  const domainWithoutExtension = domainWithExtension.replace(/\.[^.]*$/, '');
+
+  return domainWithoutExtension.charAt(0).toUpperCase() + domainWithoutExtension.slice(1);;
+}
+
+function getFormattedDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Dapat ditambahkan 1 karena bulan dimulai dari 0.
+    const day = String(today.getDate()).padStart(2, '0');
+  
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
+}
+
+function experience_html(experience){
+    return `
+        <div class="w-full py-2">
+            <div class="head flex justify-between">
+                <div class="">
+                    <p class="text-[#FC4545] bg-[#DB3D3D]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${experience.exp_type.toUpperCase()}</p>
+                    <p class="font-bold text-lg text-white">${experience.exp_position}</p>
+                    <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
+                </div>
+                <div class="text-right">
+                    <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate? formatDate(experience.exp_enddate).slice(3) : "Now"}</p>
+                    <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
+                </div>
+            </div>
+            <div class="body flex">
+                <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
+                    <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
+                </ul>
+            </div>
+        </div>
+    `
+} 
+
+function experience_html_edit(experience){
+    return `
+        <div class="card-experience">
+            <div class="flex gap-4 my-5">
+                <div class=""><svg class="cursor-grab" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 20C8.45 20 7.97917 19.8042 7.5875 19.4125C7.19583 19.0208 7 18.55 7 18C7 17.45 7.19583 16.9792 7.5875 16.5875C7.97917 16.1958 8.45 16 9 16C9.55 16 10.0208 16.1958 10.4125 16.5875C10.8042 16.9792 11 17.45 11 18C11 18.55 10.8042 19.0208 10.4125 19.4125C10.0208 19.8042 9.55 20 9 20ZM15 20C14.45 20 13.9792 19.8042 13.5875 19.4125C13.1958 19.0208 13 18.55 13 18C13 17.45 13.1958 16.9792 13.5875 16.5875C13.9792 16.1958 14.45 16 15 16C15.55 16 16.0208 16.1958 16.4125 16.5875C16.8042 16.9792 17 17.45 17 18C17 18.55 16.8042 19.0208 16.4125 19.4125C16.0208 19.8042 15.55 20 15 20ZM9 14C8.45 14 7.97917 13.8042 7.5875 13.4125C7.19583 13.0208 7 12.55 7 12C7 11.45 7.19583 10.9792 7.5875 10.5875C7.97917 10.1958 8.45 10 9 10C9.55 10 10.0208 10.1958 10.4125 10.5875C10.8042 10.9792 11 11.45 11 12C11 12.55 10.8042 13.0208 10.4125 13.4125C10.0208 13.8042 9.55 14 9 14ZM15 14C14.45 14 13.9792 13.8042 13.5875 13.4125C13.1958 13.0208 13 12.55 13 12C13 11.45 13.1958 10.9792 13.5875 10.5875C13.9792 10.1958 14.45 10 15 10C15.55 10 16.0208 10.1958 16.4125 10.5875C16.8042 10.9792 17 11.45 17 12C17 12.55 16.8042 13.0208 16.4125 13.4125C16.0208 13.8042 15.55 14 15 14ZM9 8C8.45 8 7.97917 7.80417 7.5875 7.4125C7.19583 7.02083 7 6.55 7 6C7 5.45 7.19583 4.97917 7.5875 4.5875C7.97917 4.19583 8.45 4 9 4C9.55 4 10.0208 4.19583 10.4125 4.5875C10.8042 4.97917 11 5.45 11 6C11 6.55 10.8042 7.02083 10.4125 7.4125C10.0208 7.80417 9.55 8 9 8ZM15 8C14.45 8 13.9792 7.80417 13.5875 7.4125C13.1958 7.02083 13 6.55 13 6C13 5.45 13.1958 4.97917 13.5875 4.5875C13.9792 4.19583 14.45 4 15 4C15.55 4 16.0208 4.19583 16.4125 4.5875C16.8042 4.97917 17 5.45 17 6C17 6.55 16.8042 7.02083 16.4125 7.4125C16.0208 7.80417 15.55 8 15 8Z" fill="white" fill-opacity="0.6"/>
+                </svg></div>
+                <div class="w-full">
+                    <div class="head flex justify-between">
+                        <div class="">
+                            <p class="id" style="display: none;">${experience.id}</p>
+                            <p class="text-[#FC4545] bg-[#DB3D3D]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${experience.exp_type.toUpperCase()}</p>
+                            <p class="font-bold text-lg text-white">${experience.exp_position}</p>
+                            <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate?formatDate(experience.exp_enddate).slice(3):"Now"}</p>
+                            <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
+                        </div>
+                    </div>
+                    <div class="body flex">
+                        <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
+                            <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <svg class="cursor-pointer edit-svg-button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.175C3 17.0417 3.025 16.9125 3.075 16.7875C3.125 16.6625 3.2 16.55 3.3 16.45L13.6 6.15L17.85 10.4L7.55 20.7C7.45 20.8 7.3375 20.875 7.2125 20.925C7.0875 20.975 6.95833 21 6.825 21H4Z" fill="#A5A5A5"/>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="cursor-pointer delete-svg-button" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.525 21C6.125 21 5.775 20.85 5.475 20.55C5.175 20.25 5.025 19.9 5.025 19.5V5.25H4.75C4.53333 5.25 4.35417 5.17917 4.2125 5.0375C4.07083 4.89583 4 4.71667 4 4.5C4 4.28333 4.07083 4.10417 4.2125 3.9625C4.35417 3.82083 4.53333 3.75 4.75 3.75H8.7C8.7 3.53333 8.77083 3.35417 8.9125 3.2125C9.05417 3.07083 9.23333 3 9.45 3H14.55C14.7667 3 14.9458 3.07083 15.0875 3.2125C15.2292 3.35417 15.3 3.53333 15.3 3.75H19.25C19.4667 3.75 19.6458 3.82083 19.7875 3.9625C19.9292 4.10417 20 4.28333 20 4.5C20 4.71667 19.9292 4.89583 19.7875 5.0375C19.6458 5.17917 19.4667 5.25 19.25 5.25H18.975V19.5C18.975 19.9 18.825 20.25 18.525 20.55C18.225 20.85 17.875 21 17.475 21H6.525ZM9.175 16.6C9.175 16.8167 9.24583 16.9958 9.3875 17.1375C9.52917 17.2792 9.70833 17.35 9.925 17.35C10.1417 17.35 10.3208 17.2792 10.4625 17.1375C10.6042 16.9958 10.675 16.8167 10.675 16.6V8.125C10.675 7.90833 10.6042 7.72917 10.4625 7.5875C10.3208 7.44583 10.1417 7.375 9.925 7.375C9.70833 7.375 9.52917 7.44583 9.3875 7.5875C9.24583 7.72917 9.175 7.90833 9.175 8.125V16.6ZM13.325 16.6C13.325 16.8167 13.3958 16.9958 13.5375 17.1375C13.6792 17.2792 13.8583 17.35 14.075 17.35C14.2917 17.35 14.4708 17.2792 14.6125 17.1375C14.7542 16.9958 14.825 16.8167 14.825 16.6V8.125C14.825 7.90833 14.7542 7.72917 14.6125 7.5875C14.4708 7.44583 14.2917 7.375 14.075 7.375C13.8583 7.375 13.6792 7.44583 13.5375 7.5875C13.3958 7.72917 13.325 7.90833 13.325 8.125V16.6Z" fill="#A5A5A5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+function education_html(education){
+    return `
+        <div class="w-full py-4">
+            <div class="head flex justify-between">
+                <div class="">
+                    <div class="flex items-center gap-2">
+                        <p class="text-teal-100 bg-[#3DD1DB]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_type.toUpperCase()}</p>
+                        <p class="text-white bg-white/30 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">GPA ${education.edu_gpa}</p>
+                    </div>
+                    <p class="font-bold text-lg text-white">${education.edu_program}</p>
+                    <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
+                </div>
+                <div class="text-right">
+                    <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                    <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
+                </div>
+            </div>
+            <div class="body flex">
+                <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
+                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
+                    <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
+                </ul>
+            </div>
+        </div>
+    `
+}
+
+function education_html_menu(education){
+    return `
+        <div class="card-education">
+            <div class="flex gap-4 my-5">
+                <div class=""><svg class="cursor-grab" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 20C8.45 20 7.97917 19.8042 7.5875 19.4125C7.19583 19.0208 7 18.55 7 18C7 17.45 7.19583 16.9792 7.5875 16.5875C7.97917 16.1958 8.45 16 9 16C9.55 16 10.0208 16.1958 10.4125 16.5875C10.8042 16.9792 11 17.45 11 18C11 18.55 10.8042 19.0208 10.4125 19.4125C10.0208 19.8042 9.55 20 9 20ZM15 20C14.45 20 13.9792 19.8042 13.5875 19.4125C13.1958 19.0208 13 18.55 13 18C13 17.45 13.1958 16.9792 13.5875 16.5875C13.9792 16.1958 14.45 16 15 16C15.55 16 16.0208 16.1958 16.4125 16.5875C16.8042 16.9792 17 17.45 17 18C17 18.55 16.8042 19.0208 16.4125 19.4125C16.0208 19.8042 15.55 20 15 20ZM9 14C8.45 14 7.97917 13.8042 7.5875 13.4125C7.19583 13.0208 7 12.55 7 12C7 11.45 7.19583 10.9792 7.5875 10.5875C7.97917 10.1958 8.45 10 9 10C9.55 10 10.0208 10.1958 10.4125 10.5875C10.8042 10.9792 11 11.45 11 12C11 12.55 10.8042 13.0208 10.4125 13.4125C10.0208 13.8042 9.55 14 9 14ZM15 14C14.45 14 13.9792 13.8042 13.5875 13.4125C13.1958 13.0208 13 12.55 13 12C13 11.45 13.1958 10.9792 13.5875 10.5875C13.9792 10.1958 14.45 10 15 10C15.55 10 16.0208 10.1958 16.4125 10.5875C16.8042 10.9792 17 11.45 17 12C17 12.55 16.8042 13.0208 16.4125 13.4125C16.0208 13.8042 15.55 14 15 14ZM9 8C8.45 8 7.97917 7.80417 7.5875 7.4125C7.19583 7.02083 7 6.55 7 6C7 5.45 7.19583 4.97917 7.5875 4.5875C7.97917 4.19583 8.45 4 9 4C9.55 4 10.0208 4.19583 10.4125 4.5875C10.8042 4.97917 11 5.45 11 6C11 6.55 10.8042 7.02083 10.4125 7.4125C10.0208 7.80417 9.55 8 9 8ZM15 8C14.45 8 13.9792 7.80417 13.5875 7.4125C13.1958 7.02083 13 6.55 13 6C13 5.45 13.1958 4.97917 13.5875 4.5875C13.9792 4.19583 14.45 4 15 4C15.55 4 16.0208 4.19583 16.4125 4.5875C16.8042 4.97917 17 5.45 17 6C17 6.55 16.8042 7.02083 16.4125 7.4125C16.0208 7.80417 15.55 8 15 8Z" fill="white" fill-opacity="0.6"/>
+                    </svg></div>
+                    <div class="w-full">
+                    <div class="head flex justify-between">
+                        <div class="">
+                            <div class="flex items-center gap-2">
+                                <p class="id" style="display: none;">${education.id}</p>
+                                <p class="text-[#3DD1DB] bg-[#3DD1DB]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_type.toUpperCase()}</p>
+                                <p class="text-white bg-white/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_gpa}</p>
+                            </div>
+                            <p class="font-bold text-lg text-white">${education.edu_program}</p>
+                            <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
+                        </div>
+                        <div class="text-right">
+                            <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                            <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
+                        </div>
+                    </div>
+                    <div class="body flex">
+                        <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                            <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
+                            <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.175C3 17.0417 3.025 16.9125 3.075 16.7875C3.125 16.6625 3.2 16.55 3.3 16.45L13.6 6.15L17.85 10.4L7.55 20.7C7.45 20.8 7.3375 20.875 7.2125 20.925C7.0875 20.975 6.95833 21 6.825 21H4Z" fill="#A5A5A5"/>
+                    </svg>
+                    <svg class="cursor-pointer delete-svg-button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6.525 21C6.125 21 5.775 20.85 5.475 20.55C5.175 20.25 5.025 19.9 5.025 19.5V5.25H4.75C4.53333 5.25 4.35417 5.17917 4.2125 5.0375C4.07083 4.89583 4 4.71667 4 4.5C4 4.28333 4.07083 4.10417 4.2125 3.9625C4.35417 3.82083 4.53333 3.75 4.75 3.75H8.7C8.7 3.53333 8.77083 3.35417 8.9125 3.2125C9.05417 3.07083 9.23333 3 9.45 3H14.55C14.7667 3 14.9458 3.07083 15.0875 3.2125C15.2292 3.35417 15.3 3.53333 15.3 3.75H19.25C19.4667 3.75 19.6458 3.82083 19.7875 3.9625C19.9292 4.10417 20 4.28333 20 4.5C20 4.71667 19.9292 4.89583 19.7875 5.0375C19.6458 5.17917 19.4667 5.25 19.25 5.25H18.975V19.5C18.975 19.9 18.825 20.25 18.525 20.55C18.225 20.85 17.875 21 17.475 21H6.525ZM9.175 16.6C9.175 16.8167 9.24583 16.9958 9.3875 17.1375C9.52917 17.2792 9.70833 17.35 9.925 17.35C10.1417 17.35 10.3208 17.2792 10.4625 17.1375C10.6042 16.9958 10.675 16.8167 10.675 16.6V8.125C10.675 7.90833 10.6042 7.72917 10.4625 7.5875C10.3208 7.44583 10.1417 7.375 9.925 7.375C9.70833 7.375 9.52917 7.44583 9.3875 7.5875C9.24583 7.72917 9.175 7.90833 9.175 8.125V16.6ZM13.325 16.6C13.325 16.8167 13.3958 16.9958 13.5375 17.1375C13.6792 17.2792 13.8583 17.35 14.075 17.35C14.2917 17.35 14.4708 17.2792 14.6125 17.1375C14.7542 16.9958 14.825 16.8167 14.825 16.6V8.125C14.825 7.90833 14.7542 7.72917 14.6125 7.5875C14.4708 7.44583 14.2917 7.375 14.075 7.375C13.8583 7.375 13.6792 7.44583 13.5375 7.5875C13.3958 7.72917 13.325 7.90833 13.325 8.125V16.6Z" fill="#A5A5A5"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    `
+}
   

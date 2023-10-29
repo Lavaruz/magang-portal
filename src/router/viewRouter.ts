@@ -1,5 +1,5 @@
 import express, {Response, Request} from "express";
-import { validateToken } from "../config/JTW";
+import { validateToken } from "../config/JWT";
 
 const router = express.Router();
 

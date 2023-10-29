@@ -2,17 +2,10 @@ import { DataTypes, Model,CreationOptional, ForeignKey, } from "sequelize";
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
 import Seeker from "./Seeker";
 
-class Education extends Model {
+class Attachment extends Model {
   declare id: CreationOptional<number>;
-  declare edu_type: string;
-  declare edu_program: string;
-  declare edu_institution: string;
-  declare edu_gpa: string;
-  declare edu_startdate: string;
-  declare edu_enddate: string;
-  declare edu_description: string;
-  declare edu_location: string;
-  declare edu_status: string;
+  declare atc_resume: string;
+  declare atc_portfolio: string;
   declare ownerId: ForeignKey<Seeker['id']>;
 
   // createdAt can be undefined during creation
@@ -21,31 +14,24 @@ class Education extends Model {
   declare updatedAt: CreationOptional<Date>;
 }
 
-Education.init(
+Attachment.init(
   {
     id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
-    edu_type: DataTypes.STRING,
-    edu_program: DataTypes.STRING,
-    edu_institution: DataTypes.STRING,
-    edu_gpa: DataTypes.STRING,
-    edu_startdate: DataTypes.STRING,
-    edu_enddate: DataTypes.STRING,
-    edu_description: DataTypes.TEXT,
-    edu_location: DataTypes.STRING,
-    edu_status: DataTypes.STRING,
+    atc_resume: DataTypes.TEXT,
+    atc_portfolio: DataTypes.TEXT,
 
     // timestamps
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
   },
   {
-    tableName: "education", // Nama tabel di database
+    tableName: "attachment", // Nama tabel di database
     sequelize, // Instance Sequelize yang digunakan
   }
 );
 
-export default Education;
+export default Attachment;

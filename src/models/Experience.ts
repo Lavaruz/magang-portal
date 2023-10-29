@@ -1,34 +1,53 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model,CreationOptional, ForeignKey, } from "sequelize";
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
+import Seeker from "./Seeker";
 
 class Experience extends Model {
-  public id!: number;
-  public job_title!: string;
-  public company_name!: string;
-  public experience_type!: string;
-  public start_date!: string;
-  public end_date!: string;
-  public experience_description!: string;
+  declare id: CreationOptional<number>;
+  declare exp_position: string;
+  declare exp_type: string;
+  declare exp_orgname: string;
+  declare exp_time: string;
+  declare exp_startdate: string;
+  declare exp_enddate: string;
+  declare exp_description: string;
+  declare exp_status: string;
+  declare exp_location: string;
+  declare ownerId: ForeignKey<Seeker['id']>;
+  
+  // createdAt can be undefined during creation
+  declare createdAt: CreationOptional<Date>;
+  // updatedAt can be undefined during creation
+  declare updatedAt: CreationOptional<Date>;
 }
 
 Experience.init(
   {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true,
     },
-    job_title: DataTypes.STRING,
-    company_name: DataTypes.STRING,
-    experience_type: DataTypes.STRING,
-    start_date: DataTypes.STRING,
-    end_date: DataTypes.STRING,
-    experience_description: DataTypes.STRING
+    exp_position: DataTypes.STRING,
+    exp_type: DataTypes.STRING,
+    exp_orgname: DataTypes.STRING,
+    exp_time: DataTypes.STRING,
+    exp_startdate: DataTypes.STRING,
+    exp_enddate: DataTypes.STRING,
+    exp_description: DataTypes.TEXT,
+    exp_location: DataTypes.STRING,
+    exp_status: DataTypes.STRING,
+
+    // timestamps
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   },
   {
     tableName: "experience", // Nama tabel di database
     sequelize, // Instance Sequelize yang digunakan
   }
 );
+
+// Experience.belongsTo(Seeker)
 
 export default Experience;
