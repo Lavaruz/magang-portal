@@ -18,7 +18,9 @@
                 </div>
                 <div class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
                     <div class="flex items-start gap-5">
-                        <img src="/img/Ellipse 3.svg" alt="">
+                        <div class="w-[88px] h-[88px] rounded-full overflow-hidden">
+                            <img id="basic-profile-pic" src="/img/Ellipse 3.svg" alt="profile-picture" class="w-full h-full object-cover">
+                        </div>
                         <div class="divide-y divide-header">
                             <div class="mb-4">
                                 <p id="basic-fullname" class="font-bold text-xl text-white">Jarwo Slebew</p>
@@ -97,7 +99,7 @@
                         <path d="M12.8667 6.45001L10.0333 3.65001L10.9667 2.71668C11.2222 2.46112 11.5361 2.33334 11.9083 2.33334C12.2806 2.33334 12.5944 2.46112 12.85 2.71668L13.7833 3.65001C14.0389 3.90557 14.1722 4.2139 14.1833 4.57501C14.1944 4.93612 14.0722 5.24445 13.8167 5.50001L12.8667 6.45001ZM2.66667 14.5C2.47778 14.5 2.31944 14.4361 2.19167 14.3083C2.06389 14.1806 2 14.0222 2 13.8333V11.95C2 11.8611 2.01667 11.775 2.05 11.6917C2.08333 11.6083 2.13333 11.5333 2.2 11.4667L9.06667 4.60001L11.9 7.43334L5.03333 14.3C4.96667 14.3667 4.89167 14.4167 4.80833 14.45C4.725 14.4833 4.63889 14.5 4.55 14.5H2.66667Z" fill="#3DD1DB"/>
                       </svg></p>
                 </div>
-                <div id="educations" class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
+                <div id="educations" class="w-100 p-5 pb-6 bg-body rounded-b-2xl divide-header divide-y">
                     <div class="text-center">
                         <p class="font-bold text-base text-white">Add your education here!</p>
                         <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">Just as important as experiences, your education will show recruiters what your capable of!</p>
@@ -111,7 +113,7 @@
         <div class="flex flex-col gap-3">
             <div class="profie-completion rounded-2xl overlay-tale p-4">
                 <p class="text-base font-normal text-white tracking-[1.6px]">PROFILE COMPLETION</p>
-                <p class="font-extrabold text-4xl text-white mt-3 mb-2">0%</p>
+                <p class="font-extrabold text-4xl text-white mt-3 mb-2"><span id="completion_rate">0</span>%</p>
                 <p class="font-second text-sm text-white-60 font-semibold">Complete your profile to differentiate yourself from other candidates!</p>
                 <div class="flex flex-col gap-2 text-sm text-teal-100 font-medium font-second mt-2">
                     <p id="completion-profile-picture" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
@@ -147,21 +149,23 @@
                 </div>
                 <p class="font-second text-sm font-semibold text-white-60 mt-3 mb-4">You can attach your latest CV or Portfolio here!</p>
                 <div class="">
-                    <div class="">
+                    <div class="attachment-body">
+                        <p class="hidden field_name">atc_resume</p>
                         <p class="flex items-center gap-2 text-white-60"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M9 10.5C9.4125 10.5 9.76563 10.3531 10.0594 10.0594C10.3531 9.76562 10.5 9.4125 10.5 9C10.5 8.5875 10.3531 8.23437 10.0594 7.94062C9.76563 7.64687 9.4125 7.5 9 7.5C8.5875 7.5 8.23437 7.64687 7.94062 7.94062C7.64687 8.23437 7.5 8.5875 7.5 9C7.5 9.4125 7.64687 9.76562 7.94062 10.0594C8.23437 10.3531 8.5875 10.5 9 10.5ZM6 13.5H12V13.0687C12 12.7687 11.9187 12.4937 11.7563 12.2437C11.5938 11.9937 11.3687 11.8062 11.0812 11.6812C10.7562 11.5437 10.4219 11.4375 10.0781 11.3625C9.73438 11.2875 9.375 11.25 9 11.25C8.625 11.25 8.26562 11.2875 7.92188 11.3625C7.57812 11.4375 7.24375 11.5437 6.91875 11.6812C6.63125 11.8062 6.40625 11.9937 6.24375 12.2437C6.08125 12.4937 6 12.7687 6 13.0687V13.5ZM13.875 16.5H4.125C3.825 16.5 3.5625 16.3875 3.3375 16.1625C3.1125 15.9375 3 15.675 3 15.375V2.625C3 2.325 3.1125 2.0625 3.3375 1.8375C3.5625 1.6125 3.825 1.5 4.125 1.5H10.05C10.2 1.5 10.3469 1.53125 10.4906 1.59375C10.6344 1.65625 10.7563 1.7375 10.8563 1.8375L14.6625 5.64375C14.7625 5.74375 14.8438 5.86562 14.9062 6.00937C14.9688 6.15312 15 6.3 15 6.45V15.375C15 15.675 14.8875 15.9375 14.6625 16.1625C14.4375 16.3875 14.175 16.5 13.875 16.5Z" fill="#A5A5A5"/>
                           </svg> RESUME*</p>
                         <div class="porto flex items-center justify-between p-3 mt-2">
                             <div class="">
-                                <a href="#" class="font-second text-sm font-medium text-teal-100">resumefinalbangetbanget.pdf</a>
+                                <a href="#" id="resume" class="font-second text-sm font-medium text-teal-100">resumefinalbangetbanget.pdf</a>
                                 <p class="font-second text-xs font-medium text-white-60">1 mb • 12 Aug 2023</p>
                             </div>
-                            <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <svg class="cursor-pointer delete-attachment" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M4.89375 15.75C4.59375 15.75 4.33125 15.6375 4.10625 15.4125C3.88125 15.1875 3.76875 14.925 3.76875 14.625V3.9375H3.5625C3.4 3.9375 3.26563 3.88437 3.15938 3.77812C3.05313 3.67187 3 3.5375 3 3.375C3 3.2125 3.05313 3.07813 3.15938 2.97188C3.26563 2.86563 3.4 2.8125 3.5625 2.8125H6.525C6.525 2.65 6.57813 2.51563 6.68438 2.40938C6.79063 2.30313 6.925 2.25 7.0875 2.25H10.9125C11.075 2.25 11.2094 2.30313 11.3156 2.40938C11.4219 2.51563 11.475 2.65 11.475 2.8125H14.4375C14.6 2.8125 14.7344 2.86563 14.8406 2.97188C14.9469 3.07813 15 3.2125 15 3.375C15 3.5375 14.9469 3.67187 14.8406 3.77812C14.7344 3.88437 14.6 3.9375 14.4375 3.9375H14.2313V14.625C14.2313 14.925 14.1188 15.1875 13.8938 15.4125C13.6688 15.6375 13.4063 15.75 13.1063 15.75H4.89375ZM6.88125 12.45C6.88125 12.6125 6.93438 12.7469 7.04063 12.8531C7.14688 12.9594 7.28125 13.0125 7.44375 13.0125C7.60625 13.0125 7.74062 12.9594 7.84688 12.8531C7.95312 12.7469 8.00625 12.6125 8.00625 12.45V6.09375C8.00625 5.93125 7.95312 5.79688 7.84688 5.69063C7.74062 5.58438 7.60625 5.53125 7.44375 5.53125C7.28125 5.53125 7.14688 5.58438 7.04063 5.69063C6.93438 5.79688 6.88125 5.93125 6.88125 6.09375V12.45ZM9.99375 12.45C9.99375 12.6125 10.0469 12.7469 10.1531 12.8531C10.2594 12.9594 10.3938 13.0125 10.5563 13.0125C10.7188 13.0125 10.8531 12.9594 10.9594 12.8531C11.0656 12.7469 11.1188 12.6125 11.1188 12.45V6.09375C11.1188 5.93125 11.0656 5.79688 10.9594 5.69063C10.8531 5.58438 10.7188 5.53125 10.5563 5.53125C10.3938 5.53125 10.2594 5.58438 10.1531 5.69063C10.0469 5.79688 9.99375 5.93125 9.99375 6.09375V12.45Z" fill="#A5A5A5"/>
                             </svg>
                         </div>
                     </div>
-                    <div class="mt-3">
+                    <div class="mt-3 attachment-body">
+                        <p class="hidden field_name">atc_portfolio</p>
                         <p class="flex items-center gap-2 text-white-60"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                             <path d="M9 10.5C9.4125 10.5 9.76563 10.3531 10.0594 10.0594C10.3531 9.76562 10.5 9.4125 10.5 9C10.5 8.5875 10.3531 8.23437 10.0594 7.94062C9.76563 7.64687 9.4125 7.5 9 7.5C8.5875 7.5 8.23437 7.64687 7.94062 7.94062C7.64687 8.23437 7.5 8.5875 7.5 9C7.5 9.4125 7.64687 9.76562 7.94062 10.0594C8.23437 10.3531 8.5875 10.5 9 10.5ZM6 13.5H12V13.0687C12 12.7687 11.9187 12.4937 11.7563 12.2437C11.5938 11.9937 11.3687 11.8062 11.0812 11.6812C10.7562 11.5437 10.4219 11.4375 10.0781 11.3625C9.73438 11.2875 9.375 11.25 9 11.25C8.625 11.25 8.26562 11.2875 7.92188 11.3625C7.57812 11.4375 7.24375 11.5437 6.91875 11.6812C6.63125 11.8062 6.40625 11.9937 6.24375 12.2437C6.08125 12.4937 6 12.7687 6 13.0687V13.5ZM13.875 16.5H4.125C3.825 16.5 3.5625 16.3875 3.3375 16.1625C3.1125 15.9375 3 15.675 3 15.375V2.625C3 2.325 3.1125 2.0625 3.3375 1.8375C3.5625 1.6125 3.825 1.5 4.125 1.5H10.05C10.2 1.5 10.3469 1.53125 10.4906 1.59375C10.6344 1.65625 10.7563 1.7375 10.8563 1.8375L14.6625 5.64375C14.7625 5.74375 14.8438 5.86562 14.9062 6.00937C14.9688 6.15312 15 6.3 15 6.45V15.375C15 15.675 14.8875 15.9375 14.6625 16.1625C14.4375 16.3875 14.175 16.5 13.875 16.5Z" fill="#A5A5A5"/>
                           </svg> PORTFOLIO</p>
@@ -178,13 +182,13 @@
                                     </defs>
                                   </svg></div>
                                 <div class="">
-                                    <a id="portfolio" href="https://github.com/Lavaruz" class="font-second text-sm font-medium text-teal-100 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <a id="portfolio" href="#" class="font-second text-sm font-medium text-teal-100 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                         <path d="M7.3335 11.3333H4.66683C3.74461 11.3333 2.9585 11.0083 2.3085 10.3583C1.6585 9.70834 1.3335 8.92223 1.3335 8C1.3335 7.07778 1.6585 6.29167 2.3085 5.64167C2.9585 4.99167 3.74461 4.66667 4.66683 4.66667H7.3335V6.00001H4.66683C4.11127 6.00001 3.63905 6.19445 3.25016 6.58334C2.86127 6.97223 2.66683 7.44445 2.66683 8C2.66683 8.55556 2.86127 9.02778 3.25016 9.41667C3.63905 9.80556 4.11127 10 4.66683 10H7.3335V11.3333ZM5.3335 8.66667V7.33334H10.6668V8.66667H5.3335ZM8.66683 11.3333V10H11.3335C11.8891 10 12.3613 9.80556 12.7502 9.41667C13.1391 9.02778 13.3335 8.55556 13.3335 8C13.3335 7.44445 13.1391 6.97223 12.7502 6.58334C12.3613 6.19445 11.8891 6.00001 11.3335 6.00001H8.66683V4.66667H11.3335C12.2557 4.66667 13.0418 4.99167 13.6918 5.64167C14.3418 6.29167 14.6668 7.07778 14.6668 8C14.6668 8.92223 14.3418 9.70834 13.6918 10.3583C13.0418 11.0083 12.2557 11.3333 11.3335 11.3333H8.66683Z" fill="#3DD1DB"/>
-                                      </svg> <span>https://github.com/Lavaruz</span></a>
+                                      </svg> <span>...</span></a>
                                     <p id="portfolio-type" class="font-second text-xs font-medium text-white-60">GitHub</p>
                                 </div>
                             </div>
-                            <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <svg class="cursor-pointer delete-attachment" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                                 <path d="M4.89375 15.75C4.59375 15.75 4.33125 15.6375 4.10625 15.4125C3.88125 15.1875 3.76875 14.925 3.76875 14.625V3.9375H3.5625C3.4 3.9375 3.26563 3.88437 3.15938 3.77812C3.05313 3.67187 3 3.5375 3 3.375C3 3.2125 3.05313 3.07813 3.15938 2.97188C3.26563 2.86563 3.4 2.8125 3.5625 2.8125H6.525C6.525 2.65 6.57813 2.51563 6.68438 2.40938C6.79063 2.30313 6.925 2.25 7.0875 2.25H10.9125C11.075 2.25 11.2094 2.30313 11.3156 2.40938C11.4219 2.51563 11.475 2.65 11.475 2.8125H14.4375C14.6 2.8125 14.7344 2.86563 14.8406 2.97188C14.9469 3.07813 15 3.2125 15 3.375C15 3.5375 14.9469 3.67187 14.8406 3.77812C14.7344 3.88437 14.6 3.9375 14.4375 3.9375H14.2313V14.625C14.2313 14.925 14.1188 15.1875 13.8938 15.4125C13.6688 15.6375 13.4063 15.75 13.1063 15.75H4.89375ZM6.88125 12.45C6.88125 12.6125 6.93438 12.7469 7.04063 12.8531C7.14688 12.9594 7.28125 13.0125 7.44375 13.0125C7.60625 13.0125 7.74062 12.9594 7.84688 12.8531C7.95312 12.7469 8.00625 12.6125 8.00625 12.45V6.09375C8.00625 5.93125 7.95312 5.79688 7.84688 5.69063C7.74062 5.58438 7.60625 5.53125 7.44375 5.53125C7.28125 5.53125 7.14688 5.58438 7.04063 5.69063C6.93438 5.79688 6.88125 5.93125 6.88125 6.09375V12.45ZM9.99375 12.45C9.99375 12.6125 10.0469 12.7469 10.1531 12.8531C10.2594 12.9594 10.3938 13.0125 10.5563 13.0125C10.7188 13.0125 10.8531 12.9594 10.9594 12.8531C11.0656 12.7469 11.1188 12.6125 11.1188 12.45V6.09375C11.1188 5.93125 11.0656 5.79688 10.9594 5.69063C10.8531 5.58438 10.7188 5.53125 10.5563 5.53125C10.3938 5.53125 10.2594 5.58438 10.1531 5.69063C10.0469 5.79688 9.99375 5.93125 9.99375 6.09375V12.45Z" fill="#A5A5A5"/>
                             </svg>
                         </div>
@@ -203,26 +207,28 @@
                   </svg></p>
             </div>
             <div class="visibility-status bg-darkest-grey rounded-2xl p-4 pb-5">
-                <div class="w-100 rounded-t-2xl">
-                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M9.16667 8.33332C9.625 8.33332 10.0174 8.17013 10.3437 7.84374C10.6701 7.51735 10.8333 7.12499 10.8333 6.66666C10.8333 6.20832 10.6701 5.81596 10.3437 5.48957C10.0174 5.16318 9.625 4.99999 9.16667 4.99999C8.70833 4.99999 8.31597 5.16318 7.98958 5.48957C7.66319 5.81596 7.5 6.20832 7.5 6.66666C7.5 7.12499 7.66319 7.51735 7.98958 7.84374C8.31597 8.17013 8.70833 8.33332 9.16667 8.33332ZM9.16667 11.6667C9.79167 11.6667 10.3785 11.5347 10.9271 11.2708C11.4757 11.0069 11.9514 10.6319 12.3542 10.1458C11.8681 9.82638 11.3576 9.58332 10.8229 9.41666C10.2882 9.24999 9.73611 9.16666 9.16667 9.16666C8.59722 9.16666 8.04514 9.24999 7.51042 9.41666C6.97569 9.58332 6.46528 9.82638 5.97917 10.1458C6.38194 10.6319 6.85764 11.0069 7.40625 11.2708C7.95486 11.5347 8.54167 11.6667 9.16667 11.6667ZM17.1667 17.5L13.25 13.5833C12.6806 14.0278 12.0521 14.375 11.3646 14.625C10.6771 14.875 9.94444 15 9.16667 15C7.30556 15 5.72917 14.3542 4.4375 13.0625C3.14583 11.7708 2.5 10.1944 2.5 8.33332C2.5 6.47221 3.14583 4.89582 4.4375 3.60416C5.72917 2.31249 7.30556 1.66666 9.16667 1.66666C11.0278 1.66666 12.6042 2.31249 13.8958 3.60416C15.1875 4.89582 15.8333 6.47221 15.8333 8.33332C15.8333 9.1111 15.7083 9.84374 15.4583 10.5312C15.2083 11.2187 14.8611 11.8472 14.4167 12.4167L18.3333 16.3333L17.1667 17.5Z" fill="white"/>
-                      </svg> ACTIVESEARCH VISIBILITY</p>
-                </div>
-                <p class="font-second text-sm font-semibold text-white-60 mt-3">If this is turned on, recruiters are able to handpick you for job invites!</p>
-                <label class="relative inline-flex items-center cursor-pointer mt-5">
-                    <input id="active-search" name="active-search" type="checkbox" value="" class="sr-only peer" checked>
-                    <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                    <span id="active-search-status" class="ml-2 text-green-500 font-second text-sm font-semibold">ActiveSearch is on.</span>
-                </label>
+                <form id="form-update-active-search">
+                    <div class="w-100 rounded-t-2xl">
+                        <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M9.16667 8.33332C9.625 8.33332 10.0174 8.17013 10.3437 7.84374C10.6701 7.51735 10.8333 7.12499 10.8333 6.66666C10.8333 6.20832 10.6701 5.81596 10.3437 5.48957C10.0174 5.16318 9.625 4.99999 9.16667 4.99999C8.70833 4.99999 8.31597 5.16318 7.98958 5.48957C7.66319 5.81596 7.5 6.20832 7.5 6.66666C7.5 7.12499 7.66319 7.51735 7.98958 7.84374C8.31597 8.17013 8.70833 8.33332 9.16667 8.33332ZM9.16667 11.6667C9.79167 11.6667 10.3785 11.5347 10.9271 11.2708C11.4757 11.0069 11.9514 10.6319 12.3542 10.1458C11.8681 9.82638 11.3576 9.58332 10.8229 9.41666C10.2882 9.24999 9.73611 9.16666 9.16667 9.16666C8.59722 9.16666 8.04514 9.24999 7.51042 9.41666C6.97569 9.58332 6.46528 9.82638 5.97917 10.1458C6.38194 10.6319 6.85764 11.0069 7.40625 11.2708C7.95486 11.5347 8.54167 11.6667 9.16667 11.6667ZM17.1667 17.5L13.25 13.5833C12.6806 14.0278 12.0521 14.375 11.3646 14.625C10.6771 14.875 9.94444 15 9.16667 15C7.30556 15 5.72917 14.3542 4.4375 13.0625C3.14583 11.7708 2.5 10.1944 2.5 8.33332C2.5 6.47221 3.14583 4.89582 4.4375 3.60416C5.72917 2.31249 7.30556 1.66666 9.16667 1.66666C11.0278 1.66666 12.6042 2.31249 13.8958 3.60416C15.1875 4.89582 15.8333 6.47221 15.8333 8.33332C15.8333 9.1111 15.7083 9.84374 15.4583 10.5312C15.2083 11.2187 14.8611 11.8472 14.4167 12.4167L18.3333 16.3333L17.1667 17.5Z" fill="white"/>
+                          </svg> ACTIVESEARCH VISIBILITY</p>
+                    </div>
+                    <p class="font-second text-sm font-semibold text-white-60 mt-3">If this is turned on, recruiters are able to handpick you for job invites!</p>
+                    <label class="relative inline-flex items-center cursor-pointer mt-5">
+                        <input id="active-search" name="active_search" type="checkbox" value="" class="sr-only peer">
+                        <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
+                        <span id="active-search-status" class="ml-2 text-green-500 font-second text-sm font-semibold">ActiveSearch is on.</span>
+                    </label>
+                </form>
             </div>
-            <div class="visibility-status bg-darkest-grey rounded-2xl p-4 pb-5">
+            <div class="recruiter-profile bg-darkest-grey rounded-2xl p-4 pb-5">
                 <div class="w-100 rounded-t-2xl">
                     <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M9.16667 8.33332C9.625 8.33332 10.0174 8.17013 10.3437 7.84374C10.6701 7.51735 10.8333 7.12499 10.8333 6.66666C10.8333 6.20832 10.6701 5.81596 10.3437 5.48957C10.0174 5.16318 9.625 4.99999 9.16667 4.99999C8.70833 4.99999 8.31597 5.16318 7.98958 5.48957C7.66319 5.81596 7.5 6.20832 7.5 6.66666C7.5 7.12499 7.66319 7.51735 7.98958 7.84374C8.31597 8.17013 8.70833 8.33332 9.16667 8.33332ZM9.16667 11.6667C9.79167 11.6667 10.3785 11.5347 10.9271 11.2708C11.4757 11.0069 11.9514 10.6319 12.3542 10.1458C11.8681 9.82638 11.3576 9.58332 10.8229 9.41666C10.2882 9.24999 9.73611 9.16666 9.16667 9.16666C8.59722 9.16666 8.04514 9.24999 7.51042 9.41666C6.97569 9.58332 6.46528 9.82638 5.97917 10.1458C6.38194 10.6319 6.85764 11.0069 7.40625 11.2708C7.95486 11.5347 8.54167 11.6667 9.16667 11.6667ZM17.1667 17.5L13.25 13.5833C12.6806 14.0278 12.0521 14.375 11.3646 14.625C10.6771 14.875 9.94444 15 9.16667 15C7.30556 15 5.72917 14.3542 4.4375 13.0625C3.14583 11.7708 2.5 10.1944 2.5 8.33332C2.5 6.47221 3.14583 4.89582 4.4375 3.60416C5.72917 2.31249 7.30556 1.66666 9.16667 1.66666C11.0278 1.66666 12.6042 2.31249 13.8958 3.60416C15.1875 4.89582 15.8333 6.47221 15.8333 8.33332C15.8333 9.1111 15.7083 9.84374 15.4583 10.5312C15.2083 11.2187 14.8611 11.8472 14.4167 12.4167L18.3333 16.3333L17.1667 17.5Z" fill="white"/>
                       </svg> RECRUITER PROFILE</p>
                 </div>
                 <p class="font-second text-sm font-semibold text-white-60 mt-3">Are you hiring for a company or student organization? Apply now to have your recruiter profile!</p>
-                <button type="button" class="w-[220px] bg-teal-100 font-second py-3 m-auto text-sm font-medium text-teal-8 mt-5 rounded-lg">Apply for Recruiter Profile</button>
+                <button type="button" id="button-recruiter" class="w-[220px] bg-teal-100 font-second py-3 m-auto text-sm font-medium text-teal-8 mt-5 rounded-lg">Apply for Recruiter Profile</button>
             </div>
         </div>
     </div>
@@ -244,13 +250,18 @@
                 <div class="p-5">
                     <p class="font-bold text-lg text-white mb-3">Profile Picture</p>
                     <div class="flex items-center gap-5">
-                        <img src="/img/Ellipse 3.svg" alt="">
+                        <div class="w-[88px] h-[88px] rounded-full overflow-hidden">
+                            <img id="popup-profile-pic" src="/img/Ellipse 3.svg" alt="profile-pic" class="w-full h-full object-cover">
+                        </div>
                         <div class="">
                             <p class="text-white-60 font-second text-sm font-medium mb-2">Make sure your profile picture is professional and shows your face clearly.<br>
-                                <span class="text-white">Maximum file size is 1 MB.</span></p>
-                            <button class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
-                                <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
-                            </svg> Upload Profile Picture</button>
+                            <span class="text-white">Maximum file size is 1 MB.</span></p>
+                            <label for="custom-input-file">
+                                <input type="file" id="custom-input-file" class="hidden" name="profile-picture" accept="image/*"/>
+                                <button id="button-profile-pic" type="button" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                    <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                </svg> Upload Profile Picture</button>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -478,6 +489,115 @@
                 </form>
             </div>
 
+            <!-- EDITING EXPERIENCE -->
+
+            <div id="editing-experience" class="hidden additional-popup-edit">
+                <form id="form-editing-experience">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">POSITION/JOB TITLE*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Software Engineer" name="exp_position" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">COMPANY/ORGANIZATION NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Hup! Indonesia" name="exp_orgname" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EXPERIENCE TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select name="exp_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option>Select Type</option>
+                                        <option value="Employee">Employee</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                        <option value="Student Event Committee">Student Event Committee</option>
+                                        <option value="Student Organization">Student Organization</option>
+                                        <option value="Self-Employed">Self-Employed</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FULL-TIME/PART-TIME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select name="exp_time" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="exp_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="exp_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:bg-header/50 disabled:text-slate-100/50 disabled:placeholder-text-white-60/50
+                                    "/>
+                                </label>
+                                <div class="flex items-center mt-5">
+                                    <input id="still-work-here" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-header border-0 rounded focus:ring-blue-500 focus:ring-0 focus:outline-none focus:border-0">
+                                    <label for="still-work-here" class="ml-2 font-second text-sm font-medium text-white-60">I still work here</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <select id="countries" name="exp_status" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                    <option selected>Select Type</option>
+                                    <option value="On-Site">On-Site</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE LOCATION</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Jakarta" name="exp_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                  </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="exp_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-edit rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
             <!-- REGISTERED EXPERIENCES -->
 
             <div id="registered-experience" class="main-popup">
@@ -529,7 +649,7 @@
         </div>
         <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
 
-            <!-- ADDING NEW EXPERIENCE -->
+            <!-- ADDING NEW EDUCATION -->
 
             <div id="adding-new-education" class="additional-popup hidden">
                 <form id="form-add-education">
@@ -631,6 +751,108 @@
                 </form>
             </div>
 
+            <!-- EDITING EDUCATION -->
+
+            <div id="editing-education" class="additional-popup-edit hidden">
+                <form id="form-editing-education">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MAJOR/DEGREE/PROGRAM NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Software Engineer" name="edu_program" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Universitas Hup! Indonesia" name="edu_institution" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EDUCATION TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select required id="countries" name="edu_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected>Select Type</option>
+                                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                        <option value="High-School">High-School</option>
+                                        <option value="Bootcamp">Bootcamp</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">GPA (IF AVAILABLE)</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" pattern="^[0-9.]+" placeholder="3.42" name="edu_gpa" class="block border-0 w-[80px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="edu_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="edu_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="edu_status" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option value="On-Site" selected>On-Site</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Remote">Remote</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION LOCATION</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Hup! Indonesia" name="edu_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="edu_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-edit rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
             <!-- REGISTERED EDUCATION -->
 
             <div id="registered-education" class="main-popup">
@@ -695,12 +917,15 @@
                                 <p class="text-white font-bold text-lg">Resume*</p>
                                 <p class="font-second text-white-60 text-sm font-medium">Keep in mind that some companies still require you to upload your resume in digital copy. However, they will be seeing your profile first, not your resume!</p>
                                 <div class="flex items-center gap-2 mt-3">
-                                    <button class="flex items-center gap-1 py-2 px-4 bg-teal-8 text-teal-100 rounded-lg font-second text-sm font-medium">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                            <path d="M9.16634 15.8333H10.833V12.3542L12.1663 13.6875L13.333 12.5L9.99967 9.16666L6.66634 12.5L7.85384 13.6667L9.16634 12.3542V15.8333ZM4.99967 18.3333C4.54134 18.3333 4.14898 18.1701 3.82259 17.8437C3.4962 17.5174 3.33301 17.125 3.33301 16.6667V3.33332C3.33301 2.87499 3.4962 2.48263 3.82259 2.15624C4.14898 1.82985 4.54134 1.66666 4.99967 1.66666H11.6663L16.6663 6.66666V16.6667C16.6663 17.125 16.5031 17.5174 16.1768 17.8437C15.8504 18.1701 15.458 18.3333 14.9997 18.3333H4.99967ZM10.833 7.49999H14.9997L10.833 3.33332V7.49999Z" fill="#3DD1DB"/>
-                                        </svg>
-                                        Upload Resume
-                                    </button>
+                                    <label for="custom-input-file">
+                                        <input type="file" id="custom-input-resume" class="hidden" name="atc_resume" accept="application/pdf"/>
+                                        <button type="button" id="button-input-resume" class="flex items-center gap-1 py-2 px-4 bg-teal-8 text-teal-100 rounded-lg font-second text-sm font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M9.16634 15.8333H10.833V12.3542L12.1663 13.6875L13.333 12.5L9.99967 9.16666L6.66634 12.5L7.85384 13.6667L9.16634 12.3542V15.8333ZM4.99967 18.3333C4.54134 18.3333 4.14898 18.1701 3.82259 17.8437C3.4962 17.5174 3.33301 17.125 3.33301 16.6667V3.33332C3.33301 2.87499 3.4962 2.48263 3.82259 2.15624C4.14898 1.82985 4.54134 1.66666 4.99967 1.66666H11.6663L16.6663 6.66666V16.6667C16.6663 17.125 16.5031 17.5174 16.1768 17.8437C15.8504 18.1701 15.458 18.3333 14.9997 18.3333H4.99967ZM10.833 7.49999H14.9997L10.833 3.33332V7.49999Z" fill="#3DD1DB"/>
+                                            </svg>
+                                            Upload Resume
+                                        </button>
+                                    </label>
                                     <p class="font-second text-sm font-medium text-white-60">Accepted file is only in PDF. Maximum file size 2 MB.</p>
                                 </div>
                             </div>
@@ -729,6 +954,60 @@
                     <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- POPUP RECRUITER -->
+    <div class="popup popup-recruiter border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V4.99999C5 4.08332 5.32639 3.2986 5.97917 2.64582C6.63194 1.99305 7.41667 1.66666 8.33333 1.66666C9.25 1.66666 10.0347 1.99305 10.6875 2.64582C11.3403 3.2986 11.6667 4.08332 11.6667 4.99999V12.9167C11.6667 13.5 11.4653 13.993 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.993 7.5 13.5 7.5 12.9167V5.62499C7.5 5.44443 7.55903 5.29513 7.67708 5.17707C7.79514 5.05902 7.94444 4.99999 8.125 4.99999C8.30556 4.99999 8.45486 5.05902 8.57292 5.17707C8.69097 5.29513 8.75 5.44443 8.75 5.62499V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V4.99999C10.4167 4.41666 10.2153 3.9236 9.8125 3.52082C9.40972 3.11805 8.91667 2.91666 8.33333 2.91666C7.75 2.91666 7.25694 3.11805 6.85417 3.52082C6.45139 3.9236 6.25 4.41666 6.25 4.99999V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.62499C12.9167 5.44443 12.9757 5.29513 13.0938 5.17707C13.2118 5.05902 13.3611 4.99999 13.5417 4.99999C13.7222 4.99999 13.8715 5.05902 13.9896 5.17707C14.1076 5.29513 14.1667 5.44443 14.1667 5.62499V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
+              </svg> RECRUITER PROFILE</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl min-h-[300px] max-h-[500px] overflow-y-scroll">
+            <div class="0% hidden">
+                <div class="w-full bg-cover bg-no-repeat p-4 flex flex-col gap-6" style="background-image: url('/img/Login.png')">
+                    <div class="flex gap-3 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30" fill="none">
+                            <g clip-path="url(#clip0_161_1128)">
+                              <path d="M36.3426 9.29912L35.3072 24.174L30.8327 23.8597L30.3944 21.3268C28.7188 23.0938 26.8079 23.9019 24.6619 23.7511C23.8893 23.6969 23.1672 23.5378 22.4954 23.274C21.8452 23.0117 21.3626 22.6637 21.0478 22.23C20.8711 21.9793 20.7622 21.3759 20.7209 20.4198C20.7011 19.4652 20.7587 18.0178 20.8938 16.0776L21.4385 8.25218L26.9431 8.63885L26.4028 16.3996C26.3728 16.8308 26.3483 17.3382 26.3292 17.9217C26.3102 18.5053 26.349 18.8763 26.4458 19.0347C26.581 19.2609 27.0027 19.3988 27.7109 19.4485L28.2282 19.4524C28.8306 19.473 29.4627 19.3766 30.1245 19.1632L30.8381 8.91245L36.3426 9.29912Z" fill="white"/>
+                              <path d="M47.889 9.78524C49.4341 9.89378 50.6214 10.4971 51.4507 11.5952C52.3029 12.6732 52.6405 14.4841 52.4634 17.028C52.3314 18.925 52.0409 20.4644 51.5921 21.646C51.1447 22.806 50.6715 23.5635 50.1723 23.9184C49.6732 24.2732 48.8252 24.5278 47.6284 24.682C46.453 24.8378 45.243 24.8719 43.9983 24.7845C43.6335 24.7588 43.0234 24.6943 42.168 24.5909L41.8483 29.1827L36.328 29.0224L37.6944 9.39407L42.201 9.71064L42.5884 12.045C43.2019 11.2865 43.9544 10.7003 44.8458 10.2864C45.7587 9.87389 46.7731 9.70685 47.889 9.78524ZM45.8181 20.9479C46.0661 20.7921 46.2716 20.3191 46.4344 19.529C46.5987 18.7173 46.7064 17.945 46.7574 17.212C46.8415 16.0048 46.7535 15.0996 46.4936 14.4964C46.2337 13.8933 45.653 13.56 44.7517 13.4967C44.1079 13.4515 43.5025 13.474 42.9356 13.5641L42.4358 20.7428L43.3304 20.9032C43.6079 20.9443 44.0042 20.983 44.5192 21.0192C45.2488 21.0704 45.6818 21.0467 45.8181 20.9479Z" fill="white"/>
+                              <path d="M54.101 18.1503C54.1811 16.3796 54.28 12.7904 54.3977 7.3829L54.4564 5.14489L59.6915 5.22018C59.6829 5.65284 59.6494 6.28955 59.5909 7.1303C59.4348 9.37231 59.1429 12.0164 58.7152 15.0625C58.5334 16.4362 58.4182 17.3163 58.3697 17.7028C57.2991 18.2125 55.9261 18.4193 54.2507 18.3233L54.101 18.1503ZM55.6068 25.7949C54.8986 25.7451 54.3242 25.4773 53.8836 24.9914C53.4659 24.4855 53.2849 23.8337 53.3404 23.0361C53.3884 22.3462 53.665 21.7808 54.1701 21.3397C54.6967 20.9001 55.3141 20.7051 56.0223 20.7549C56.709 20.8031 57.2612 21.0802 57.6789 21.5861C58.118 22.0936 58.3135 22.6922 58.2655 23.3821C58.21 24.1797 57.9404 24.7998 57.4567 25.2424C56.9745 25.6635 56.3579 25.8476 55.6068 25.7949Z" fill="white"/>
+                              <path d="M1.98832 1.57505L8.361 2.0227L7.84644 9.41465L7.56331 13.482L6.95766 22.1826L0.584988 21.7349L1.98832 1.57505Z" fill="white"/>
+                              <path d="M13.3037 9.79799L13.8183 2.40604L20.1909 2.85369L18.7876 23.0136L12.4149 22.5659L13.0206 13.8653L13.3037 9.79799Z" fill="white"/>
+                              <path d="M12.6611 11.8052C12.6611 13.064 11.6453 14.3377 10.3922 14.3377C9.13911 14.3377 8.12329 13.064 8.12329 11.8052C8.12329 10.5464 9.13911 9.39935 10.3922 9.39935C11.6453 9.39935 12.6611 10.5464 12.6611 11.8052Z" fill="white"/>
+                            </g>
+                            <defs>
+                              <clipPath id="clip0_161_1128">
+                                <rect width="60" height="28.2857" fill="white" transform="translate(0 0.857117)"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M6.66658 35C5.74992 35 4.9652 34.6736 4.31242 34.0208C3.65964 33.368 3.33325 32.5833 3.33325 31.6666V13.3333C3.33325 12.4166 3.65964 11.6319 4.31242 10.9791C4.9652 10.3264 5.74992 9.99998 6.66658 9.99998H13.3333V6.66665C13.3333 5.74998 13.6596 4.96526 14.3124 4.31248C14.9652 3.6597 15.7499 3.33331 16.6666 3.33331H23.3333C24.2499 3.33331 25.0346 3.6597 25.6874 4.31248C26.3402 4.96526 26.6666 5.74998 26.6666 6.66665V9.99998H33.3333C34.2499 9.99998 35.0346 10.3264 35.6874 10.9791C36.3402 11.6319 36.6666 12.4166 36.6666 13.3333V31.6666C36.6666 32.5833 36.3402 33.368 35.6874 34.0208C35.0346 34.6736 34.2499 35 33.3333 35H6.66658ZM16.6666 9.99998H23.3333V6.66665H16.6666V9.99998Z" fill="white"/>
+                          </svg>
+                    </div>
+                    <div class="w-[360px]">
+                        <p class="text-lg font-bold text-white">Applying for a Hup! Recruiter Profile</p>
+                        <p class="font-second text-sm font-semibold text-white-80">A recruiter profile enables you to post job vacancies and use ActiveSearch to find the perfect candidate.</p>
+                    </div>
+                    <div class="w-[348px] flex items-center bg-[#3B3B3B]/80 rounded-lg p-3 gap-3 mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V12C13 11.7167 12.9042 11.4792 12.7125 11.2875C12.5208 11.0958 12.2833 11 12 11C11.7167 11 11.4792 11.0958 11.2875 11.2875C11.0958 11.4792 11 11.7167 11 12V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17ZM12 9C12.2833 9 12.5208 8.90417 12.7125 8.7125C12.9042 8.52083 13 8.28333 13 8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8C11 8.28333 11.0958 8.52083 11.2875 8.7125C11.4792 8.90417 11.7167 9 12 9ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22Z" fill="#3DD1DB"/>
+                          </svg>
+                        <div class="">
+                            <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                            <p class="font-second text-sm font-medium text-white">To apply, you will have to verify that you are an active representative of a company or university organization.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-2 p-5 pb-6">
+                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Apply</button>
+                </div>
+            </div>
+            <div class="20%"></div>
         </div>
     </div>
 
@@ -763,7 +1042,51 @@
 
     $("#active-search").change(function(){
         $(this).val($(this).is(":checked"))
-        console.log($(this).val());
+        const form_update = document.getElementById("form-update-active-search");
+        const formData = new FormData(form_update)
+        if($(this).val() == "false") formData.append("active_search", false)
+        
+        $.ajax({
+            url: `/api/v1/seeker/${USER_ID}`,
+            type: "PUT",
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            encrypt: "multipart/form-data",
+            processData: false,
+            success: (response) => {
+                if(response.status_code == 200){
+                    location.reload()
+                }
+            },
+            error: function (request, status, error) {
+                alert("Error!")
+            },
+        });
+    })
+
+    $("#button-profile-pic").click(function(){
+        $("#custom-input-file").click()
+    })
+
+    $("#button-input-resume").click(function(){
+        $("#custom-input-resume").click()
+    })
+
+    $("#custom-input-file").on("change", function() {
+        const selectedImage = this.files[0];
+        if (selectedImage) {
+            const imageUrl = URL.createObjectURL(selectedImage);
+            $("#popup-profile-pic").attr("src", imageUrl);
+        } else {
+            $("#popup-profile-pic").attr("src", "/img/Ellipse 3.svg");
+        }
+    });
+
+    $(".delete-attachment").click(function(){
+        const ATTACHMENT_NAME = $(this).closest(".attachment-body").find(".field_name").text()
+        updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/attachment/${ATTACHMENT_NAME}`, "DELETE")
     })
 
 
@@ -785,7 +1108,17 @@
     // -------- update profile experiences -------- 
     // ADD
     updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
-    // DELETE
+    
+    
+    // -------- add profile educations -------- 
+    // ADD
+    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
+    
+
+    // -------- add attachment -------- 
+    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
+
+    // -------- Delete EDUCATION || EXPERIENCE ---------
     $("#popup").on("click", ".delete-svg-button", function(){
         const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
         const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
@@ -797,14 +1130,6 @@
             updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
         }
     })
-
-
-    // -------- add profile educations -------- 
-    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
-    
-
-    // -------- add attachment -------- 
-    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
     
 
     
@@ -846,7 +1171,7 @@
                 }
             },
             error: function (error) {
-                console.error(error)
+                alert("Error")
             }
         });
     }

@@ -67,6 +67,7 @@ Seeker.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+      defaultValue:""
     },
     mobile: DataTypes.STRING,
     password:  DataTypes.STRING,

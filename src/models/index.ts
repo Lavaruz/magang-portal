@@ -14,7 +14,7 @@ const sequelize = new Sequelize({
 const connectToDatabase = async () => {
   try {
     await sequelize.authenticate();
-    await sequelize.sync({ alter: true });
+    await sequelize.sync();
     console.log("Model-model disinkronkan dengan database.");
   } catch (error) {
     console.error("Koneksi database gagal:", error);

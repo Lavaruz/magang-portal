@@ -6,6 +6,8 @@ import response from "./response";
 import * as bcrypt from 'bcrypt';
 import { createToken } from "../config/JWT";
 import Attachment from "../models/Attachment";
+import path from "path";
+import fs from "fs"
 
 
 // Fungsi ini mengambil semua pengguna
@@ -101,11 +103,30 @@ export const loginSeeker = async (req: Request, res: Response) => {
 // Fungsi ini memperbarui pengguna berdasarkan ID
 export const updateSeeker = async (req: Request, res: Response) => {
   const seekerId = req.params.id;
-  const updatedSeeker = req.body; // Data pembaruan pengguna dari permintaan PUT
+  const updatedSeeker = req.body; // Data pembaruan pengguna dari permintaan PUT  
 
   try {
     const seeker = await Seeker.findByPk(seekerId);
     if (seeker) {
+
+      // Menambahakan URL Image ke dalam gambar, 
+      // dan menghapus gambar lama ketika upload gambar baru
+      if(req.files.length !== 0){
+        const fileToDelete = `public/files/uploads/${seeker.profile_picture.split("uploads/")[1]}`
+        if (fs.existsSync(fileToDelete)) {
+          try {
+            fs.unlinkSync(fileToDelete);
+            console.log(`File ${seeker.profile_picture.split("uploads/")[1]} deleted successfully.`);
+          } catch (err) {
+            console.error(`Error deleting file ${seeker.profile_picture.split("uploads/")[1]}: ${err}`);
+          }
+        } else {
+          console.log(`File ${seeker.profile_picture.split("uploads/")[1]} not found.`);
+        } 
+        
+        req.body.profile_picture = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
+      }
+      
       await seeker.update(updatedSeeker);
       response(200, "Success update pengguna", seeker, res)
     } else {
@@ -197,6 +218,34 @@ export const deleteExperience = async (req: Request, res: Response) => {
   }
 };
 
+export const updateExperience = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const updateId = req.params.updateId
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    
+    if (seeker) {
+      // Temukan pengalaman dengan ID tertentu yang dimiliki oleh seeker
+      const experience = await seeker.getExperiences({ where: { id: updateId } });
+      if (experience.length > 0) {
+
+        if (req.body.exp_enddate == null) req.body.exp_enddate = null
+        
+        await Experience.update(req.body,{ where: { id: updateId } });
+        response(200, "Education berhasil diupdate", seeker, res);
+      } else {
+        res.status(404).json({ error: "Education tidak ditemukan" });
+      }
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 
 // EDUCATION
 
@@ -210,34 +259,6 @@ export const addEducation = async (req: Request, res: Response) => {
     if (seeker) {
       await Education.create(educationData).then(async function(result){
         await seeker.addEducation(result)
-        response(200, "Success update pengguna", seeker, res)
-      })
-    } else {
-      res.status(404).json({ error: "Pengguna tidak ditemukan" });
-    }
-  } catch (error) {
-    console.error("Gagal memperbarui pengguna:", error);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
-
-// ATTACHMENT
-export const setAttachment = async (req: Request, res: Response) => {
-  const seekerId = req.params.id;
-  const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
-
-  try {
-    const seeker = await Seeker.findByPk(seekerId);
-    if (seeker) {
-      // check if attachment not null delete previous data
-      let attachmentId = (await seeker.getAttachment()).id;
-      if(attachmentId){
-        await Attachment.destroy({where:{id:attachmentId}})
-      }
-      // create new attachment
-      await Attachment.create(attachmentData).then(async function(result){
-        await seeker.setAttachment(result)
         response(200, "Success update pengguna", seeker, res)
       })
     } else {
@@ -275,3 +296,110 @@ export const deleteEducation = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+export const updateEducation = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const updateId = req.params.updateId
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    
+    if (seeker) {
+      // Temukan pengalaman dengan ID tertentu yang dimiliki oleh seeker
+      const education = await seeker.getEducations({ where: { id: updateId } });
+      if (education.length > 0) {
+        await Education.update(req.body,{ where: { id: updateId } });
+        response(200, "Education berhasil diupdate", seeker, res);
+      } else {
+        res.status(404).json({ error: "Education tidak ditemukan" });
+      }
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+// ATTACHMENT
+export const setAttachment = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
+  console.log(attachmentData);
+  
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    if (seeker) {
+      // if user upload file resume
+      attachmentData.atc_resume = (await seeker.getAttachment()).atc_resume
+      if(req.files.length !== 0){
+        if((await seeker.getAttachment()).atc_resume){
+          const filename = (await seeker.getAttachment()).atc_resume.split("/uploads")[1]
+          const fileToDelete = `public/files/uploads/${filename}`
+          if (fs.existsSync(fileToDelete)) {
+            try {
+              fs.unlinkSync(fileToDelete);
+              console.log(`File ${filename} deleted successfully.`);
+            } catch (err) {
+              console.error(`Error deleting file ${filename}: ${err}`);
+            }
+          } else {
+            console.log(`File ${filename} not found.`);
+          } 
+        }
+        
+        req.body.atc_resume = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
+      }
+      // check if attachment not null delete previous data
+      let attachmentId = (await seeker.getAttachment()).id;
+      
+      if(attachmentId){
+        await Attachment.update(attachmentData,{where:{id:attachmentId}})
+      }
+      // create new attachment
+      await Attachment.create(attachmentData).then(async function(result){
+        await seeker.setAttachment(result)
+        response(200, "Success update pengguna", seeker, res)
+      })
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+export const deleteAttachment = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const fieldName = req.params.fieldName
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    
+    if (seeker) {
+      // Temukan pengalaman dengan ID tertentu yang dimiliki oleh seeker
+      const attachmentData = (await seeker.getAttachment());
+      if (attachmentData) {
+        if (attachmentData[fieldName]) {
+          attachmentData[fieldName] = null;
+          await attachmentData.save()
+          response(200, `${fieldName} berhasil dihapus`, seeker, res);
+        } else {
+          res.status(404).json({ error: `${fieldName} tidak ditemukan` });
+        }
+      } else {
+        res.status(404).json({ error: "Attachment tidak ditemukan" });
+      }
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+

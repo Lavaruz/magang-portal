@@ -3,11 +3,14 @@ const id = $("#user_id").text()
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#nav-username").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
+    $("#navbar-profile-pic").attr("src", seekerData.profile_picture);
+    $("#basic-profile-pic").attr("src", seekerData.profile_picture);
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#basic-email").text(`${seekerData.email}`)
     $("#basic-mobile").text(`${seekerData.mobile}`)
     $("#basic-birthdate").text(`${formatDate(seekerData.date_of_birth)}`)
     $("#basic-domicile").text(`${seekerData.domicile}`)
+    $("#popup-profile-pic").attr("src", seekerData.profile_picture);
     $("#popup-firstname").val(`${seekerData.first_name}`)
     $("#popup-lastname").val(`${seekerData.last_name}`)
     $("#popup-email").val(`${seekerData.email}`)
@@ -16,6 +19,31 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#popup-domicile").val(`${seekerData.domicile}`)
     $("input[name=sex][value='male']").prop("checked",true);
     $("#profile-viewers").text(seekerData.profile_viewers)
+
+    let completion_rate = 0
+    if(seekerData.profile_picture) {
+        $("#completion-profile-picture").remove()
+        completion_rate+= 20
+    }
+    if(seekerData.profile_summary){
+        $("#completion-profile-summary").remove()
+        completion_rate+= 20
+    }
+    if(seekerData.experiences.length !== 0){
+        $("#completion-experiences").remove()
+        completion_rate+= 20
+    }
+    if(seekerData.educations.length !== 0){
+        $("#completion-education").remove()
+        completion_rate+= 20
+    }
+    if(seekerData.attachment.atc_resume){
+        $("#completion-resume").remove()
+        completion_rate+= 20
+    }
+
+    if(completion_rate == 100) $(".profie-completion").remove()
+    $("#completion_rate").text(completion_rate)
     
     
     // PROFILE SUMMARY
@@ -27,33 +55,109 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
 
     // EXPERIENCES
     if(seekerData.experiences.length !== 0){
+        const EXPERIENCES = seekerData.experiences
         $("#experiences").html("")
         $("#experiences").removeClass("p-5")
         $("#experiences").addClass("pt-2 px-5")
-        seekerData.experiences.forEach(experience => {
+        EXPERIENCES.forEach(experience => {
             $("#experiences").append(experience_html(experience))
             $("#popup-body-experiences").append(experience_html_edit(experience))
+        })
+
+        // Editing Experiences
+        $("#popup").on("click", ".edit-svg-button", function(){
+            $("#registered-experience").addClass("hidden")
+            $("#editing-experience").removeClass("hidden")
+            
+            const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
+            let obj = EXPERIENCES.find(exp => exp.id === +CARD_EXPERIENCE_ID)
+            $("#editing-experience input[name=exp_position]").val(obj.exp_position)
+            $("#editing-experience input[name=exp_orgname]").val(obj.exp_orgname)
+            $("#editing-experience select[name=exp_type]").val(obj.exp_type)
+            $("#editing-experience select[name=exp_time]").val(obj.exp_time)
+            $("#editing-experience input[name=exp_startdate]").val(obj.exp_startdate)
+            if(obj.exp_enddate){
+                $("#editing-experience input[name=exp_enddate]").val(obj.exp_enddate)
+            } else{
+                $("#editing-experience input[name=exp_enddate]").prop("disabled", true)
+                $("#editing-experience input[type=checkbox]").prop("checked", true)
+            }
+            $("#editing-experience input[name=exp_status]").val(obj.exp_status)
+            $("#editing-experience input[name=exp_location]").val(obj.exp_location)
+            $("#editing-experience textarea[name=exp_description]").val(obj.exp_description)
+
+            $("#editing-experience input[type=checkbox]").change(function(){
+                if($(this).is(":checked")){
+                    $("#editing-experience input[name=exp_enddate]").prop("disabled", true)
+                    $("#editing-experience input[name=exp_enddate]").val("")
+                }else{
+                    $("#editing-experience input[name=exp_enddate]").prop("disabled", false)
+                }
+            })
+
+            $(".cancle-edit").click(function(){
+                $(this).closest("#editing-experience").addClass("hidden")
+                $("#registered-experience").removeClass("hidden")
+            })
+
+            // UPDATE
+            updateSeekerData("form-editing-experience", `/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "PUT")
         })
     }
 
     // EDUCATIONS
     if(seekerData.educations.length !== 0){
+        const EDUCATIONS = seekerData.educations
         $("#educations").html("")
         $("#educations").removeClass("p-5")
         $("#educations").addClass("pt-2 px-5")
-        seekerData.educations.forEach(education => {
+        EDUCATIONS.forEach(education => {
             $("#educations").append(education_html(education))
             $("#popup-body-educations").append(education_html_menu(education))
+        })
+        
+        // Editing Education
+        $("#popup").on("click", ".edit-svg-button-edu", function(){
+            $("#registered-education").addClass("hidden")
+            $("#editing-education").removeClass("hidden")
+            
+            const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
+            let obj = EDUCATIONS.find(exp => exp.id === +CARD_EDUCATION_ID)
+            $("#editing-education input[name=edu_program]").val(obj.edu_program)
+            $("#editing-education input[name=edu_institution]").val(obj.edu_institution)
+            $("#editing-education select[name=edu_type]").val(obj.edu_type)
+            $("#editing-education input[name=edu_gpa]").val(obj.edu_gpa)
+            $("#editing-education input[name=edu_startdate]").val(obj.edu_startdate)
+            $("#editing-education input[name=edu_enddate]").val(obj.edu_enddate)
+            $("#editing-education input[name=edu_status]").val(obj.edu_status)
+            $("#editing-education input[name=edu_location]").val(obj.edu_location)
+            $("#editing-education textarea[name=edu_description]").val(obj.edu_description)
+
+            $(".cancle-edit").click(function(){
+                $(this).closest("#editing-education").addClass("hidden")
+                $("#registered-education").removeClass("hidden")
+            })
+            
+            // UPDATE
+            updateSeekerData("form-editing-education", `/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "PUT")
         })
     }
 
     // ATTACHMENTS
     if(seekerData.attachment){
-        const atc_portfolio = seekerData.attachment.atc_portfolio;
-        $("#portfolio span").text(`${atc_portfolio.length > 28 ? atc_portfolio.substring(0, 28) + "..." : atc_portfolio}`)
-        $("#portfolio").attr("href", `${atc_portfolio}`)
-        $("#portfolio-type").text(getDomainName(atc_portfolio))
-        $("#popup-body-portfolio").val(atc_portfolio)
+        let atc_portfolio = seekerData.attachment.atc_portfolio;
+        let atc_resume = seekerData.attachment.atc_resume
+        if(atc_portfolio){
+            $("#portfolio span").text(`${atc_portfolio.length > 28 ? atc_portfolio.substring(0, 28) + "..." : atc_portfolio}`)
+            $("#portfolio").attr("href", `${atc_portfolio}`)
+            $("#portfolio-type").text(getDomainName(atc_portfolio))
+            $("#popup-body-portfolio").val(atc_portfolio)
+        }
+        if(atc_resume){
+            atc_resume = atc_resume.split("uploads/")[1]
+            $("#resume").text(atc_resume)
+            $("#resume").attr("href", `${seekerData.attachment.atc_resume}`)
+        }
     }
 
     if(seekerData.active_search){
@@ -88,6 +192,10 @@ $("#edit-education, #completion-education, #button-education").click(function(){
 $("#edit-attachment, #completion-resume").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-attachments").removeClass("hidden")
+})
+$("#button-recruiter").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-recruiter").removeClass("hidden")
 })
 
 // Close button to close popup
@@ -169,8 +277,9 @@ function getFormattedDate() {
 }
 
 function experience_html(experience){
+    let paragraph = experience.exp_description.split('\n')
     return `
-        <div class="w-full py-2">
+        <div class="w-full py-4">
             <div class="head flex justify-between">
                 <div class="">
                     <p class="text-[#FC4545] bg-[#DB3D3D]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${experience.exp_type.toUpperCase()}</p>
@@ -183,17 +292,14 @@ function experience_html(experience){
                 </div>
             </div>
             <div class="body flex">
-                <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
-                    <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
-                </ul>
+                <p class="font-second text-sm text-white-60 font-normal mt-3">${paragraph.join("</br>")}</p>
             </div>
         </div>
     `
 } 
 
 function experience_html_edit(experience){
+    let paragraph = experience.exp_description.split('\n')
     return `
         <div class="card-experience">
             <div class="flex gap-4 my-5">
@@ -213,12 +319,8 @@ function experience_html_edit(experience){
                             <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
                         </div>
                     </div>
-                    <div class="body flex">
-                        <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
-                            <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
-                        </ul>
+                    <div <div class="body flex">
+                        <p class="font-second text-sm text-white-60 font-normal mt-3">${paragraph.join("</br>")}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-2">
@@ -235,6 +337,7 @@ function experience_html_edit(experience){
 }
 
 function education_html(education){
+    let paragraph = education.edu_description.split('\n')
     return `
         <div class="w-full py-4">
             <div class="head flex justify-between">
@@ -252,17 +355,14 @@ function education_html(education){
                 </div>
             </div>
             <div class="body flex">
-                <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
-                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
-                    <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
-                </ul>
+                <p class="font-second text-sm text-white-60 font-normal mt-3">${paragraph.join("</br>")}</p>
             </div>
         </div>
     `
 }
 
 function education_html_menu(education){
+    let paragraph = education.edu_description.split('\n')
     return `
         <div class="card-education">
             <div class="flex gap-4 my-5">
@@ -274,8 +374,8 @@ function education_html_menu(education){
                         <div class="">
                             <div class="flex items-center gap-2">
                                 <p class="id" style="display: none;">${education.id}</p>
-                                <p class="text-[#3DD1DB] bg-[#3DD1DB]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_type.toUpperCase()}</p>
-                                <p class="text-white bg-white/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_gpa}</p>
+                                <p class="text-teal-100 bg-[#3DD1DB]/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">${education.edu_type.toUpperCase()}</p>
+                                <p class="text-white bg-white/30 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">GPA ${education.edu_gpa}</p>
                             </div>
                             <p class="font-bold text-lg text-white">${education.edu_program}</p>
                             <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
@@ -286,15 +386,11 @@ function education_html_menu(education){
                         </div>
                     </div>
                     <div class="body flex">
-                        <ul class="list-disc ms-4 font-second text-sm text-white-60 font-normal mt-3">
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Sed ac orci nec mi maximus tincidunt. Suspendisse blandit mi dui, eu lacinia leo sagittis nec. Nullam facilisis ultricies dolor, in imperdiet dui sagittis eu. </li>
-                            <li>Mauris eu eleifend sapien. Donec rutrum metus non metus scelerisque facilisis. Aliquam eu urna varius, fermentum erat in, pharetra diam. Sed placerat porta dolor vel lacinia.</li>
-                        </ul>
+                        <p class="font-second text-sm text-white-60 font-normal mt-3">${paragraph.join("</br>")}</p>
                     </div>
                 </div>
                 <div class="flex flex-col gap-2">
-                    <svg class="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <svg class="cursor-pointer edit-svg-button-edu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3042 2.75 17.8625 2.75C18.4208 2.75 18.8917 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.57083 21.275 6.1125C21.2917 6.65417 21.1083 7.11667 20.725 7.5L19.3 8.925ZM4 21C3.71667 21 3.47917 20.9042 3.2875 20.7125C3.09583 20.5208 3 20.2833 3 20V17.175C3 17.0417 3.025 16.9125 3.075 16.7875C3.125 16.6625 3.2 16.55 3.3 16.45L13.6 6.15L17.85 10.4L7.55 20.7C7.45 20.8 7.3375 20.875 7.2125 20.925C7.0875 20.975 6.95833 21 6.825 21H4Z" fill="#A5A5A5"/>
                     </svg>
                     <svg class="cursor-pointer delete-svg-button" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
