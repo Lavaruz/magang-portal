@@ -7,6 +7,7 @@ import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan str
 import Experience from "./Experience";
 import Education from "./Education";
 import Attachment from "./Attachment";
+import Recruiter from "./Recruiter";
 
 class Seeker extends Model {
   declare id: CreationOptional<number>;
@@ -41,12 +42,18 @@ class Seeker extends Model {
   declare removeEducation: HasManyRemoveAssociationsMixin<Education,number>
   declare getEducations: HasManyGetAssociationsMixin<Education>
 
-  // Mixin Education Has Many
+  // Mixin Education Has One
   declare createAttachment: HasOneCreateAssociationMixin<Attachment>
   declare getAttachment: HasOneGetAssociationMixin<Attachment>
   declare setAttachment: HasOneSetAssociationMixin<Attachment, number>
 
+  // Mixin Education Has One
+  declare createRecruiter: HasOneCreateAssociationMixin<Recruiter>
+  declare getRecruiter: HasOneGetAssociationMixin<Recruiter>
+  declare setRecruiter: HasOneSetAssociationMixin<Recruiter, number>
+
   declare static associations: { experiences: Association<Seeker, Experience> };
+  declare static associationsRecruiter: { experiences: Association<Seeker, Recruiter> };
 }
 
 Seeker.init(
@@ -101,6 +108,11 @@ Seeker.hasMany(Education, {
   foreignKey: 'ownerId',
   as: 'educations' // this determines the name in `associations`!
 });
+Seeker.hasOne(Recruiter,{
+  sourceKey: 'id',
+  foreignKey: 'ownerId',
+  as: 'recruiter'
+})
 Seeker.hasOne(Attachment,{
   sourceKey: 'id',
   foreignKey: 'ownerId',

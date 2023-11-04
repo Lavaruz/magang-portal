@@ -20,18 +20,16 @@ const createToken = (user) => {
   return accessToken;
 };
 
-const validateToken = (req: Request, res:Response, next:NextFunction) => {
+const validateTokenWebsite = (req: Request, res:Response, next:NextFunction) => {
   const accessToken = req.cookies["access-token"];
-  if (!accessToken) {
-    return res.redirect('/login')
-  }
+  // if token expired or not login
+  if (!accessToken) return res.redirect("/login")
   try {
-    const validToken = verify(accessToken, "SECRET");
-    req.user = validToken;
-    if (validToken) {
-      req.authenticate = true;
-      next();
-    }
+    verify(accessToken, "SECRET", function(err, user){
+      if(err) return res.redirect("/login")
+      req.user = user
+      next()
+    });
   } catch (error) {
     return response(500, "server error", { error: error.message }, res);
   }
@@ -39,5 +37,5 @@ const validateToken = (req: Request, res:Response, next:NextFunction) => {
 
 export {
     createToken,
-    validateToken
+    validateTokenWebsite
 }

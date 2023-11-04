@@ -1,17 +1,15 @@
 import express, {Response, Request} from "express";
-import { validateToken } from "../config/JWT";
+import { validateTokenWebsite } from "../config/JWT";
 
 const router = express.Router();
 
-router.get("/",validateToken, (req: Request, res: Response) => {
-  res.render("SeekerProfilePage", {
-    id: req.user.id
-  });
+router.get("/",validateTokenWebsite, (req: Request, res: Response) => {
+  res.render("SeekerProfilePage", {id: req.user.id});
 });
-router.get("/internships",validateToken, (req, res) => {
+router.get("/internships",validateTokenWebsite, (req, res) => {
   res.render("SeekerInternshipPage");
 });
-router.get("/recruiter-post",validateToken, (req, res) => {
+router.get("/recruiter-post",validateTokenWebsite, (req, res) => {
   res.render("RecruiterPost");
 });
 

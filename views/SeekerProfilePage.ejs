@@ -217,7 +217,7 @@
                     <label class="relative inline-flex items-center cursor-pointer mt-5">
                         <input id="active-search" name="active_search" type="checkbox" value="" class="sr-only peer">
                         <div class="w-11 h-6 bg-gray-200 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-green-600"></div>
-                        <span id="active-search-status" class="ml-2 text-green-500 font-second text-sm font-semibold">ActiveSearch is on.</span>
+                        <span id="active-search-status" class="ml-2 text-red-500 font-second text-sm font-semibold">ActiveSearch is off.</span>
                     </label>
                 </form>
             </div>
@@ -234,7 +234,8 @@
     </div>
 </section>
 
-<section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
+
+<section id="popup" class="fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100 hidden">
 
     <!-- POPUP BASIC INFORMATION -->
 
@@ -308,11 +309,11 @@
                         <!-- Using form state modifiers, the classes can be identical for every input -->
                         <div class="flex gap-4">
                             <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
-                                <input id="default-radio-1" type="radio" value="female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input id="default-radio-1" type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-1" class="text-white-60 font-second text-xs font-medium">Female</label>
                             </div>
                             <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
-                                <input id="default-radio-2" type="radio" value="male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <input id="default-radio-2" type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-radio-2" class="text-white-60 font-second text-xs font-medium">Male</label>
                             </div>
                         </div>
@@ -958,57 +959,261 @@
     </div>
 
     <!-- POPUP RECRUITER -->
-    <div class="popup popup-recruiter border-2 border-header w-[720px] hidden">
-        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
-            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V4.99999C5 4.08332 5.32639 3.2986 5.97917 2.64582C6.63194 1.99305 7.41667 1.66666 8.33333 1.66666C9.25 1.66666 10.0347 1.99305 10.6875 2.64582C11.3403 3.2986 11.6667 4.08332 11.6667 4.99999V12.9167C11.6667 13.5 11.4653 13.993 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.993 7.5 13.5 7.5 12.9167V5.62499C7.5 5.44443 7.55903 5.29513 7.67708 5.17707C7.79514 5.05902 7.94444 4.99999 8.125 4.99999C8.30556 4.99999 8.45486 5.05902 8.57292 5.17707C8.69097 5.29513 8.75 5.44443 8.75 5.62499V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V4.99999C10.4167 4.41666 10.2153 3.9236 9.8125 3.52082C9.40972 3.11805 8.91667 2.91666 8.33333 2.91666C7.75 2.91666 7.25694 3.11805 6.85417 3.52082C6.45139 3.9236 6.25 4.41666 6.25 4.99999V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.62499C12.9167 5.44443 12.9757 5.29513 13.0938 5.17707C13.2118 5.05902 13.3611 4.99999 13.5417 4.99999C13.7222 4.99999 13.8715 5.05902 13.9896 5.17707C14.1076 5.29513 14.1667 5.44443 14.1667 5.62499V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
-              </svg> RECRUITER PROFILE</p>
+    <div class="popup popup-recruiter rounded-2xl overflow-hidden border-2 border-header w-[720px] hidden">
+        <div class="header bg-header flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2">RECRUITER PROFILE</p>
             <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
         </div>
-        <div class="body bg-body rounded-b-2xl min-h-[300px] max-h-[500px] overflow-y-scroll">
-            <div class="0% hidden">
-                <div class="w-full bg-cover bg-no-repeat p-4 flex flex-col gap-6" style="background-image: url('/img/Login.png')">
-                    <div class="flex gap-3 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30" fill="none">
-                            <g clip-path="url(#clip0_161_1128)">
-                              <path d="M36.3426 9.29912L35.3072 24.174L30.8327 23.8597L30.3944 21.3268C28.7188 23.0938 26.8079 23.9019 24.6619 23.7511C23.8893 23.6969 23.1672 23.5378 22.4954 23.274C21.8452 23.0117 21.3626 22.6637 21.0478 22.23C20.8711 21.9793 20.7622 21.3759 20.7209 20.4198C20.7011 19.4652 20.7587 18.0178 20.8938 16.0776L21.4385 8.25218L26.9431 8.63885L26.4028 16.3996C26.3728 16.8308 26.3483 17.3382 26.3292 17.9217C26.3102 18.5053 26.349 18.8763 26.4458 19.0347C26.581 19.2609 27.0027 19.3988 27.7109 19.4485L28.2282 19.4524C28.8306 19.473 29.4627 19.3766 30.1245 19.1632L30.8381 8.91245L36.3426 9.29912Z" fill="white"/>
-                              <path d="M47.889 9.78524C49.4341 9.89378 50.6214 10.4971 51.4507 11.5952C52.3029 12.6732 52.6405 14.4841 52.4634 17.028C52.3314 18.925 52.0409 20.4644 51.5921 21.646C51.1447 22.806 50.6715 23.5635 50.1723 23.9184C49.6732 24.2732 48.8252 24.5278 47.6284 24.682C46.453 24.8378 45.243 24.8719 43.9983 24.7845C43.6335 24.7588 43.0234 24.6943 42.168 24.5909L41.8483 29.1827L36.328 29.0224L37.6944 9.39407L42.201 9.71064L42.5884 12.045C43.2019 11.2865 43.9544 10.7003 44.8458 10.2864C45.7587 9.87389 46.7731 9.70685 47.889 9.78524ZM45.8181 20.9479C46.0661 20.7921 46.2716 20.3191 46.4344 19.529C46.5987 18.7173 46.7064 17.945 46.7574 17.212C46.8415 16.0048 46.7535 15.0996 46.4936 14.4964C46.2337 13.8933 45.653 13.56 44.7517 13.4967C44.1079 13.4515 43.5025 13.474 42.9356 13.5641L42.4358 20.7428L43.3304 20.9032C43.6079 20.9443 44.0042 20.983 44.5192 21.0192C45.2488 21.0704 45.6818 21.0467 45.8181 20.9479Z" fill="white"/>
-                              <path d="M54.101 18.1503C54.1811 16.3796 54.28 12.7904 54.3977 7.3829L54.4564 5.14489L59.6915 5.22018C59.6829 5.65284 59.6494 6.28955 59.5909 7.1303C59.4348 9.37231 59.1429 12.0164 58.7152 15.0625C58.5334 16.4362 58.4182 17.3163 58.3697 17.7028C57.2991 18.2125 55.9261 18.4193 54.2507 18.3233L54.101 18.1503ZM55.6068 25.7949C54.8986 25.7451 54.3242 25.4773 53.8836 24.9914C53.4659 24.4855 53.2849 23.8337 53.3404 23.0361C53.3884 22.3462 53.665 21.7808 54.1701 21.3397C54.6967 20.9001 55.3141 20.7051 56.0223 20.7549C56.709 20.8031 57.2612 21.0802 57.6789 21.5861C58.118 22.0936 58.3135 22.6922 58.2655 23.3821C58.21 24.1797 57.9404 24.7998 57.4567 25.2424C56.9745 25.6635 56.3579 25.8476 55.6068 25.7949Z" fill="white"/>
-                              <path d="M1.98832 1.57505L8.361 2.0227L7.84644 9.41465L7.56331 13.482L6.95766 22.1826L0.584988 21.7349L1.98832 1.57505Z" fill="white"/>
-                              <path d="M13.3037 9.79799L13.8183 2.40604L20.1909 2.85369L18.7876 23.0136L12.4149 22.5659L13.0206 13.8653L13.3037 9.79799Z" fill="white"/>
-                              <path d="M12.6611 11.8052C12.6611 13.064 11.6453 14.3377 10.3922 14.3377C9.13911 14.3377 8.12329 13.064 8.12329 11.8052C8.12329 10.5464 9.13911 9.39935 10.3922 9.39935C11.6453 9.39935 12.6611 10.5464 12.6611 11.8052Z" fill="white"/>
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_161_1128">
-                                <rect width="60" height="28.2857" fill="white" transform="translate(0 0.857117)"/>
-                              </clipPath>
-                            </defs>
-                          </svg>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-                            <path d="M6.66658 35C5.74992 35 4.9652 34.6736 4.31242 34.0208C3.65964 33.368 3.33325 32.5833 3.33325 31.6666V13.3333C3.33325 12.4166 3.65964 11.6319 4.31242 10.9791C4.9652 10.3264 5.74992 9.99998 6.66658 9.99998H13.3333V6.66665C13.3333 5.74998 13.6596 4.96526 14.3124 4.31248C14.9652 3.6597 15.7499 3.33331 16.6666 3.33331H23.3333C24.2499 3.33331 25.0346 3.6597 25.6874 4.31248C26.3402 4.96526 26.6666 5.74998 26.6666 6.66665V9.99998H33.3333C34.2499 9.99998 35.0346 10.3264 35.6874 10.9791C36.3402 11.6319 36.6666 12.4166 36.6666 13.3333V31.6666C36.6666 32.5833 36.3402 33.368 35.6874 34.0208C35.0346 34.6736 34.2499 35 33.3333 35H6.66658ZM16.6666 9.99998H23.3333V6.66665H16.6666V9.99998Z" fill="white"/>
-                          </svg>
+        <div class="popup-bar flex gap-3 px-5 py-1 bg-teal-8 items-center">
+            <p class="text-[#A5A5A5] tracking-[1.4px] text-sm font-normal">PROGRESS</p>
+            <p class="text-sm font-bold text-white">0%</p>
+            <div class="w-full bg-black rounded-full h-2.5">
+                <div class="bg-teal-100 h-2.5 rounded-full" style="width: 2%"></div>
+            </div>
+        </div>
+        <form id="form-register-recruiter">
+            <div class="body bg-body min-h-[300px] max-h-[500px] overflow-y-scroll">
+                <div class="body-percent 0%">
+                    <div class="w-full bg-cover bg-no-repeat p-4 flex flex-col gap-6" style="background-image: url('/img/Login.png')">
+                        <div class="flex gap-3 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30" fill="none">
+                                <g clip-path="url(#clip0_161_1128)">
+                                  <path d="M36.3426 9.29912L35.3072 24.174L30.8327 23.8597L30.3944 21.3268C28.7188 23.0938 26.8079 23.9019 24.6619 23.7511C23.8893 23.6969 23.1672 23.5378 22.4954 23.274C21.8452 23.0117 21.3626 22.6637 21.0478 22.23C20.8711 21.9793 20.7622 21.3759 20.7209 20.4198C20.7011 19.4652 20.7587 18.0178 20.8938 16.0776L21.4385 8.25218L26.9431 8.63885L26.4028 16.3996C26.3728 16.8308 26.3483 17.3382 26.3292 17.9217C26.3102 18.5053 26.349 18.8763 26.4458 19.0347C26.581 19.2609 27.0027 19.3988 27.7109 19.4485L28.2282 19.4524C28.8306 19.473 29.4627 19.3766 30.1245 19.1632L30.8381 8.91245L36.3426 9.29912Z" fill="white"/>
+                                  <path d="M47.889 9.78524C49.4341 9.89378 50.6214 10.4971 51.4507 11.5952C52.3029 12.6732 52.6405 14.4841 52.4634 17.028C52.3314 18.925 52.0409 20.4644 51.5921 21.646C51.1447 22.806 50.6715 23.5635 50.1723 23.9184C49.6732 24.2732 48.8252 24.5278 47.6284 24.682C46.453 24.8378 45.243 24.8719 43.9983 24.7845C43.6335 24.7588 43.0234 24.6943 42.168 24.5909L41.8483 29.1827L36.328 29.0224L37.6944 9.39407L42.201 9.71064L42.5884 12.045C43.2019 11.2865 43.9544 10.7003 44.8458 10.2864C45.7587 9.87389 46.7731 9.70685 47.889 9.78524ZM45.8181 20.9479C46.0661 20.7921 46.2716 20.3191 46.4344 19.529C46.5987 18.7173 46.7064 17.945 46.7574 17.212C46.8415 16.0048 46.7535 15.0996 46.4936 14.4964C46.2337 13.8933 45.653 13.56 44.7517 13.4967C44.1079 13.4515 43.5025 13.474 42.9356 13.5641L42.4358 20.7428L43.3304 20.9032C43.6079 20.9443 44.0042 20.983 44.5192 21.0192C45.2488 21.0704 45.6818 21.0467 45.8181 20.9479Z" fill="white"/>
+                                  <path d="M54.101 18.1503C54.1811 16.3796 54.28 12.7904 54.3977 7.3829L54.4564 5.14489L59.6915 5.22018C59.6829 5.65284 59.6494 6.28955 59.5909 7.1303C59.4348 9.37231 59.1429 12.0164 58.7152 15.0625C58.5334 16.4362 58.4182 17.3163 58.3697 17.7028C57.2991 18.2125 55.9261 18.4193 54.2507 18.3233L54.101 18.1503ZM55.6068 25.7949C54.8986 25.7451 54.3242 25.4773 53.8836 24.9914C53.4659 24.4855 53.2849 23.8337 53.3404 23.0361C53.3884 22.3462 53.665 21.7808 54.1701 21.3397C54.6967 20.9001 55.3141 20.7051 56.0223 20.7549C56.709 20.8031 57.2612 21.0802 57.6789 21.5861C58.118 22.0936 58.3135 22.6922 58.2655 23.3821C58.21 24.1797 57.9404 24.7998 57.4567 25.2424C56.9745 25.6635 56.3579 25.8476 55.6068 25.7949Z" fill="white"/>
+                                  <path d="M1.98832 1.57505L8.361 2.0227L7.84644 9.41465L7.56331 13.482L6.95766 22.1826L0.584988 21.7349L1.98832 1.57505Z" fill="white"/>
+                                  <path d="M13.3037 9.79799L13.8183 2.40604L20.1909 2.85369L18.7876 23.0136L12.4149 22.5659L13.0206 13.8653L13.3037 9.79799Z" fill="white"/>
+                                  <path d="M12.6611 11.8052C12.6611 13.064 11.6453 14.3377 10.3922 14.3377C9.13911 14.3377 8.12329 13.064 8.12329 11.8052C8.12329 10.5464 9.13911 9.39935 10.3922 9.39935C11.6453 9.39935 12.6611 10.5464 12.6611 11.8052Z" fill="white"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_161_1128">
+                                    <rect width="60" height="28.2857" fill="white" transform="translate(0 0.857117)"/>
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M6.66658 35C5.74992 35 4.9652 34.6736 4.31242 34.0208C3.65964 33.368 3.33325 32.5833 3.33325 31.6666V13.3333C3.33325 12.4166 3.65964 11.6319 4.31242 10.9791C4.9652 10.3264 5.74992 9.99998 6.66658 9.99998H13.3333V6.66665C13.3333 5.74998 13.6596 4.96526 14.3124 4.31248C14.9652 3.6597 15.7499 3.33331 16.6666 3.33331H23.3333C24.2499 3.33331 25.0346 3.6597 25.6874 4.31248C26.3402 4.96526 26.6666 5.74998 26.6666 6.66665V9.99998H33.3333C34.2499 9.99998 35.0346 10.3264 35.6874 10.9791C36.3402 11.6319 36.6666 12.4166 36.6666 13.3333V31.6666C36.6666 32.5833 36.3402 33.368 35.6874 34.0208C35.0346 34.6736 34.2499 35 33.3333 35H6.66658ZM16.6666 9.99998H23.3333V6.66665H16.6666V9.99998Z" fill="white"/>
+                              </svg>
+                        </div>
+                        <div class="w-[360px]">
+                            <p class="text-lg font-bold text-white">Applying for a Hup! Recruiter Profile</p>
+                            <p class="font-second text-sm font-semibold text-white-80">A recruiter profile enables you to post job vacancies and use ActiveSearch to find the perfect candidate.</p>
+                        </div>
+                        <div class="w-[348px] flex items-center bg-[#3B3B3B]/80 rounded-lg p-3 gap-3 mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V12C13 11.7167 12.9042 11.4792 12.7125 11.2875C12.5208 11.0958 12.2833 11 12 11C11.7167 11 11.4792 11.0958 11.2875 11.2875C11.0958 11.4792 11 11.7167 11 12V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17ZM12 9C12.2833 9 12.5208 8.90417 12.7125 8.7125C12.9042 8.52083 13 8.28333 13 8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8C11 8.28333 11.0958 8.52083 11.2875 8.7125C11.4792 8.90417 11.7167 9 12 9ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22Z" fill="#3DD1DB"/>
+                              </svg>
+                            <div class="">
+                                <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                <p class="font-second text-sm font-medium text-white">To apply, you will have to verify that you are an active representative of a company or university organization.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="w-[360px]">
-                        <p class="text-lg font-bold text-white">Applying for a Hup! Recruiter Profile</p>
-                        <p class="font-second text-sm font-semibold text-white-80">A recruiter profile enables you to post job vacancies and use ActiveSearch to find the perfect candidate.</p>
+                    <div class="flex gap-3 justify-end mt-2 p-5 pb-6">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Apply</button>
                     </div>
-                    <div class="w-[348px] flex items-center bg-[#3B3B3B]/80 rounded-lg p-3 gap-3 mt-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V12C13 11.7167 12.9042 11.4792 12.7125 11.2875C12.5208 11.0958 12.2833 11 12 11C11.7167 11 11.4792 11.0958 11.2875 11.2875C11.0958 11.4792 11 11.7167 11 12V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17ZM12 9C12.2833 9 12.5208 8.90417 12.7125 8.7125C12.9042 8.52083 13 8.28333 13 8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8C11 8.28333 11.0958 8.52083 11.2875 8.7125C11.4792 8.90417 11.7167 9 12 9ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22Z" fill="#3DD1DB"/>
-                          </svg>
-                        <div class="">
-                            <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
-                            <p class="font-second text-sm font-medium text-white">To apply, you will have to verify that you are an active representative of a company or university organization.</p>
+                </div>
+                <div class="body-percent 20% py-4 px-5 hidden">
+                    <p class="font-second text-base text-white font-bold">What type of organization are you hiring for?</p>
+                    <div class="flex flex-col gap-2 mt-4">
+                        <ul class="flex flex-col gap-2">
+                            <li>
+                                <input type="radio" id="hosting-small" name="rec_type" value="Company" class="hidden peer" required>
+                                <label for="hosting-small" class="inline-flex items-center justify-between w-full border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">                           
+                                    <div class="flex gap-5 rounded-lg py-3 px-4 w-full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                            <path d="M5.83325 35C5.16659 35 4.58325 34.75 4.08325 34.25C3.58325 33.75 3.33325 33.1666 3.33325 32.5V11.9583C3.33325 11.2916 3.58325 10.7083 4.08325 10.2083C4.58325 9.70831 5.16659 9.45831 5.83325 9.45831H13.7499V5.83331C13.7499 5.16665 13.9999 4.58331 14.4999 4.08331C14.9999 3.58331 15.5833 3.33331 16.2499 3.33331H23.7499C24.4166 3.33331 24.9999 3.58331 25.4999 4.08331C25.9999 4.58331 26.2499 5.16665 26.2499 5.83331V9.45831H34.1666C34.8333 9.45831 35.4166 9.70831 35.9166 10.2083C36.4166 10.7083 36.6666 11.2916 36.6666 11.9583V32.5C36.6666 33.1666 36.4166 33.75 35.9166 34.25C35.4166 34.75 34.8333 35 34.1666 35H5.83325ZM16.2499 9.45831H23.7499V5.83331H16.2499V9.45831Z" fill="white"/>
+                                        </svg>
+                                        <div class="font-second">
+                                            <p class="text-xl font-bold text-white">Company</p>
+                                            <p class="text-sm font-medium text-white-60 w-[555px]">You are a representative of a company, startup, or charity organization to hire candidates.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="hosting-big" name="rec_type" value="University Organization" class="hidden peer">
+                                <label for="hosting-big" class="inline-flex items-center justify-between w-full border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">
+                                    <div class="flex gap-5 rounded-lg py-3 px-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                            <path d="M37.3333 28.5417C36.8333 28.5417 36.4236 28.375 36.1042 28.0417C35.7847 27.7083 35.625 27.3194 35.625 26.875V17L21.7917 24.4583C21.5417 24.5694 21.25 24.6667 20.9167 24.75C20.5833 24.8333 20.2639 24.875 19.9583 24.875C19.6528 24.875 19.3403 24.8333 19.0208 24.75C18.7014 24.6667 18.4167 24.5694 18.1667 24.4583L4.125 16.75C3.79167 16.6111 3.54167 16.3958 3.375 16.1042C3.20833 15.8125 3.125 15.4722 3.125 15.0833C3.125 14.7222 3.20833 14.3958 3.375 14.1042C3.54167 13.8125 3.79167 13.5833 4.125 13.4167L18.1667 5.75C18.4444 5.63889 18.7431 5.52778 19.0625 5.41667C19.3819 5.30556 19.6806 5.25 19.9583 5.25C20.2361 5.25 20.5347 5.30556 20.8542 5.41667C21.1736 5.52778 21.5 5.63889 21.8333 5.75L37.9583 14.5417C38.2639 14.6806 38.5069 14.9097 38.6875 15.2292C38.8681 15.5486 38.9583 15.875 38.9583 16.2083V26.875C38.9583 27.3194 38.7986 27.7083 38.4792 28.0417C38.1597 28.375 37.7778 28.5417 37.3333 28.5417ZM19.9583 34.5833C19.6806 34.5833 19.375 34.5486 19.0417 34.4792C18.7083 34.4097 18.4167 34.3056 18.1667 34.1667L9.58333 29.5417C8.94444 29.2361 8.45139 28.7778 8.10417 28.1667C7.75695 27.5556 7.58333 26.8889 7.58333 26.1667V20.25L17.3333 25.625C17.75 25.8472 18.1667 26.0556 18.5833 26.25C19 26.4444 19.4583 26.5417 19.9583 26.5417C20.4583 26.5417 20.9306 26.4444 21.375 26.25C21.8194 26.0556 22.2361 25.8333 22.625 25.5833L32.375 20.25V26.1667C32.375 26.8889 32.1944 27.5556 31.8333 28.1667C31.4722 28.7778 30.9861 29.2361 30.375 29.5417L21.7917 34.1667C21.5139 34.3056 21.2083 34.4097 20.875 34.4792C20.5417 34.5486 20.2361 34.5833 19.9583 34.5833Z" fill="white"/>
+                                        </svg>
+                                        <div class="font-second">
+                                            <p class="text-xl font-bold text-white">University Organization / Student Organization</p>
+                                            <p class="text-sm font-medium text-white-60 w-[555px]">You are a representative of a university organization or student body under a government-verified education institution.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                        
+                        
+                        <div class="flex gap-3 justify-end mt-6 pb-1">
+                            <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Back</button>
+                            <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Next</button>
                         </div>
                     </div>
                 </div>
-                <div class="flex gap-3 justify-end mt-2 p-5 pb-6">
-                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
-                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Apply</button>
+                <div id="popup-recruiter-org" class="body-percent 40% py-4 px-5 hidden">
+                    <div class="divide-header divide-y">
+                        <div class="pb-4">
+                            <p class="font-second text-base text-white font-bold mb-3">Please fill in the details of your organization</p>
+                            <div class="flex flex-col gap-4">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Startup Keren" name="rec_org_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DESCRIPTION*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Artificial Intelligence Agency" name="rec_org_desc" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                    <p class="font-second text-xs font-normal text-white-60 mt-1">Describe your organization in one sentence. (Ex. Creative Agency, Startup Media for Gen-Z, etc.)</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="py-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION SIZE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="rec_org_size" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option value="1-5 people" selected>1-5 people</option>
+                                        <option value="5-100">5-100</option>
+                                        <option value="> 100">> 100</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">YEAR FOUNDED*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="number" placeholder="2023" name="rec_org_year" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 py-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WEBSITE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="www.startupkeren.id" name="rec_org_website" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE ADDRESS</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="" name="rec_org_address" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <div class="flex gap-3 justify-end mt-6">
+                                <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                                <button disabled id="button-recruiter-org" type="button" class="disabled:bg-teal-100/50 button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-recruiter-info" class="body-percent 60% py-4 px-5 hidden">
+                    <div class="divide-header divide-y">
+                        <div class="pb-4">
+                            <p class="font-second text-base text-white font-bold mb-1">Please fill in your information</p>
+                            <p class="font-second text-sm text-white-60 font-medium mb-3">Please choose the most suitable package for your organization.</p>
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Pepeng" name="rec_info_firstname" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Suherman" name="rec_info_lastname" class="block border-0 w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="py-4">
+                            <div class="">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WORK EMAIL*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="email" placeholder="john.doe@domain.com" name="rec_info_email" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                    <p class="font-second text-white-60 text-xs font-normal">Your work email should use the official domain of your organization’s website. (Ex. name@gojek.com, name@university.ac.id)</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 py-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">POSITION*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Talent Acquisition" name="rec_info_position" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                                <p class="font-second text-white-60 text-xs font-normal">Your position in the organization.</p>
+                            </label>
+                            <div class="flex gap-3 justify-end mt-6">
+                                <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                                <button disabled id="button-recruiter-info" type="button" class="button-next disabled:bg-teal-100/50 rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-percent 80% py-4 px-5 hidden">
+                    <div class="pb-4">
+                        <p class="font-second text-base text-white font-bold mb-1">Packages</p>
+                        <p class="font-second text-sm text-white-60 font-medium mb-3">Please choose the most suitable package for your organization.</p>    
+                    </div>
+                    <ul class="flex gap-2">
+                        <li>
+                            <input type="radio" id="package-free" name="rec_tier" value="package-free" class="hidden peer" required>
+                            <label for="package-free" class="inline-flex items-center justify-between w-[240px] h-[300px] bg-[#363636] border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">                           
+                                <div class="rounded-lg p-4 relative w-full h-full">
+                                    <p class="font-bold text-white text-[32px]">Free</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Unlimited job posts and ActiveSearches. Free for a limited time.</p>
+                                    <p class="absolute bottom-4 left-4 text-2xl text-white font-bold">Rp.0</p>
+                                </div>  
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="flex gap-3 justify-end mt-6 pb-3">
+                        <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </div>
+                <div class="body-percent 100% py-4 px-5 hidden">
+                    <div class="h-[270px] flex flex-col justify-center gap-4 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="31" viewBox="0 0 56 31" fill="none">
+                            <path d="M14.75 31L0.625 16.875L4.1875 13.375L14.8125 24L18.3125 27.5L14.75 31ZM28.875 31L14.75 16.875L18.25 13.3125L28.875 23.9375L51.875 0.9375L55.375 4.5L28.875 31ZM28.875 16.875L25.3125 13.375L37.6875 1L41.25 4.5L28.875 16.875Z" fill="#2BDE68"/>
+                        </svg>
+                        <div class="text-center">
+                            <p class="text-white font-bold text-xl">Cool! Your application has been submitted.</p>
+                            <p class="font-second text-sm font-medium text-white-60">We'll notify you via email when you have been approved for a Recruiter Profile!</p>
+                        </div>
+                        <button type="submit" class="bg-teal-100 text-teal-8 px-10 py-2 rounded-lg font-second text-base font-medium">I'll check my email, then.</button>
+                    </div>
                 </div>
             </div>
-            <div class="20%"></div>
-        </div>
+        </form>
     </div>
 
 </section>
@@ -1022,9 +1227,22 @@
         $("#registered-experience").addClass("hidden")
         $("#adding-new-experience").removeClass("hidden")
     })
+    
     $("#add-education").click(function(){
         $("#registered-education").addClass("hidden")
         $("#adding-new-education").removeClass("hidden")
+    })
+
+    $(".button-next").click(function(){
+        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+        $(".body-percent").eq(body_percent_idx).addClass("hidden")
+        $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+    })
+
+    $(".button-back").click(function(){
+        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+        $(".body-percent").eq(body_percent_idx).addClass("hidden")
+        $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
     })
 
     $(".cancle-add").click(function(){
@@ -1089,7 +1307,29 @@
         updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/attachment/${ATTACHMENT_NAME}`, "DELETE")
     })
 
+    $("#popup-recruiter-org").find("input").on("input", function(){
+        const nonEmptyInputs = $("#popup-recruiter-org").find("input").filter(function() {
+            return $(this).val().length > 0;
+        });
 
+        if(nonEmptyInputs.length === 5){
+            $("#button-recruiter-org").prop("disabled", false)
+        }else{
+            $("#button-recruiter-org").prop("disabled", true)
+        }
+    })
+
+    $("#popup-recruiter-info").find("input").on("input", function(){
+        const nonEmptyInputs = $("#popup-recruiter-info").find("input").filter(function() {
+            return $(this).val().length > 0;
+        });
+
+        if(nonEmptyInputs.length === 4){
+            $("#button-recruiter-info").prop("disabled", false)
+        }else{
+            $("#button-recruiter-info").prop("disabled", true)
+        }
+    })
     
 
 
@@ -1131,7 +1371,7 @@
         }
     })
     
-
+    updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
     
 
 

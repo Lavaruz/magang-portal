@@ -3,22 +3,30 @@ const id = $("#user_id").text()
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#nav-username").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
-    $("#navbar-profile-pic").attr("src", seekerData.profile_picture);
-    $("#basic-profile-pic").attr("src", seekerData.profile_picture);
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#basic-email").text(`${seekerData.email}`)
     $("#basic-mobile").text(`${seekerData.mobile}`)
     $("#basic-birthdate").text(`${formatDate(seekerData.date_of_birth)}`)
     $("#basic-domicile").text(`${seekerData.domicile}`)
-    $("#popup-profile-pic").attr("src", seekerData.profile_picture);
+    $("#basic-sex").text(seekerData.sex)
     $("#popup-firstname").val(`${seekerData.first_name}`)
     $("#popup-lastname").val(`${seekerData.last_name}`)
     $("#popup-email").val(`${seekerData.email}`)
     $("#popup-mobile").val(`${seekerData.mobile}`)
     $("#popup-birthdate").val(`${seekerData.date_of_birth}`)
     $("#popup-domicile").val(`${seekerData.domicile}`)
-    $("input[name=sex][value='male']").prop("checked",true);
+    $(`input[name=sex][value=${seekerData.sex}]`).prop("checked",true);
     $("#profile-viewers").text(seekerData.profile_viewers)
+
+    if(seekerData.profile_picture){
+        $("#navbar-profile-pic").attr("src", seekerData.profile_picture);
+        $("#basic-profile-pic").attr("src", seekerData.profile_picture);
+        $("#popup-profile-pic").attr("src", seekerData.profile_picture);
+    }
+
+    if(seekerData.role == "recruiter"){
+        // $(".recruiter-profile").remove()
+    }
 
     let completion_rate = 0
     if(seekerData.profile_picture) {
@@ -37,9 +45,11 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
         $("#completion-education").remove()
         completion_rate+= 20
     }
-    if(seekerData.attachment.atc_resume){
-        $("#completion-resume").remove()
-        completion_rate+= 20
+    if(seekerData.attachment){
+        if(seekerData.attachment.atc_resume){
+            $("#completion-resume").remove()
+            completion_rate+= 20
+        }
     }
 
     if(completion_rate == 100) $(".profie-completion").remove()
@@ -163,6 +173,7 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     if(seekerData.active_search){
         $("#active-search").prop("checked", true)
         $("#active-search-status").text("ActiveSearch is on.")
+        $("#active-search-status").addClass("text-green-500").removeClass("text-red-500")
     }else{
         $("#active-search").prop("checked", false)
         $("#active-search-status").text("ActiveSearch is off.")

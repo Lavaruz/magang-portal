@@ -8,6 +8,7 @@ import { createToken } from "../config/JWT";
 import Attachment from "../models/Attachment";
 import path from "path";
 import fs from "fs"
+import Recruiter from "../models/Recruiter";
 
 
 // Fungsi ini mengambil semua pengguna
@@ -17,6 +18,7 @@ export const getAllSeeker = async (req: Request, res: Response) => {
       {model:Experience, as:"experiences", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Attachment, as:"attachment", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}}
     ]});
     response(200, "success call all seeker", seeker, res);
   } catch (error) {
@@ -34,6 +36,7 @@ export const getSeekerById = async (req: Request, res: Response) => {
       {model:Experience, as:"experiences", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Attachment, as:"attachment", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}}
     ]});
     if (mahasiswa) {
       res.status(200).json(mahasiswa);
@@ -112,18 +115,19 @@ export const updateSeeker = async (req: Request, res: Response) => {
       // Menambahakan URL Image ke dalam gambar, 
       // dan menghapus gambar lama ketika upload gambar baru
       if(req.files.length !== 0){
-        const fileToDelete = `public/files/uploads/${seeker.profile_picture.split("uploads/")[1]}`
-        if (fs.existsSync(fileToDelete)) {
-          try {
-            fs.unlinkSync(fileToDelete);
-            console.log(`File ${seeker.profile_picture.split("uploads/")[1]} deleted successfully.`);
-          } catch (err) {
-            console.error(`Error deleting file ${seeker.profile_picture.split("uploads/")[1]}: ${err}`);
-          }
-        } else {
-          console.log(`File ${seeker.profile_picture.split("uploads/")[1]} not found.`);
-        } 
-        
+        if(seeker.profile_picture){
+          const fileToDelete = `public/files/uploads/${seeker.profile_picture.split("uploads/")[1]}`
+          if (fs.existsSync(fileToDelete)) {
+            try {
+              fs.unlinkSync(fileToDelete);
+              console.log(`File ${seeker.profile_picture.split("uploads/")[1]} deleted successfully.`);
+            } catch (err) {
+              console.error(`Error deleting file ${seeker.profile_picture.split("uploads/")[1]}: ${err}`);
+            }
+          } else {
+            console.log(`File ${seeker.profile_picture.split("uploads/")[1]} not found.`);
+          } 
+        }
         req.body.profile_picture = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
       }
       
@@ -327,43 +331,50 @@ export const updateEducation = async (req: Request, res: Response) => {
 export const setAttachment = async (req: Request, res: Response) => {
   const seekerId = req.params.id;
   const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
-  console.log(attachmentData);
   
 
   try {
     const seeker = await Seeker.findByPk(seekerId);
     if (seeker) {
       // if user upload file resume
-      attachmentData.atc_resume = (await seeker.getAttachment()).atc_resume
+      let attachment = (await seeker.getAttachment())
+
+      attachmentData.atc_resume = attachment ? attachment.atc_resume : null
+
       if(req.files.length !== 0){
-        if((await seeker.getAttachment()).atc_resume){
-          const filename = (await seeker.getAttachment()).atc_resume.split("/uploads")[1]
-          const fileToDelete = `public/files/uploads/${filename}`
-          if (fs.existsSync(fileToDelete)) {
-            try {
-              fs.unlinkSync(fileToDelete);
-              console.log(`File ${filename} deleted successfully.`);
-            } catch (err) {
-              console.error(`Error deleting file ${filename}: ${err}`);
-            }
-          } else {
-            console.log(`File ${filename} not found.`);
-          } 
+        if(attachment){
+          if(attachment.atc_resume){
+            const filename = attachment.atc_resume.split("/uploads")[1]
+            const fileToDelete = `public/files/uploads/${filename}`
+            if (fs.existsSync(fileToDelete)) {
+              try {
+                fs.unlinkSync(fileToDelete);
+                console.log(`File ${filename} deleted successfully.`);
+              } catch (err) {
+                console.error(`Error deleting file ${filename}: ${err}`);
+              }
+            } else {
+              console.log(`File ${filename} not found.`);
+            } 
+          }
         }
         
-        req.body.atc_resume = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
+        attachmentData.atc_resume = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
       }
+      
       // check if attachment not null delete previous data
-      let attachmentId = (await seeker.getAttachment()).id;
+      let attachmentId = attachment ? attachment.id : null
       
       if(attachmentId){
         await Attachment.update(attachmentData,{where:{id:attachmentId}})
+        response(200, "Success update attachment", seeker, res)
+      }else{
+        // create new attachment
+        await Attachment.create(attachmentData).then(async function(result){
+          await seeker.setAttachment(result)
+          response(200, "Success update pengguna", seeker, res)
+        })
       }
-      // create new attachment
-      await Attachment.create(attachmentData).then(async function(result){
-        await seeker.setAttachment(result)
-        response(200, "Success update pengguna", seeker, res)
-      })
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }
@@ -394,6 +405,30 @@ export const deleteAttachment = async (req: Request, res: Response) => {
       } else {
         res.status(404).json({ error: "Attachment tidak ditemukan" });
       }
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+// Recruiter Register
+export const addRecruiter = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const recruiterData = req.body; // Data pembaruan pengguna dari permintaan PUT
+  
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    if (seeker) {
+      await Recruiter.create(recruiterData).then(async function(result){
+        await seeker.setRecruiter(result)
+        seeker.update({role:"recruiter"})
+        response(200, "Success update pengguna", seeker, res)
+      })
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }
