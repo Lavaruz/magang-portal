@@ -53,22 +53,26 @@ Seeker.init({
 Seeker.hasMany(Experience_1.default, {
     sourceKey: 'id',
     foreignKey: 'ownerId',
-    as: 'experiences' // this determines the name in `associations`!
+    as: 'experiences',
+    constraints: false
 });
 Seeker.hasMany(Education_1.default, {
     sourceKey: 'id',
     foreignKey: 'ownerId',
-    as: 'educations' // this determines the name in `associations`!
+    as: 'educations',
+    constraints: false
 });
 Seeker.hasOne(Recruiter_1.default, {
     sourceKey: 'id',
     foreignKey: 'ownerId',
-    as: 'recruiter'
+    as: 'recruiter',
+    constraints: false
 });
 Seeker.hasOne(Attachment_1.default, {
     sourceKey: 'id',
     foreignKey: 'ownerId',
-    as: 'attachment'
+    as: 'attachment',
+    constraints: false
 });
 exports.default = Seeker;
 //# sourceMappingURL=Seeker.js.map

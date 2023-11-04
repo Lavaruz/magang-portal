@@ -101,22 +101,26 @@ Seeker.init(
 Seeker.hasMany(Experience, {
   sourceKey: 'id',
   foreignKey: 'ownerId',
-  as: 'experiences' // this determines the name in `associations`!
+  as: 'experiences', // this determines the name in `associations`!
+  constraints:false
 });
 Seeker.hasMany(Education, {
   sourceKey: 'id',
   foreignKey: 'ownerId',
-  as: 'educations' // this determines the name in `associations`!
+  as: 'educations', // this determines the name in `associations`!
+  constraints:false
 });
 Seeker.hasOne(Recruiter,{
   sourceKey: 'id',
   foreignKey: 'ownerId',
-  as: 'recruiter'
+  as: 'recruiter',
+  constraints:false
 })
 Seeker.hasOne(Attachment,{
   sourceKey: 'id',
   foreignKey: 'ownerId',
-  as: 'attachment'
+  as: 'attachment',
+  constraints:false
 })
 
 export default Seeker;
