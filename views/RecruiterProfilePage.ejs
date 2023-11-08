@@ -1,0 +1,544 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar'); -%>
+
+<p id="user_id" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <p id="header-firstname" class="pb-3 pt-8 text-white text-xl font-bold">Recruiter Profile</p>
+    
+    <div class="flex items-center justify-center w-full mb-5">
+        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-0 border-dashed rounded-lg cursor-pointer bg-darkest-grey hover:bg-darkest-grey/50">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="49" height="48" viewBox="0 0 49 48" fill="none">
+                    <path d="M37 17.1C36.5667 17.1 36.2083 16.9583 35.925 16.675C35.6417 16.3917 35.5 16.0333 35.5 15.6V13.05H32.95C32.5167 13.05 32.1583 12.9083 31.875 12.625C31.5917 12.3417 31.45 11.9833 31.45 11.55C31.45 11.1167 31.5917 10.7583 31.875 10.475C32.1583 10.1917 32.5167 10.05 32.95 10.05H35.5V7.5C35.5 7.06667 35.6417 6.70833 35.925 6.425C36.2083 6.14167 36.5667 6 37 6C37.4333 6 37.7917 6.14167 38.075 6.425C38.3583 6.70833 38.5 7.06667 38.5 7.5V10.05H41.05C41.4833 10.05 41.8417 10.1917 42.125 10.475C42.4083 10.7583 42.55 11.1167 42.55 11.55C42.55 11.9833 42.4083 12.3417 42.125 12.625C41.8417 12.9083 41.4833 13.05 41.05 13.05H38.5V15.6C38.5 16.0333 38.3583 16.3917 38.075 16.675C37.7917 16.9583 37.4333 17.1 37 17.1ZM14.05 33.9H35C35.3333 33.9 35.5667 33.7667 35.7 33.5C35.8333 33.2333 35.8 32.9667 35.6 32.7L29.9 25.1C29.7333 24.9 29.5333 24.8 29.3 24.8C29.0667 24.8 28.8667 24.9 28.7 25.1L22.95 32.65L18.85 27.25C18.6833 27.0167 18.4833 26.9 18.25 26.9C18.0167 26.9 17.8167 27.0167 17.65 27.25L13.45 32.7C13.25 32.9667 13.2167 33.2333 13.35 33.5C13.4833 33.7667 13.7167 33.9 14.05 33.9ZM9.5 42C8.7 42 8 41.7 7.4 41.1C6.8 40.5 6.5 39.8 6.5 39V9C6.5 8.2 6.8 7.5 7.4 6.9C8 6.3 8.7 6 9.5 6H28.45V15.85C28.45 16.2833 28.5917 16.6417 28.875 16.925C29.1583 17.2083 29.5167 17.35 29.95 17.35H31.2V18.6C31.2 19.0333 31.3417 19.3917 31.625 19.675C31.9083 19.9583 32.2667 20.1 32.7 20.1H42.5V39C42.5 39.8 42.2 40.5 41.6 41.1C41 41.7 40.3 42 39.5 42H9.5Z" fill="#3DD1DB"/>
+                </svg>
+                <p class="font-bold text-teal-100 font-second text-sm mt-2">Add Banner</p>
+                <p class="font-normal text-white-80 font-second text-xs mt-1">Recommended Resolution 1040 x 200 px</p>
+            </div>
+            <input id="dropzone-file" type="file" class="hidden" />
+        </label>
+    </div> 
+
+    <div class="grid grid-cols-[1fr_.6fr] gap-5">
+        <div class="flex flex-col gap-3">
+            <div class="basic-info rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3.33332 17.5C2.87499 17.5 2.48263 17.3368 2.15624 17.0104C1.82985 16.684 1.66666 16.2917 1.66666 15.8333V6.66666C1.66666 6.20832 1.82985 5.81596 2.15624 5.48957C2.48263 5.16318 2.87499 4.99999 3.33332 4.99999H6.66666V3.33332C6.66666 2.87499 6.82985 2.48263 7.15624 2.15624C7.48263 1.82985 7.87499 1.66666 8.33332 1.66666H11.6667C12.125 1.66666 12.5174 1.82985 12.8437 2.15624C13.1701 2.48263 13.3333 2.87499 13.3333 3.33332V4.99999H16.6667C17.125 4.99999 17.5174 5.16318 17.8437 5.48957C18.1701 5.81596 18.3333 6.20832 18.3333 6.66666V15.8333C18.3333 16.2917 18.1701 16.684 17.8437 17.0104C17.5174 17.3368 17.125 17.5 16.6667 17.5H3.33332ZM8.33332 4.99999H11.6667V3.33332H8.33332V4.99999Z" fill="white"/>
+                      </svg> BASIC INFORMATION</p>
+                    <p id="edit-basic-info" class="cursor-pointer text-teal-100 text-xs font-second flex items-center gap-2">Edit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <path d="M12.8667 6.45001L10.0333 3.65001L10.9667 2.71668C11.2222 2.46112 11.5361 2.33334 11.9083 2.33334C12.2806 2.33334 12.5944 2.46112 12.85 2.71668L13.7833 3.65001C14.0389 3.90557 14.1722 4.2139 14.1833 4.57501C14.1944 4.93612 14.0722 5.24445 13.8167 5.50001L12.8667 6.45001ZM2.66667 14.5C2.47778 14.5 2.31944 14.4361 2.19167 14.3083C2.06389 14.1806 2 14.0222 2 13.8333V11.95C2 11.8611 2.01667 11.775 2.05 11.6917C2.08333 11.6083 2.13333 11.5333 2.2 11.4667L9.06667 4.60001L11.9 7.43334L5.03333 14.3C4.96667 14.3667 4.89167 14.4167 4.80833 14.45C4.725 14.4833 4.63889 14.5 4.55 14.5H2.66667Z" fill="#3DD1DB"/>
+                      </svg></p>
+                </div>
+                <div class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-[80px] h-[80px] rounded-lg overflow-hidden bg-white">
+                            <img id="basic-profile-pic" src="/img/Ellipse 3.svg" alt="profile-picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="divide-y divide-header">
+                            <div class="mb-4">
+                                <p id="basic-fullname" class="font-bold text-xl text-white">Startup Keren</p>
+                                <p class="text-sm text-white-60 font-second font-bold flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                    <path d="M2.33334 14.5C2.06668 14.5 1.83334 14.4 1.63334 14.2C1.43334 14 1.33334 13.7667 1.33334 13.5V5.28334C1.33334 5.01668 1.43334 4.78334 1.63334 4.58334C1.83334 4.38334 2.06668 4.28334 2.33334 4.28334H5.50001V2.83334C5.50001 2.56668 5.60001 2.33334 5.80001 2.13334C6.00001 1.93334 6.23334 1.83334 6.50001 1.83334H9.50001C9.76668 1.83334 10 1.93334 10.2 2.13334C10.4 2.33334 10.5 2.56668 10.5 2.83334V4.28334H13.6667C13.9333 4.28334 14.1667 4.38334 14.3667 4.58334C14.5667 4.78334 14.6667 5.01668 14.6667 5.28334V13.5C14.6667 13.7667 14.5667 14 14.3667 14.2C14.1667 14.4 13.9333 14.5 13.6667 14.5H2.33334ZM6.50001 4.28334H9.50001V2.83334H6.50001V4.28334Z" fill="#3DD1DB"/>
+                                  </svg> Artificial Intelligence Agency</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-9 gap-y-4 pt-4 text-white">
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">WEBSITE</span>
+                                    <p id="" class="font-second font-medium text-sm">www.startupkeren.id</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">NO. OF EMPLOYEES</span>
+                                    <p id="" class="font-second font-medium text-sm">1-10</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">FOUNDED</span>
+                                    <p id="" class="font-second font-medium text-sm">2023</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">ADDRESS</span>
+                                    <p id="" class="font-second font-medium text-sm">Senayan, Central Jakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-summary rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 14.1667C10.2361 14.1667 10.434 14.0868 10.5938 13.9271C10.7535 13.7674 10.8334 13.5694 10.8334 13.3333V10C10.8334 9.76389 10.7535 9.56598 10.5938 9.40625C10.434 9.24653 10.2361 9.16667 10 9.16667C9.76391 9.16667 9.56599 9.24653 9.40627 9.40625C9.24655 9.56598 9.16669 9.76389 9.16669 10V13.3333C9.16669 13.5694 9.24655 13.7674 9.40627 13.9271C9.56599 14.0868 9.76391 14.1667 10 14.1667ZM10 7.5C10.2361 7.5 10.434 7.42014 10.5938 7.26042C10.7535 7.1007 10.8334 6.90278 10.8334 6.66667C10.8334 6.43056 10.7535 6.23264 10.5938 6.07292C10.434 5.9132 10.2361 5.83334 10 5.83334C9.76391 5.83334 9.56599 5.9132 9.40627 6.07292C9.24655 6.23264 9.16669 6.43056 9.16669 6.66667C9.16669 6.90278 9.24655 7.1007 9.40627 7.26042C9.56599 7.42014 9.76391 7.5 10 7.5ZM10 18.3333C8.84724 18.3333 7.76391 18.1146 6.75002 17.6771C5.73613 17.2396 4.85419 16.6458 4.10419 15.8958C3.35419 15.1458 2.76044 14.2639 2.32294 13.25C1.88544 12.2361 1.66669 11.1528 1.66669 10C1.66669 8.84723 1.88544 7.76389 2.32294 6.75C2.76044 5.73612 3.35419 4.85417 4.10419 4.10417C4.85419 3.35417 5.73613 2.76042 6.75002 2.32292C7.76391 1.88542 8.84724 1.66667 10 1.66667C11.1528 1.66667 12.2361 1.88542 13.25 2.32292C14.2639 2.76042 15.1459 3.35417 15.8959 4.10417C16.6459 4.85417 17.2396 5.73612 17.6771 6.75C18.1146 7.76389 18.3334 8.84723 18.3334 10C18.3334 11.1528 18.1146 12.2361 17.6771 13.25C17.2396 14.2639 16.6459 15.1458 15.8959 15.8958C15.1459 16.6458 14.2639 17.2396 13.25 17.6771C12.2361 18.1146 11.1528 18.3333 10 18.3333Z" fill="white"/>
+                      </svg> DESCRIPTION</p>
+                    <p id="edit-profile-summary" class="cursor-pointer text-teal-100 text-xs font-second flex items-center gap-2">Edit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <path d="M12.8667 6.45001L10.0333 3.65001L10.9667 2.71668C11.2222 2.46112 11.5361 2.33334 11.9083 2.33334C12.2806 2.33334 12.5944 2.46112 12.85 2.71668L13.7833 3.65001C14.0389 3.90557 14.1722 4.2139 14.1833 4.57501C14.1944 4.93612 14.0722 5.24445 13.8167 5.50001L12.8667 6.45001ZM2.66667 14.5C2.47778 14.5 2.31944 14.4361 2.19167 14.3083C2.06389 14.1806 2 14.0222 2 13.8333V11.95C2 11.8611 2.01667 11.775 2.05 11.6917C2.08333 11.6083 2.13333 11.5333 2.2 11.4667L9.06667 4.60001L11.9 7.43334L5.03333 14.3C4.96667 14.3667 4.89167 14.4167 4.80833 14.45C4.725 14.4833 4.63889 14.5 4.55 14.5H2.66667Z" fill="#3DD1DB"/>
+                      </svg></p>
+                </div>
+                <div id="description" class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
+                    <div class="text-center">
+                        <p class="font-bold text-base text-white">Describe your organization here!</p>
+                        <p class="font-second text-white-60 text-sm font-medium px-14 mb-2">This is your chance to describe the best out of your organization. Seekers might judge your organization based from the description you wrote.</p>
+                        <button id="button-profile-summary" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                          </svg> Add Description</button>
+                    </div>
+                </div>
+            </div>
+            <div class="experiences rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4.16667 17.5C3.70833 17.5 3.31597 17.3368 2.98958 17.0104C2.66319 16.684 2.5 16.2917 2.5 15.8333V4.16667C2.5 3.70833 2.66319 3.31597 2.98958 2.98958C3.31597 2.66319 3.70833 2.5 4.16667 2.5H15.8333C16.2917 2.5 16.684 2.66319 17.0104 2.98958C17.3368 3.31597 17.5 3.70833 17.5 4.16667V15.8333C17.5 16.2917 17.3368 16.684 17.0104 17.0104C16.684 17.3368 16.2917 17.5 15.8333 17.5H4.16667ZM5 14.1667H15L11.875 10L9.375 13.3333L7.5 10.8333L5 14.1667Z" fill="white"/>
+                      </svg> GALLERY</p>
+                    <p id="edit-experiences" class="cursor-pointer text-teal-100 text-xs font-second flex items-center gap-2">Edit <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <path d="M12.8667 6.45001L10.0333 3.65001L10.9667 2.71668C11.2222 2.46112 11.5361 2.33334 11.9083 2.33334C12.2806 2.33334 12.5944 2.46112 12.85 2.71668L13.7833 3.65001C14.0389 3.90557 14.1722 4.2139 14.1833 4.57501C14.1944 4.93612 14.0722 5.24445 13.8167 5.50001L12.8667 6.45001ZM2.66667 14.5C2.47778 14.5 2.31944 14.4361 2.19167 14.3083C2.06389 14.1806 2 14.0222 2 13.8333V11.95C2 11.8611 2.01667 11.775 2.05 11.6917C2.08333 11.6083 2.13333 11.5333 2.2 11.4667L9.06667 4.60001L11.9 7.43334L5.03333 14.3C4.96667 14.3667 4.89167 14.4167 4.80833 14.45C4.725 14.4833 4.63889 14.5 4.55 14.5H2.66667Z" fill="#3DD1DB"/>
+                      </svg></p>
+                </div>
+                <div id="experiences" class="w-100 p-5 pb-6 bg-body rounded-b-2xl divide-y divide-header">
+                    <div class="text-center">
+                        <p class="font-bold text-base text-white">How exciting is working for your organization?</p>
+                        <p class="font-second text-white-60 text-sm font-medium px-20 mb-2">Here, you can show pictures of your office, meetings, and most importantly - the people that work here.</p>
+                        <button id="button-experiences" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                          </svg> Add Pictures</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <div class="profie-completion rounded-2xl overlay-tale p-4">
+                <p class="text-base font-normal text-white tracking-[1.6px]">PROFILE COMPLETION</p>
+                <p class="font-extrabold text-4xl text-white mt-3 mb-2"><span id="completion_rate">0</span>%</p>
+                <p class="font-second text-sm text-white-60 font-semibold">Complete your profile to differentiate yourself from other candidates!</p>
+                <div class="flex flex-col gap-2 text-sm text-teal-100 font-medium font-second mt-2">
+                    <p id="completion-profile-picture" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
+                        <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
+                        </svg>Complete Basic Information</p>
+                    <p id="completion-profile-summary" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
+                        <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
+                        </svg>Add Description</p>
+                    <p id="completion-experiences" class="flex items-center gap-2 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                        <circle cx="8" cy="8.5" r="8" fill="white" fill-opacity="0.16"/>
+                        <circle cx="8" cy="8.5" r="7" stroke="white" stroke-opacity="0.16" stroke-width="2"/>
+                        </svg>Add Pictures to Gallery</p>
+                </div>
+            </div>
+            <div class="profile-viewers bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="w-100 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10.0002 13.3333C11.0418 13.3333 11.9272 12.9688 12.6564 12.2396C13.3856 11.5104 13.7502 10.625 13.7502 9.58334C13.7502 8.54168 13.3856 7.65626 12.6564 6.92709C11.9272 6.19793 11.0418 5.83334 10.0002 5.83334C8.9585 5.83334 8.07308 6.19793 7.34391 6.92709C6.61475 7.65626 6.25016 8.54168 6.25016 9.58334C6.25016 10.625 6.61475 11.5104 7.34391 12.2396C8.07308 12.9688 8.9585 13.3333 10.0002 13.3333ZM10.0002 11.8333C9.37516 11.8333 8.84391 11.6146 8.40641 11.1771C7.96891 10.7396 7.75016 10.2083 7.75016 9.58334C7.75016 8.95834 7.96891 8.42709 8.40641 7.98959C8.84391 7.55209 9.37516 7.33334 10.0002 7.33334C10.6252 7.33334 11.1564 7.55209 11.5939 7.98959C12.0314 8.42709 12.2502 8.95834 12.2502 9.58334C12.2502 10.2083 12.0314 10.7396 11.5939 11.1771C11.1564 11.6146 10.6252 11.8333 10.0002 11.8333ZM10.0002 15.8333C7.97238 15.8333 6.12516 15.2674 4.4585 14.1354C2.79183 13.0035 1.5835 11.4861 0.833496 9.58334C1.5835 7.68057 2.79183 6.1632 4.4585 5.03126C6.12516 3.89932 7.97238 3.33334 10.0002 3.33334C12.0279 3.33334 13.8752 3.89932 15.5418 5.03126C17.2085 6.1632 18.4168 7.68057 19.1668 9.58334C18.4168 11.4861 17.2085 13.0035 15.5418 14.1354C13.8752 15.2674 12.0279 15.8333 10.0002 15.8333Z" fill="white"/>
+                      </svg> PROFILE VIEWERS</p>
+                </div>
+                <p class="font-second text-sm font-semibold text-white-60 mt-3">The number of people who viewed your profile this week.</p>
+                <p class="font-extrabold text-4xl text-white mt-5 flex items-center gap-2"><span id="profile-viewers">-</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3.4 18L2 16.6L9.4 9.15L13.4 13.15L18.6 8H16V6H22V12H20V9.4L13.4 16L9.4 12L3.4 18Z" fill="#2BDE68"/>
+                  </svg></p>
+            </div>
+            <div class="profile-viewers bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="w-100 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.5 2.5V0.833333H12.5V2.5H7.5ZM9.16667 11.6667H10.8333V6.66667H9.16667V11.6667ZM10 18.3333C8.97222 18.3333 8.00347 18.1354 7.09375 17.7396C6.18403 17.3438 5.38889 16.8056 4.70833 16.125C4.02778 15.4444 3.48958 14.6493 3.09375 13.7396C2.69792 12.8299 2.5 11.8611 2.5 10.8333C2.5 9.80556 2.69792 8.83681 3.09375 7.92708C3.48958 7.01736 4.02778 6.22222 4.70833 5.54167C5.38889 4.86111 6.18403 4.32292 7.09375 3.92708C8.00347 3.53125 8.97222 3.33333 10 3.33333C10.8611 3.33333 11.6875 3.47222 12.4792 3.75C13.2708 4.02778 14.0139 4.43056 14.7083 4.95833L15.875 3.79167L17.0417 4.95833L15.875 6.125C16.4028 6.81944 16.8056 7.5625 17.0833 8.35417C17.3611 9.14583 17.5 9.97222 17.5 10.8333C17.5 11.8611 17.3021 12.8299 16.9062 13.7396C16.5104 14.6493 15.9722 15.4444 15.2917 16.125C14.6111 16.8056 13.816 17.3438 12.9062 17.7396C11.9965 18.1354 11.0278 18.3333 10 18.3333Z" fill="white"/>
+                      </svg> RESPONSE TIME</p>
+                </div>
+                <p class="font-second text-sm font-semibold text-white-60 mt-3">Your average response time to review a candidate's application. The quicker the better.</p>
+                <p class="font-extrabold text-4xl text-white mt-5 flex items-center gap-2"><span id="profile-viewers">-</span> days</p>
+            </div>
+            <div class="recruiter-profile bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="w-100 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M5.62504 16.0417L3.04171 15.5208C2.88893 15.4931 2.76046 15.4132 2.65629 15.2812C2.55212 15.1493 2.51393 15 2.54171 14.8333L2.83337 12.3333L1.18754 10.4167C1.07643 10.3056 1.02087 10.1667 1.02087 10C1.02087 9.83333 1.07643 9.69444 1.18754 9.58333L2.83337 7.6875L2.54171 5.1875C2.51393 5.02083 2.55212 4.87153 2.65629 4.73958C2.76046 4.60764 2.88893 4.52778 3.04171 4.5L5.62504 3.97917L6.91671 1.75C7.00004 1.61111 7.1181 1.51389 7.27087 1.45833C7.42365 1.40278 7.57643 1.40972 7.72921 1.47917L10 2.54167L12.2709 1.47917C12.4237 1.40972 12.5799 1.39583 12.7396 1.4375C12.8993 1.47917 13.0139 1.57639 13.0834 1.72917L14.3959 3.97917L16.9584 4.5C17.1112 4.52778 17.2396 4.60764 17.3438 4.73958C17.448 4.87153 17.4862 5.02083 17.4584 5.1875L17.1667 7.6875L18.8125 9.58333C18.9237 9.69444 18.9792 9.83333 18.9792 10C18.9792 10.1667 18.9237 10.3056 18.8125 10.4167L17.1667 12.3333L17.4584 14.8333C17.4862 15 17.448 15.1493 17.3438 15.2812C17.2396 15.4132 17.1112 15.4931 16.9584 15.5208L14.3959 16.0417L13.0834 18.2708C13.0139 18.4236 12.8993 18.5208 12.7396 18.5625C12.5799 18.6042 12.4237 18.5903 12.2709 18.5208L10 17.4583L7.72921 18.5208C7.57643 18.5903 7.42365 18.5972 7.27087 18.5417C7.1181 18.4861 7.00004 18.3889 6.91671 18.25L5.62504 16.0417ZM8.66671 12.3333C8.79171 12.4583 8.93754 12.5208 9.10421 12.5208C9.27087 12.5208 9.41671 12.4583 9.54171 12.3333L13.3959 8.52083C13.507 8.40972 13.5591 8.26736 13.5521 8.09375C13.5452 7.92014 13.4792 7.77083 13.3542 7.64583C13.2292 7.52083 13.0799 7.4618 12.9063 7.46875C12.7327 7.47569 12.5764 7.54167 12.4375 7.66667L9.10421 10.9792L7.58337 9.375C7.45837 9.23611 7.30212 9.17014 7.11462 9.17708C6.92712 9.18403 6.77087 9.25694 6.64587 9.39583C6.52087 9.53472 6.4549 9.69444 6.44796 9.875C6.44101 10.0556 6.50699 10.2083 6.64587 10.3333L8.66671 12.3333Z" fill="white"/>
+                      </svg> VERIFICATION</p>
+                </div>
+                <p class="font-second text-sm font-semibold text-white-60 mt-3">Verification makes job seekers feel safe when applying to a job vacancy.</p>
+                <button type="button" id="button-recruiter" class="w-[220px] bg-teal-100 font-second py-3 m-auto text-sm font-medium text-teal-8 mt-5 rounded-lg">Apply for Verification</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="popup" class="fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100 hidden">
+
+    <!-- POPUP BASIC INFORMATION -->
+
+    <div class="popup popup-basic border-2 border-header w-[720px] hidden">
+        <form id="form-basic-information">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M3.33341 17.5C2.87508 17.5 2.48272 17.3368 2.15633 17.0104C1.82994 16.684 1.66675 16.2917 1.66675 15.8334V6.66669C1.66675 6.20835 1.82994 5.81599 2.15633 5.4896C2.48272 5.16321 2.87508 5.00002 3.33341 5.00002H6.66675V3.33335C6.66675 2.87502 6.82994 2.48266 7.15633 2.15627C7.48272 1.82988 7.87508 1.66669 8.33341 1.66669H11.6667C12.1251 1.66669 12.5174 1.82988 12.8438 2.15627C13.1702 2.48266 13.3334 2.87502 13.3334 3.33335V5.00002H16.6667C17.1251 5.00002 17.5174 5.16321 17.8438 5.4896C18.1702 5.81599 18.3334 6.20835 18.3334 6.66669V15.8334C18.3334 16.2917 18.1702 16.684 17.8438 17.0104C17.5174 17.3368 17.1251 17.5 16.6667 17.5H3.33341ZM8.33341 5.00002H11.6667V3.33335H8.33341V5.00002Z" fill="white"/>
+                  </svg> EDITING BASIC INFORMATION</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body divide-y divide-header bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Logo</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-[80px] h-[80px] rounded-lg bg-white overflow-hidden">
+                            <img id="popup-profile-pic" src="/img/Ellipse 3.svg" alt="profile-pic" class="w-full h-full object-cover">
+                        </div>
+                        <div class="">
+                            <p class="text-white-60 font-second text-sm font-medium mb-2">Add your organization's logo here.<br>
+                            <span class="text-white">Maximum file size is 1 MB.</span></p>
+                            <label for="custom-input-file">
+                                <input type="file" id="custom-input-file" class="hidden" name="profile-picture" accept="image/*"/>
+                                <button id="button-profile-pic" type="button" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                    <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                </svg> Upload Logo</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Basic Information</p>
+                    <div class="mb-4 flex flex-col gap-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION NAME*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-firstname" type="text" value="Startup Keren" name="first_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">SHORT DESCRIPTION*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-lastname" type="text" value="Artificial Intelligence Agency" name="last_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                            <p class="text-xs font-second font-normal text-white-60 mt-1">Describe your organization in one sentence. (Ex. Creative Agency, Startup Media for Gen-Z, etc.)</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex gap-5 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION SIZE*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <select id="countries" name="rec_org_size" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                <option value="1-5 people" selected>1-5 people</option>
+                                <option value="5-100">5-100</option>
+                                <option value="> 100">> 100</option>
+                            </select>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">YEAR FOUNDED*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-mobile" type="number" value="2023" name="mobile" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-4 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WEBSITE</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-mobile" type="text" value="www.startupkeren.id" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE ADDRESS</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-mobile" type="South Jakarta" value="South Jakarta" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP PROFILE SUMMARY -->
+
+    <div class="popup popup-summary border-2 border-header w-[720px] hidden">
+        <form id="form-profile-summary">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10.0001 14.1667C10.2362 14.1667 10.4341 14.0868 10.5938 13.9271C10.7536 13.7674 10.8334 13.5695 10.8334 13.3334V10C10.8334 9.76391 10.7536 9.56599 10.5938 9.40627C10.4341 9.24655 10.2362 9.16669 10.0001 9.16669C9.76397 9.16669 9.56605 9.24655 9.40633 9.40627C9.24661 9.56599 9.16675 9.76391 9.16675 10V13.3334C9.16675 13.5695 9.24661 13.7674 9.40633 13.9271C9.56605 14.0868 9.76397 14.1667 10.0001 14.1667ZM10.0001 7.50002C10.2362 7.50002 10.4341 7.42016 10.5938 7.26044C10.7536 7.10071 10.8334 6.9028 10.8334 6.66669C10.8334 6.43058 10.7536 6.23266 10.5938 6.07294C10.4341 5.91321 10.2362 5.83335 10.0001 5.83335C9.76397 5.83335 9.56605 5.91321 9.40633 6.07294C9.24661 6.23266 9.16675 6.43058 9.16675 6.66669C9.16675 6.9028 9.24661 7.10071 9.40633 7.26044C9.56605 7.42016 9.76397 7.50002 10.0001 7.50002ZM10.0001 18.3334C8.8473 18.3334 7.76397 18.1146 6.75008 17.6771C5.73619 17.2396 4.85425 16.6459 4.10425 15.8959C3.35425 15.1459 2.7605 14.2639 2.323 13.25C1.8855 12.2361 1.66675 11.1528 1.66675 10C1.66675 8.84724 1.8855 7.76391 2.323 6.75002C2.7605 5.73613 3.35425 4.85419 4.10425 4.10419C4.85425 3.35419 5.73619 2.76044 6.75008 2.32294C7.76397 1.88544 8.8473 1.66669 10.0001 1.66669C11.1529 1.66669 12.2362 1.88544 13.2501 2.32294C14.264 2.76044 15.1459 3.35419 15.8959 4.10419C16.6459 4.85419 17.2397 5.73613 17.6772 6.75002C18.1147 7.76391 18.3334 8.84724 18.3334 10C18.3334 11.1528 18.1147 12.2361 17.6772 13.25C17.2397 14.2639 16.6459 15.1459 15.8959 15.8959C15.1459 16.6459 14.264 17.2396 13.2501 17.6771C12.2362 18.1146 11.1529 18.3334 10.0001 18.3334Z" fill="white"/>
+                  </svg> EDITING DESCRIPTION</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body bg-body rounded-b-2xl p-5 pb-6">
+                <p class="font-bold text-lg text-white">Your Organization's Description</p>
+                <p class="text-white-60 font-second font-medium text-sm mb-3">Create an engaging organization description by concisely stating your startup's mission, unique qualities, and career growth opportunities, while also showcasing awards and company culture.</p>        
+                <textarea id="popup-summary-textarea" rows="4" name="profile_summary" class="focus:ring-white-60 block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your summary here..."></textarea>
+                <div class="flex gap-3 justify-end mt-8">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP GALLERY -->
+
+    <div class="popup popup-gallery border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4.16667 17.5C3.70833 17.5 3.31597 17.3368 2.98958 17.0104C2.66319 16.684 2.5 16.2917 2.5 15.8333V4.16667C2.5 3.70833 2.66319 3.31597 2.98958 2.98958C3.31597 2.66319 3.70833 2.5 4.16667 2.5H15.8333C16.2917 2.5 16.684 2.66319 17.0104 2.98958C17.3368 3.31597 17.5 3.70833 17.5 4.16667V15.8333C17.5 16.2917 17.3368 16.684 17.0104 17.0104C16.684 17.3368 16.2917 17.5 15.8333 17.5H4.16667ZM5 14.1667H15L11.875 10L9.375 13.3333L7.5 10.8333L5 14.1667Z" fill="white"/>
+              </svg> EDITING GALLERY</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl min-h-[300px] max-h-[500px] overflow-y-scroll divide-y divide-header">
+            <div class="p-5 pb-2">
+                <p class="font-bold text-lg text-white">Showcase real work conditions in your organization!</p>
+                <p class="text-white-60 font-second font-medium text-sm mb-3">Here, you can show pictures of your office, meetings, and most importantly - the people that work here.</p>        
+            </div>
+            <div class="p-5 pt-2">
+                <p class="font-medium font-second text-sm text-white mt-3 mb-5">Upload up to 4 images. Maximum file size is 2 MB.</p>
+                <div class="flex gap-5 overflow-x-scroll w-full mb-5">
+                    <div class="w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path d="M36.5 17.1C36.0667 17.1 35.7083 16.9583 35.425 16.675C35.1417 16.3917 35 16.0333 35 15.6V13.05H32.45C32.0167 13.05 31.6583 12.9083 31.375 12.625C31.0917 12.3417 30.95 11.9833 30.95 11.55C30.95 11.1167 31.0917 10.7583 31.375 10.475C31.6583 10.1917 32.0167 10.05 32.45 10.05H35V7.5C35 7.06667 35.1417 6.70833 35.425 6.425C35.7083 6.14167 36.0667 6 36.5 6C36.9333 6 37.2917 6.14167 37.575 6.425C37.8583 6.70833 38 7.06667 38 7.5V10.05H40.55C40.9833 10.05 41.3417 10.1917 41.625 10.475C41.9083 10.7583 42.05 11.1167 42.05 11.55C42.05 11.9833 41.9083 12.3417 41.625 12.625C41.3417 12.9083 40.9833 13.05 40.55 13.05H38V15.6C38 16.0333 37.8583 16.3917 37.575 16.675C37.2917 16.9583 36.9333 17.1 36.5 17.1ZM13.55 33.9H34.5C34.8333 33.9 35.0667 33.7667 35.2 33.5C35.3333 33.2333 35.3 32.9667 35.1 32.7L29.4 25.1C29.2333 24.9 29.0333 24.8 28.8 24.8C28.5667 24.8 28.3667 24.9 28.2 25.1L22.45 32.65L18.35 27.25C18.1833 27.0167 17.9833 26.9 17.75 26.9C17.5167 26.9 17.3167 27.0167 17.15 27.25L12.95 32.7C12.75 32.9667 12.7167 33.2333 12.85 33.5C12.9833 33.7667 13.2167 33.9 13.55 33.9ZM9 42C8.2 42 7.5 41.7 6.9 41.1C6.3 40.5 6 39.8 6 39V9C6 8.2 6.3 7.5 6.9 6.9C7.5 6.3 8.2 6 9 6H27.95V15.85C27.95 16.2833 28.0917 16.6417 28.375 16.925C28.6583 17.2083 29.0167 17.35 29.45 17.35H30.7V18.6C30.7 19.0333 30.8417 19.3917 31.125 19.675C31.4083 19.9583 31.7667 20.1 32.2 20.1H42V39C42 39.8 41.7 40.5 41.1 41.1C40.5 41.7 39.8 42 39 42H9Z" fill="#3DD1DB"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP VERIVICATION -->
+
+    <div class="popup popup-education border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.62516 16.0417L3.04183 15.5208C2.88905 15.4931 2.76058 15.4132 2.65641 15.2812C2.55225 15.1493 2.51405 15 2.54183 14.8333L2.8335 12.3333L1.18766 10.4167C1.07655 10.3056 1.021 10.1667 1.021 10C1.021 9.83333 1.07655 9.69444 1.18766 9.58333L2.8335 7.6875L2.54183 5.1875C2.51405 5.02083 2.55225 4.87153 2.65641 4.73958C2.76058 4.60764 2.88905 4.52778 3.04183 4.5L5.62516 3.97917L6.91683 1.75C7.00016 1.61111 7.11822 1.51389 7.271 1.45833C7.42377 1.40278 7.57655 1.40972 7.72933 1.47917L10.0002 2.54167L12.271 1.47917C12.4238 1.40972 12.58 1.39583 12.7397 1.4375C12.8995 1.47917 13.0141 1.57639 13.0835 1.72917L14.396 3.97917L16.9585 4.5C17.1113 4.52778 17.2397 4.60764 17.3439 4.73958C17.4481 4.87153 17.4863 5.02083 17.4585 5.1875L17.1668 7.6875L18.8127 9.58333C18.9238 9.69444 18.9793 9.83333 18.9793 10C18.9793 10.1667 18.9238 10.3056 18.8127 10.4167L17.1668 12.3333L17.4585 14.8333C17.4863 15 17.4481 15.1493 17.3439 15.2812C17.2397 15.4132 17.1113 15.4931 16.9585 15.5208L14.396 16.0417L13.0835 18.2708C13.0141 18.4236 12.8995 18.5208 12.7397 18.5625C12.58 18.6042 12.4238 18.5903 12.271 18.5208L10.0002 17.4583L7.72933 18.5208C7.57655 18.5903 7.42377 18.5972 7.271 18.5417C7.11822 18.4861 7.00016 18.3889 6.91683 18.25L5.62516 16.0417ZM8.66683 12.3333C8.79183 12.4583 8.93766 12.5208 9.10433 12.5208C9.271 12.5208 9.41683 12.4583 9.54183 12.3333L13.396 8.52083C13.5071 8.40972 13.5592 8.26736 13.5522 8.09375C13.5453 7.92014 13.4793 7.77083 13.3543 7.64583C13.2293 7.52083 13.08 7.4618 12.9064 7.46875C12.7328 7.47569 12.5766 7.54167 12.4377 7.66667L9.10433 10.9792L7.5835 9.375C7.4585 9.23611 7.30225 9.17014 7.11475 9.17708C6.92725 9.18403 6.771 9.25694 6.646 9.39583C6.521 9.53472 6.45502 9.69444 6.44808 9.875C6.44113 10.0556 6.50711 10.2083 6.646 10.3333L8.66683 12.3333Z" fill="white"/>
+              </svg> APPLYING FOR VERIFICATION</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+            <div id="registered-education" class="main-popup">
+                <div class="divide-y divide-header">
+                    <div class="p-5">
+                        <p class="font-bold text-lg text-white mb-1">Verification boosts your organizations credibility</p>
+                        <p class="text-white-60 text-sm font-second font-medium">To apply for a Verified Badge, you will have to submit a few legal documents to verify your organization's legitimacy.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<%- include('./layouts/footer'); -%>
+<!-- <script src="/js/SeekerProfilePage.js"></script>
+<script>
+    const USER_ID = $("#user_id").text()
+
+    $("#add-experience").click(function(){
+        $("#registered-experience").addClass("hidden")
+        $("#adding-new-experience").removeClass("hidden")
+    })
+    
+    $("#add-education").click(function(){
+        $("#registered-education").addClass("hidden")
+        $("#adding-new-education").removeClass("hidden")
+    })
+
+    $(".button-next").click(function(){
+        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+        $(".body-percent").eq(body_percent_idx).addClass("hidden")
+        $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+    })
+
+    $(".button-back").click(function(){
+        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+        $(".body-percent").eq(body_percent_idx).addClass("hidden")
+        $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
+    })
+
+    $(".cancle-add").click(function(){
+        $(this).closest(".body").find(".additional-popup").addClass("hidden")
+        $(this).closest(".body").find(".main-popup").removeClass('hidden')
+    })
+
+    $("#still-work-here").change(function(){
+        if($(this).is(":checked")){
+            $("input[name=exp_enddate]").prop("disabled", true)
+        }else{
+            $("input[name=exp_enddate]").prop("disabled", false)
+        }
+    })
+
+    $("#active-search").change(function(){
+        $(this).val($(this).is(":checked"))
+        const form_update = document.getElementById("form-update-active-search");
+        const formData = new FormData(form_update)
+        if($(this).val() == "false") formData.append("active_search", false)
+        
+        $.ajax({
+            url: `/api/v1/seeker/${USER_ID}`,
+            type: "PUT",
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            encrypt: "multipart/form-data",
+            processData: false,
+            success: (response) => {
+                if(response.status_code == 200){
+                    location.reload()
+                }
+            },
+            error: function (request, status, error) {
+                alert("Error!")
+            },
+        });
+    })
+
+    $("#button-profile-pic").click(function(){
+        $("#custom-input-file").click()
+    })
+
+    $("#button-input-resume").click(function(){
+        $("#custom-input-resume").click()
+    })
+
+    $("#custom-input-file").on("change", function() {
+        const selectedImage = this.files[0];
+        if (selectedImage) {
+            const imageUrl = URL.createObjectURL(selectedImage);
+            $("#popup-profile-pic").attr("src", imageUrl);
+        } else {
+            $("#popup-profile-pic").attr("src", "/img/Ellipse 3.svg");
+        }
+    });
+
+    $(".delete-attachment").click(function(){
+        const ATTACHMENT_NAME = $(this).closest(".attachment-body").find(".field_name").text()
+        updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/attachment/${ATTACHMENT_NAME}`, "DELETE")
+    })
+
+    $("#popup-recruiter-org").find("input").on("input", function(){
+        const nonEmptyInputs = $("#popup-recruiter-org").find("input").filter(function() {
+            return $(this).val().length > 0;
+        });
+
+        if(nonEmptyInputs.length === 5){
+            $("#button-recruiter-org").prop("disabled", false)
+        }else{
+            $("#button-recruiter-org").prop("disabled", true)
+        }
+    })
+
+    $("#popup-recruiter-info").find("input").on("input", function(){
+        const nonEmptyInputs = $("#popup-recruiter-info").find("input").filter(function() {
+            return $(this).val().length > 0;
+        });
+
+        if(nonEmptyInputs.length === 4){
+            $("#button-recruiter-info").prop("disabled", false)
+        }else{
+            $("#button-recruiter-info").prop("disabled", true)
+        }
+    })
+    
+
+
+
+
+
+
+    // -------- update basic information data -------- 
+    updateSeekerData("form-basic-information", `/api/v1/seeker/${USER_ID}`,"PUT")
+
+    
+    // -------- update profile summary data -------- 
+    updateSeekerData("form-profile-summary", `/api/v1/seeker/${USER_ID}`,"PUT")
+
+
+    // -------- update profile experiences -------- 
+    // ADD
+    updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
+    
+    
+    // -------- add profile educations -------- 
+    // ADD
+    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
+    
+
+    // -------- add attachment -------- 
+    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
+
+    // -------- Delete EDUCATION || EXPERIENCE ---------
+    $("#popup").on("click", ".delete-svg-button", function(){
+        const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
+        const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
+        let confirmDeletion = confirm("Are you sure?")
+        if(CARD_EDUCATION_ID && confirmDeletion){
+            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "DELETE")
+        }
+        if(CARD_EXPERIENCE_ID && confirmDeletion){
+            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
+        }
+    })
+    
+    updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
+    
+
+
+    function updateSeekerData(formId, URL, method){
+        const form_update = document.getElementById(formId);
+        $(`#${formId}`).submit(function(e){
+            e.preventDefault();
+            let formData = new FormData(form_update)
+            $.ajax({
+                url: URL,
+                type: method,
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                encrypt: "multipart/form-data",
+                processData: false,
+                success: (response) => {
+                    if(response.status_code == 200){
+                        location.reload()
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("Error!")
+                },
+            });
+        })
+    }
+
+    function updateSeekerDataWithoutForm(URL, method){
+        $.ajax({
+            url: URL,
+            type: method,
+            success: function (response) {
+                if(startsWithTwo(response.status_code)){
+                    location.reload()
+                }
+            },
+            error: function (error) {
+                alert("Error")
+            }
+        });
+    }
+
+    function startsWithTwo(input) {
+        const regex = /^2\d+/; // '^2' menunjukkan input harus dimulai dengan '2', dan '\d+' menunjukkan satu atau lebih digit.
+        return regex.test(input);
+    }
+</script> -->
