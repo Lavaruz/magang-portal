@@ -92,7 +92,7 @@ export const loginSeeker = async (req: Request, res: Response) => {
       } else {
         const accessToken = createToken(seeker);
         res.cookie("access-token", accessToken, {
-          maxAge: 3600000,
+          maxAge: 360000000,
         });
         return response(200, "success login", seeker, res)
       }

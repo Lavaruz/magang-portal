@@ -1,6 +1,11 @@
-import { DataTypes, Model,CreationOptional, ForeignKey, } from "sequelize";
+import { DataTypes, Model,Association, HasManyAddAssociationMixin, HasManyCountAssociationsMixin,
+  HasManyCreateAssociationMixin, HasManyGetAssociationsMixin, HasManyHasAssociationMixin,
+  HasManySetAssociationsMixin, HasManyAddAssociationsMixin, HasManyHasAssociationsMixin,
+  HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin, ModelDefined, Optional,
+  Sequelize, InferAttributes, InferCreationAttributes, CreationOptional, NonAttribute, ForeignKey, HasOneCreateAssociationMixin, HasOneGetAssociationMixin, HasOneSetAssociationMixin, } from "sequelize";
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
 import Seeker from "./Seeker";
+import Gallery from "./Gallery";
 
 class Recruiter extends Model {
   declare id: CreationOptional<number>;
@@ -11,6 +16,7 @@ class Recruiter extends Model {
   declare rec_org_year:string;
   declare rec_org_website:string;
   declare rec_org_address:string;
+  declare rec_org_logo:string;
   declare rec_info_firstname:string;
   declare rec_info_lastname:string;
   declare rec_info_email:string;
@@ -18,10 +24,25 @@ class Recruiter extends Model {
   declare rec_tier:string;
   declare ownerId: ForeignKey<Seeker['id']>;
 
+
+  declare rec_banner: string;
+  declare rec_description: string;
+  declare rec_verified: boolean;
+  declare rec_profile_view: number;
+  declare rec_response_time: boolean;
+
   // createdAt can be undefined during creation
   declare createdAt: CreationOptional<Date>;
   // updatedAt can be undefined during creation
   declare updatedAt: CreationOptional<Date>;
+
+  
+
+  // Mixin Gallery Has Many
+  declare addGallery: HasManyAddAssociationMixin<Gallery, number>
+  declare hasGallery: HasManyHasAssociationMixin<Gallery, number>
+  declare removeGallery: HasManyRemoveAssociationsMixin<Gallery,number>
+  declare getGallerys: HasManyGetAssociationsMixin<Gallery>
 }
 
 Recruiter.init(
@@ -38,11 +59,24 @@ Recruiter.init(
     rec_org_year:DataTypes.STRING,
     rec_org_website:DataTypes.TEXT,
     rec_org_address:DataTypes.TEXT,
+    rec_org_logo: DataTypes.TEXT,
     rec_info_firstname:DataTypes.STRING,
     rec_info_lastname:DataTypes.STRING,
     rec_info_email:DataTypes.STRING,
     rec_info_position:DataTypes.STRING,
     rec_tier:DataTypes.STRING,
+
+    rec_description:DataTypes.TEXT,
+    rec_verified:{
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    rec_profile_view: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    rec_response_time: DataTypes.STRING,
+    rec_banner: DataTypes.STRING,
 
     // timestamps
     createdAt: DataTypes.DATE,
@@ -53,5 +87,12 @@ Recruiter.init(
     sequelize, // Instance Sequelize yang digunakan
   }
 );
+
+Recruiter.hasMany(Gallery, {
+  sourceKey: 'id',
+  foreignKey: 'ownerId',
+  as: 'gallery', // this determines the name in `associations`!
+  constraints:false
+});
 
 export default Recruiter;

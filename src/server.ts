@@ -31,6 +31,7 @@ const storage = multer.diskStorage({
 import { connectToDatabase } from "./models";
 import viewRouter from "./router/viewRouter";
 import seekerRouter from "./router/seeker.router";
+import recruiterRouter from "./router/recruiter.router";
 
 app.use(cors())
 app.use(express.json());
@@ -53,6 +54,7 @@ connectToDatabase()
     const VERSION_API = "v1";
     app.use("/", viewRouter);
     app.use(`/api/${VERSION_API}/seeker`, seekerRouter);
+    app.use(`/api/${VERSION_API}/recruiter`, recruiterRouter);
     app.listen(PORT, () => {
       console.log(`Server berjalan di http://localhost:${PORT}`);
     });

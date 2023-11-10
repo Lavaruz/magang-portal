@@ -18,6 +18,10 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $(`input[name=sex][value=${seekerData.sex}]`).prop("checked",true);
     $("#profile-viewers").text(seekerData.profile_viewers)
 
+    $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
+    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
+    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+
     if(seekerData.profile_picture){
         $("#navbar-profile-pic").attr("src", seekerData.profile_picture);
         $("#basic-profile-pic").attr("src", seekerData.profile_picture);
@@ -25,7 +29,7 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     }
 
     if(seekerData.role == "recruiter"){
-        // $(".recruiter-profile").remove()
+        $(".recruiter-profile").remove()
     }
 
     let completion_rate = 0

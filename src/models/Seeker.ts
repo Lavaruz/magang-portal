@@ -8,6 +8,7 @@ import Experience from "./Experience";
 import Education from "./Education";
 import Attachment from "./Attachment";
 import Recruiter from "./Recruiter";
+import Gallery from "./Gallery";
 
 class Seeker extends Model {
   declare id: CreationOptional<number>;

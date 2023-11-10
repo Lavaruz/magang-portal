@@ -1,5 +1,5 @@
 <%- include('./layouts/header'); -%>
-<%- include('./layouts/navbar'); -%>
+<%- include('./layouts/navbar-recruiter'); -%>
 
 <p id="user_id" style="display: none;"><%= id %></p>
 
@@ -1222,6 +1222,8 @@
 <script src="/js/SeekerProfilePage.js"></script>
 <script>
     const USER_ID = $("#user_id").text()
+
+    $("#navbar-seeker").removeClass("hidden")
 
     $("#add-experience").click(function(){
         $("#registered-experience").addClass("hidden")
