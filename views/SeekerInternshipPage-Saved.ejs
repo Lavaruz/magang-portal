@@ -1,0 +1,23 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar-seeker'); -%>
+
+<p id="user_id" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <div class="menu flex px-5 py-3 rounded-lg gap-10 bg-card-grey border-[1px] border-[#3b3b3b] mt-6 mb-5 text-white-60 font-normal">
+        <a href="/internships/" id="menu-foryou" class="cursor-pointer">FOR YOU ✨</a>
+        <a href="/internships/explore" id="menu-explore" class="cursor-pointer">EXPLORE</a>
+        <a href="/internships/saved" id="menu-saved" class="cursor-pointer selected">SAVED</a>
+        <a href="/internships/applied" id="menu-applied" class="cursor-pointer">APPLIED (2)</a>
+    </div>
+    <section id="saved">
+        <p class="text-xl text-white font-bold">Saved Vacancies</p>
+        <p class="font-second text-base text-medium text-white-60">Here are vacancies that you have saved before, you can apply to each by clicking on the vacancy!</p>
+        <div id="cards-grid" class="grid grid-cols-3 gap-4 mt-6">
+            <!-- CARD HERE -->
+        </div>
+    </section>
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script src="/js/SeekerInternshipPage-Saved.js"></script>

@@ -1,5 +1,6 @@
 import {
   addGallery,
+  addPost,
   getAllRecruiter,
   getRecruiterById, 
   updateRecruiter,
@@ -11,6 +12,7 @@ import {
   recruiterRouter.get("/", getAllRecruiter)
   recruiterRouter.get("/:id", getRecruiterById);
   recruiterRouter.post("/:id/gallery", addGallery);
+  recruiterRouter.post("/:id/post", addPost);
   recruiterRouter.put("/:id", updateRecruiter);
   
   export default recruiterRouter;

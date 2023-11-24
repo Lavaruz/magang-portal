@@ -1,11 +1,11 @@
 import { DataTypes, Model,CreationOptional, ForeignKey, } from "sequelize";
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
-import Seeker from "./Seeker";
+import Recruiter from "./Recruiter";
 
 class Gallery extends Model {
   declare id: CreationOptional<number>;
   declare gal_photo: string;
-  declare ownerId: ForeignKey<Seeker['id']>;
+  declare ownerId: ForeignKey<Recruiter['id']>;
 
   // createdAt can be undefined during creation
   declare createdAt: CreationOptional<Date>;

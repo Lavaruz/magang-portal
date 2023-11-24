@@ -242,7 +242,7 @@ function formatDate(inputDate) {
     const formattedDate = `${day} ${formattedMonth} ${year}`;
   
     return formattedDate;
-  }
+}
 
 function calculateMonthDifference(startDate, endDate) {
     let start = new Date(startDate);

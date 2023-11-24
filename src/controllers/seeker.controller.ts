@@ -9,6 +9,7 @@ import Attachment from "../models/Attachment";
 import path from "path";
 import fs from "fs"
 import Recruiter from "../models/Recruiter";
+import Post from "../models/Post";
 
 
 // Fungsi ini mengambil semua pengguna
@@ -18,7 +19,9 @@ export const getAllSeeker = async (req: Request, res: Response) => {
       {model:Experience, as:"experiences", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Attachment, as:"attachment", attributes:{exclude:["createdAt","updatedAt"]}},
-      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}}
+      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"applied", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"saved", attributes:{exclude:["createdAt","updatedAt"]}},
     ]});
     response(200, "success call all seeker", seeker, res);
   } catch (error) {
@@ -36,7 +39,13 @@ export const getSeekerById = async (req: Request, res: Response) => {
       {model:Experience, as:"experiences", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Attachment, as:"attachment", attributes:{exclude:["createdAt","updatedAt"]}},
-      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}}
+      {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"applied", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"saved", attributes:{exclude:["createdAt","updatedAt"]}, include:[
+        {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
+        {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+        {model:Seeker, as: "saved",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+      ]},
     ]});
     if (mahasiswa) {
       res.status(200).json(mahasiswa);
@@ -429,6 +438,35 @@ export const addRecruiter = async (req: Request, res: Response) => {
         seeker.update({role:"recruiter"})
         response(200, "Success update pengguna", seeker, res)
       })
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+
+
+export const addSavedPost = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const recruiterData = req.body; // Data pembaruan pengguna dari permintaan PUT
+  
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    const post = await Post.findByPk(recruiterData.post_id)
+    
+    if (seeker) {
+      if(recruiterData.loved == "true"){
+        seeker.addSaved(post)
+        return response(200, "Success update pengguna", [], res)
+      }else{
+        seeker.removeSaved(post)
+        return response(200, "Success hapus post", [], res)
+      }
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }

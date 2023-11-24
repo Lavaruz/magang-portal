@@ -10,12 +10,14 @@ import path from "path";
 import fs from "fs"
 import Recruiter from "../models/Recruiter";
 import Gallery from "../models/Gallery";
+import Post from "../models/Post";
   
 
 export const getAllRecruiter = async (req: Request, res: Response) => {
   try {
     const recruiters = await Recruiter.findAll({attributes:{exclude:["createdAt","updatedAt"]}, include:[
       {model:Gallery, as:"gallery", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"posts", attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}}
     ]});
     response(200, "success call all recruiter", recruiters, res);
   } catch (error) {
@@ -30,6 +32,7 @@ export const getRecruiterById = async (req: Request, res: Response) => {
     try {
         const recruiter = await Recruiter.findByPk(recruiterId,{attributes:{exclude:["createdAt","updatedAt"]}, include:[
           {model:Gallery, as:"gallery", attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+          {model:Post, as:"posts", attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
         ]});
         if (recruiter) {
         res.status(200).json(recruiter);
@@ -147,6 +150,36 @@ export const addGallery = async (req: Request, res: Response) => {
     }
   } catch (error) {
     console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+
+// POST
+
+export const addPost = async (req: Request, res: Response) => {
+  let postData = req.body; // Anda akan mendapatkan data pengguna dari permintaan POST
+  const recruiterId = req.params.id
+  try {
+    const recruiter = await Recruiter.findByPk(recruiterId);
+
+    if(postData.post_resume_req) postData.post_resume_req = true
+    if(postData.post_portfolio_req) postData.post_portfolio_req = true
+    if(Array.isArray(postData.post_thp)) postData.post_thp = postData.post_thp.join(" - ")
+
+    console.log(postData.post_thp);
+    
+
+    if (recruiter) {
+      await Post.create(postData).then(async function(result){
+        await recruiter.addPost(result)
+        response(200, "Success update pengguna", recruiter, res)
+      })
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal membuat pengguna:", error);
     res.status(500).json({ error: "Server error" });
   }
 };

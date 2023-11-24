@@ -7,6 +7,9 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
 
     $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
+
+        $("#navbar-org-name").text(recruiterData.rec_org_name)
+
         $("#basic-org-name").text(recruiterData.rec_org_name)
         $("#basic-org-desc span").text(recruiterData.rec_org_desc)
         $("#basic-org-size").text(recruiterData.rec_org_size)

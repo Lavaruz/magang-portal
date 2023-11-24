@@ -2,13 +2,14 @@ import { DataTypes, Model,Association, HasManyAddAssociationMixin, HasManyCountA
   HasManyCreateAssociationMixin, HasManyGetAssociationsMixin, HasManyHasAssociationMixin,
   HasManySetAssociationsMixin, HasManyAddAssociationsMixin, HasManyHasAssociationsMixin,
   HasManyRemoveAssociationMixin, HasManyRemoveAssociationsMixin, ModelDefined, Optional,
-  Sequelize, InferAttributes, InferCreationAttributes, CreationOptional, NonAttribute, ForeignKey, HasOneCreateAssociationMixin, HasOneGetAssociationMixin, HasOneSetAssociationMixin, } from "sequelize";
+  Sequelize, InferAttributes, InferCreationAttributes, CreationOptional, NonAttribute, ForeignKey, HasOneCreateAssociationMixin, HasOneGetAssociationMixin, HasOneSetAssociationMixin, BelongsToManyAddAssociationMixin, BelongsToManyRemoveAssociationMixin, BelongsToManySetAssociationsMixin, } from "sequelize";
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
 import Experience from "./Experience";
 import Education from "./Education";
 import Attachment from "./Attachment";
 import Recruiter from "./Recruiter";
 import Gallery from "./Gallery";
+import Post from "./Post";
 
 class Seeker extends Model {
   declare id: CreationOptional<number>;
@@ -36,6 +37,11 @@ class Seeker extends Model {
   declare hasExperience: HasManyHasAssociationMixin<Experience, number>
   declare removeExperience: HasManyRemoveAssociationsMixin<Experience,number>
   declare getExperiences: HasManyGetAssociationsMixin<Experience>
+
+  // Mixin Experience Has Many
+  declare addSaved: BelongsToManyAddAssociationMixin<Post, number>
+  declare removeSaved: BelongsToManyRemoveAssociationMixin<Post,number>
+  declare setSaved: BelongsToManySetAssociationsMixin<Post,number>
 
   // Mixin Education Has Many
   declare addEducation: HasManyAddAssociationMixin<Education, number>
@@ -122,6 +128,32 @@ Seeker.hasOne(Attachment,{
   foreignKey: 'ownerId',
   as: 'attachment',
   constraints:false
+})
+
+Seeker.belongsToMany(Post,{
+  as: "applied",
+  sourceKey: "id",
+  constraints: false,
+  through: "SeekerPost"
+})
+Post.belongsToMany(Seeker,{
+  as: "applicants",
+  sourceKey: "id",
+  constraints: false,
+  through: "SeekerPost"
+})
+
+Seeker.belongsToMany(Post, {
+  sourceKey: 'id',
+  as: 'saved', // this determines the name in `associations`!
+  constraints:false,
+  through: "SeekerPostLoved"
+})
+Post.belongsToMany(Seeker, {
+  sourceKey: 'id',
+  as: 'saved', // this determines the name in `associations`!
+  constraints:false,
+  through: "SeekerPostLoved"
 })
 
 export default Seeker;

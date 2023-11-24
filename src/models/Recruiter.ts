@@ -6,6 +6,7 @@ import { DataTypes, Model,Association, HasManyAddAssociationMixin, HasManyCountA
 import { sequelize } from "."; // Pastikan Anda mengganti path sesuai dengan struktur direktori Anda
 import Seeker from "./Seeker";
 import Gallery from "./Gallery";
+import Post from "./Post";
 
 class Recruiter extends Model {
   declare id: CreationOptional<number>;
@@ -36,13 +37,17 @@ class Recruiter extends Model {
   // updatedAt can be undefined during creation
   declare updatedAt: CreationOptional<Date>;
 
-  
-
   // Mixin Gallery Has Many
   declare addGallery: HasManyAddAssociationMixin<Gallery, number>
   declare hasGallery: HasManyHasAssociationMixin<Gallery, number>
   declare removeGallery: HasManyRemoveAssociationsMixin<Gallery,number>
   declare getGallerys: HasManyGetAssociationsMixin<Gallery>
+
+  // Mixin Gallery Has Many
+  declare addPost: HasManyAddAssociationMixin<Post, number>
+  declare hasPost: HasManyHasAssociationMixin<Post, number>
+  declare removePost: HasManyRemoveAssociationsMixin<Post,number>
+  declare getPosts: HasManyGetAssociationsMixin<Post>
 }
 
 Recruiter.init(
@@ -94,5 +99,16 @@ Recruiter.hasMany(Gallery, {
   as: 'gallery', // this determines the name in `associations`!
   constraints:false
 });
+
+Recruiter.belongsToMany(Post, {
+  as:"posts",
+  through: "RecruiterPost",
+  constraints:false
+})
+Post.belongsToMany(Recruiter, {
+  as: "recruiter",
+  through: "RecruiterPost",
+  constraints:false
+})
 
 export default Recruiter;
