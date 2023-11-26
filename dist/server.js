@@ -33,6 +33,8 @@ const storage = multer_1.default.diskStorage({
 const models_1 = require("./models");
 const viewRouter_1 = __importDefault(require("./router/viewRouter"));
 const seeker_router_1 = __importDefault(require("./router/seeker.router"));
+const recruiter_router_1 = __importDefault(require("./router/recruiter.router"));
+const post_router_1 = __importDefault(require("./router/post.router"));
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
@@ -51,6 +53,8 @@ let PORT = process.env.PORT || 8080;
     const VERSION_API = "v1";
     app.use("/", viewRouter_1.default);
     app.use(`/api/${VERSION_API}/seeker`, seeker_router_1.default);
+    app.use(`/api/${VERSION_API}/recruiter`, recruiter_router_1.default);
+    app.use(`/api/${VERSION_API}/posts`, post_router_1.default);
     app.listen(PORT, () => {
         console.log(`Server berjalan di http://localhost:${PORT}`);
     });

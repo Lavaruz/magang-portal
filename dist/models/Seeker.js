@@ -9,6 +9,7 @@ const Experience_1 = __importDefault(require("./Experience"));
 const Education_1 = __importDefault(require("./Education"));
 const Attachment_1 = __importDefault(require("./Attachment"));
 const Recruiter_1 = __importDefault(require("./Recruiter"));
+const Post_1 = __importDefault(require("./Post"));
 class Seeker extends sequelize_1.Model {
 }
 Seeker.init({
@@ -73,6 +74,30 @@ Seeker.hasOne(Attachment_1.default, {
     foreignKey: 'ownerId',
     as: 'attachment',
     constraints: false
+});
+Seeker.belongsToMany(Post_1.default, {
+    as: "applied",
+    sourceKey: "id",
+    constraints: false,
+    through: "SeekerPost"
+});
+Post_1.default.belongsToMany(Seeker, {
+    as: "applicants",
+    sourceKey: "id",
+    constraints: false,
+    through: "SeekerPost"
+});
+Seeker.belongsToMany(Post_1.default, {
+    sourceKey: 'id',
+    as: 'saved',
+    constraints: false,
+    through: "SeekerPostLoved"
+});
+Post_1.default.belongsToMany(Seeker, {
+    sourceKey: 'id',
+    as: 'saved',
+    constraints: false,
+    through: "SeekerPostLoved"
 });
 exports.default = Seeker;
 //# sourceMappingURL=Seeker.js.map
