@@ -1,5 +1,5 @@
 <%- include('./layouts/header'); -%>
-<%- include('./layouts/navbar-seeker'); -%>
+<%- role=="recruiter"?include('./layouts/navbar-seeker'):include('./layouts/navbar') -%>
 
 <p id="user_id" style="display: none;"><%= id %></p>
 
@@ -42,6 +42,7 @@
                         <img src="/img/Loved.png" alt="" class="cursor-pointer">`
 
         return `
+        <a href="/posts/${post.id}">
             <div class="bg-card-grey hover:bg-[#3b3b3b] rounded-lg p-3">
                 <div class="flex gap-3">
                     <div class="w-[44px] h-[44px] rounded-lg overflow-hidden bg-white">
@@ -88,6 +89,7 @@
                     </form>
                 </div>
             </div>
+        </a>
         `
     }
 </script>

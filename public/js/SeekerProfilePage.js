@@ -1,7 +1,7 @@
 const id = $("#user_id").text()
 
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
-    $("#nav-username").text(`${seekerData.first_name} ${seekerData.last_name}`)
+    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#basic-email").text(`${seekerData.email}`)

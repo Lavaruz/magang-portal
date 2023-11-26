@@ -1,5 +1,5 @@
 <%- include('./layouts/header'); -%>
-<%- include('./layouts/navbar-seeker'); -%>
+<%- role=="recruiter"?include('./layouts/navbar-seeker'):include('./layouts/navbar') -%>
 
 <p id="user_id" style="display: none;"><%= id %></p>
 
