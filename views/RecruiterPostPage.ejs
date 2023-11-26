@@ -1,0 +1,282 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar-seeker'); -%>
+
+<p id="user_id" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <a href="/recruiter/post" class="text-teal-100 font-second text-sm font-medium flex items-center gap-2 pt-8 pb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <mask id="mask0_125_4676" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+          <rect width="24" height="24" fill="#D9D9D9"/>
+        </mask>
+        <g mask="url(#mask0_125_4676)">
+          <path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="#3DD1DB"/>
+        </g>
+      </svg> Back to Job Post
+    </a>
+    
+    <div class="flex gap-4 items-center pb-5">
+        <div class="w-[60px] h-[60px] rounded-lg overflow-hidden bg-gray-200 object-cover">
+            <img id="post-img" src="/img/Tokped.svg" alt="" style="width: 100%;">
+        </div>
+        <div class="">
+            <div class="flex items-center gap-2">
+                <p id="post-position" class="text-2xl text-white font-bold">Software Engineer</p>
+                <p class="text-red-500 bg-red-500/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">INTERNSHIP</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <p id="rec-org-name" class="text-white-60 font-second text-sm font-bold">Tokopedia</p>
+                <p class="text-white-60 font-second text-sm font-medium">•</p>
+                <p class="text-white-60 font-second text-sm font-medium">Average Response Time ~3.1 days</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-[1fr_.6fr] gap-5">
+        <div class="flex flex-col gap-4">
+            <div class="about-job rounded-2xl border-2 border-header p-4 pb-5 border-2 border-darkkest-grey bg-card-grey">
+                <p class="text-white font-bold text-base tracking-[1.6px] pb-1">ABOUT JOB</p>
+                <p id="post-overview" class="text-white-80 font-second text-sm font-normal">As a Software Engineer Intern at Tokopedia, you will have the unique opportunity to work alongside some of the best engineers in the industry and contribute to exciting projects that impact millions of users.
+                    This internship program is designed to provide hands-on experience in software development, collaboration with cross-functional teams, and exposure to cutting-edge technologies.
+                    You will work on real-world projects, receive mentorship from experienced engineers, and have the chance to make a meaningful impact on our platform.
+                </p>
+            </div>
+            <div class="responsibility rounded-2xl border-2 border-header p-4 pb-5 border-2 border-darkkest-grey bg-card-grey">
+                <p class="text-white font-bold text-base tracking-[1.6px] pb-1">RESPONSIBILITIES</p>
+                <p id="responsibility" class="font-second text-white-80 text-sm font-normal">
+                    
+                </p>
+            </div>
+            <div class="requirement rounded-2xl border-2 border-header p-4 pb-5 border-2 border-darkkest-grey bg-card-grey">
+                <p class="text-white font-bold text-base tracking-[1.6px] pb-1">REQUIREMENTS</p>
+                <p id="requirement" class="font-second text-white-80 text-sm font-normal">
+                    
+                </p>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <div class="apply bg-darkest-grey rounded-2xl p-4 pb-5 divide-y-2 divide-body">
+                <div class="pt-2">
+                    <p class="text-sm font-bold text-white pb-2">REQUIRED FILES</p>
+                    <div id="required-file" class="flex flex-col gap-1">
+                        <!-- HERE -->
+                    </div>
+                </div>
+            </div>
+            <div class="company-view bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="flex justify-between">
+                    <p class="text-sm font-bold text-white">REQUIRED FILES</p>
+                    <p class="text-teal-100 font-second text-xs font-medium">Visit Company Page</p>
+                </div>
+                <div class="pt-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-[40px] h-[40px] rounded-lg overflow-hidden bg-gray-200 object-cover">
+                            <img id="org-img" src="/img/Tokped.svg" alt="" style="width: 100%;">
+                        </div>
+                        <p id="org-name" class="text-white-60 text-sm font-bold font-second">Tokopedia</p>
+                    </div>
+                </div>
+                <p id="org-desc" class="pt-4 text-white-80 font-second font-normal text-sm">Tokopedia is an Indonesian technology company with a mission to democratize commerce through technology. Since its founding in 2009, Tokopedia has been a force that pioneers digital transformation in Indonesia. Consistent in building a bridge to connect millions of people, we have now reached more than 99% of districts and empowered more than 14 million merchants listed across Indonesia.</p>
+                <div class="p-3 bg-teal-8 mt-4 rounded-lg">
+                    <div class="flex gap-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5.62499 16.0417L3.04166 15.5208C2.88888 15.4931 2.76041 15.4132 2.65624 15.2812C2.55208 15.1493 2.51388 15 2.54166 14.8333L2.83333 12.3333L1.18749 10.4167C1.07638 10.3056 1.02083 10.1667 1.02083 10C1.02083 9.83333 1.07638 9.69444 1.18749 9.58333L2.83333 7.6875L2.54166 5.1875C2.51388 5.02083 2.55208 4.87153 2.65624 4.73958C2.76041 4.60764 2.88888 4.52778 3.04166 4.5L5.62499 3.97917L6.91666 1.75C7 1.61111 7.11805 1.51389 7.27083 1.45833C7.42361 1.40278 7.57638 1.40972 7.72916 1.47917L9.99999 2.54167L12.2708 1.47917C12.4236 1.40972 12.5799 1.39583 12.7396 1.4375C12.8993 1.47917 13.0139 1.57639 13.0833 1.72917L14.3958 3.97917L16.9583 4.5C17.1111 4.52778 17.2396 4.60764 17.3437 4.73958C17.4479 4.87153 17.4861 5.02083 17.4583 5.1875L17.1667 7.6875L18.8125 9.58333C18.9236 9.69444 18.9792 9.83333 18.9792 10C18.9792 10.1667 18.9236 10.3056 18.8125 10.4167L17.1667 12.3333L17.4583 14.8333C17.4861 15 17.4479 15.1493 17.3437 15.2812C17.2396 15.4132 17.1111 15.4931 16.9583 15.5208L14.3958 16.0417L13.0833 18.2708C13.0139 18.4236 12.8993 18.5208 12.7396 18.5625C12.5799 18.6042 12.4236 18.5903 12.2708 18.5208L9.99999 17.4583L7.72916 18.5208C7.57638 18.5903 7.42361 18.5972 7.27083 18.5417C7.11805 18.4861 7 18.3889 6.91666 18.25L5.62499 16.0417ZM8.66666 12.3333C8.79166 12.4583 8.93749 12.5208 9.10416 12.5208C9.27083 12.5208 9.41666 12.4583 9.54166 12.3333L13.3958 8.52083C13.5069 8.40972 13.559 8.26736 13.5521 8.09375C13.5451 7.92014 13.4792 7.77083 13.3542 7.64583C13.2292 7.52083 13.0799 7.4618 12.9062 7.46875C12.7326 7.47569 12.5764 7.54167 12.4375 7.66667L9.10416 10.9792L7.58333 9.375C7.45833 9.23611 7.30208 9.17014 7.11458 9.17708C6.92708 9.18403 6.77083 9.25694 6.64583 9.39583C6.52083 9.53472 6.45486 9.69444 6.44791 9.875C6.44097 10.0556 6.50694 10.2083 6.64583 10.3333L8.66666 12.3333Z" fill="#3DD1DB"/>
+                        </svg>
+                        <p class="text-teal-100 font-bold font-second text-sm">This recruiter is verified!</p>
+                    </div>
+                    <p class="text-white text-xs font-normal font-second pt-1 w-100">Verified recruiters have gone through numerous verification processes that ensures their credibility.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="popup" class="fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100 hidden">
+
+    <!-- POPUP BASIC INFORMATION -->
+
+    <div class="popup popup-basic border-2 border-header w-[720px] hidden">
+        <form id="form-org-basic-information">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M3.33341 17.5C2.87508 17.5 2.48272 17.3368 2.15633 17.0104C1.82994 16.684 1.66675 16.2917 1.66675 15.8334V6.66669C1.66675 6.20835 1.82994 5.81599 2.15633 5.4896C2.48272 5.16321 2.87508 5.00002 3.33341 5.00002H6.66675V3.33335C6.66675 2.87502 6.82994 2.48266 7.15633 2.15627C7.48272 1.82988 7.87508 1.66669 8.33341 1.66669H11.6667C12.1251 1.66669 12.5174 1.82988 12.8438 2.15627C13.1702 2.48266 13.3334 2.87502 13.3334 3.33335V5.00002H16.6667C17.1251 5.00002 17.5174 5.16321 17.8438 5.4896C18.1702 5.81599 18.3334 6.20835 18.3334 6.66669V15.8334C18.3334 16.2917 18.1702 16.684 17.8438 17.0104C17.5174 17.3368 17.1251 17.5 16.6667 17.5H3.33341ZM8.33341 5.00002H11.6667V3.33335H8.33341V5.00002Z" fill="white"/>
+                  </svg> EDITING BASIC INFORMATION</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body divide-y divide-header bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Logo</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-[80px] h-[80px] rounded-lg bg-white overflow-hidden">
+                            <img id="popup-org-logo" src="/img/Ellipse 3.svg" alt="profile-pic" class="w-full h-full object-cover">
+                        </div>
+                        <div class="">
+                            <p class="text-white-60 font-second text-sm font-medium mb-2">Add your organization's logo here.<br>
+                            <span class="text-white">Maximum file size is 1 MB.</span></p>
+                            <label for="custom-input-file">
+                                <input type="file" id="input-org-logo" class="hidden" name="rec-org-logo" accept="image/*"/>
+                                <button id="button-org-logo" type="button" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                    <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                </svg> Upload Logo</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Basic Information</p>
+                    <div class="mb-4 flex flex-col gap-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION NAME*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-org-name" type="text" value="Startup Keren" name="first_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">SHORT DESCRIPTION*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-org-desc" type="text" value="Artificial Intelligence Agency" name="last_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                            <p class="text-xs font-second font-normal text-white-60 mt-1">Describe your organization in one sentence. (Ex. Creative Agency, Startup Media for Gen-Z, etc.)</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex gap-5 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION SIZE*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <select id="popup-org-size" name="rec_org_size" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white focus:ring-white-60">
+                                <option value="1-5 people" selected>1-5 people</option>
+                                <option value="5-100">5-100</option>
+                                <option value="> 100">> 100</option>
+                            </select>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">YEAR FOUNDED*</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-org-year" type="number" value="2023" name="mobile" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-col gap-4 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WEBSITE</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-org-website" type="text" value="www.startupkeren.id" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE ADDRESS</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-org-address" type="South Jakarta" value="South Jakarta" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP PROFILE SUMMARY -->
+
+    <div class="popup popup-description border-2 border-header w-[720px] hidden">
+        <form id="form-description">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10.0001 14.1667C10.2362 14.1667 10.4341 14.0868 10.5938 13.9271C10.7536 13.7674 10.8334 13.5695 10.8334 13.3334V10C10.8334 9.76391 10.7536 9.56599 10.5938 9.40627C10.4341 9.24655 10.2362 9.16669 10.0001 9.16669C9.76397 9.16669 9.56605 9.24655 9.40633 9.40627C9.24661 9.56599 9.16675 9.76391 9.16675 10V13.3334C9.16675 13.5695 9.24661 13.7674 9.40633 13.9271C9.56605 14.0868 9.76397 14.1667 10.0001 14.1667ZM10.0001 7.50002C10.2362 7.50002 10.4341 7.42016 10.5938 7.26044C10.7536 7.10071 10.8334 6.9028 10.8334 6.66669C10.8334 6.43058 10.7536 6.23266 10.5938 6.07294C10.4341 5.91321 10.2362 5.83335 10.0001 5.83335C9.76397 5.83335 9.56605 5.91321 9.40633 6.07294C9.24661 6.23266 9.16675 6.43058 9.16675 6.66669C9.16675 6.9028 9.24661 7.10071 9.40633 7.26044C9.56605 7.42016 9.76397 7.50002 10.0001 7.50002ZM10.0001 18.3334C8.8473 18.3334 7.76397 18.1146 6.75008 17.6771C5.73619 17.2396 4.85425 16.6459 4.10425 15.8959C3.35425 15.1459 2.7605 14.2639 2.323 13.25C1.8855 12.2361 1.66675 11.1528 1.66675 10C1.66675 8.84724 1.8855 7.76391 2.323 6.75002C2.7605 5.73613 3.35425 4.85419 4.10425 4.10419C4.85425 3.35419 5.73619 2.76044 6.75008 2.32294C7.76397 1.88544 8.8473 1.66669 10.0001 1.66669C11.1529 1.66669 12.2362 1.88544 13.2501 2.32294C14.264 2.76044 15.1459 3.35419 15.8959 4.10419C16.6459 4.85419 17.2397 5.73613 17.6772 6.75002C18.1147 7.76391 18.3334 8.84724 18.3334 10C18.3334 11.1528 18.1147 12.2361 17.6772 13.25C17.2397 14.2639 16.6459 15.1459 15.8959 15.8959C15.1459 16.6459 14.264 17.2396 13.2501 17.6771C12.2362 18.1146 11.1529 18.3334 10.0001 18.3334Z" fill="white"/>
+                  </svg> EDITING DESCRIPTION</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body bg-body rounded-b-2xl p-5 pb-6">
+                <p class="font-bold text-lg text-white">Your Organization's Description</p>
+                <p class="text-white-60 font-second font-medium text-sm mb-3">Create an engaging organization description by concisely stating your startup's mission, unique qualities, and career growth opportunities, while also showcasing awards and company culture.</p>        
+                <textarea id="popup-description-textarea" rows="4" name="rec_description" class="focus:ring-white-60 block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your summary here..."></textarea>
+                <div class="flex gap-3 justify-end mt-8">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP GALLERY -->
+
+    <div class="popup popup-gallery border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4.16667 17.5C3.70833 17.5 3.31597 17.3368 2.98958 17.0104C2.66319 16.684 2.5 16.2917 2.5 15.8333V4.16667C2.5 3.70833 2.66319 3.31597 2.98958 2.98958C3.31597 2.66319 3.70833 2.5 4.16667 2.5H15.8333C16.2917 2.5 16.684 2.66319 17.0104 2.98958C17.3368 3.31597 17.5 3.70833 17.5 4.16667V15.8333C17.5 16.2917 17.3368 16.684 17.0104 17.0104C16.684 17.3368 16.2917 17.5 15.8333 17.5H4.16667ZM5 14.1667H15L11.875 10L9.375 13.3333L7.5 10.8333L5 14.1667Z" fill="white"/>
+              </svg> EDITING GALLERY</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl min-h-[300px] max-h-[500px] overflow-y-scroll divide-y divide-header">
+            <div class="p-5 pb-2">
+                <p class="font-bold text-lg text-white">Showcase real work conditions in your organization!</p>
+                <p class="text-white-60 font-second font-medium text-sm mb-3">Here, you can show pictures of your office, meetings, and most importantly - the people that work here.</p>        
+            </div>
+            <div class="p-5 pt-2">
+                <form id="form-add-gallery">
+                    <p class="font-medium font-second text-sm text-white mt-3 mb-5">Upload up to 4 images. Maximum file size is 2 MB.</p>
+                    <div id="popup-container-gallery" class="flex gap-5 overflow-x-scroll w-full mb-5">
+                        <div id="popup-add-gallery">
+                            <div id="button-add-gallery" class="w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                    <path d="M36.5 17.1C36.0667 17.1 35.7083 16.9583 35.425 16.675C35.1417 16.3917 35 16.0333 35 15.6V13.05H32.45C32.0167 13.05 31.6583 12.9083 31.375 12.625C31.0917 12.3417 30.95 11.9833 30.95 11.55C30.95 11.1167 31.0917 10.7583 31.375 10.475C31.6583 10.1917 32.0167 10.05 32.45 10.05H35V7.5C35 7.06667 35.1417 6.70833 35.425 6.425C35.7083 6.14167 36.0667 6 36.5 6C36.9333 6 37.2917 6.14167 37.575 6.425C37.8583 6.70833 38 7.06667 38 7.5V10.05H40.55C40.9833 10.05 41.3417 10.1917 41.625 10.475C41.9083 10.7583 42.05 11.1167 42.05 11.55C42.05 11.9833 41.9083 12.3417 41.625 12.625C41.3417 12.9083 40.9833 13.05 40.55 13.05H38V15.6C38 16.0333 37.8583 16.3917 37.575 16.675C37.2917 16.9583 36.9333 17.1 36.5 17.1ZM13.55 33.9H34.5C34.8333 33.9 35.0667 33.7667 35.2 33.5C35.3333 33.2333 35.3 32.9667 35.1 32.7L29.4 25.1C29.2333 24.9 29.0333 24.8 28.8 24.8C28.5667 24.8 28.3667 24.9 28.2 25.1L22.45 32.65L18.35 27.25C18.1833 27.0167 17.9833 26.9 17.75 26.9C17.5167 26.9 17.3167 27.0167 17.15 27.25L12.95 32.7C12.75 32.9667 12.7167 33.2333 12.85 33.5C12.9833 33.7667 13.2167 33.9 13.55 33.9ZM9 42C8.2 42 7.5 41.7 6.9 41.1C6.3 40.5 6 39.8 6 39V9C6 8.2 6.3 7.5 6.9 6.9C7.5 6.3 8.2 6 9 6H27.95V15.85C27.95 16.2833 28.0917 16.6417 28.375 16.925C28.6583 17.2083 29.0167 17.35 29.45 17.35H30.7V18.6C30.7 19.0333 30.8417 19.3917 31.125 19.675C31.4083 19.9583 31.7667 20.1 32.2 20.1H42V39C42 39.8 41.7 40.5 41.1 41.1C40.5 41.7 39.8 42 39 42H9Z" fill="#3DD1DB"/>
+                                </svg>
+                            </div>
+                            <input type="file" name="rec-gallery" id="input-gallery" class="hidden" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button id="button-save-gallery" type="button" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP VERIFICATION -->
+
+    <div class="popup popup-verification border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.62516 16.0417L3.04183 15.5208C2.88905 15.4931 2.76058 15.4132 2.65641 15.2812C2.55225 15.1493 2.51405 15 2.54183 14.8333L2.8335 12.3333L1.18766 10.4167C1.07655 10.3056 1.021 10.1667 1.021 10C1.021 9.83333 1.07655 9.69444 1.18766 9.58333L2.8335 7.6875L2.54183 5.1875C2.51405 5.02083 2.55225 4.87153 2.65641 4.73958C2.76058 4.60764 2.88905 4.52778 3.04183 4.5L5.62516 3.97917L6.91683 1.75C7.00016 1.61111 7.11822 1.51389 7.271 1.45833C7.42377 1.40278 7.57655 1.40972 7.72933 1.47917L10.0002 2.54167L12.271 1.47917C12.4238 1.40972 12.58 1.39583 12.7397 1.4375C12.8995 1.47917 13.0141 1.57639 13.0835 1.72917L14.396 3.97917L16.9585 4.5C17.1113 4.52778 17.2397 4.60764 17.3439 4.73958C17.4481 4.87153 17.4863 5.02083 17.4585 5.1875L17.1668 7.6875L18.8127 9.58333C18.9238 9.69444 18.9793 9.83333 18.9793 10C18.9793 10.1667 18.9238 10.3056 18.8127 10.4167L17.1668 12.3333L17.4585 14.8333C17.4863 15 17.4481 15.1493 17.3439 15.2812C17.2397 15.4132 17.1113 15.4931 16.9585 15.5208L14.396 16.0417L13.0835 18.2708C13.0141 18.4236 12.8995 18.5208 12.7397 18.5625C12.58 18.6042 12.4238 18.5903 12.271 18.5208L10.0002 17.4583L7.72933 18.5208C7.57655 18.5903 7.42377 18.5972 7.271 18.5417C7.11822 18.4861 7.00016 18.3889 6.91683 18.25L5.62516 16.0417ZM8.66683 12.3333C8.79183 12.4583 8.93766 12.5208 9.10433 12.5208C9.271 12.5208 9.41683 12.4583 9.54183 12.3333L13.396 8.52083C13.5071 8.40972 13.5592 8.26736 13.5522 8.09375C13.5453 7.92014 13.4793 7.77083 13.3543 7.64583C13.2293 7.52083 13.08 7.4618 12.9064 7.46875C12.7328 7.47569 12.5766 7.54167 12.4377 7.66667L9.10433 10.9792L7.5835 9.375C7.4585 9.23611 7.30225 9.17014 7.11475 9.17708C6.92725 9.18403 6.771 9.25694 6.646 9.39583C6.521 9.53472 6.45502 9.69444 6.44808 9.875C6.44113 10.0556 6.50711 10.2083 6.646 10.3333L8.66683 12.3333Z" fill="white"/>
+              </svg> APPLYING FOR VERIFICATION</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+            <div id="registered-education" class="main-popup">
+                <div class="divide-y divide-header">
+                    <div class="p-5">
+                        <p class="font-bold text-lg text-white mb-1">Verification boosts your organizations credibility</p>
+                        <p class="text-white-60 text-sm font-second font-medium">To apply for a Verified Badge, you will have to submit a few legal documents to verify your organization's legitimacy.</p>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script src="/js/RecruiterPostPage.js"></script>

@@ -17,7 +17,6 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
         })
 
         $("#navbar-org-name").text(recruiterData.rec_org_name)
-
         if(recruiterData.rec_org_logo){
             $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
             $("#nav-allpost").text(`(${recruiterData.posts.length})`)
@@ -47,10 +46,10 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
             $("#card-post-work-time-perweek").text($("input[name=post_work_time_perweek]").val())
         })
 
-        if(RECRUITER_POST_INPROGRESS.length !== 0){
+        if(RECRUITER_POST_CLOSED.length !== 0){
             $("#posts-box").remove()
             $("#posts-grid").removeClass("hidden")
-            RECRUITER_POST_INPROGRESS.forEach((data) => {
+            RECRUITER_POST_CLOSED.forEach((data) => {
                 $("#posts-left").append(postLeftDetail(data))
                 $("#posts-right").append(postRightDetail(data, recruiterData))
             })
@@ -70,19 +69,18 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
             $(this).addClass("border border-teal-100 bg-teal-8")
         })
 
-        $(".copy-link").click(function(){
-            const POST_ID = $(this).closest(".posts-detailed").find(".post-id").text()
-            const URL = `${window.location.origin}/posts/${POST_ID}`
-            navigator.clipboard.writeText(URL).then(function() {
-                alert(`Copied! ${URL}`);
-            }, function() {
-                alert('Copy error')
-            });
+        $(".post-status").each(function(){
+            const POST_STATUS = $(this).parent().find("span")
+            const POST_TOGGLE = $(this)
+            if(POST_STATUS.text() == "CLOSED"){
+                POST_TOGGLE.prop("checked", false)
+                POST_STATUS.removeClass("text-green-500").addClass("text-red-500")
+            }
         })
 
 
-
         updateSeekerData("form-add-post", `/api/v1/recruiter/${RECRUITER_ID}/post`, "POST")
+
     })
 })
 
@@ -269,10 +267,10 @@ function postRightDetail(post, recruiter){
                     <button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M12.8667 5.94998L10.0333 3.14998L10.9667 2.21665C11.2222 1.96109 11.5361 1.83331 11.9083 1.83331C12.2806 1.83331 12.5944 1.96109 12.85 2.21665L13.7833 3.14998C14.0389 3.40554 14.1722 3.71387 14.1833 4.07498C14.1944 4.43609 14.0722 4.74442 13.8167 4.99998L12.8667 5.94998ZM11.9 6.93331L4.83333 14H2V11.1666L9.06667 4.09998L11.9 6.93331Z" fill="white"/>
                         </svg> Edit Post</button>
-                        <a href="/posts/${post.id}/recruiter"><button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                         <path d="M8.49999 10.6667C9.33332 10.6667 10.0417 10.375 10.625 9.79166C11.2083 9.20832 11.5 8.49999 11.5 7.66666C11.5 6.83332 11.2083 6.12499 10.625 5.54166C10.0417 4.95832 9.33332 4.66666 8.49999 4.66666C7.66666 4.66666 6.95832 4.95832 6.37499 5.54166C5.79166 6.12499 5.49999 6.83332 5.49999 7.66666C5.49999 8.49999 5.79166 9.20832 6.37499 9.79166C6.95832 10.375 7.66666 10.6667 8.49999 10.6667ZM8.49999 9.46666C7.99999 9.46666 7.57499 9.29166 7.22499 8.94166C6.87499 8.59166 6.69999 8.16666 6.69999 7.66666C6.69999 7.16666 6.87499 6.74166 7.22499 6.39166C7.57499 6.04166 7.99999 5.86666 8.49999 5.86666C8.99999 5.86666 9.42499 6.04166 9.77499 6.39166C10.125 6.74166 10.3 7.16666 10.3 7.66666C10.3 8.16666 10.125 8.59166 9.77499 8.94166C9.42499 9.29166 8.99999 9.46666 8.49999 9.46666ZM8.49999 12.6667C6.87777 12.6667 5.39999 12.2139 4.06666 11.3083C2.73332 10.4028 1.76666 9.18888 1.16666 7.66666C1.76666 6.14443 2.73332 4.93055 4.06666 4.02499C5.39999 3.11943 6.87777 2.66666 8.49999 2.66666C10.1222 2.66666 11.6 3.11943 12.9333 4.02499C14.2667 4.93055 15.2333 6.14443 15.8333 7.66666C15.2333 9.18888 14.2667 10.4028 12.9333 11.3083C11.6 12.2139 10.1222 12.6667 8.49999 12.6667Z" fill="white"/>
-                        </svg> View as Seeker</button></a>
-                    <button class="copy-link gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                        </svg> View as Seeker</button>
+                    <button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                         <path d="M12.5 14.6667C11.9444 14.6667 11.4722 14.4722 11.0833 14.0833C10.6944 13.6945 10.5 13.2222 10.5 12.6667C10.5 12.5889 10.5056 12.5083 10.5167 12.425C10.5278 12.3417 10.5444 12.2667 10.5667 12.2L5.86667 9.46668C5.67778 9.63334 5.46667 9.7639 5.23333 9.85834C5 9.95279 4.75556 10 4.5 10C3.94444 10 3.47222 9.80556 3.08333 9.41668C2.69444 9.02779 2.5 8.55557 2.5 8.00001C2.5 7.44445 2.69444 6.97223 3.08333 6.58334C3.47222 6.19445 3.94444 6.00001 4.5 6.00001C4.75556 6.00001 5 6.04723 5.23333 6.14168C5.46667 6.23612 5.67778 6.36668 5.86667 6.53334L10.5667 3.80001C10.5444 3.73334 10.5278 3.65834 10.5167 3.57501C10.5056 3.49168 10.5 3.41112 10.5 3.33334C10.5 2.77779 10.6944 2.30557 11.0833 1.91668C11.4722 1.52779 11.9444 1.33334 12.5 1.33334C13.0556 1.33334 13.5278 1.52779 13.9167 1.91668C14.3056 2.30557 14.5 2.77779 14.5 3.33334C14.5 3.8889 14.3056 4.36112 13.9167 4.75001C13.5278 5.1389 13.0556 5.33334 12.5 5.33334C12.2444 5.33334 12 5.28612 11.7667 5.19168C11.5333 5.09723 11.3222 4.96668 11.1333 4.80001L6.43333 7.53334C6.45556 7.60001 6.47222 7.67501 6.48333 7.75834C6.49444 7.84168 6.5 7.92223 6.5 8.00001C6.5 8.07779 6.49444 8.15834 6.48333 8.24168C6.47222 8.32501 6.45556 8.40001 6.43333 8.46668L11.1333 11.2C11.3222 11.0333 11.5333 10.9028 11.7667 10.8083C12 10.7139 12.2444 10.6667 12.5 10.6667C13.0556 10.6667 13.5278 10.8611 13.9167 11.25C14.3056 11.6389 14.5 12.1111 14.5 12.6667C14.5 13.2222 14.3056 13.6945 13.9167 14.0833C13.5278 14.4722 13.0556 14.6667 12.5 14.6667Z" fill="white"/>
                         </svg> Share Link</button>
                     <div class="p-3 pb-4 bg-teal-8 rounded-lg">

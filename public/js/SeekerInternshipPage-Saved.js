@@ -3,37 +3,39 @@ const USER_ID = $("#user_id").text()
 $(".navbar-internship").addClass("selected")
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
-    RECRUITER_ID = seekerData.recruiter.id
     $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
     $("#navbar-seeker").removeClass("hidden")
-
+    
     $("#foryou-firstname").text(seekerData.first_name)
     $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+    
+    if(seekerData.recruiter){
+        RECRUITER_ID = seekerData.recruiter.id
+        $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
+            $("#navbar-org-name").text(recruiterData.rec_org_name)
+            if(recruiterData.rec_org_logo){
+                $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
 
-    $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
-        $("#navbar-org-name").text(recruiterData.rec_org_name)
-        if(recruiterData.rec_org_logo){
-            $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
-
-        }
+            }
 
 
-        $(".close-x").click(function(){
-            $(this).closest('.popup').addClass("hidden")
-            $(this).closest('#popup').addClass("hidden")
+            $(".close-x").click(function(){
+                $(this).closest('.popup').addClass("hidden")
+                $(this).closest('#popup').addClass("hidden")
+            })
+            $(".back-x").click(function(){
+                let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+                $(".body-percent").eq(body_percent_idx).addClass("hidden")
+                $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
+            })
+            $(".button-next").click(function(){
+                let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+                $(".body-percent").eq(body_percent_idx).addClass("hidden")
+                $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+            })
+
         })
-        $(".back-x").click(function(){
-            let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-            $(".body-percent").eq(body_percent_idx).addClass("hidden")
-            $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
-        })
-        $(".button-next").click(function(){
-            let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-            $(".body-percent").eq(body_percent_idx).addClass("hidden")
-            $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
-        })
-
-    })
+    }
 })
 
 
@@ -161,6 +163,7 @@ function addCard(post){
                     <img src="/img/Loved.png" alt="" class="cursor-pointer">`
 
     return `
+    <a href="/posts/${post.id}">
         <div class="bg-card-grey hover:bg-[#3b3b3b] rounded-lg p-3">
             <div class="flex gap-3">
                 <div class="w-[44px] h-[44px] rounded-lg overflow-hidden bg-white">
@@ -207,5 +210,6 @@ function addCard(post){
                 </form>
             </div>
         </div>
+    </a>
     `
 }

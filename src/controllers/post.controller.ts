@@ -27,14 +27,25 @@ export const getAllPost = async (req: Request, res: Response) => {
           post_position:{
             [Op.like]:`%${postQuery.title}%`
           },
-          post_location:{
-            [Op.like]:`%${postQuery.location}%`
-          },
         }});
         return response(200, "success call posts by query", post, res);
       }
       
       const post = await Post.findAll({attributes:{exclude:["createdAt","updatedAt"]}, include:[
+        {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
+        {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+        {model:Seeker, as: "saved",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+      ]});
+      return response(200, "success call all posts", post, res);
+    } catch (error) {
+      console.error("Gagal mengambil data pengguna:", error);
+      res.status(500).json({ error: "Server error" });
+    }
+};
+
+export const getPostById = async (req: Request, res: Response) => {
+    try {
+      const post = await Post.findOne({where:{id:req.params.id},attributes:{exclude:["createdAt","updatedAt"]}, include:[
         {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
         {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
         {model:Seeker, as: "saved",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
