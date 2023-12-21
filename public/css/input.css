@@ -55,6 +55,10 @@ div::-webkit-scrollbar {
     focus:invalid:border-pink-500 focus:invalid:ring-pink-500 border-none
 }
 
+.applicants-grid{
+  @apply grid grid-cols-[.2fr_.2fr_1fr_1fr_.6fr_1fr_.75fr_.5fr] gap-4
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

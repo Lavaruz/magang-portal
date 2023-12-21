@@ -26,7 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addSavedPost = exports.addRecruiter = exports.deleteAttachment = exports.setAttachment = exports.updateEducation = exports.deleteEducation = exports.addEducation = exports.updateExperience = exports.deleteExperience = exports.addExperience = exports.deleteSeeker = exports.updateSeeker = exports.loginSeeker = exports.createSeeker = exports.getSeekerById = exports.getAllSeeker = void 0;
+exports.addApplied = exports.addSavedPost = exports.addRecruiter = exports.deleteAttachment = exports.setAttachment = exports.updateEducation = exports.deleteEducation = exports.addEducation = exports.updateExperience = exports.deleteExperience = exports.addExperience = exports.deleteSeeker = exports.updateSeeker = exports.loginSeeker = exports.createSeeker = exports.getSeekerById = exports.getAllSeeker = void 0;
 const Seeker_1 = __importDefault(require("../models/Seeker"));
 const Experience_1 = __importDefault(require("../models/Experience"));
 const Education_1 = __importDefault(require("../models/Education"));
@@ -65,7 +65,9 @@ const getSeekerById = async (req, res) => {
                 { model: Education_1.default, as: "educations", attributes: { exclude: ["createdAt", "updatedAt"] } },
                 { model: Attachment_1.default, as: "attachment", attributes: { exclude: ["createdAt", "updatedAt"] } },
                 { model: Recruiter_1.default, as: "recruiter", attributes: { exclude: ["createdAt", "updatedAt"] } },
-                { model: Post_1.default, as: "applied", attributes: { exclude: ["createdAt", "updatedAt"] } },
+                { model: Post_1.default, as: "applied", attributes: { exclude: ["createdAt", "updatedAt"] }, include: [
+                        { model: Recruiter_1.default, as: "recruiter", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, through: { attributes: [] } },
+                    ] },
                 { model: Post_1.default, as: "saved", attributes: { exclude: ["createdAt", "updatedAt"] }, include: [
                         { model: Recruiter_1.default, as: "recruiter", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, through: { attributes: [] } },
                         { model: Seeker_1.default, as: "applicants", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] } },
@@ -370,6 +372,7 @@ exports.updateEducation = updateEducation;
 const setAttachment = async (req, res) => {
     const seekerId = req.params.id;
     const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
+    console.log(attachmentData);
     try {
         const seeker = await Seeker_1.default.findByPk(seekerId);
         if (seeker) {
@@ -502,4 +505,26 @@ const addSavedPost = async (req, res) => {
     }
 };
 exports.addSavedPost = addSavedPost;
+// Seeker Apply Post
+const addApplied = async (req, res) => {
+    const seekerId = req.params.id;
+    const postId = req.params.postId;
+    const seekerData = req.body; // Data pembaruan pengguna dari permintaan PUT
+    try {
+        const seeker = await Seeker_1.default.findByPk(seekerId);
+        const post = await Post_1.default.findByPk(postId);
+        if (seeker) {
+            seeker.addApplied(post);
+            return (0, response_1.default)(200, "Success apply", [], res);
+        }
+        else {
+            res.status(404).json({ error: "Pengguna tidak ditemukan" });
+        }
+    }
+    catch (error) {
+        console.error("Gagal memperbarui pengguna:", error);
+        res.status(500).json({ error: "Server error" });
+    }
+};
+exports.addApplied = addApplied;
 //# sourceMappingURL=seeker.controller.js.map

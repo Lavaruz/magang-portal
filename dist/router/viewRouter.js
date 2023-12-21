@@ -39,6 +39,24 @@ router.get("/recruiter/post/in-progress", JWT_1.validateTokenWebsite, (req, res)
 router.get("/recruiter/post/closed", JWT_1.validateTokenWebsite, (req, res) => {
     res.render("RecruiterPost-Closed", { id: req.user.id, role: req.user.role });
 });
+router.get("/recruiter/applicants/:id/waiting", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("RecruiterApplicants-Waiting", { id: req.user.id, role: req.user.role });
+});
+router.get("/recruiter/applicants/:id/shortlisted", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("RecruiterApplicants-Shortlisted", { id: req.user.id, role: req.user.role });
+});
+router.get("/recruiter/applicants/:id/interview", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("RecruiterApplicants-Interview", { id: req.user.id, role: req.user.role });
+});
+router.get("/recruiter/applicants/:id/offering", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("RecruiterApplicants-Offering", { id: req.user.id, role: req.user.role });
+});
+router.get("/recruiter/applicants/:id/rejected", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("RecruiterApplicants-Rejected", { id: req.user.id, role: req.user.role });
+});
+router.get("/recruiter/applicants/:postId/seeker/:seekerId", JWT_1.validateTokenWebsite, (req, res) => {
+    res.render("SeekerProfileView", { id: req.user.id, role: req.user.role });
+});
 // AUTH
 router.get("/login", (req, res) => {
     res.render("LoginRegisterPage");

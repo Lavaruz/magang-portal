@@ -10,6 +10,7 @@ import Attachment from "./Attachment";
 import Recruiter from "./Recruiter";
 import Gallery from "./Gallery";
 import Post from "./Post";
+import SeekerPost from "./SeekerPost";
 
 class Seeker extends Model {
   declare id: CreationOptional<number>;
@@ -42,6 +43,11 @@ class Seeker extends Model {
   declare addSaved: BelongsToManyAddAssociationMixin<Post, number>
   declare removeSaved: BelongsToManyRemoveAssociationMixin<Post,number>
   declare setSaved: BelongsToManySetAssociationsMixin<Post,number>
+
+  // Mixin Experience Has Many
+  declare addApplied: BelongsToManyAddAssociationMixin<Post, number>
+  declare removeApplied: BelongsToManyRemoveAssociationMixin<Post,number>
+  declare setApplied: BelongsToManySetAssociationsMixin<Post,number>
 
   // Mixin Education Has Many
   declare addEducation: HasManyAddAssociationMixin<Education, number>
@@ -134,13 +140,13 @@ Seeker.belongsToMany(Post,{
   as: "applied",
   sourceKey: "id",
   constraints: false,
-  through: "SeekerPost"
+  through: SeekerPost
 })
 Post.belongsToMany(Seeker,{
   as: "applicants",
   sourceKey: "id",
   constraints: false,
-  through: "SeekerPost"
+  through: SeekerPost
 })
 
 Seeker.belongsToMany(Post, {

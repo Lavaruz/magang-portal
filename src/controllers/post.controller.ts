@@ -47,7 +47,10 @@ export const getPostById = async (req: Request, res: Response) => {
     try {
       const post = await Post.findOne({where:{id:req.params.id},attributes:{exclude:["createdAt","updatedAt"]}, include:[
         {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
-        {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
+        {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]},include:[
+          {model:Experience, as:"experiences", attributes:{exclude:["createdAt","updatedAt"]}},
+          {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
+        ]},
         {model:Seeker, as: "saved",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
       ]});
       return response(200, "success call all posts", post, res);

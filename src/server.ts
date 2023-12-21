@@ -33,6 +33,7 @@ import viewRouter from "./router/viewRouter";
 import seekerRouter from "./router/seeker.router";
 import recruiterRouter from "./router/recruiter.router";
 import postRouter from "./router/post.router";
+import seekerpostRouter from "./router/seekerpost.router";
 
 app.use(cors())
 app.use(express.json());
@@ -57,6 +58,7 @@ connectToDatabase()
     app.use(`/api/${VERSION_API}/seeker`, seekerRouter);
     app.use(`/api/${VERSION_API}/recruiter`, recruiterRouter);
     app.use(`/api/${VERSION_API}/posts`, postRouter);
+    app.use(`/api/${VERSION_API}/seekerpost`, seekerpostRouter);
     app.listen(PORT, () => {
       console.log(`Server berjalan di http://localhost:${PORT}`);
     });

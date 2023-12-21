@@ -1,0 +1,1177 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar-all') -%>
+
+<p id="user_id" class="bg-[#3DD1DB]/20" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <p id="header-firstname" class="pb-3 pt-8 text-white text-xl font-bold">Viewing Jarwo's Profile</p>
+    <div class="grid grid-cols-[1fr_.6fr] gap-5">
+        <div class="flex flex-col gap-3">
+            <div class="basic-info rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9.99992 10C9.08325 10 8.29853 9.67362 7.64575 9.02084C6.99297 8.36807 6.66658 7.58334 6.66658 6.66668C6.66658 5.75001 6.99297 4.96529 7.64575 4.31251C8.29853 3.65973 9.08325 3.33334 9.99992 3.33334C10.9166 3.33334 11.7013 3.65973 12.3541 4.31251C13.0069 4.96529 13.3333 5.75001 13.3333 6.66668C13.3333 7.58334 13.0069 8.36807 12.3541 9.02084C11.7013 9.67362 10.9166 10 9.99992 10ZM4.99992 16.6667C4.54159 16.6667 4.14922 16.5035 3.82284 16.1771C3.49645 15.8507 3.33325 15.4583 3.33325 15V14.3333C3.33325 13.8611 3.45478 13.4271 3.69784 13.0313C3.94089 12.6354 4.26381 12.3333 4.66659 12.125C5.5277 11.6945 6.4027 11.3715 7.29158 11.1563C8.18047 10.941 9.08325 10.8333 9.99992 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1563C13.5971 11.3715 14.4721 11.6945 15.3333 12.125C15.736 12.3333 16.0589 12.6354 16.302 13.0313C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5034 15.8507 16.177 16.1771C15.8506 16.5035 15.4583 16.6667 14.9999 16.6667H4.99992Z" fill="white"/>
+                      </svg> BASIC INFORMATION</p>
+                </div>
+                <div class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
+                    <div class="flex items-start gap-5">
+                        <div class="w-[88px] h-[88px] rounded-full overflow-hidden">
+                            <img id="basic-profile-pic" src="/img/Ellipse 3.svg" alt="profile-picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="divide-y divide-header">
+                            <div class="mb-4">
+                                <p id="basic-fullname" class="font-bold text-xl text-white">Jarwo Slebew</p>
+                                <p class="text-sm text-white-60 font-second font-normal">Current Position</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-x-9 gap-y-4 pt-4 text-white">
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">EMAIL</span>
+                                    <p id="basic-email" class="font-second font-medium text-sm">jarwoslebew007@gmail.com</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">MOBILE</span>
+                                    <p id="basic-mobile" class="font-second font-medium text-sm">0857-1206-2191</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">BIRTHDATE</span>
+                                    <p id="basic-birthdate" class="font-second font-medium text-sm">18 October 2001</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">SEX</span>
+                                    <p id="basic-sex" class="font-second font-medium text-sm">Male</p>
+                                </div>
+                                <div class="">
+                                    <span class="text-white-60 font-normal text-sm">DOMICILE</span>
+                                    <p id="basic-domicile" class="font-second font-medium text-sm">Jakarta</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-summary rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9.99992 10C9.08325 10 8.29853 9.67362 7.64575 9.02084C6.99297 8.36807 6.66658 7.58334 6.66658 6.66668C6.66658 5.75001 6.99297 4.96529 7.64575 4.31251C8.29853 3.65973 9.08325 3.33334 9.99992 3.33334C10.9166 3.33334 11.7013 3.65973 12.3541 4.31251C13.0069 4.96529 13.3333 5.75001 13.3333 6.66668C13.3333 7.58334 13.0069 8.36807 12.3541 9.02084C11.7013 9.67362 10.9166 10 9.99992 10ZM4.99992 16.6667C4.54159 16.6667 4.14922 16.5035 3.82284 16.1771C3.49645 15.8507 3.33325 15.4583 3.33325 15V14.3333C3.33325 13.8611 3.45478 13.4271 3.69784 13.0313C3.94089 12.6354 4.26381 12.3333 4.66659 12.125C5.5277 11.6945 6.4027 11.3715 7.29158 11.1563C8.18047 10.941 9.08325 10.8333 9.99992 10.8333C10.9166 10.8333 11.8194 10.941 12.7083 11.1563C13.5971 11.3715 14.4721 11.6945 15.3333 12.125C15.736 12.3333 16.0589 12.6354 16.302 13.0313C16.5451 13.4271 16.6666 13.8611 16.6666 14.3333V15C16.6666 15.4583 16.5034 15.8507 16.177 16.1771C15.8506 16.5035 15.4583 16.6667 14.9999 16.6667H4.99992Z" fill="white"/>
+                      </svg> PROFILE SUMMARY</p>
+                </div>
+                <div id="profile-summary" class="w-100 p-5 pb-6 bg-body rounded-b-2xl">
+                    <div class="text-center">
+                        <p class="font-bold text-base text-white">Write your profile summary here!</p>
+                        <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">This is your chance to put a good word about yourself, so that recruiters could catch a glimpse of you as a candidate.</p>
+                        <button id="button-profile-summary" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                          </svg> Add Profile Summary</button>
+                    </div>
+                </div>
+            </div>
+            <div class="experiences rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2.91675 17.5C2.58341 17.5 2.29175 17.375 2.04175 17.125C1.79175 16.875 1.66675 16.5833 1.66675 16.25V5.97917C1.66675 5.64584 1.79175 5.35417 2.04175 5.10417C2.29175 4.85417 2.58341 4.72917 2.91675 4.72917H6.87508V2.91667C6.87508 2.58334 7.00008 2.29167 7.25008 2.04167C7.50008 1.79167 7.79175 1.66667 8.12508 1.66667H11.8751C12.2084 1.66667 12.5001 1.79167 12.7501 2.04167C13.0001 2.29167 13.1251 2.58334 13.1251 2.91667V4.72917H17.0834C17.4167 4.72917 17.7084 4.85417 17.9584 5.10417C18.2084 5.35417 18.3334 5.64584 18.3334 5.97917V16.25C18.3334 16.5833 18.2084 16.875 17.9584 17.125C17.7084 17.375 17.4167 17.5 17.0834 17.5H2.91675ZM8.12508 4.72917H11.8751V2.91667H8.12508V4.72917Z" fill="white"/>
+                      </svg> EXPERIENCES</p>
+                </div>
+                <div id="experiences" class="w-100 p-5 pb-6 bg-body rounded-b-2xl divide-y divide-header">
+                    <div class="text-center">
+                        <p class="font-bold text-base text-white">Add your experiences here!</p>
+                        <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">The heart of your profile. You can add any experiences from university organizations, event committees, internships, and more!</p>
+                        <button id="button-experiences" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                          </svg> Add Experiences</button>
+                    </div>
+                </div>
+            </div>
+            <div class="education rounded-2xl border-2 border-header">
+                <div class="w-100 bg-header flex items-center justify-between px-5 py-3 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M18.6667 14.2708C18.4167 14.2708 18.2118 14.1875 18.0521 14.0208C17.8924 13.8542 17.8125 13.6597 17.8125 13.4375V8.5L10.8958 12.2292C10.7708 12.2847 10.625 12.3333 10.4583 12.375C10.2917 12.4167 10.1319 12.4375 9.97917 12.4375C9.82639 12.4375 9.67014 12.4167 9.51042 12.375C9.3507 12.3333 9.20833 12.2847 9.08333 12.2292L2.0625 8.375C1.89583 8.30556 1.77083 8.19792 1.6875 8.05208C1.60417 7.90625 1.5625 7.73611 1.5625 7.54167C1.5625 7.36111 1.60417 7.19792 1.6875 7.05208C1.77083 6.90625 1.89583 6.79167 2.0625 6.70833L9.08333 2.875C9.22222 2.81944 9.37153 2.76389 9.53125 2.70833C9.69097 2.65278 9.84028 2.625 9.97917 2.625C10.1181 2.625 10.2674 2.65278 10.4271 2.70833C10.5868 2.76389 10.75 2.81944 10.9167 2.875L18.9792 7.27083C19.1319 7.34028 19.2535 7.45486 19.3438 7.61458C19.434 7.77431 19.4792 7.9375 19.4792 8.10417V13.4375C19.4792 13.6597 19.3993 13.8542 19.2396 14.0208C19.0799 14.1875 18.8889 14.2708 18.6667 14.2708ZM9.97917 17.2917C9.84028 17.2917 9.6875 17.2743 9.52083 17.2396C9.35417 17.2049 9.20833 17.1528 9.08333 17.0833L4.79167 14.7708C4.47222 14.6181 4.22569 14.3889 4.05208 14.0833C3.87847 13.7778 3.79167 13.4444 3.79167 13.0833V10.125L8.66667 12.8125C8.875 12.9236 9.08333 13.0278 9.29167 13.125C9.5 13.2222 9.72917 13.2708 9.97917 13.2708C10.2292 13.2708 10.4653 13.2222 10.6875 13.125C10.9097 13.0278 11.1181 12.9167 11.3125 12.7917L16.1875 10.125V13.0833C16.1875 13.4444 16.0972 13.7778 15.9167 14.0833C15.7361 14.3889 15.4931 14.6181 15.1875 14.7708L10.8958 17.0833C10.7569 17.1528 10.6042 17.2049 10.4375 17.2396C10.2708 17.2743 10.1181 17.2917 9.97917 17.2917Z" fill="white"/>
+                      </svg> EDUCATION</p>
+                </div>
+                <div id="educations" class="w-100 p-5 pb-6 bg-body rounded-b-2xl divide-header divide-y">
+                    <div class="text-center">
+                        <p class="font-bold text-base text-white">Add your education here!</p>
+                        <p class="font-second text-white-60 text-sm font-medium px-24 mb-2">Just as important as experiences, your education will show recruiters what your capable of!</p>
+                        <button id="button-education" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4 m-auto"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                            <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                          </svg> Add Education</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-3">
+            <div class="attachments bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="w-100 flex items-center justify-between rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V5C5 4.08333 5.32639 3.29861 5.97917 2.64583C6.63194 1.99305 7.41667 1.66667 8.33333 1.66667C9.25 1.66667 10.0347 1.99305 10.6875 2.64583C11.3403 3.29861 11.6667 4.08333 11.6667 5V12.9167C11.6667 13.5 11.4653 13.9931 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.9931 7.5 13.5 7.5 12.9167V5.625C7.5 5.44444 7.55903 5.29514 7.67708 5.17708C7.79514 5.05903 7.94444 5 8.125 5C8.30556 5 8.45486 5.05903 8.57292 5.17708C8.69097 5.29514 8.75 5.44444 8.75 5.625V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V5C10.4167 4.41667 10.2153 3.92361 9.8125 3.52083C9.40972 3.11805 8.91667 2.91667 8.33333 2.91667C7.75 2.91667 7.25694 3.11805 6.85417 3.52083C6.45139 3.92361 6.25 4.41667 6.25 5V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.625C12.9167 5.44444 12.9757 5.29514 13.0938 5.17708C13.2118 5.05903 13.3611 5 13.5417 5C13.7222 5 13.8715 5.05903 13.9896 5.17708C14.1076 5.29514 14.1667 5.44444 14.1667 5.625V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
+                      </svg> ATTACHMENTS</p>
+                </div>
+                <p class="font-second text-sm font-semibold text-white-60 mt-3 mb-4">You can attach your latest CV or Portfolio here!</p>
+                <div class="">
+                    <div class="attachment-body">
+                        <p class="hidden field_name">atc_resume</p>
+                        <p class="flex items-center gap-2 text-white-60"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 10.5C9.4125 10.5 9.76563 10.3531 10.0594 10.0594C10.3531 9.76562 10.5 9.4125 10.5 9C10.5 8.5875 10.3531 8.23437 10.0594 7.94062C9.76563 7.64687 9.4125 7.5 9 7.5C8.5875 7.5 8.23437 7.64687 7.94062 7.94062C7.64687 8.23437 7.5 8.5875 7.5 9C7.5 9.4125 7.64687 9.76562 7.94062 10.0594C8.23437 10.3531 8.5875 10.5 9 10.5ZM6 13.5H12V13.0687C12 12.7687 11.9187 12.4937 11.7563 12.2437C11.5938 11.9937 11.3687 11.8062 11.0812 11.6812C10.7562 11.5437 10.4219 11.4375 10.0781 11.3625C9.73438 11.2875 9.375 11.25 9 11.25C8.625 11.25 8.26562 11.2875 7.92188 11.3625C7.57812 11.4375 7.24375 11.5437 6.91875 11.6812C6.63125 11.8062 6.40625 11.9937 6.24375 12.2437C6.08125 12.4937 6 12.7687 6 13.0687V13.5ZM13.875 16.5H4.125C3.825 16.5 3.5625 16.3875 3.3375 16.1625C3.1125 15.9375 3 15.675 3 15.375V2.625C3 2.325 3.1125 2.0625 3.3375 1.8375C3.5625 1.6125 3.825 1.5 4.125 1.5H10.05C10.2 1.5 10.3469 1.53125 10.4906 1.59375C10.6344 1.65625 10.7563 1.7375 10.8563 1.8375L14.6625 5.64375C14.7625 5.74375 14.8438 5.86562 14.9062 6.00937C14.9688 6.15312 15 6.3 15 6.45V15.375C15 15.675 14.8875 15.9375 14.6625 16.1625C14.4375 16.3875 14.175 16.5 13.875 16.5Z" fill="#A5A5A5"/>
+                          </svg> RESUME*</p>
+                        <div class="porto flex items-center justify-between p-3 mt-2">
+                            <div class="">
+                                <a href="#" id="resume" class="font-second text-sm font-medium text-teal-100">resumefinalbangetbanget.pdf</a>
+                                <p class="font-second text-xs font-medium text-white-60">1 mb • 12 Aug 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 attachment-body">
+                        <p class="hidden field_name">atc_portfolio</p>
+                        <p class="flex items-center gap-2 text-white-60"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M9 10.5C9.4125 10.5 9.76563 10.3531 10.0594 10.0594C10.3531 9.76562 10.5 9.4125 10.5 9C10.5 8.5875 10.3531 8.23437 10.0594 7.94062C9.76563 7.64687 9.4125 7.5 9 7.5C8.5875 7.5 8.23437 7.64687 7.94062 7.94062C7.64687 8.23437 7.5 8.5875 7.5 9C7.5 9.4125 7.64687 9.76562 7.94062 10.0594C8.23437 10.3531 8.5875 10.5 9 10.5ZM6 13.5H12V13.0687C12 12.7687 11.9187 12.4937 11.7563 12.2437C11.5938 11.9937 11.3687 11.8062 11.0812 11.6812C10.7562 11.5437 10.4219 11.4375 10.0781 11.3625C9.73438 11.2875 9.375 11.25 9 11.25C8.625 11.25 8.26562 11.2875 7.92188 11.3625C7.57812 11.4375 7.24375 11.5437 6.91875 11.6812C6.63125 11.8062 6.40625 11.9937 6.24375 12.2437C6.08125 12.4937 6 12.7687 6 13.0687V13.5ZM13.875 16.5H4.125C3.825 16.5 3.5625 16.3875 3.3375 16.1625C3.1125 15.9375 3 15.675 3 15.375V2.625C3 2.325 3.1125 2.0625 3.3375 1.8375C3.5625 1.6125 3.825 1.5 4.125 1.5H10.05C10.2 1.5 10.3469 1.53125 10.4906 1.59375C10.6344 1.65625 10.7563 1.7375 10.8563 1.8375L14.6625 5.64375C14.7625 5.74375 14.8438 5.86562 14.9062 6.00937C14.9688 6.15312 15 6.3 15 6.45V15.375C15 15.675 14.8875 15.9375 14.6625 16.1625C14.4375 16.3875 14.175 16.5 13.875 16.5Z" fill="#A5A5A5"/>
+                          </svg> PORTFOLIO</p>
+                        <div class="porto flex items-center justify-between p-3 mt-2">
+                            <div class="flex items-center gap-2">
+                                <div class=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <g clip-path="url(#clip0_179_1458)">
+                                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.9702 0C4.45694 0 0 4.58333 0 10.2535C0 14.786 2.85571 18.6227 6.81735 19.9806C7.31265 20.0827 7.49408 19.76 7.49408 19.4885C7.49408 19.2508 7.47775 18.436 7.47775 17.5871C4.70429 18.1983 4.12673 16.3648 4.12673 16.3648C3.68102 15.1765 3.02061 14.871 3.02061 14.871C2.11286 14.2429 3.08673 14.2429 3.08673 14.2429C4.09367 14.3108 4.62204 15.2954 4.62204 15.2954C5.51327 16.8571 6.94939 16.4158 7.52714 16.1442C7.60959 15.4821 7.87388 15.0237 8.15449 14.7692C5.94245 14.5315 3.6151 13.6488 3.6151 9.71021C3.6151 8.58979 4.01102 7.67312 4.63837 6.96021C4.53939 6.70563 4.19265 5.65292 4.73755 4.24396C4.73755 4.24396 5.57939 3.97229 7.47755 5.29646C8.29022 5.07201 9.12832 4.95784 9.9702 4.95687C10.812 4.95687 11.6702 5.07583 12.4627 5.29646C14.361 3.97229 15.2029 4.24396 15.2029 4.24396C15.7478 5.65292 15.4008 6.70563 15.3018 6.96021C15.9457 7.67312 16.3253 8.58979 16.3253 9.71021C16.3253 13.6488 13.998 14.5144 11.7694 14.7692C12.1327 15.0917 12.4461 15.7027 12.4461 16.6704C12.4461 18.0454 12.4298 19.149 12.4298 19.4883C12.4298 19.76 12.6114 20.0827 13.1065 19.9808C17.0682 18.6225 19.9239 14.786 19.9239 10.2535C19.9402 4.58333 15.4669 0 9.9702 0Z" fill="white"/>
+                                    </g>
+                                    <defs>
+                                      <clipPath id="clip0_179_1458">
+                                        <rect width="20" height="20" fill="white"/>
+                                      </clipPath>
+                                    </defs>
+                                  </svg></div>
+                                <div class="">
+                                    <a id="portfolio" href="#" class="font-second text-sm font-medium text-teal-100 flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M7.3335 11.3333H4.66683C3.74461 11.3333 2.9585 11.0083 2.3085 10.3583C1.6585 9.70834 1.3335 8.92223 1.3335 8C1.3335 7.07778 1.6585 6.29167 2.3085 5.64167C2.9585 4.99167 3.74461 4.66667 4.66683 4.66667H7.3335V6.00001H4.66683C4.11127 6.00001 3.63905 6.19445 3.25016 6.58334C2.86127 6.97223 2.66683 7.44445 2.66683 8C2.66683 8.55556 2.86127 9.02778 3.25016 9.41667C3.63905 9.80556 4.11127 10 4.66683 10H7.3335V11.3333ZM5.3335 8.66667V7.33334H10.6668V8.66667H5.3335ZM8.66683 11.3333V10H11.3335C11.8891 10 12.3613 9.80556 12.7502 9.41667C13.1391 9.02778 13.3335 8.55556 13.3335 8C13.3335 7.44445 13.1391 6.97223 12.7502 6.58334C12.3613 6.19445 11.8891 6.00001 11.3335 6.00001H8.66683V4.66667H11.3335C12.2557 4.66667 13.0418 4.99167 13.6918 5.64167C14.3418 6.29167 14.6668 7.07778 14.6668 8C14.6668 8.92223 14.3418 9.70834 13.6918 10.3583C13.0418 11.0083 12.2557 11.3333 11.3335 11.3333H8.66683Z" fill="#3DD1DB"/>
+                                      </svg> <span>...</span></a>
+                                    <p id="portfolio-type" class="font-second text-xs font-medium text-white-60">GitHub</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-overview bg-darkest-grey rounded-2xl p-4 pb-5">
+                <div class="w-100 rounded-t-2xl">
+                    <p class="text-white flex items-center gap-2 mb-3">OVERVIEW</p>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="rounded-lg bg-card-grey p-3">
+                        <p class="text-sm font-normal text-white-80 font-second mb-3">Total Experience</p>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17" fill="none">
+                                <path d="M1.91667 16.5C1.58334 16.5 1.29167 16.375 1.04167 16.125C0.791672 15.875 0.666672 15.5834 0.666672 15.25V4.97919C0.666672 4.64585 0.791672 4.35419 1.04167 4.10419C1.29167 3.85419 1.58334 3.72919 1.91667 3.72919H5.87501V1.91669C5.87501 1.58335 6.00001 1.29169 6.25001 1.04169C6.50001 0.791687 6.79167 0.666687 7.12501 0.666687H10.875C11.2083 0.666687 11.5 0.791687 11.75 1.04169C12 1.29169 12.125 1.58335 12.125 1.91669V3.72919H16.0833C16.4167 3.72919 16.7083 3.85419 16.9583 4.10419C17.2083 4.35419 17.3333 4.64585 17.3333 4.97919V15.25C17.3333 15.5834 17.2083 15.875 16.9583 16.125C16.7083 16.375 16.4167 16.5 16.0833 16.5H1.91667ZM7.12501 3.72919H10.875V1.91669H7.12501V3.72919Z" fill="#3DD1DB"/>
+                              </svg>
+                            <p id="overview-experience" class="text-2xl text-teal-100 font-bold">15 months</p>
+                        </div>
+                    </div>
+                    <div class="rounded-lg bg-card-grey p-3">
+                        <p class="text-sm font-normal text-white-80 font-second mb-3">Education Status</p>
+                        <div class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M18.6667 14.2708C18.4167 14.2708 18.2118 14.1875 18.0521 14.0208C17.8924 13.8542 17.8125 13.6597 17.8125 13.4375V8.5L10.8958 12.2292C10.7708 12.2847 10.625 12.3333 10.4583 12.375C10.2917 12.4167 10.1319 12.4375 9.97917 12.4375C9.82639 12.4375 9.67014 12.4167 9.51042 12.375C9.3507 12.3333 9.20833 12.2847 9.08333 12.2292L2.0625 8.375C1.89583 8.30556 1.77083 8.19792 1.6875 8.05208C1.60417 7.90625 1.5625 7.73611 1.5625 7.54167C1.5625 7.36111 1.60417 7.19792 1.6875 7.05208C1.77083 6.90625 1.89583 6.79167 2.0625 6.70833L9.08333 2.875C9.22222 2.81944 9.37153 2.76389 9.53125 2.70833C9.69097 2.65278 9.84028 2.625 9.97917 2.625C10.1181 2.625 10.2674 2.65278 10.4271 2.70833C10.5868 2.76389 10.75 2.81944 10.9167 2.875L18.9792 7.27083C19.1319 7.34028 19.2535 7.45486 19.3438 7.61458C19.434 7.77431 19.4792 7.9375 19.4792 8.10417V13.4375C19.4792 13.6597 19.3993 13.8542 19.2396 14.0208C19.0799 14.1875 18.8889 14.2708 18.6667 14.2708ZM9.97917 17.2917C9.84028 17.2917 9.6875 17.2743 9.52083 17.2396C9.35417 17.2049 9.20833 17.1528 9.08333 17.0833L4.79167 14.7708C4.47222 14.6181 4.22569 14.3889 4.05208 14.0833C3.87847 13.7778 3.79167 13.4444 3.79167 13.0833V10.125L8.66667 12.8125C8.875 12.9236 9.08333 13.0278 9.29167 13.125C9.5 13.2222 9.72917 13.2708 9.97917 13.2708C10.2292 13.2708 10.4653 13.2222 10.6875 13.125C10.9097 13.0278 11.1181 12.9167 11.3125 12.7917L16.1875 10.125V13.0833C16.1875 13.4444 16.0972 13.7778 15.9167 14.0833C15.7361 14.3889 15.4931 14.6181 15.1875 14.7708L10.8958 17.0833C10.7569 17.1528 10.6042 17.2049 10.4375 17.2396C10.2708 17.2743 10.1181 17.2917 9.97917 17.2917Z" fill="#3DD1DB"/>
+                              </svg>
+                            <p id="overview-education" class="text-2xl text-teal-100 font-bold">3rd Year Student</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="applicant-assign bg-card-grey border border-[#343434] rounded-2xl p-4 pb-5">
+                <form id="form-update-applicants" class="flex flex-col gap-3">
+                    <button type="button" class="w-100 bg-[#2BDE68] text-[#222222] rounded-lg flex items-center justify-center py-3 font-second text-sm font-normal gap-1">Move to Shortlist <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M7.95834 15L3.20834 10.25L4.39584 9.06252L7.95834 12.625L15.6042 4.97919L16.7917 6.16669L7.95834 15Z" fill="#222222"/>
+                    </svg></button>
+                    <button type="button" class="w-100 bg-[#2BDE68]/20 text-[#2BDE68] rounded-lg flex items-center justify-center py-3 font-second text-sm font-normal gap-1">Schedule for Interview <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <path d="M8.45834 15L3.70834 10.25L4.89584 9.06246L8.45834 12.625L16.1042 4.97913L17.2917 6.16663L8.45834 15Z" fill="#2BDE68"/>
+                      </svg></button>
+                    <button type="button" class="w-100 bg-[#FC4545]/20 text-[#FC4545] rounded-lg flex items-center justify-center py-3 font-second text-sm font-normal gap-1">Reject Applicant <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                        <path d="M5.83332 15.8333L4.66666 14.6666L9.33332 9.99996L4.66666 5.33329L5.83332 4.16663L10.5 8.83329L15.1667 4.16663L16.3333 5.33329L11.6667 9.99996L16.3333 14.6666L15.1667 15.8333L10.5 11.1666L5.83332 15.8333Z" fill="#FC4545"/>
+                      </svg></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="hidden mt-[-5px]"></div>
+<section id="popup" class="fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100 hidden">
+
+    <!-- POPUP BASIC INFORMATION -->
+
+    <div class="popup popup-basic border-2 border-header w-[720px] hidden">
+        <form id="form-basic-information">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10.0002 10C9.0835 10 8.29877 9.67362 7.646 9.02084C6.99322 8.36807 6.66683 7.58334 6.66683 6.66668C6.66683 5.75001 6.99322 4.96529 7.646 4.31251C8.29877 3.65973 9.0835 3.33334 10.0002 3.33334C10.9168 3.33334 11.7016 3.65973 12.3543 4.31251C13.0071 4.96529 13.3335 5.75001 13.3335 6.66668C13.3335 7.58334 13.0071 8.36807 12.3543 9.02084C11.7016 9.67362 10.9168 10 10.0002 10ZM5.00016 16.6667C4.54183 16.6667 4.14947 16.5035 3.82308 16.1771C3.49669 15.8507 3.3335 15.4583 3.3335 15V14.3333C3.3335 13.8611 3.45502 13.4271 3.69808 13.0313C3.94113 12.6354 4.26405 12.3333 4.66683 12.125C5.52794 11.6945 6.40294 11.3715 7.29183 11.1563C8.18072 10.941 9.0835 10.8333 10.0002 10.8333C10.9168 10.8333 11.8196 10.941 12.7085 11.1563C13.5974 11.3715 14.4724 11.6945 15.3335 12.125C15.7363 12.3333 16.0592 12.6354 16.3022 13.0313C16.5453 13.4271 16.6668 13.8611 16.6668 14.3333V15C16.6668 15.4583 16.5036 15.8507 16.1772 16.1771C15.8509 16.5035 15.4585 16.6667 15.0002 16.6667H5.00016Z" fill="white"/>
+                </svg> EDITING BASIC INFORMATION</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body divide-y divide-header bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Profile Picture</p>
+                    <div class="flex items-center gap-5">
+                        <div class="w-[88px] h-[88px] rounded-full overflow-hidden">
+                            <img id="popup-profile-pic" src="/img/Ellipse 3.svg" alt="profile-pic" class="w-full h-full object-cover">
+                        </div>
+                        <div class="">
+                            <p class="text-white-60 font-second text-sm font-medium mb-2">Make sure your profile picture is professional and shows your face clearly.<br>
+                            <span class="text-white">Maximum file size is 1 MB.</span></p>
+                            <label for="custom-input-file">
+                                <input type="file" id="custom-input-file" class="hidden" name="profile-picture" accept="image/*"/>
+                                <button id="button-profile-pic" type="button" class="flex items-center gap-1 bg-teal-8 text-teal-100 py-2 px-4"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                    <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                </svg> Upload Profile Picture</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Basic Information</p>
+                    <div class="flex gap-5 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-firstname" type="text" value="Jarwo" name="first_name" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-lastname" type="text" value="Slebew" name="last_name" class="block border-0 w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                    <div class="flex gap-5">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DOMICILE</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-domicile" type="text" value="Jakarta" name="domicile" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE OF BIRTH</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-birthdate" type="date" value="" name="date_of_birth" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                    <label class="block mt-4">
+                        <span class="text-white-60 tracking-[1.4px] font-normal text-sm">SEX</span>
+                        <!-- Using form state modifiers, the classes can be identical for every input -->
+                        <div class="flex gap-4">
+                            <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                                <input id="default-radio-1" type="radio" value="Female" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-1" class="text-white-60 font-second text-xs font-medium">Female</label>
+                            </div>
+                            <div class="flex items-center gap-3 justify-between rounded-lg px-3 py-2.5 bg-darkest-grey">
+                                <input id="default-radio-2" type="radio" value="Male" name="sex" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-radio-2" class="text-white-60 font-second text-xs font-medium">Male</label>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="p-5">
+                    <p class="font-bold text-lg text-white mb-3">Contact Information</p>
+                    <div class="flex gap-5 mb-4">
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EMAIL</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-email" type="text" value="Jarwo" name="email" disabled title="Email address cannot be updated" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                        <label class="block">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MOBILE</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-mobile" type="text" value="Slebew" name="mobile" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                            "/>
+                        </label>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP PROFILE SUMMARY -->
+
+    <div class="popup popup-summary border-2 border-header w-[720px] hidden">
+        <form id="form-profile-summary">
+            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+                <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10.0002 10C9.0835 10 8.29877 9.67362 7.646 9.02084C6.99322 8.36807 6.66683 7.58334 6.66683 6.66668C6.66683 5.75001 6.99322 4.96529 7.646 4.31251C8.29877 3.65973 9.0835 3.33334 10.0002 3.33334C10.9168 3.33334 11.7016 3.65973 12.3543 4.31251C13.0071 4.96529 13.3335 5.75001 13.3335 6.66668C13.3335 7.58334 13.0071 8.36807 12.3543 9.02084C11.7016 9.67362 10.9168 10 10.0002 10ZM5.00016 16.6667C4.54183 16.6667 4.14947 16.5035 3.82308 16.1771C3.49669 15.8507 3.3335 15.4583 3.3335 15V14.3333C3.3335 13.8611 3.45502 13.4271 3.69808 13.0313C3.94113 12.6354 4.26405 12.3333 4.66683 12.125C5.52794 11.6945 6.40294 11.3715 7.29183 11.1563C8.18072 10.941 9.0835 10.8333 10.0002 10.8333C10.9168 10.8333 11.8196 10.941 12.7085 11.1563C13.5974 11.3715 14.4724 11.6945 15.3335 12.125C15.7363 12.3333 16.0592 12.6354 16.3022 13.0313C16.5453 13.4271 16.6668 13.8611 16.6668 14.3333V15C16.6668 15.4583 16.5036 15.8507 16.1772 16.1771C15.8509 16.5035 15.4585 16.6667 15.0002 16.6667H5.00016Z" fill="white"/>
+                  </svg> EDITING PROFILE SUMMARY</p>
+                <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+            </div>
+            <div class="body bg-body rounded-b-2xl p-5 pb-6">
+                <p class="font-bold text-lg text-white">Your Profile Summary</p>
+                <p class="text-white-60 font-second font-medium text-sm mb-3">Your profile summary is your chance to make a lasting impression on potential employers! <a href="" class="text-teal-100">Here</a> is a helpful article on how to create an attractive profile summary.</p>        
+                <textarea id="popup-summary-textarea" rows="4" name="profile_summary" class="focus:ring-white-60 block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your thoughts here..."></textarea>
+                <div class="flex gap-3 justify-end mt-8">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- POPUP EXPERIENCES -->
+
+    <div class="popup popup-experiences border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2.9165 17.5C2.58317 17.5 2.2915 17.375 2.0415 17.125C1.7915 16.875 1.6665 16.5833 1.6665 16.25V5.97916C1.6665 5.64582 1.7915 5.35416 2.0415 5.10416C2.2915 4.85416 2.58317 4.72916 2.9165 4.72916H6.87484V2.91666C6.87484 2.58332 6.99984 2.29166 7.24984 2.04166C7.49984 1.79166 7.7915 1.66666 8.12484 1.66666H11.8748C12.2082 1.66666 12.4998 1.79166 12.7498 2.04166C12.9998 2.29166 13.1248 2.58332 13.1248 2.91666V4.72916H17.0832C17.4165 4.72916 17.7082 4.85416 17.9582 5.10416C18.2082 5.35416 18.3332 5.64582 18.3332 5.97916V16.25C18.3332 16.5833 18.2082 16.875 17.9582 17.125C17.7082 17.375 17.4165 17.5 17.0832 17.5H2.9165ZM8.12484 4.72916H11.8748V2.91666H8.12484V4.72916Z" fill="white"/>
+              </svg> EDITING EXPERIENCES</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+
+            <!-- ADDING NEW EXPERIENCE -->
+
+            <div id="adding-new-experience" class="hidden additional-popup">
+                <form id="form-add-experience">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">POSITION/JOB TITLE*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="popup-firstname" type="text" placeholder="Software Engineer" name="exp_position" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">COMPANY/ORGANIZATION NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="popup-firstname" type="text" placeholder="Hup! Indonesia" name="exp_orgname" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EXPERIENCE TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="exp_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected>Select Type</option>
+                                        <option value="Employee">Employee</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                        <option value="Student Event Committee">Student Event Committee</option>
+                                        <option value="Student Organization">Student Organization</option>
+                                        <option value="Self-Employed">Self-Employed</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FULL-TIME/PART-TIME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="exp_time" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="date" placeholder="Hup! Indonesia" name="exp_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="date" placeholder="Hup! Indonesia" name="exp_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:bg-header/50 disabled:text-slate-100/50 disabled:placeholder-text-white-60/50
+                                    "/>
+                                </label>
+                                <div class="flex items-center mt-5">
+                                    <input id="still-work-here" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-header border-0 rounded focus:ring-blue-500 focus:ring-0 focus:outline-none focus:border-0">
+                                    <label for="still-work-here" class="ml-2 font-second text-sm font-medium text-white-60">I still work here</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <select id="countries" name="exp_status" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                    <option selected>Select Type</option>
+                                    <option value="On-Site">On-Site</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE LOCATION</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="popup-firstname" type="text" placeholder="Jakarta" name="exp_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                  </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="exp_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-add rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- EDITING EXPERIENCE -->
+
+            <div id="editing-experience" class="hidden additional-popup-edit">
+                <form id="form-editing-experience">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">POSITION/JOB TITLE*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Software Engineer" name="exp_position" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">COMPANY/ORGANIZATION NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Hup! Indonesia" name="exp_orgname" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EXPERIENCE TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select name="exp_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option>Select Type</option>
+                                        <option value="Employee">Employee</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                        <option value="Student Event Committee">Student Event Committee</option>
+                                        <option value="Student Organization">Student Organization</option>
+                                        <option value="Self-Employed">Self-Employed</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FULL-TIME/PART-TIME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select name="exp_time" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected value="Full-time">Full-time</option>
+                                        <option value="Part-time">Part-time</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="exp_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="exp_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500 disabled:bg-header/50 disabled:text-slate-100/50 disabled:placeholder-text-white-60/50
+                                    "/>
+                                </label>
+                                <div class="flex items-center mt-5">
+                                    <input id="still-work-here" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-header border-0 rounded focus:ring-blue-500 focus:ring-0 focus:outline-none focus:border-0">
+                                    <label for="still-work-here" class="ml-2 font-second text-sm font-medium text-white-60">I still work here</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex gap-5">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <select id="countries" name="exp_status" class="block border-0 w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                    <option selected>Select Type</option>
+                                    <option value="On-Site">On-Site</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE LOCATION</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Jakarta" name="exp_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                  </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="exp_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-edit rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- REGISTERED EXPERIENCES -->
+
+            <div id="registered-experience" class="main-popup">
+                <div class="divide-y divide-header">
+                    <div class="p-5">
+                        <p class="font-bold text-lg text-white mb-1">Your Experiences</p>
+                        <p class="text-white-60 text-sm font-second font-medium">You can add as much experience as you'd like! You can even add your university's organizational experiences. Always remember to elaborate your responsibilities well in the description.</p>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                              </svg>
+                            <div class="">
+                                <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                <p class="font-second text-sm font-medium text-white-60">Recruiters will be seeing your Experiences in this order. You can drag and drop each Experiences using the handle on the left side to suit your preferred order.</p>
+                            </div>
+                        </div>
+                        <div class="divide-y divide-header">
+                            <div id="popup-body-experiences">
+                                <!-- ADD BY JS -->
+                            </div>
+                            <div class="">
+                                <button id="add-experience" class="font-second text-sm font-medium w-[90%] m-auto rounded-lg bg-teal-8 text-teal-100 p-4 my-5 flex items-center gap-2 justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                        <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                    </svg> Add Experience
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP EDUCATION -->
+
+    <div class="popup popup-education border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M18.6667 14.2708C18.4167 14.2708 18.2118 14.1875 18.0521 14.0208C17.8924 13.8542 17.8125 13.6597 17.8125 13.4375V8.5L10.8958 12.2292C10.7708 12.2847 10.625 12.3333 10.4583 12.375C10.2917 12.4167 10.1319 12.4375 9.97917 12.4375C9.82639 12.4375 9.67014 12.4167 9.51042 12.375C9.3507 12.3333 9.20833 12.2847 9.08333 12.2292L2.0625 8.375C1.89583 8.30556 1.77083 8.19792 1.6875 8.05208C1.60417 7.90625 1.5625 7.73611 1.5625 7.54167C1.5625 7.36111 1.60417 7.19792 1.6875 7.05208C1.77083 6.90625 1.89583 6.79167 2.0625 6.70833L9.08333 2.875C9.22222 2.81944 9.37153 2.76389 9.53125 2.70833C9.69097 2.65278 9.84028 2.625 9.97917 2.625C10.1181 2.625 10.2674 2.65278 10.4271 2.70833C10.5868 2.76389 10.75 2.81944 10.9167 2.875L18.9792 7.27083C19.1319 7.34028 19.2535 7.45486 19.3438 7.61458C19.434 7.77431 19.4792 7.9375 19.4792 8.10417V13.4375C19.4792 13.6597 19.3993 13.8542 19.2396 14.0208C19.0799 14.1875 18.8889 14.2708 18.6667 14.2708ZM9.97917 17.2917C9.84028 17.2917 9.6875 17.2743 9.52083 17.2396C9.35417 17.2049 9.20833 17.1528 9.08333 17.0833L4.79167 14.7708C4.47222 14.6181 4.22569 14.3889 4.05208 14.0833C3.87847 13.7778 3.79167 13.4444 3.79167 13.0833V10.125L8.66667 12.8125C8.875 12.9236 9.08333 13.0278 9.29167 13.125C9.5 13.2222 9.72917 13.2708 9.97917 13.2708C10.2292 13.2708 10.4653 13.2222 10.6875 13.125C10.9097 13.0278 11.1181 12.9167 11.3125 12.7917L16.1875 10.125V13.0833C16.1875 13.4444 16.0972 13.7778 15.9167 14.0833C15.7361 14.3889 15.4931 14.6181 15.1875 14.7708L10.8958 17.0833C10.7569 17.1528 10.6042 17.2049 10.4375 17.2396C10.2708 17.2743 10.1181 17.2917 9.97917 17.2917Z" fill="white"/>
+              </svg> EDITING EDUCATION</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+
+            <!-- ADDING NEW EDUCATION -->
+
+            <div id="adding-new-education" class="additional-popup hidden">
+                <form id="form-add-education">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MAJOR/DEGREE/PROGRAM NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="popup-firstname" type="text" placeholder="Software Engineer" name="edu_program" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="popup-firstname" type="text" placeholder="Universitas Hup! Indonesia" name="edu_institution" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EDUCATION TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select required id="countries" name="edu_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected>Select Type</option>
+                                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                        <option value="High-School">High-School</option>
+                                        <option value="Bootcamp">Bootcamp</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">GPA (IF AVAILABLE)</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="text" pattern="^[0-9.]+" placeholder="3.42" name="edu_gpa" class="block border-0 w-[80px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="date" placeholder="Hup! Indonesia" name="edu_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="date" placeholder="Hup! Indonesia" name="edu_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="edu_status" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option value="On-Site" selected>On-Site</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Remote">Remote</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION LOCATION</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-firstname" type="text" placeholder="Hup! Indonesia" name="edu_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="edu_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-add rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- EDITING EDUCATION -->
+
+            <div id="editing-education" class="additional-popup-edit hidden">
+                <form id="form-editing-education">
+                    <div class="p-5 divide-header divide-y flex flex-col gap-4">
+                        <div class="flex flex-col gap-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MAJOR/DEGREE/PROGRAM NAME*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Software Engineer" name="edu_program" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Universitas Hup! Indonesia" name="edu_institution" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">EDUCATION TYPE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select required id="countries" name="edu_type" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option selected>Select Type</option>
+                                        <option value="Bachelor's Degree">Bachelor's Degree</option>
+                                        <option value="High-School">High-School</option>
+                                        <option value="Bootcamp">Bootcamp</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">GPA (IF AVAILABLE)</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" pattern="^[0-9.]+" placeholder="3.42" name="edu_gpa" class="block border-0 w-[80px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5 items-center">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="edu_startdate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END DATE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="date" placeholder="Hup! Indonesia" name="edu_enddate" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LOCATION TYPE</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="edu_status" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option value="On-Site" selected>On-Site</option>
+                                        <option value="Hybrid">Hybrid</option>
+                                        <option value="Remote">Remote</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">INSTITUTION LOCATION</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Hup! Indonesia" name="edu_location" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 flex-col">
+                            <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3 mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                    <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                                </svg>
+                                <div class="">
+                                    <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Remember to always describe and elaborate each and every responsibilities you have during your experience. Here is a helpful article to assist you in writing a good description!</p>
+                                </div>
+                            </div>
+                            <textarea id="" rows="4" name="edu_description" class="block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg focus:ring-white-60" placeholder="Write your desciprtion here..."></textarea>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                        <button type="button" class="cancle-edit rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- REGISTERED EDUCATION -->
+
+            <div id="registered-education" class="main-popup">
+                <div class="divide-y divide-header">
+                    <div class="p-5">
+                        <p class="font-bold text-lg text-white mb-1">Your Education</p>
+                        <p class="text-white-60 text-sm font-second font-medium">This is where you show off your education to recruiters! You can basically add any education programs you have accomplished or still participating.</p>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center bg-[#3B3B3B] rounded-lg p-3 gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="49" viewBox="0 0 24 25" fill="none">
+                                <path d="M12 17.5C12.2833 17.5 12.5208 17.4042 12.7125 17.2125C12.9042 17.0208 13 16.7833 13 16.5V12.5C13 12.2167 12.9042 11.9792 12.7125 11.7875C12.5208 11.5958 12.2833 11.5 12 11.5C11.7167 11.5 11.4792 11.5958 11.2875 11.7875C11.0958 11.9792 11 12.2167 11 12.5V16.5C11 16.7833 11.0958 17.0208 11.2875 17.2125C11.4792 17.4042 11.7167 17.5 12 17.5ZM12 9.5C12.2833 9.5 12.5208 9.40417 12.7125 9.2125C12.9042 9.02083 13 8.78333 13 8.5C13 8.21667 12.9042 7.97917 12.7125 7.7875C12.5208 7.59583 12.2833 7.5 12 7.5C11.7167 7.5 11.4792 7.59583 11.2875 7.7875C11.0958 7.97917 11 8.21667 11 8.5C11 8.78333 11.0958 9.02083 11.2875 9.2125C11.4792 9.40417 11.7167 9.5 12 9.5ZM12 22.5C10.6167 22.5 9.31667 22.2375 8.1 21.7125C6.88333 21.1875 5.825 20.475 4.925 19.575C4.025 18.675 3.3125 17.6167 2.7875 16.4C2.2625 15.1833 2 13.8833 2 12.5C2 11.1167 2.2625 9.81667 2.7875 8.6C3.3125 7.38333 4.025 6.325 4.925 5.425C5.825 4.525 6.88333 3.8125 8.1 3.2875C9.31667 2.7625 10.6167 2.5 12 2.5C13.3833 2.5 14.6833 2.7625 15.9 3.2875C17.1167 3.8125 18.175 4.525 19.075 5.425C19.975 6.325 20.6875 7.38333 21.2125 8.6C21.7375 9.81667 22 11.1167 22 12.5C22 13.8833 21.7375 15.1833 21.2125 16.4C20.6875 17.6167 19.975 18.675 19.075 19.575C18.175 20.475 17.1167 21.1875 15.9 21.7125C14.6833 22.2375 13.3833 22.5 12 22.5Z" fill="#3DD1DB"/>
+                              </svg>
+                            <div class="">
+                                <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                <p class="font-second text-sm font-medium text-white-60">Recruiters will be seeing your Education in this order. You can drag and drop each Education using the handle on the left side to suit your preferred order.</p>
+                            </div>
+                        </div>
+                        <div class="divide-y divide-header">
+                            <div id="popup-body-educations">
+                                <!-- ADD BY JS -->
+                            </div>
+                            <div class="">
+                                <button type="button" id="add-education" class="font-second text-sm font-medium w-[90%] m-auto rounded-lg bg-teal-8 text-teal-100 p-4 my-5 flex items-center gap-2 justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                                        <path d="M9.66675 10.8333H4.66675V9.16666H9.66675V4.16666H11.3334V9.16666H16.3334V10.8333H11.3334V15.8333H9.66675V10.8333Z" fill="#3DD1DB"/>
+                                      </svg> Add Education
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POPUP ATTACHMENT -->
+    <div class="popup popup-attachments border-2 border-header w-[720px] hidden">
+        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M9.58333 18.3333C8.30556 18.3333 7.22222 17.8889 6.33333 17C5.44444 16.1111 5 15.0278 5 13.75V4.99999C5 4.08332 5.32639 3.2986 5.97917 2.64582C6.63194 1.99305 7.41667 1.66666 8.33333 1.66666C9.25 1.66666 10.0347 1.99305 10.6875 2.64582C11.3403 3.2986 11.6667 4.08332 11.6667 4.99999V12.9167C11.6667 13.5 11.4653 13.993 11.0625 14.3958C10.6597 14.7986 10.1667 15 9.58333 15C9 15 8.50694 14.7986 8.10417 14.3958C7.70139 13.993 7.5 13.5 7.5 12.9167V5.62499C7.5 5.44443 7.55903 5.29513 7.67708 5.17707C7.79514 5.05902 7.94444 4.99999 8.125 4.99999C8.30556 4.99999 8.45486 5.05902 8.57292 5.17707C8.69097 5.29513 8.75 5.44443 8.75 5.62499V12.9167C8.75 13.1528 8.82986 13.3507 8.98958 13.5104C9.14931 13.6701 9.34722 13.75 9.58333 13.75C9.81944 13.75 10.0174 13.6701 10.1771 13.5104C10.3368 13.3507 10.4167 13.1528 10.4167 12.9167V4.99999C10.4167 4.41666 10.2153 3.9236 9.8125 3.52082C9.40972 3.11805 8.91667 2.91666 8.33333 2.91666C7.75 2.91666 7.25694 3.11805 6.85417 3.52082C6.45139 3.9236 6.25 4.41666 6.25 4.99999V13.75C6.25 14.6667 6.57639 15.4514 7.22917 16.1042C7.88194 16.7569 8.66667 17.0833 9.58333 17.0833C10.5 17.0833 11.2847 16.7569 11.9375 16.1042C12.5903 15.4514 12.9167 14.6667 12.9167 13.75V5.62499C12.9167 5.44443 12.9757 5.29513 13.0938 5.17707C13.2118 5.05902 13.3611 4.99999 13.5417 4.99999C13.7222 4.99999 13.8715 5.05902 13.9896 5.17707C14.1076 5.29513 14.1667 5.44443 14.1667 5.62499V13.75C14.1667 15.0278 13.7222 16.1111 12.8333 17C11.9444 17.8889 10.8611 18.3333 9.58333 18.3333Z" fill="white"/>
+              </svg> EDITING ATTACHMENTS</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+            <form id="form-add-attachment">
+                <div class="divide-y divide-header">
+                    <div class="p-5">
+                        <p class="font-bold text-lg text-white mb-1">Attachments</p>
+                        <p class="text-white-60 text-sm font-second font-medium">Here, you can upload your resume or portfolio to showcase your works from past Experiences!</p>
+                    </div>
+                    <div class="divide-y divide-header px-5">
+                        <div class="flex items-start gap-3 py-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20.0003 23.3333C20.917 23.3333 21.7017 23.007 22.3545 22.3542C23.0073 21.7014 23.3337 20.9167 23.3337 20C23.3337 19.0833 23.0073 18.2986 22.3545 17.6458C21.7017 16.9931 20.917 16.6667 20.0003 16.6667C19.0837 16.6667 18.2989 16.9931 17.6462 17.6458C16.9934 18.2986 16.667 19.0833 16.667 20C16.667 20.9167 16.9934 21.7014 17.6462 22.3542C18.2989 23.007 19.0837 23.3333 20.0003 23.3333ZM13.3337 30H26.667V29.0417C26.667 28.375 26.4864 27.7639 26.1253 27.2083C25.7642 26.6528 25.2642 26.2361 24.6253 25.9583C23.9031 25.6528 23.16 25.4167 22.3962 25.25C21.6323 25.0833 20.8337 25 20.0003 25C19.167 25 18.3684 25.0833 17.6045 25.25C16.8406 25.4167 16.0975 25.6528 15.3753 25.9583C14.7364 26.2361 14.2364 26.6528 13.8753 27.2083C13.5142 27.7639 13.3337 28.375 13.3337 29.0417V30ZM30.8337 36.6667H9.16699C8.50033 36.6667 7.91699 36.4167 7.41699 35.9167C6.91699 35.4167 6.66699 34.8333 6.66699 34.1667V5.83334C6.66699 5.16668 6.91699 4.58334 7.41699 4.08334C7.91699 3.58334 8.50033 3.33334 9.16699 3.33334H22.3337C22.667 3.33334 22.9934 3.40279 23.3128 3.54168C23.6323 3.68057 23.9031 3.86112 24.1253 4.08334L32.5837 12.5417C32.8059 12.7639 32.9864 13.0347 33.1253 13.3542C33.2642 13.6736 33.3337 14 33.3337 14.3333V34.1667C33.3337 34.8333 33.0837 35.4167 32.5837 35.9167C32.0837 36.4167 31.5003 36.6667 30.8337 36.6667Z" fill="white"/>
+                            </svg>
+                            <div class="">
+                                <p class="text-white font-bold text-lg">Resume*</p>
+                                <p class="font-second text-white-60 text-sm font-medium">Keep in mind that some companies still require you to upload your resume in digital copy. However, they will be seeing your profile first, not your resume!</p>
+                                <div class="flex items-center gap-2 mt-3">
+                                    <label for="custom-input-file">
+                                        <input type="file" id="custom-input-resume" class="hidden" name="atc_resume" accept="application/pdf"/>
+                                        <button type="button" id="button-input-resume" class="flex items-center gap-1 py-2 px-4 bg-teal-8 text-teal-100 rounded-lg font-second text-sm font-medium">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                                <path d="M9.16634 15.8333H10.833V12.3542L12.1663 13.6875L13.333 12.5L9.99967 9.16666L6.66634 12.5L7.85384 13.6667L9.16634 12.3542V15.8333ZM4.99967 18.3333C4.54134 18.3333 4.14898 18.1701 3.82259 17.8437C3.4962 17.5174 3.33301 17.125 3.33301 16.6667V3.33332C3.33301 2.87499 3.4962 2.48263 3.82259 2.15624C4.14898 1.82985 4.54134 1.66666 4.99967 1.66666H11.6663L16.6663 6.66666V16.6667C16.6663 17.125 16.5031 17.5174 16.1768 17.8437C15.8504 18.1701 15.458 18.3333 14.9997 18.3333H4.99967ZM10.833 7.49999H14.9997L10.833 3.33332V7.49999Z" fill="#3DD1DB"/>
+                                            </svg>
+                                            Upload Resume
+                                        </button>
+                                    </label>
+                                    <p class="font-second text-sm font-medium text-white-60">Accepted file is only in PDF. Maximum file size 2 MB.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 py-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20.0003 23.3333C20.917 23.3333 21.7017 23.007 22.3545 22.3542C23.0073 21.7014 23.3337 20.9167 23.3337 20C23.3337 19.0833 23.0073 18.2986 22.3545 17.6458C21.7017 16.9931 20.917 16.6667 20.0003 16.6667C19.0837 16.6667 18.2989 16.9931 17.6462 17.6458C16.9934 18.2986 16.667 19.0833 16.667 20C16.667 20.9167 16.9934 21.7014 17.6462 22.3542C18.2989 23.007 19.0837 23.3333 20.0003 23.3333ZM13.3337 30H26.667V29.0417C26.667 28.375 26.4864 27.7639 26.1253 27.2083C25.7642 26.6528 25.2642 26.2361 24.6253 25.9583C23.9031 25.6528 23.16 25.4167 22.3962 25.25C21.6323 25.0833 20.8337 25 20.0003 25C19.167 25 18.3684 25.0833 17.6045 25.25C16.8406 25.4167 16.0975 25.6528 15.3753 25.9583C14.7364 26.2361 14.2364 26.6528 13.8753 27.2083C13.5142 27.7639 13.3337 28.375 13.3337 29.0417V30ZM30.8337 36.6667H9.16699C8.50033 36.6667 7.91699 36.4167 7.41699 35.9167C6.91699 35.4167 6.66699 34.8333 6.66699 34.1667V5.83334C6.66699 5.16668 6.91699 4.58334 7.41699 4.08334C7.91699 3.58334 8.50033 3.33334 9.16699 3.33334H22.3337C22.667 3.33334 22.9934 3.40279 23.3128 3.54168C23.6323 3.68057 23.9031 3.86112 24.1253 4.08334L32.5837 12.5417C32.8059 12.7639 32.9864 13.0347 33.1253 13.3542C33.2642 13.6736 33.3337 14 33.3337 14.3333V34.1667C33.3337 34.8333 33.0837 35.4167 32.5837 35.9167C32.0837 36.4167 31.5003 36.6667 30.8337 36.6667Z" fill="white"/>
+                            </svg>
+                            <div class="">
+                                <p class="text-white font-bold text-lg">Portfolio</p>
+                                <p class="font-second text-white-60 text-sm font-medium">Might be required if the job post says so. You can add a link to your portfolio from another website (GitHub, Behance, Google Drive, etc.)</p>
+                                <label class="flex items-center gap-3 mt-3">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LINK</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input id="popup-body-portfolio" type="text" name="atc_portfolio" placeholder="www.drive.google.com/file" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white-60 font-second
+                                      focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                      focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- POPUP RECRUITER -->
+    <div class="popup popup-recruiter rounded-2xl overflow-hidden border-2 border-header w-[720px] hidden">
+        <div class="header bg-header flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2">RECRUITER PROFILE</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <div class="popup-bar flex gap-3 px-5 py-1 bg-teal-8 items-center">
+            <p class="text-[#A5A5A5] tracking-[1.4px] text-sm font-normal">PROGRESS</p>
+            <p class="text-sm font-bold text-white">0%</p>
+            <div class="w-full bg-black rounded-full h-2.5">
+                <div class="bg-teal-100 h-2.5 rounded-full" style="width: 2%"></div>
+            </div>
+        </div>
+        <form id="form-register-recruiter">
+            <div class="body bg-body min-h-[300px] max-h-[500px] overflow-y-scroll">
+                <div class="body-percent 0%">
+                    <div class="w-full bg-cover bg-no-repeat p-4 flex flex-col gap-6" style="background-image: url('/img/Login.png')">
+                        <div class="flex gap-3 items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30" fill="none">
+                                <g clip-path="url(#clip0_161_1128)">
+                                  <path d="M36.3426 9.29912L35.3072 24.174L30.8327 23.8597L30.3944 21.3268C28.7188 23.0938 26.8079 23.9019 24.6619 23.7511C23.8893 23.6969 23.1672 23.5378 22.4954 23.274C21.8452 23.0117 21.3626 22.6637 21.0478 22.23C20.8711 21.9793 20.7622 21.3759 20.7209 20.4198C20.7011 19.4652 20.7587 18.0178 20.8938 16.0776L21.4385 8.25218L26.9431 8.63885L26.4028 16.3996C26.3728 16.8308 26.3483 17.3382 26.3292 17.9217C26.3102 18.5053 26.349 18.8763 26.4458 19.0347C26.581 19.2609 27.0027 19.3988 27.7109 19.4485L28.2282 19.4524C28.8306 19.473 29.4627 19.3766 30.1245 19.1632L30.8381 8.91245L36.3426 9.29912Z" fill="white"/>
+                                  <path d="M47.889 9.78524C49.4341 9.89378 50.6214 10.4971 51.4507 11.5952C52.3029 12.6732 52.6405 14.4841 52.4634 17.028C52.3314 18.925 52.0409 20.4644 51.5921 21.646C51.1447 22.806 50.6715 23.5635 50.1723 23.9184C49.6732 24.2732 48.8252 24.5278 47.6284 24.682C46.453 24.8378 45.243 24.8719 43.9983 24.7845C43.6335 24.7588 43.0234 24.6943 42.168 24.5909L41.8483 29.1827L36.328 29.0224L37.6944 9.39407L42.201 9.71064L42.5884 12.045C43.2019 11.2865 43.9544 10.7003 44.8458 10.2864C45.7587 9.87389 46.7731 9.70685 47.889 9.78524ZM45.8181 20.9479C46.0661 20.7921 46.2716 20.3191 46.4344 19.529C46.5987 18.7173 46.7064 17.945 46.7574 17.212C46.8415 16.0048 46.7535 15.0996 46.4936 14.4964C46.2337 13.8933 45.653 13.56 44.7517 13.4967C44.1079 13.4515 43.5025 13.474 42.9356 13.5641L42.4358 20.7428L43.3304 20.9032C43.6079 20.9443 44.0042 20.983 44.5192 21.0192C45.2488 21.0704 45.6818 21.0467 45.8181 20.9479Z" fill="white"/>
+                                  <path d="M54.101 18.1503C54.1811 16.3796 54.28 12.7904 54.3977 7.3829L54.4564 5.14489L59.6915 5.22018C59.6829 5.65284 59.6494 6.28955 59.5909 7.1303C59.4348 9.37231 59.1429 12.0164 58.7152 15.0625C58.5334 16.4362 58.4182 17.3163 58.3697 17.7028C57.2991 18.2125 55.9261 18.4193 54.2507 18.3233L54.101 18.1503ZM55.6068 25.7949C54.8986 25.7451 54.3242 25.4773 53.8836 24.9914C53.4659 24.4855 53.2849 23.8337 53.3404 23.0361C53.3884 22.3462 53.665 21.7808 54.1701 21.3397C54.6967 20.9001 55.3141 20.7051 56.0223 20.7549C56.709 20.8031 57.2612 21.0802 57.6789 21.5861C58.118 22.0936 58.3135 22.6922 58.2655 23.3821C58.21 24.1797 57.9404 24.7998 57.4567 25.2424C56.9745 25.6635 56.3579 25.8476 55.6068 25.7949Z" fill="white"/>
+                                  <path d="M1.98832 1.57505L8.361 2.0227L7.84644 9.41465L7.56331 13.482L6.95766 22.1826L0.584988 21.7349L1.98832 1.57505Z" fill="white"/>
+                                  <path d="M13.3037 9.79799L13.8183 2.40604L20.1909 2.85369L18.7876 23.0136L12.4149 22.5659L13.0206 13.8653L13.3037 9.79799Z" fill="white"/>
+                                  <path d="M12.6611 11.8052C12.6611 13.064 11.6453 14.3377 10.3922 14.3377C9.13911 14.3377 8.12329 13.064 8.12329 11.8052C8.12329 10.5464 9.13911 9.39935 10.3922 9.39935C11.6453 9.39935 12.6611 10.5464 12.6611 11.8052Z" fill="white"/>
+                                </g>
+                                <defs>
+                                  <clipPath id="clip0_161_1128">
+                                    <rect width="60" height="28.2857" fill="white" transform="translate(0 0.857117)"/>
+                                  </clipPath>
+                                </defs>
+                              </svg>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M6.66658 35C5.74992 35 4.9652 34.6736 4.31242 34.0208C3.65964 33.368 3.33325 32.5833 3.33325 31.6666V13.3333C3.33325 12.4166 3.65964 11.6319 4.31242 10.9791C4.9652 10.3264 5.74992 9.99998 6.66658 9.99998H13.3333V6.66665C13.3333 5.74998 13.6596 4.96526 14.3124 4.31248C14.9652 3.6597 15.7499 3.33331 16.6666 3.33331H23.3333C24.2499 3.33331 25.0346 3.6597 25.6874 4.31248C26.3402 4.96526 26.6666 5.74998 26.6666 6.66665V9.99998H33.3333C34.2499 9.99998 35.0346 10.3264 35.6874 10.9791C36.3402 11.6319 36.6666 12.4166 36.6666 13.3333V31.6666C36.6666 32.5833 36.3402 33.368 35.6874 34.0208C35.0346 34.6736 34.2499 35 33.3333 35H6.66658ZM16.6666 9.99998H23.3333V6.66665H16.6666V9.99998Z" fill="white"/>
+                              </svg>
+                        </div>
+                        <div class="w-[360px]">
+                            <p class="text-lg font-bold text-white">Applying for a Hup! Recruiter Profile</p>
+                            <p class="font-second text-sm font-semibold text-white-80">A recruiter profile enables you to post job vacancies and use ActiveSearch to find the perfect candidate.</p>
+                        </div>
+                        <div class="w-[348px] flex items-center bg-[#3B3B3B]/80 rounded-lg p-3 gap-3 mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 17C12.2833 17 12.5208 16.9042 12.7125 16.7125C12.9042 16.5208 13 16.2833 13 16V12C13 11.7167 12.9042 11.4792 12.7125 11.2875C12.5208 11.0958 12.2833 11 12 11C11.7167 11 11.4792 11.0958 11.2875 11.2875C11.0958 11.4792 11 11.7167 11 12V16C11 16.2833 11.0958 16.5208 11.2875 16.7125C11.4792 16.9042 11.7167 17 12 17ZM12 9C12.2833 9 12.5208 8.90417 12.7125 8.7125C12.9042 8.52083 13 8.28333 13 8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8C11 8.28333 11.0958 8.52083 11.2875 8.7125C11.4792 8.90417 11.7167 9 12 9ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22Z" fill="#3DD1DB"/>
+                              </svg>
+                            <div class="">
+                                <p class="tracking-[1.6px] font-normal text-base text-teal-100">TIP</p>
+                                <p class="font-second text-sm font-medium text-white">To apply, you will have to verify that you are an active representative of a company or university organization.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 justify-end mt-2 p-5 pb-6">
+                        <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Apply</button>
+                    </div>
+                </div>
+                <div class="body-percent 20% py-4 px-5 hidden">
+                    <p class="font-second text-base text-white font-bold">What type of organization are you hiring for?</p>
+                    <div class="flex flex-col gap-2 mt-4">
+                        <ul class="flex flex-col gap-2">
+                            <li>
+                                <input type="radio" id="hosting-small" name="rec_type" value="Company" class="hidden peer" required>
+                                <label for="hosting-small" class="inline-flex items-center justify-between w-full border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">                           
+                                    <div class="flex gap-5 rounded-lg py-3 px-4 w-full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                            <path d="M5.83325 35C5.16659 35 4.58325 34.75 4.08325 34.25C3.58325 33.75 3.33325 33.1666 3.33325 32.5V11.9583C3.33325 11.2916 3.58325 10.7083 4.08325 10.2083C4.58325 9.70831 5.16659 9.45831 5.83325 9.45831H13.7499V5.83331C13.7499 5.16665 13.9999 4.58331 14.4999 4.08331C14.9999 3.58331 15.5833 3.33331 16.2499 3.33331H23.7499C24.4166 3.33331 24.9999 3.58331 25.4999 4.08331C25.9999 4.58331 26.2499 5.16665 26.2499 5.83331V9.45831H34.1666C34.8333 9.45831 35.4166 9.70831 35.9166 10.2083C36.4166 10.7083 36.6666 11.2916 36.6666 11.9583V32.5C36.6666 33.1666 36.4166 33.75 35.9166 34.25C35.4166 34.75 34.8333 35 34.1666 35H5.83325ZM16.2499 9.45831H23.7499V5.83331H16.2499V9.45831Z" fill="white"/>
+                                        </svg>
+                                        <div class="font-second">
+                                            <p class="text-xl font-bold text-white">Company</p>
+                                            <p class="text-sm font-medium text-white-60 w-[555px]">You are a representative of a company, startup, or charity organization to hire candidates.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <input type="radio" id="hosting-big" name="rec_type" value="University Organization" class="hidden peer">
+                                <label for="hosting-big" class="inline-flex items-center justify-between w-full border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">
+                                    <div class="flex gap-5 rounded-lg py-3 px-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                            <path d="M37.3333 28.5417C36.8333 28.5417 36.4236 28.375 36.1042 28.0417C35.7847 27.7083 35.625 27.3194 35.625 26.875V17L21.7917 24.4583C21.5417 24.5694 21.25 24.6667 20.9167 24.75C20.5833 24.8333 20.2639 24.875 19.9583 24.875C19.6528 24.875 19.3403 24.8333 19.0208 24.75C18.7014 24.6667 18.4167 24.5694 18.1667 24.4583L4.125 16.75C3.79167 16.6111 3.54167 16.3958 3.375 16.1042C3.20833 15.8125 3.125 15.4722 3.125 15.0833C3.125 14.7222 3.20833 14.3958 3.375 14.1042C3.54167 13.8125 3.79167 13.5833 4.125 13.4167L18.1667 5.75C18.4444 5.63889 18.7431 5.52778 19.0625 5.41667C19.3819 5.30556 19.6806 5.25 19.9583 5.25C20.2361 5.25 20.5347 5.30556 20.8542 5.41667C21.1736 5.52778 21.5 5.63889 21.8333 5.75L37.9583 14.5417C38.2639 14.6806 38.5069 14.9097 38.6875 15.2292C38.8681 15.5486 38.9583 15.875 38.9583 16.2083V26.875C38.9583 27.3194 38.7986 27.7083 38.4792 28.0417C38.1597 28.375 37.7778 28.5417 37.3333 28.5417ZM19.9583 34.5833C19.6806 34.5833 19.375 34.5486 19.0417 34.4792C18.7083 34.4097 18.4167 34.3056 18.1667 34.1667L9.58333 29.5417C8.94444 29.2361 8.45139 28.7778 8.10417 28.1667C7.75695 27.5556 7.58333 26.8889 7.58333 26.1667V20.25L17.3333 25.625C17.75 25.8472 18.1667 26.0556 18.5833 26.25C19 26.4444 19.4583 26.5417 19.9583 26.5417C20.4583 26.5417 20.9306 26.4444 21.375 26.25C21.8194 26.0556 22.2361 25.8333 22.625 25.5833L32.375 20.25V26.1667C32.375 26.8889 32.1944 27.5556 31.8333 28.1667C31.4722 28.7778 30.9861 29.2361 30.375 29.5417L21.7917 34.1667C21.5139 34.3056 21.2083 34.4097 20.875 34.4792C20.5417 34.5486 20.2361 34.5833 19.9583 34.5833Z" fill="white"/>
+                                        </svg>
+                                        <div class="font-second">
+                                            <p class="text-xl font-bold text-white">University Organization / Student Organization</p>
+                                            <p class="text-sm font-medium text-white-60 w-[555px]">You are a representative of a university organization or student body under a government-verified education institution.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                        
+                        
+                        <div class="flex gap-3 justify-end mt-6 pb-1">
+                            <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Back</button>
+                            <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-recruiter-org" class="body-percent 40% py-4 px-5 hidden">
+                    <div class="divide-header divide-y">
+                        <div class="pb-4">
+                            <p class="font-second text-base text-white font-bold mb-3">Please fill in the details of your organization</p>
+                            <div class="flex flex-col gap-4">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Startup Keren" name="rec_org_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DESCRIPTION*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Artificial Intelligence Agency" name="rec_org_desc" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                    <p class="font-second text-xs font-normal text-white-60 mt-1">Describe your organization in one sentence. (Ex. Creative Agency, Startup Media for Gen-Z, etc.)</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="py-4">
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION SIZE*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <select id="countries" name="rec_org_size" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60 focus:ring-white-60">
+                                        <option value="1-5 people" selected>1-5 people</option>
+                                        <option value="5-100">5-100</option>
+                                        <option value="> 100">> 100</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">YEAR FOUNDED*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="number" placeholder="2023" name="rec_org_year" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 py-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WEBSITE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="www.startupkeren.id" name="rec_org_website" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE ADDRESS</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="" name="rec_org_address" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                            </label>
+                            <div class="flex gap-3 justify-end mt-6">
+                                <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                                <button disabled id="button-recruiter-org" type="button" class="disabled:bg-teal-100/50 button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="popup-recruiter-info" class="body-percent 60% py-4 px-5 hidden">
+                    <div class="divide-header divide-y">
+                        <div class="pb-4">
+                            <p class="font-second text-base text-white font-bold mb-1">Please fill in your information</p>
+                            <p class="font-second text-sm text-white-60 font-medium mb-3">Please choose the most suitable package for your organization.</p>
+                            <div class="flex gap-5">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">FIRST NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Pepeng" name="rec_info_firstname" class="block border-0 w-[200px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">LAST NAME*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="text" placeholder="Suherman" name="rec_info_lastname" class="block border-0 w-[280px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="py-4">
+                            <div class="">
+                                <label class="block">
+                                    <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WORK EMAIL*</span>
+                                    <!-- Using form state modifiers, the classes can be identical for every input -->
+                                    <input type="email" placeholder="john.doe@domain.com" name="rec_info_email" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                    "/>
+                                    <p class="font-second text-white-60 text-xs font-normal">Your work email should use the official domain of your organization’s website. (Ex. name@gojek.com, name@university.ac.id)</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 py-4">
+                            <label class="block">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">POSITION*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input type="text" placeholder="Talent Acquisition" name="rec_info_position" class="block border-0 w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white-60
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+                                "/>
+                                <p class="font-second text-white-60 text-xs font-normal">Your position in the organization.</p>
+                            </label>
+                            <div class="flex gap-3 justify-end mt-6">
+                                <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                                <button disabled id="button-recruiter-info" type="button" class="button-next disabled:bg-teal-100/50 rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="body-percent 80% py-4 px-5 hidden">
+                    <div class="pb-4">
+                        <p class="font-second text-base text-white font-bold mb-1">Packages</p>
+                        <p class="font-second text-sm text-white-60 font-medium mb-3">Please choose the most suitable package for your organization.</p>    
+                    </div>
+                    <ul class="flex gap-2">
+                        <li>
+                            <input type="radio" id="package-free" name="rec_tier" value="package-free" class="hidden peer" required>
+                            <label for="package-free" class="inline-flex items-center justify-between w-[240px] h-[300px] bg-[#363636] border border-header rounded-lg cursor-pointer peer-checked:border-white-80 peer-checked:bg-gray-100/10 hover:text-gray-600/20 hover:bg-gray-100/20">                           
+                                <div class="rounded-lg p-4 relative w-full h-full">
+                                    <p class="font-bold text-white text-[32px]">Free</p>
+                                    <p class="font-second text-sm font-medium text-white-60">Unlimited job posts and ActiveSearches. Free for a limited time.</p>
+                                    <p class="absolute bottom-4 left-4 text-2xl text-white font-bold">Rp.0</p>
+                                </div>  
+                            </label>
+                        </li>
+                    </ul>
+                    <div class="flex gap-3 justify-end mt-6 pb-3">
+                        <button type="button" class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                    </div>
+                </div>
+                <div class="body-percent 100% py-4 px-5 hidden">
+                    <div class="h-[270px] flex flex-col justify-center gap-4 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="31" viewBox="0 0 56 31" fill="none">
+                            <path d="M14.75 31L0.625 16.875L4.1875 13.375L14.8125 24L18.3125 27.5L14.75 31ZM28.875 31L14.75 16.875L18.25 13.3125L28.875 23.9375L51.875 0.9375L55.375 4.5L28.875 31ZM28.875 16.875L25.3125 13.375L37.6875 1L41.25 4.5L28.875 16.875Z" fill="#2BDE68"/>
+                        </svg>
+                        <div class="text-center">
+                            <p class="text-white font-bold text-xl">Cool! Your application has been submitted.</p>
+                            <p class="font-second text-sm font-medium text-white-60">We'll notify you via email when you have been approved for a Recruiter Profile!</p>
+                        </div>
+                        <button type="submit" class="bg-teal-100 text-teal-8 px-10 py-2 rounded-lg font-second text-base font-medium">I'll check my email, then.</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script src="/js/SeekerProfileView.js"></script>

@@ -15,6 +15,7 @@ mahasiswaRouter.post("/:id/education", seeker_controller_1.addEducation);
 mahasiswaRouter.post("/:id/attachment", seeker_controller_1.setAttachment);
 mahasiswaRouter.post("/:id/save-post", seeker_controller_1.addSavedPost);
 mahasiswaRouter.post("/:id/recruiter", seeker_controller_1.addRecruiter);
+mahasiswaRouter.post("/:id/posts/:postId", seeker_controller_1.addApplied);
 mahasiswaRouter.put("/:id", seeker_controller_1.updateSeeker);
 mahasiswaRouter.put("/:id/experience/:updateId", seeker_controller_1.updateExperience);
 mahasiswaRouter.put("/:id/education/:updateId", seeker_controller_1.updateEducation);

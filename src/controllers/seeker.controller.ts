@@ -40,7 +40,9 @@ export const getSeekerById = async (req: Request, res: Response) => {
       {model:Education, as:"educations", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Attachment, as:"attachment", attributes:{exclude:["createdAt","updatedAt"]}},
       {model:Recruiter, as:"recruiter", attributes:{exclude:["createdAt","updatedAt"]}},
-      {model:Post, as:"applied", attributes:{exclude:["createdAt","updatedAt"]}},
+      {model:Post, as:"applied", attributes:{exclude:["createdAt","updatedAt"]},include:[
+        {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
+      ]},
       {model:Post, as:"saved", attributes:{exclude:["createdAt","updatedAt"]}, include:[
         {model:Recruiter, as: "recruiter",attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
         {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
@@ -341,6 +343,7 @@ export const setAttachment = async (req: Request, res: Response) => {
   const seekerId = req.params.id;
   const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
   
+  console.log(attachmentData);
 
   try {
     const seeker = await Seeker.findByPk(seekerId);
@@ -476,3 +479,25 @@ export const addSavedPost = async (req: Request, res: Response) => {
   }
 };
 
+
+// Seeker Apply Post
+export const addApplied = async (req: Request, res: Response) => {
+  const seekerId = req.params.id;
+  const postId = req.params.postId
+  const seekerData = req.body; // Data pembaruan pengguna dari permintaan PUT
+
+  try {
+    const seeker = await Seeker.findByPk(seekerId);
+    const post = await Post.findByPk(postId)
+    
+    if (seeker) {
+      seeker.addApplied(post)
+      return response(200, "Success apply", [], res)
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
+};

@@ -1,0 +1,107 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar-all'); -%>
+
+<p id="user_id" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <a href="/recruiter/post" class="text-teal-100 font-second text-sm font-medium flex items-center gap-2 pt-8 pb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <mask id="mask0_125_4676" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+          <rect width="24" height="24" fill="#D9D9D9"/>
+        </mask>
+        <g mask="url(#mask0_125_4676)">
+          <path d="M7.825 13L13.425 18.6L12 20L4 12L12 4L13.425 5.4L7.825 11H20V13H7.825Z" fill="#3DD1DB"/>
+        </g>
+      </svg> Back to Job Post
+    </a>
+
+    <p class="text-xl text-white font-bold">Applicants</p>
+
+    <div class="flex gap-4 items-center pb-5 mt-5">
+        <div class="w-[44px] h-[44px] rounded-lg overflow-hidden bg-gray-200 object-cover">
+            <img id="org-logo" src="" alt="" style="width: 100%;">
+        </div>
+        <div class="">
+            <div class="flex items-center gap-2">
+                <p id="org-position" class="text-xl text-white font-bold">Software Engineer</p>
+                <p class="text-red-500 bg-red-500/20 py-[2px] px-2 inline cursor-default text-xs font-second font-medium">INTERNSHIP</p>
+            </div>
+            <div class="">
+                <p id="org-name" class="text-white-60 font-second text-sm font-bold">Tokopedia</p>
+                <!-- VERIFIED -->
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-between items-center">
+        <div class="w-max flex gap-20 text-white-60 text-sm font-normal bg-card-grey rounded-lg py-3 px-4 border border-[#3b3b3b]">
+            <a id="menu-waiting" href="/recruiter/applicants/1/waiting" class="cursor-pointer text-white font-bold">TO BE REVIEWED</a>
+            <a id="menu-shortlisted" href="/recruiter/applicants/1/shortlisted" class="cursor-pointer">SHORTLISTED</a>
+            <a id="menu-interview" href="/recruiter/applicants/1/interview" class="cursor-pointer">INTERVIEW</a>
+            <a id="menu-offering" href="/recruiter/applicants/1/offering" class="cursor-pointer">OFFERING</a>
+            <a id="menu-rejected" href="/recruiter/applicants/1/rejected" class="cursor-pointer">REJECTED</a>
+        </div>
+        <div class="flex gap-3 items-center">
+            <button class="px-3 py-2.5 bg-[#FC4545]/20 rounded-lg font-second text-sm font-normal text-[#FC4545] flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.33332 15.8334L4.16666 14.6667L8.83332 10L4.16666 5.33335L5.33332 4.16669L9.99999 8.83335L14.6667 4.16669L15.8333 5.33335L11.1667 10L15.8333 14.6667L14.6667 15.8334L9.99999 11.1667L5.33332 15.8334Z" fill="#FC4545"/>
+              </svg> Reject All</button>
+            <button class="px-3 py-2.5 bg-[#2BDE68]/20 rounded-lg font-second text-sm font-normal text-[#2BDE68] flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.95834 15L3.20834 10.25L4.39584 9.06252L7.95834 12.625L15.6042 4.97919L16.7917 6.16669L7.95834 15Z" fill="#2BDE68"/>
+              </svg> Process All</button>
+        </div>
+    </div>
+
+    <div class="mt-3 bg-darkest-grey rounded-lg overflow-hidden divide-y divide-card-grey">
+        <div class="applicants-grid text-sm text-white-60 font-normal py-3 px-3">
+            <p><input type="checkbox" name="" id="" class="bg-transparent rounded focus:ring-0"></p>
+            <p></p>
+            <p>NAME</p>
+            <p>CURRENT POSITION</p>
+            <p>EXPERIENCE</p>
+            <p>UNIVERSITY</p>
+            <p>EDU STATUS</p>
+            <p>ACTION</p>
+        </div>
+        <div id="applicants-list" class="divide-y divide-header">
+            <div class="text-center py-10 px-3 text-xs font-medium font-second text-white-60">No Applicants Yet</div>
+        </div>
+    </div>
+    <p class="font-second text-xs font-bold text-white-60 mt-4 text-center">Showing 0 out of 0</p>
+</section>
+
+<section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
+    <div id="popup-offering-reject" class="hidden w-[240px] m-auto absolute z-10 min-h-[160px] overflow-y-scroll rounded-2xl border-2 border-header">
+        <form id="form-reject">
+            <div class="body bg-body rounded-b-2xl min-h-[100px] overflow-y-scroll p-3">
+                <div class="">
+                    <p class="flex items-center gap-1 text-sm font-bold text-white mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4.26668 12.6667L3.33334 11.7334L7.06668 8.00004L3.33334 4.26671L4.26668 3.33337L8.00001 7.06671L11.7333 3.33337L12.6667 4.26671L8.93334 8.00004L12.6667 11.7334L11.7333 12.6667L8.00001 8.93337L4.26668 12.6667Z" fill="#FC4545"/>
+                      </svg> Select Reason</p>
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="w-full rounded-lg bg-darkest-grey flex items-center gap-4 py-2.5 px-3">
+                            <input class="bg-darkest-grey focus:ring-0 border-2" type="radio" name="rejectedMessage" id="Unsuitable education" value="Unsuitable education">
+                            <label for="Unsuitable education" class="text-xs font-second text-white-60">Unsuitable education</label>
+                        </div>
+                        <div class="w-full rounded-lg bg-darkest-grey flex items-center gap-4 py-2.5 px-3">
+                            <input class="bg-darkest-grey focus:ring-0 border-2" type="radio" name="rejectedMessage" id="Lack of work experience" value="Lack of work experience">
+                            <label for="Lack of work experience" class="text-xs font-second text-white-60">Lack of work experience</label>
+                        </div>
+                        <div class="w-full rounded-lg bg-darkest-grey flex items-center gap-4 py-2.5 px-3">
+                            <input class="bg-darkest-grey focus:ring-0 border-2" type="radio" name="rejectedMessage" id="Lack of required skills" value="Lack of required skills">
+                            <label for="Lack of required skills" class="text-xs font-second text-white-60">Lack of required skills</label>
+                        </div>
+                        <div class="w-full rounded-lg bg-darkest-grey flex items-center gap-4 py-2.5 px-3">
+                            <input class="bg-darkest-grey focus:ring-0 border-2" checked type="radio" name="rejectedMessage" id="Not qualified" value="Not qualified">
+                            <label for="Not qualified" class="text-xs font-second text-white-60">Not qualified</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 mx-auto mb-2">
+                    <button type="submit" class="w-full rounded-lg bg-teal-100 text-teal-8 py-2 font-second text-xs">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script src="/js/RecruiterApplicants-Waiting.js"></script>

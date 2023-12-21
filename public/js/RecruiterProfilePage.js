@@ -3,12 +3,28 @@ let COMPLETION_COUNT = 0
 const id = $("#user_id").text()
 
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
-    RECRUITER_ID = seekerData.recruiter.id
+    if(seekerData.role == "recruiter"){
+        // $("#navbar-recruiter-recruiter").remove()
+        $("#navbar-recruiter-recruiter").removeClass("hidden")
+        $("#navbar-recruiter-seeker").remove()
+        $("#navbar-seeker-only").remove()
+    }else{
+        $("#navbar-recruiter-recruiter").remove()
+        $("#navbar-recruiter-seeker").remove()
+    }
+
+    if(seekerData.recruiter){
+        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
+        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
+    }
+    
     $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
+    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+    // $("#navbar-seeker").removeClass("hidden")
+    $("#navbar-recruiter").removeClass("hidden")
 
+    RECRUITER_ID = seekerData.recruiter.id
     $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
-
-        $("#navbar-org-name").text(recruiterData.rec_org_name)
 
         $("#basic-org-name").text(recruiterData.rec_org_name)
         $("#basic-org-desc span").text(recruiterData.rec_org_desc)
@@ -27,7 +43,6 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
 
 
         if(recruiterData.rec_org_logo){
-            $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
             $("#basic-org-logo").attr("src", recruiterData.rec_org_logo);
             $("#popup-org-logo").attr("src", recruiterData.rec_org_logo);
         }

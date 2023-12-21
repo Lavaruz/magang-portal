@@ -10,6 +10,7 @@ const Education_1 = __importDefault(require("./Education"));
 const Attachment_1 = __importDefault(require("./Attachment"));
 const Recruiter_1 = __importDefault(require("./Recruiter"));
 const Post_1 = __importDefault(require("./Post"));
+const SeekerPost_1 = __importDefault(require("./SeekerPost"));
 class Seeker extends sequelize_1.Model {
 }
 Seeker.init({
@@ -79,13 +80,13 @@ Seeker.belongsToMany(Post_1.default, {
     as: "applied",
     sourceKey: "id",
     constraints: false,
-    through: "SeekerPost"
+    through: SeekerPost_1.default
 });
 Post_1.default.belongsToMany(Seeker, {
     as: "applicants",
     sourceKey: "id",
     constraints: false,
-    through: "SeekerPost"
+    through: SeekerPost_1.default
 });
 Seeker.belongsToMany(Post_1.default, {
     sourceKey: 'id',

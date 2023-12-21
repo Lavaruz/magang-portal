@@ -1,7 +1,27 @@
 const id = $("#user_id").text()
 
 $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
+    if(seekerData.role == "recruiter"){
+        $("#navbar-recruiter-recruiter").remove()
+        // $("#navbar-recruiter-seeker").remove()
+        $("#navbar-recruiter-seeker").removeClass("hidden")
+        $("#navbar-seeker-only").remove()
+    }else{
+        $("#navbar-recruiter-recruiter").remove()
+        $("#navbar-recruiter-seeker").remove()
+        $("#navbar-seeker-only").removeClass("hidden")
+    }
+
+    if(seekerData.recruiter){
+        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
+        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
+    }
+    
+    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
     $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+    $("#navbar-seeker").removeClass("hidden")
+    // $("#navbar-recruiter").removeClass("hidden")
+
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#basic-email").text(`${seekerData.email}`)
@@ -18,12 +38,7 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $(`input[name=sex][value=${seekerData.sex}]`).prop("checked",true);
     $("#profile-viewers").text(seekerData.profile_viewers)
 
-    $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-
     if(seekerData.profile_picture){
-        $("#navbar-profile-pic").attr("src", seekerData.profile_picture);
         $("#basic-profile-pic").attr("src", seekerData.profile_picture);
         $("#popup-profile-pic").attr("src", seekerData.profile_picture);
     }
@@ -171,6 +186,14 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
             atc_resume = atc_resume.split("uploads/")[1]
             $("#resume").text(atc_resume)
             $("#resume").attr("href", `${seekerData.attachment.atc_resume}`)
+            $("#resume-date").text(`1mb • ${formatDate(getFormattedDate())}`)
+
+            // ON POPUP
+            $("#filled-resume").removeClass("hidden")
+            $("#unfilled-resume").addClass("hidden")
+
+            $("#filled-resume a").prop("href", seekerData.attachment.atc_resume).text(atc_resume)
+            $("#filled-resume p span").text(formatDate(getFormattedDate()))
         }
     }
 
@@ -219,6 +242,229 @@ $(".close-x").click(function(){
     $(this).closest('.popup').addClass("hidden")
     $(this).closest('#popup').addClass("hidden")
 })
+
+const USER_ID = $("#user_id").text()
+
+$("#navbar-seeker").removeClass("hidden")
+
+$("#add-experience").click(function(){
+    $("#registered-experience").addClass("hidden")
+    $("#adding-new-experience").removeClass("hidden")
+})
+
+$("#add-education").click(function(){
+    $("#registered-education").addClass("hidden")
+    $("#adding-new-education").removeClass("hidden")
+})
+
+$(".button-next").click(function(){
+    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+    $(".body-percent").eq(body_percent_idx).addClass("hidden")
+    $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+})
+
+$(".button-back").click(function(){
+    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+    $(".body-percent").eq(body_percent_idx).addClass("hidden")
+    $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
+})
+
+$(".cancle-add").click(function(){
+    $(this).closest(".body").find(".additional-popup").addClass("hidden")
+    $(this).closest(".body").find(".main-popup").removeClass('hidden')
+})
+
+$("#still-work-here").change(function(){
+    if($(this).is(":checked")){
+        $("input[name=exp_enddate]").prop("disabled", true)
+    }else{
+        $("input[name=exp_enddate]").prop("disabled", false)
+    }
+})
+
+$("#active-search").change(function(){
+    $(this).val($(this).is(":checked"))
+    const form_update = document.getElementById("form-update-active-search");
+    const formData = new FormData(form_update)
+    if($(this).val() == "false") formData.append("active_search", false)
+    
+    $.ajax({
+        url: `/api/v1/seeker/${USER_ID}`,
+        type: "PUT",
+        data: formData,
+        async: false,
+        cache: false,
+        contentType: false,
+        encrypt: "multipart/form-data",
+        processData: false,
+        success: (response) => {
+            if(response.status_code == 200){
+                location.reload()
+            }
+        },
+        error: function (request, status, error) {
+            alert("Error!")
+        },
+    });
+})
+
+$("#button-profile-pic").click(function(){
+    $("#custom-input-file").click()
+})
+
+$("#button-input-resume").click(function(){
+    $("#custom-input-resume").click()
+})
+
+$("#custom-input-resume").change(function(){
+    const selectedFile = this.files[0];
+    if (selectedFile) {
+        $("#unfilled-resume").addClass("hidden")
+        $("#filled-resume").removeClass("hidden")
+        const fileURL = URL.createObjectURL(selectedFile);
+        const date = new Date(selectedFile.lastModifiedDate);
+        const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+
+        $("#filled-resume a").prop("href", fileURL).text(selectedFile.name)
+        $("#filled-resume p span").text(formattedDate)
+    }
+})
+
+$("#filled-resume-delete").click(function(){
+    $("#custom-input-resume").val("")
+    $("#unfilled-resume").removeClass("hidden")
+    $("#filled-resume").addClass("hidden")
+})
+
+$("#custom-input-file").on("change", function() {
+    const selectedImage = this.files[0];
+    if (selectedImage) {
+        const imageUrl = URL.createObjectURL(selectedImage);
+        $("#popup-profile-pic").attr("src", imageUrl);
+    } else {
+        $("#popup-profile-pic").attr("src", "/img/Ellipse 3.svg");
+    }
+});
+
+$(".delete-attachment").click(function(){
+    const ATTACHMENT_NAME = $(this).closest(".attachment-body").find(".field_name").text()
+    updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/attachment/${ATTACHMENT_NAME}`, "DELETE")
+})
+
+$("#popup-recruiter-org").find("input").on("input", function(){
+    const nonEmptyInputs = $("#popup-recruiter-org").find("input").filter(function() {
+        return $(this).val().length > 0;
+    });
+
+    if(nonEmptyInputs.length === 5){
+        $("#button-recruiter-org").prop("disabled", false)
+    }else{
+        $("#button-recruiter-org").prop("disabled", true)
+    }
+})
+
+$("#popup-recruiter-info").find("input").on("input", function(){
+    const nonEmptyInputs = $("#popup-recruiter-info").find("input").filter(function() {
+        return $(this).val().length > 0;
+    });
+
+    if(nonEmptyInputs.length === 4){
+        $("#button-recruiter-info").prop("disabled", false)
+    }else{
+        $("#button-recruiter-info").prop("disabled", true)
+    }
+})
+    
+
+
+
+
+
+
+    // -------- update basic information data -------- 
+    updateSeekerData("form-basic-information", `/api/v1/seeker/${USER_ID}`,"PUT")
+
+    
+    // -------- update profile summary data -------- 
+    updateSeekerData("form-profile-summary", `/api/v1/seeker/${USER_ID}`,"PUT")
+
+
+    // -------- update profile experiences -------- 
+    // ADD
+    updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
+    
+    
+    // -------- add profile educations -------- 
+    // ADD
+    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
+    
+
+    // -------- add attachment -------- 
+    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
+
+    // -------- Delete EDUCATION || EXPERIENCE ---------
+    $("#popup").on("click", ".delete-svg-button", function(){
+        const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
+        const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
+        let confirmDeletion = confirm("Are you sure?")
+        if(CARD_EDUCATION_ID && confirmDeletion){
+            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "DELETE")
+        }
+        if(CARD_EXPERIENCE_ID && confirmDeletion){
+            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
+        }
+    })
+    
+    updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
+    
+
+
+    function updateSeekerData(formId, URL, method){
+        const form_update = document.getElementById(formId);
+        $(`#${formId}`).submit(function(e){
+            e.preventDefault();
+            let formData = new FormData(form_update)
+            $.ajax({
+                url: URL,
+                type: method,
+                data: formData,
+                async: false,
+                cache: false,
+                contentType: false,
+                encrypt: "multipart/form-data",
+                processData: false,
+                success: (response) => {
+                    if(response.status_code == 200){
+                        location.reload()
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("Error!")
+                },
+            });
+        })
+    }
+
+    function updateSeekerDataWithoutForm(URL, method){
+        $.ajax({
+            url: URL,
+            type: method,
+            success: function (response) {
+                if(startsWithTwo(response.status_code)){
+                    location.reload()
+                }
+            },
+            error: function (error) {
+                alert("Error")
+            }
+        });
+    }
+
+    function startsWithTwo(input) {
+        const regex = /^2\d+/; // '^2' menunjukkan input harus dimulai dengan '2', dan '\d+' menunjukkan satu atau lebih digit.
+        return regex.test(input);
+    }
 
 
 
@@ -417,3 +663,4 @@ function education_html_menu(education){
     `
 }
   
+

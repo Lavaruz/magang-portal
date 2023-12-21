@@ -37,7 +37,7 @@ if(process.env.ENV_TYPE == 'production'){
 // Fungsi untuk menghubungkan ke database
 const connectToDatabase = async () => {
   try {
-    await sequelize.authenticate();
+    await sequelize.authenticate({alter: true});
     await sequelize.sync();
     console.log("Model-model disinkronkan dengan database.");
   } catch (error) {

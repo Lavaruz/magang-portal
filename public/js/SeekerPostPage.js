@@ -4,13 +4,31 @@ const USER_ID = $("#user_id").text()
 const URL_ID = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
-    RECRUITER_ID = seekerData.recruiter.id
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker").removeClass("hidden")
+    if(seekerData.role == "recruiter"){
+        $("#navbar-recruiter-recruiter").remove()
+        // $("#navbar-recruiter-seeker").remove()
+        $("#navbar-recruiter-seeker").removeClass("hidden")
+        $("#navbar-seeker-only").remove()
+    }else{
+        $("#navbar-recruiter-recruiter").remove()
+        $("#navbar-recruiter-seeker").remove()
+        $("#navbar-seeker-only").removeClass("hidden")
+    }
+    
 
+    if(seekerData.recruiter){
+        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
+        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
+    }
+    
+    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
+    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+    $("#navbar-seeker").removeClass("hidden")
+    // $("#navbar-recruiter").removeClass("hidden")
+
+    RECRUITER_ID = seekerData.recruiter.id
     $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
         if(recruiterData.rec_org_logo){
-            $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
             $("#nav-allpost").text(`(${recruiterData.posts.length})`)
         }
 
@@ -50,7 +68,7 @@ $.get(`/api/v1/posts/${URL_ID}`, async (postData) => {
     const overview = Post.post_overview.split('\n')
     
     const RECRUITER = Post.recruiter[0]
-    const rec_overview = RECRUITER.rec_description.split('\n')
+    const rec_overview = RECRUITER.rec_description ? RECRUITER.rec_description.split('\n') : []
 
     let resume = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none"><path d="M9 11C9.4125 11 9.76563 10.8531 10.0594 10.5594C10.3531 10.2656 10.5 9.9125 10.5 9.5C10.5 9.0875 10.3531 8.73437 10.0594 8.44062C9.76563 8.14687 9.4125 8 9 8C8.5875 8 8.23437 8.14687 7.94062 8.44062C7.64687 8.73437 7.5 9.0875 7.5 9.5C7.5 9.9125 7.64687 10.2656 7.94062 10.5594C8.23437 10.8531 8.5875 11 9 11ZM6 14H12V13.5687C12 13.2687 11.9187 12.9937 11.7563 12.7437C11.5938 12.4937 11.3687 12.3062 11.0812 12.1812C10.7562 12.0437 10.4219 11.9375 10.0781 11.8625C9.73438 11.7875 9.375 11.75 9 11.75C8.625 11.75 8.26562 11.7875 7.92188 11.8625C7.57812 11.9375 7.24375 12.0437 6.91875 12.1812C6.63125 12.3062 6.40625 12.4937 6.24375 12.7437C6.08125 12.9937 6 13.2687 6 13.5687V14ZM13.875 17H4.125C3.825 17 3.5625 16.8875 3.3375 16.6625C3.1125 16.4375 3 16.175 3 15.875V3.125C3 2.825 3.1125 2.5625 3.3375 2.3375C3.5625 2.1125 3.825 2 4.125 2H10.05C10.2 2 10.3469 2.03125 10.4906 2.09375C10.6344 2.15625 10.7563 2.2375 10.8563 2.3375L14.6625 6.14375C14.7625 6.24375 14.8438 6.36562 14.9062 6.50937C14.9688 6.65312 15 6.8 15 6.95V15.875C15 16.175 14.8875 16.4375 14.6625 16.6625C14.4375 16.8875 14.175 17 13.875 17Z" fill="#A5A5A5"/></svg> Resume</p>`
     let portfolio = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><path d="M9.6875 6.075L11 5.26875L12.3125 6.075C12.4125 6.1375 12.5094 6.14063 12.6031 6.08438C12.6969 6.02813 12.7438 5.94375 12.7438 5.83125V1.125H9.25625V5.83125C9.25625 5.94375 9.30313 6.02813 9.39688 6.08438C9.49063 6.14063 9.5875 6.1375 9.6875 6.075ZM3.875 12.75C3.575 12.75 3.3125 12.6375 3.0875 12.4125C2.8625 12.1875 2.75 11.925 2.75 11.625V1.125C2.75 0.825 2.8625 0.5625 3.0875 0.3375C3.3125 0.1125 3.575 0 3.875 0H14.375C14.675 0 14.9375 0.1125 15.1625 0.3375C15.3875 0.5625 15.5 0.825 15.5 1.125V11.625C15.5 11.925 15.3875 12.1875 15.1625 12.4125C14.9375 12.6375 14.675 12.75 14.375 12.75H3.875ZM1.625 15C1.325 15 1.0625 14.8875 0.8375 14.6625C0.6125 14.4375 0.5 14.175 0.5 13.875V2.8125C0.5 2.65 0.553125 2.51563 0.659375 2.40938C0.765625 2.30313 0.9 2.25 1.0625 2.25C1.225 2.25 1.35938 2.30313 1.46562 2.40938C1.57187 2.51563 1.625 2.65 1.625 2.8125V13.875H12.6875C12.85 13.875 12.9844 13.9281 13.0906 14.0344C13.1969 14.1406 13.25 14.275 13.25 14.4375C13.25 14.6 13.1969 14.7344 13.0906 14.8406C12.9844 14.9469 12.85 15 12.6875 15H1.625Z" fill="#AAAAAA"/></svg> Portfolio</p>`
@@ -70,35 +88,9 @@ $.get(`/api/v1/posts/${URL_ID}`, async (postData) => {
     $("#org-desc").html(rec_overview.join("</br>"))
     $("#org-img").attr("src", RECRUITER.rec_org_logo)
 
+    updateSeekerData("form-apply-post", `/api/v1/seeker/${USER_ID}/posts/${Post.id}` ,"POST")
 })
 
-$("#posts-grid").on("change",".post-status", function(){
-    $(this).val($(this).is(":checked"))
-    const form_update = $(this).closest("form");
-    const POST_ID = form_update.find(".post-id").text()
-    const formData = new FormData(form_update[0])
-    if($(this).val() == "false") formData.append("post_status", "CLOSED")
-    if($(this).val() == "true") formData.set("post_status", "IN-PROGRESS")
-    
-    $.ajax({
-        url: `/api/v1/posts/${POST_ID}`,
-        type: "PUT",
-        data: formData,
-        async: false,
-        cache: false,
-        contentType: false,
-        encrypt: "multipart/form-data",
-        processData: false,
-        success: (response) => {
-            if(response.status_code == 200){
-                location.reload()
-            }
-        },
-        error: function (request, status, error) {
-            alert("Error!")
-        },
-    });
-})
 
 function updateSeekerData(formId, URL, method){
     const form_update = document.getElementById(formId);

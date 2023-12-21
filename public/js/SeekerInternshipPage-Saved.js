@@ -3,22 +3,35 @@ const USER_ID = $("#user_id").text()
 $(".navbar-internship").addClass("selected")
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
+    if(seekerData.role == "recruiter"){
+        $("#navbar-recruiter-recruiter").remove()
+        // $("#navbar-recruiter-seeker").remove()
+        $("#navbar-recruiter-seeker").removeClass("hidden")
+        $("#navbar-seeker-only").remove()
+    }else{
+        $("#navbar-recruiter-recruiter").remove()
+        $("#navbar-recruiter-seeker").remove()
+        $("#navbar-seeker-only").removeClass("hidden")
+    }
+
+    
+
+    if(seekerData.recruiter){
+        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
+        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
+    }
+    
     $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
+    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#navbar-seeker").removeClass("hidden")
+    // $("#navbar-recruiter").removeClass("hidden")
     
     $("#foryou-firstname").text(seekerData.first_name)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
     
     if(seekerData.recruiter){
         RECRUITER_ID = seekerData.recruiter.id
         $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
             $("#navbar-org-name").text(recruiterData.rec_org_name)
-            if(recruiterData.rec_org_logo){
-                $("#navbar-org-logo").attr("src", recruiterData.rec_org_logo);
-
-            }
-
-
             $(".close-x").click(function(){
                 $(this).closest('.popup').addClass("hidden")
                 $(this).closest('#popup').addClass("hidden")

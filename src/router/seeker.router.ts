@@ -15,6 +15,7 @@ import {
   deleteAttachment,
   addRecruiter,
   addSavedPost,
+  addApplied,
 } from "../controllers/seeker.controller";
 import express from "express";
 
@@ -29,6 +30,7 @@ mahasiswaRouter.post("/:id/education", addEducation);
 mahasiswaRouter.post("/:id/attachment", setAttachment);
 mahasiswaRouter.post("/:id/save-post", addSavedPost);
 mahasiswaRouter.post("/:id/recruiter", addRecruiter);
+mahasiswaRouter.post("/:id/posts/:postId", addApplied);
 mahasiswaRouter.put("/:id", updateSeeker);
 mahasiswaRouter.put("/:id/experience/:updateId", updateExperience);
 mahasiswaRouter.put("/:id/education/:updateId", updateEducation);

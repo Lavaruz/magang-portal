@@ -32,7 +32,9 @@ export const getRecruiterById = async (req: Request, res: Response) => {
     try {
         const recruiter = await Recruiter.findByPk(recruiterId,{attributes:{exclude:["createdAt","updatedAt"]}, include:[
           {model:Gallery, as:"gallery", attributes:{exclude:["createdAt","updatedAt","ownerId"]}},
-          {model:Post, as:"posts", attributes:{exclude:["createdAt","updatedAt","ownerId"]}, through:{attributes:[]}},
+          {model:Post, as:"posts", attributes:{exclude:["createdAt","updatedAt","ownerId"]}, include:[
+            {model:Seeker, as: "applicants",attributes:{exclude:["createdAt","updatedAt","ownerId"]}}
+          ] ,through:{attributes:[]}},
         ]});
         if (recruiter) {
         res.status(200).json(recruiter);

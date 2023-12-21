@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addPost = exports.addGallery = exports.updateRecruiter = exports.getRecruiterById = exports.getAllRecruiter = void 0;
+const Seeker_1 = __importDefault(require("../models/Seeker"));
 const response_1 = __importDefault(require("./response"));
 const fs_1 = __importDefault(require("fs"));
 const Recruiter_1 = __importDefault(require("../models/Recruiter"));
@@ -28,7 +29,9 @@ const getRecruiterById = async (req, res) => {
     try {
         const recruiter = await Recruiter_1.default.findByPk(recruiterId, { attributes: { exclude: ["createdAt", "updatedAt"] }, include: [
                 { model: Gallery_1.default, as: "gallery", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] } },
-                { model: Post_1.default, as: "posts", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, through: { attributes: [] } },
+                { model: Post_1.default, as: "posts", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, include: [
+                        { model: Seeker_1.default, as: "applicants", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] } }
+                    ], through: { attributes: [] } },
             ] });
         if (recruiter) {
             res.status(200).json(recruiter);

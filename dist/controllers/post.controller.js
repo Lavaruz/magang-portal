@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updatePosts = exports.getPostById = exports.getAllPost = void 0;
 const Seeker_1 = __importDefault(require("../models/Seeker"));
+const Experience_1 = __importDefault(require("../models/Experience"));
+const Education_1 = __importDefault(require("../models/Education"));
 const response_1 = __importDefault(require("./response"));
 const Recruiter_1 = __importDefault(require("../models/Recruiter"));
 const Post_1 = __importDefault(require("../models/Post"));
@@ -41,7 +43,10 @@ const getPostById = async (req, res) => {
     try {
         const post = await Post_1.default.findOne({ where: { id: req.params.id }, attributes: { exclude: ["createdAt", "updatedAt"] }, include: [
                 { model: Recruiter_1.default, as: "recruiter", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, through: { attributes: [] } },
-                { model: Seeker_1.default, as: "applicants", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] } },
+                { model: Seeker_1.default, as: "applicants", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] }, include: [
+                        { model: Experience_1.default, as: "experiences", attributes: { exclude: ["createdAt", "updatedAt"] } },
+                        { model: Education_1.default, as: "educations", attributes: { exclude: ["createdAt", "updatedAt"] } },
+                    ] },
                 { model: Seeker_1.default, as: "saved", attributes: { exclude: ["createdAt", "updatedAt", "ownerId"] } },
             ] });
         return (0, response_1.default)(200, "success call all posts", post, res);
