@@ -4,27 +4,8 @@ $(".navbar-internship").addClass("selected")
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     $("#foryou-firstname").text(seekerData.first_name)
-    if(seekerData.recruiter){
-        RECRUITER_ID = seekerData.recruiter.id
-        $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
-            $("#navbar-org-name").text(recruiterData.rec_org_name)
-            $(".close-x").click(function(){
-                $(this).closest('.popup').addClass("hidden")
-                $(this).closest('#popup').addClass("hidden")
-            })
-            $(".back-x").click(function(){
-                let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-                $(".body-percent").eq(body_percent_idx).addClass("hidden")
-                $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
-            })
-            $(".button-next").click(function(){
-                let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-                $(".body-percent").eq(body_percent_idx).addClass("hidden")
-                $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
-            })
-
-        })
-    }
+    $("#menu-applied span").text(`(${seekerData.applied.length})`)
+    $("#menu-saved span").text(`(${seekerData.saved.length})`)
 })
 
 

@@ -73,8 +73,6 @@ export const updateSeekerPost = async (req: Request, res: Response) => {
 
   try {
     const seekerpost = await SeekerPost.findByPk(seekerpostId);
-    console.log(seekerpost);
-    
     if (seekerpost) {
       await seekerpost.update(seekerpostData);
 

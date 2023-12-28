@@ -7,6 +7,8 @@ $(".close-x").click(function(){
 $(".navbar-internship").addClass("selected")
 
 $.get(`/api/v1/seeker/${USER_ID}`, function(seekerData){
+    $("#menu-applied span").text(`(${seekerData.applied.length})`)
+    $("#menu-saved span").text(`(${seekerData.saved.length})`)
     const postApplied = seekerData.applied
     postApplied.forEach(post => {
         $.get(`/api/v1/seekerpost/${post.SeekerPost.id}`, function(seekerpostData){
@@ -58,12 +60,20 @@ $("#cards-grid").on("click", ".button-view-detail", function(){
             $("#popup-view-detail-status").prepend(reviewed)
         }
         if(SEEKERPOST.Scheduled){
+            let paragraph = SEEKERPOST.Scheduled.interviewMessage.split('\n').join("</br>")
+            let interviewLink = ""
+            if(SEEKERPOST.Scheduled.interviewType == "Online"){
+                interviewLink = `<div class="">
+                                    <p class="text-sm font-normal text-white-60 tracking-[1.4]">LINK</p>
+                                    <p class="font-second text-xs font-medium text-teal-100"><a class="font-second text-xs font-medium text-teal-100" href="${SEEKERPOST.Scheduled.interviewLink ? SEEKERPOST.Scheduled.interviewLink : "#"}">${SEEKERPOST.Scheduled.interviewLink ? SEEKERPOST.Scheduled.interviewLink : "Not Set"}</a></p>
+                                 </div>`
+            }
             let interview = `
             <div class="flex gap-4 items-start">
                 <div class="min-w-[20px] min-h-[20px] rounded-full bg-[#2ade68] border-4 border-[#294e37]"></div>
                 <div class="">
                     <p class="font-second text-sm font-bold text-[#2ade68]">Scheduled for Interview</p>
-                    <p class="font-second text-xs font-medium text-white mb-1">Not Set</p>
+                    <p class="font-second text-xs font-medium text-white mb-1">${SEEKERPOST.Scheduled.scheduledDate ? formatDateFull(SEEKERPOST.Scheduled.scheduledDate) : "Not Set"}</p>
                     <p class="font-second text-xs font-medium text-white-60">The recruiter has scheduled you for an interview at:</p>
                     <div class="flex flex-col gap-4 bg-[#222222] rounded-lg mt-2 p-3 pb-4">
                         <div class="flex gap-10">
@@ -75,14 +85,11 @@ $("#cards-grid").on("click", ".button-view-detail", function(){
                                 <p class="text-sm font-normal text-white-60 tracking-[1.4]">TYPE</p>
                                 <p class="font-second text-xs font-bold text-white">${SEEKERPOST.Scheduled.interviewType ? SEEKERPOST.Scheduled.interviewType : "Not Set"}</p>
                             </div>
-                            <div class="">
-                                <p class="text-sm font-normal text-white-60 tracking-[1.4]">LINK</p>
-                                <p class="font-second text-xs font-medium text-teal-100"><a class="font-second text-xs font-medium text-teal-100" href="${SEEKERPOST.Scheduled.interviewLink ? SEEKERPOST.Scheduled.interviewLink : "#"}">${SEEKERPOST.Scheduled.interviewLink ? SEEKERPOST.Scheduled.interviewLink : "Not Set"}</a></p>
-                            </div>
+                            ${interviewLink}
                         </div>
                         <div class="">
                             <p class="text-sm font-normal text-white-60 tracking-[1.4]">MESSAGE</p>
-                            <p class="font-second text-xs font-medium text-white">${SEEKERPOST.Scheduled.interviewMessage ? SEEKERPOST.Scheduled.interviewMessage : "Not Set"}</p>
+                            <p class="font-second text-xs font-medium text-white">${SEEKERPOST.Scheduled.interviewMessage ? paragraph : "Not Set"}</p>
                         </div>
                     </div>
                 </div>
@@ -94,9 +101,9 @@ $("#cards-grid").on("click", ".button-view-detail", function(){
             <div class="flex gap-4 items-start">
                 <div class="min-w-[20px] min-h-[20px] rounded-full bg-[#2ade68] border-4 border-[#294e37]"></div>
                 <div class="">
-                    <p class="font-second text-sm font-bold text-[#2ade68]">You Got Offer!</p>
+                    <p class="font-second text-sm font-bold text-[#2ade68]">Offering Stage</p>
                     <p class="font-second text-xs font-medium text-white mb-1">${formatDateFull(SEEKERPOST.Offering.offeringDate)}</p>
-                    <p class="font-second text-xs font-medium text-white-60">The recruiter has scheduled you for an interview at:</p>
+                    <p class="font-second text-xs font-medium text-white-60">You're at the final stage! Stay tuned for further contacts from your recruiter.</p>
                 </div>
             </div>`
             $("#popup-view-detail-status").prepend(offering)
@@ -136,7 +143,7 @@ function addCard(post, seekerpost){
             applicantStatus = `<div class="status flex gap-2 p-3 rounded-b-lg bg-[#FC4545]/[.08] w-max"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.26683 12.6667L3.3335 11.7333L7.06683 8.00001L3.3335 4.26668L4.26683 3.33334L8.00016 7.06668L11.7335 3.33334L12.6668 4.26668L8.9335 8.00001L12.6668 11.7333L11.7335 12.6667L8.00016 8.93334L4.26683 12.6667Z" fill="#FC4545"/></svg><p class="text-white-80 font-second font-bold text-xs">Sorry, you've got rejected. Click here to view the details.</p><p class="button-view-detail cursor-pointer text-xs font-second font-medium text-[#FC4545]">View Details</p></div>`
             break;
         case "Offering":
-            applicantStatus = `<div class="status flex gap-2 p-3 rounded-b-lg bg-[#2BDE68]/[.08] w-max"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.46686 12L0.700195 8.23334L1.6502 7.3L4.48353 10.1333L5.41686 11.0667L4.46686 12ZM8.23353 12L4.46686 8.23334L5.4002 7.28334L8.23353 10.1167L14.3669 3.98334L15.3002 4.93334L8.23353 12ZM8.23353 8.23334L7.28353 7.3L10.5835 4L11.5335 4.93334L8.23353 8.23334Z" fill="#2BDE68"/></svg><p class="text-white-80 font-second font-bold text-xs">Congratulation!, you will get an offering letter</p><p class="button-view-detail cursor-pointer text-xs font-second font-medium text-[#2BDE68]">View Details</p></div>`
+            applicantStatus = `<div class="status flex gap-2 p-3 rounded-b-lg bg-[#2BDE68]/[.08] w-max"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.46686 12L0.700195 8.23334L1.6502 7.3L4.48353 10.1333L5.41686 11.0667L4.46686 12ZM8.23353 12L4.46686 8.23334L5.4002 7.28334L8.23353 10.1167L14.3669 3.98334L15.3002 4.93334L8.23353 12ZM8.23353 8.23334L7.28353 7.3L10.5835 4L11.5335 4.93334L8.23353 8.23334Z" fill="#2BDE68"/></svg><p class="text-white-80 font-second font-bold text-xs">You are in the offering stage! Click here to view the details.</p><p class="button-view-detail cursor-pointer text-xs font-second font-medium text-[#2BDE68]">View Details</p></div>`
             break;
     
         default:

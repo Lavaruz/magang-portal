@@ -63,7 +63,6 @@ const updateSeekerPost = async (req, res) => {
     let seekerpostData = req.body;
     try {
         const seekerpost = await SeekerPost_1.default.findByPk(seekerpostId);
-        console.log(seekerpost);
         if (seekerpost) {
             await seekerpost.update(seekerpostData);
             if (req.body.applicantStatus == "Waiting") {

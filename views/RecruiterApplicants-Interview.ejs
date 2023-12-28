@@ -33,16 +33,24 @@
     </div>
 
     <div class="flex justify-between items-center">
-        <div class="w-max flex gap-20 text-white-60 text-sm font-normal bg-card-grey rounded-lg py-3 px-4 border border-[#3b3b3b]">
-            <a id="menu-waiting" href="/recruiter/applicants/1/waiting" class="cursor-pointer">TO BE REVIEWED</a>
-            <a id="menu-shortlisted" href="/recruiter/applicants/1/shortlisted" class="cursor-pointer">SHORTLISTED</a>
-            <a id="menu-interview" href="/recruiter/applicants/1/interview" class="cursor-pointer text-white font-bold">INTERVIEW</a>
-            <a id="menu-offering" href="/recruiter/applicants/1/offering" class="cursor-pointer">OFFERING</a>
-            <a id="menu-rejected" href="/recruiter/applicants/1/rejected" class="cursor-pointer">REJECTED</a>
+        <div class="w-max flex gap-16 text-white-60 text-sm font-normal bg-card-grey rounded-lg py-3 px-4 border border-[#3b3b3b]">
+            <a id="menu-waiting" href="/recruiter/applicants/1/waiting" class="flex items-center gap-1 cursor-pointer">TO BE REVIEWED <span></span></a>
+            <a id="menu-shortlisted" href="/recruiter/applicants/1/shortlisted" class="flex items-center gap-1 cursor-pointer">SHORTLISTED <span></span></a>
+            <a id="menu-interview" href="/recruiter/applicants/1/interview" class="flex items-center gap-1 cursor-pointer text-white font-bold">INTERVIEW <span></span></a>
+            <a id="menu-offering" href="/recruiter/applicants/1/offering" class="flex items-center gap-1 cursor-pointer">OFFERING <span></span></a>
+            <a id="menu-rejected" href="/recruiter/applicants/1/rejected" class="flex items-center gap-1 cursor-pointer">REJECTED <span></span></a>
+        </div>
+        <div class="flex gap-3 items-center">
+            <button class="px-3 py-2.5 bg-[#FC4545]/20 rounded-lg font-second text-sm font-normal text-[#FC4545] flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M5.33332 15.8334L4.16666 14.6667L8.83332 10L4.16666 5.33335L5.33332 4.16669L9.99999 8.83335L14.6667 4.16669L15.8333 5.33335L11.1667 10L15.8333 14.6667L14.6667 15.8334L9.99999 11.1667L5.33332 15.8334Z" fill="#FC4545"/>
+              </svg> Reject All</button>
+            <button class="px-3 py-2.5 bg-[#2BDE68]/20 rounded-lg font-second text-sm font-normal text-[#2BDE68] flex items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M7.95834 15L3.20834 10.25L4.39584 9.06252L7.95834 12.625L15.6042 4.97919L16.7917 6.16669L7.95834 15Z" fill="#2BDE68"/>
+              </svg> Process All</button>
         </div>
     </div>
 
-    <div class="mt-3 bg-darkest-grey rounded-lg overflow-hidden">
+    <div class="mt-3 bg-darkest-grey rounded-lg">
         <div class="applicants-grid text-sm text-white-60 font-normal py-3 px-3">
             <p><input type="checkbox" name="" id="" class="bg-transparent rounded focus:ring-0"></p>
             <p></p>
@@ -195,5 +203,8 @@
     </div>
 </section>
 
+
+
 <%- include('./layouts/footer'); -%>
 <script src="/js/RecruiterApplicants-Interview.js"></script>
+<script src="/js/NavbarRecruiterRecruiter.js"></script>

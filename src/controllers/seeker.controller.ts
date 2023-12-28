@@ -10,6 +10,8 @@ import path from "path";
 import fs from "fs"
 import Recruiter from "../models/Recruiter";
 import Post from "../models/Post";
+import Waiting from "../models/Waiting";
+import SeekerPost from "../models/SeekerPost";
 
 
 // Fungsi ini mengambil semua pengguna
@@ -485,6 +487,7 @@ export const addApplied = async (req: Request, res: Response) => {
   const seekerData = req.body; // Data pembaruan pengguna dari permintaan PUT
 
   try {
+    // const seekerpost = await SeekerPost.findByPk(seekerpostId);
     const seeker = await Seeker.findByPk(seekerId);
     const post = await Post.findByPk(postId)
     
@@ -516,16 +519,21 @@ export const addApplied = async (req: Request, res: Response) => {
     if (seeker) {
       if(attachmentId){
         await Attachment.update(seekerData,{where:{id:attachmentId}})
-        await seeker.addApplied(post)
-        return response(200, "Success apply", [], res)
       }else{
         // create new attachment
         await Attachment.create(seekerData).then(async function(result){
           await seeker.setAttachment(result)
-          await seeker.addApplied(post)
-          return response(200, "Success apply", [], res)
         })
       }
+
+      await seeker.addApplied(post)
+      // await Waiting.create({
+      //   waitingDate: getFormattedToday()
+      // }).then(function(waiting){
+      //   seekerpost.setWaiting(waiting)
+      // })
+      return response(200, "Success apply", [], res)
+
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }
@@ -534,3 +542,20 @@ export const addApplied = async (req: Request, res: Response) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+function getFormattedToday(): string {
+  const today: Date = new Date();
+
+  const year: number = today.getFullYear();
+  let month: number | string = today.getMonth() + 1;
+  let day: number | string = today.getDate();
+
+  // Padding digit bulan dan tanggal dengan '0' jika diperlukan
+  month = month < 10 ? '0' + month : month;
+  day = day < 10 ? '0' + day : day;
+
+  // Menggabungkan tahun, bulan, dan tanggal dengan format yang diinginkan
+  const formattedToday: string = `${year}-${month}-${day}`;
+
+  return formattedToday;
+}

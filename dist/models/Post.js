@@ -15,6 +15,7 @@ Post.init({
         defaultValue: "IN-PROGRESS"
     },
     post_position: sequelize_1.DataTypes.STRING,
+    post_type: sequelize_1.DataTypes.STRING,
     post_need: sequelize_1.DataTypes.STRING,
     post_work_time: sequelize_1.DataTypes.STRING,
     post_work_time_perweek: sequelize_1.DataTypes.STRING,

@@ -372,7 +372,6 @@ exports.updateEducation = updateEducation;
 const setAttachment = async (req, res) => {
     const seekerId = req.params.id;
     const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
-    console.log(attachmentData);
     try {
         const seeker = await Seeker_1.default.findByPk(seekerId);
         if (seeker) {
@@ -511,10 +510,49 @@ const addApplied = async (req, res) => {
     const postId = req.params.postId;
     const seekerData = req.body; // Data pembaruan pengguna dari permintaan PUT
     try {
+        // const seekerpost = await SeekerPost.findByPk(seekerpostId);
         const seeker = await Seeker_1.default.findByPk(seekerId);
         const post = await Post_1.default.findByPk(postId);
+        let attachment = (await seeker.getAttachment());
+        seekerData.atc_resume = attachment ? attachment.atc_resume : null;
+        if (req.files.length !== 0) {
+            if (attachment) {
+                if (attachment.atc_resume) {
+                    const filename = attachment.atc_resume.split("/uploads")[1];
+                    const fileToDelete = `public/files/uploads/${filename}`;
+                    if (fs_1.default.existsSync(fileToDelete)) {
+                        try {
+                            fs_1.default.unlinkSync(fileToDelete);
+                            console.log(`File ${filename} deleted successfully.`);
+                        }
+                        catch (err) {
+                            console.error(`Error deleting file ${filename}: ${err}`);
+                        }
+                    }
+                    else {
+                        console.log(`File ${filename} not found.`);
+                    }
+                }
+            }
+            seekerData.atc_resume = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`;
+        }
+        let attachmentId = attachment ? attachment.id : null;
         if (seeker) {
-            seeker.addApplied(post);
+            if (attachmentId) {
+                await Attachment_1.default.update(seekerData, { where: { id: attachmentId } });
+            }
+            else {
+                // create new attachment
+                await Attachment_1.default.create(seekerData).then(async function (result) {
+                    await seeker.setAttachment(result);
+                });
+            }
+            await seeker.addApplied(post);
+            // await Waiting.create({
+            //   waitingDate: getFormattedToday()
+            // }).then(function(waiting){
+            //   seekerpost.setWaiting(waiting)
+            // })
             return (0, response_1.default)(200, "Success apply", [], res);
         }
         else {
@@ -527,4 +565,16 @@ const addApplied = async (req, res) => {
     }
 };
 exports.addApplied = addApplied;
+function getFormattedToday() {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+    // Padding digit bulan dan tanggal dengan '0' jika diperlukan
+    month = month < 10 ? '0' + month : month;
+    day = day < 10 ? '0' + day : day;
+    // Menggabungkan tahun, bulan, dan tanggal dengan format yang diinginkan
+    const formattedToday = `${year}-${month}-${day}`;
+    return formattedToday;
+}
 //# sourceMappingURL=seeker.controller.js.map

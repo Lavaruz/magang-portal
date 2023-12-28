@@ -1,26 +1,9 @@
 let RECRUITER_ID
 let COMPLETION_COUNT = 0
-const id = $("#user_id").text()
+const USER_ID = $("#user_id").text()
 const URL_ID = window.location.href.match(/\/applicants\/(\d+)\//)[1];+
 
-$.get(`/api/v1/seeker/${id}`, async (seekerData) => {
-    if(seekerData.role == "recruiter"){
-        // $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-recruiter").removeClass("hidden")
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-    }
-    
-    $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    // $("#navbar-seeker").removeClass("hidden")
-    $("#navbar-recruiter").removeClass("hidden")
-
+$.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     RECRUITER_ID = seekerData.recruiter.id
     $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
         $("#org-name").text(recruiterData.rec_org_name)
@@ -42,8 +25,20 @@ $.get(`/api/v1/posts/${URL_ID}`, async (postId) => {
     $("#menu-offering").prop("href",`/recruiter/applicants/${POST.id}/offering`)
     $("#menu-rejected").prop("href",`/recruiter/applicants/${POST.id}/rejected`)
 
+    const APPLICANTS_WAITING = POST.applicants.filter(applicant => {
+        return applicant.SeekerPost.applicantStatus == "Waiting"
+    })
     const APPLICANTS_REVIEWED = POST.applicants.filter(applicant => {
         return applicant.SeekerPost.applicantStatus == "Reviewed"
+    })
+    const APPLICANTS_REJECTED = POST.applicants.filter(applicant => {
+        return applicant.SeekerPost.applicantStatus == "Rejected"
+    })
+    const APPLICANTS_OFFERED = POST.applicants.filter(applicant => {
+        return applicant.SeekerPost.applicantStatus == "Offering"
+    })
+    const APPLICANTS_INTERVIEW = POST.applicants.filter(applicant => {
+        return applicant.SeekerPost.applicantStatus == "Scheduled"
     })
 
     if(APPLICANTS_REVIEWED.length !== 0){
@@ -52,6 +47,12 @@ $.get(`/api/v1/posts/${URL_ID}`, async (postId) => {
             $("#applicants-list").append(applicantsCard(applicants))
         });
     }
+
+    $("#menu-waiting span").text(`(${APPLICANTS_WAITING.length})`)
+    $("#menu-shortlisted span").text(`(${APPLICANTS_REVIEWED.length})`)
+    $("#menu-interview span").text(`(${APPLICANTS_INTERVIEW.length})`)
+    $("#menu-offering span").text(`(${APPLICANTS_OFFERED.length})`)
+    $("#menu-rejected span").text(`(${APPLICANTS_REJECTED.length})`)
 })
 
 
