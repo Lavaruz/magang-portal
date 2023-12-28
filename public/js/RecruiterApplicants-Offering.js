@@ -198,7 +198,7 @@ function applicantsCard(applicants, seekerpost){
         <div class="w-[24px] h-[24px] rounded-full overflow-hidden bg-gray-200 object-cover">
             <img id="post-img" src="${applicants.profile_picture}" alt="" style="width: 100%;">
         </div>
-        <a href="/recruiter/applicants/${URL_ID}/seeker/${applicants.id}" class="font-bold">${applicants.first_name} ${applicants.last_name}</a>
+        <a target="_blank" href="/recruiter/applicants/${URL_ID}/seeker/${applicants.id}" class="font-bold">${applicants.first_name} ${applicants.last_name}</a>
         <p class="${seekerpost.Offering.offeringStatus? "text-white":"text-red-500"} interview-date">${seekerpost.Offering.offeringStatus ? seekerpost.Offering.offeringStatus : "No Date"}</p>
         <p>${total_experiences} months</p>
         <p>${applicants.educations.length !== 0 ? applicants.educations[0].edu_program : "No Education"} <br> <span class="text-xs text-white-60">${applicants.educations.length !== 0 ? applicants.educations[0].edu_institution : "-"}</span></p>

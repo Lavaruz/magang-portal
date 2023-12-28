@@ -1,27 +1,6 @@
-const id = $("#user_id").text()
+const USER_ID = $("#user_id").text()
 
-$.get(`/api/v1/seeker/${id}`, async (seekerData) => {
-    if(seekerData.role == "recruiter"){
-        $("#navbar-recruiter-recruiter").remove()
-        // $("#navbar-recruiter-seeker").remove()
-        $("#navbar-recruiter-seeker").removeClass("hidden")
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").removeClass("hidden")
-    }
-
-    if(seekerData.recruiter){
-        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
-    }
-    
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    $("#navbar-seeker").removeClass("hidden")
-    // $("#navbar-recruiter").removeClass("hidden")
-
+$.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     $("#header-firstname").text(`Hi, ${seekerData.first_name}`)
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
     $("#basic-email").text(`${seekerData.email}`)
@@ -37,6 +16,8 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     $("#popup-domicile").val(`${seekerData.domicile}`)
     $(`input[name=sex][value=${seekerData.sex}]`).prop("checked",true);
     $("#profile-viewers").text(seekerData.profile_viewers)
+
+    seekerData.educations.length !== 0 ? $("#basic-current-position").text(`${seekerData.educations[0].edu_program} Student at ${seekerData.educations[0].edu_institution}`) : $("#basic-current-position").text("")
 
     if(seekerData.profile_picture){
         $("#basic-profile-pic").attr("src", seekerData.profile_picture);
@@ -111,7 +92,7 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
                 $("#editing-experience input[name=exp_enddate]").prop("disabled", true)
                 $("#editing-experience input[type=checkbox]").prop("checked", true)
             }
-            $("#editing-experience input[name=exp_status]").val(obj.exp_status)
+            $("#editing-experience select[name=exp_status]").val(obj.exp_status)
             $("#editing-experience input[name=exp_location]").val(obj.exp_location)
             $("#editing-experience textarea[name=exp_description]").val(obj.exp_description)
 
@@ -243,8 +224,6 @@ $(".close-x").click(function(){
     $(this).closest('#popup').addClass("hidden")
 })
 
-const USER_ID = $("#user_id").text()
-
 $("#navbar-seeker").removeClass("hidden")
 
 $("#add-experience").click(function(){
@@ -261,6 +240,8 @@ $(".button-next").click(function(){
     let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
     $(".body-percent").eq(body_percent_idx).addClass("hidden")
     $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+    $("#popup-recruiter-bar-text").text(`${(body_percent_idx+1) * 20}%`)
+    $("#popup-recruiter-bar-progress").css("width", `${(body_percent_idx+1) * 20}%`)
 })
 
 $(".button-back").click(function(){
@@ -382,89 +363,89 @@ $("#popup-recruiter-info").find("input").on("input", function(){
 
 
 
-    // -------- update basic information data -------- 
-    updateSeekerData("form-basic-information", `/api/v1/seeker/${USER_ID}`,"PUT")
-
-    
-    // -------- update profile summary data -------- 
-    updateSeekerData("form-profile-summary", `/api/v1/seeker/${USER_ID}`,"PUT")
+// -------- update basic information data -------- 
+updateSeekerData("form-basic-information", `/api/v1/seeker/${USER_ID}`,"PUT")
 
 
-    // -------- update profile experiences -------- 
-    // ADD
-    updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
-    
-    
-    // -------- add profile educations -------- 
-    // ADD
-    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
-    
-
-    // -------- add attachment -------- 
-    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
-
-    // -------- Delete EDUCATION || EXPERIENCE ---------
-    $("#popup").on("click", ".delete-svg-button", function(){
-        const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
-        const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
-        let confirmDeletion = confirm("Are you sure?")
-        if(CARD_EDUCATION_ID && confirmDeletion){
-            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "DELETE")
-        }
-        if(CARD_EXPERIENCE_ID && confirmDeletion){
-            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
-        }
-    })
-    
-    updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
-    
+// -------- update profile summary data -------- 
+updateSeekerData("form-profile-summary", `/api/v1/seeker/${USER_ID}`,"PUT")
 
 
-    function updateSeekerData(formId, URL, method){
-        const form_update = document.getElementById(formId);
-        $(`#${formId}`).submit(function(e){
-            e.preventDefault();
-            let formData = new FormData(form_update)
-            $.ajax({
-                url: URL,
-                type: method,
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                encrypt: "multipart/form-data",
-                processData: false,
-                success: (response) => {
-                    if(response.status_code == 200){
-                        location.reload()
-                    }
-                },
-                error: function (request, status, error) {
-                    alert("Error!")
-                },
-            });
-        })
+// -------- update profile experiences -------- 
+// ADD
+updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
+
+
+// -------- add profile educations -------- 
+// ADD
+updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
+
+
+// -------- add attachment -------- 
+updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
+
+// -------- Delete EDUCATION || EXPERIENCE ---------
+$("#popup").on("click", ".delete-svg-button", function(){
+    const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
+    const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
+    let confirmDeletion = confirm("Are you sure?")
+    if(CARD_EDUCATION_ID && confirmDeletion){
+        updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "DELETE")
     }
+    if(CARD_EXPERIENCE_ID && confirmDeletion){
+        updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
+    }
+})
 
-    function updateSeekerDataWithoutForm(URL, method){
+updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
+
+
+
+function updateSeekerData(formId, URL, method){
+    const form_update = document.getElementById(formId);
+    $(`#${formId}`).submit(function(e){
+        e.preventDefault();
+        let formData = new FormData(form_update)
         $.ajax({
             url: URL,
             type: method,
-            success: function (response) {
-                if(startsWithTwo(response.status_code)){
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            encrypt: "multipart/form-data",
+            processData: false,
+            success: (response) => {
+                if(response.status_code == 200){
                     location.reload()
                 }
             },
-            error: function (error) {
-                alert("Error")
-            }
+            error: function (request, status, error) {
+                // alert("Error!")
+            },
         });
-    }
+    })
+}
 
-    function startsWithTwo(input) {
-        const regex = /^2\d+/; // '^2' menunjukkan input harus dimulai dengan '2', dan '\d+' menunjukkan satu atau lebih digit.
-        return regex.test(input);
-    }
+function updateSeekerDataWithoutForm(URL, method){
+    $.ajax({
+        url: URL,
+        type: method,
+        success: function (response) {
+            if(startsWithTwo(response.status_code)){
+                location.reload()
+            }
+        },
+        error: function (error) {
+            // alert("Error")
+        }
+    });
+}
+
+function startsWithTwo(input) {
+    const regex = /^2\d+/; // '^2' menunjukkan input harus dimulai dengan '2', dan '\d+' menunjukkan satu atau lebih digit.
+    return regex.test(input);
+}
 
 
 
@@ -486,6 +467,27 @@ function formatDate(inputDate) {
   
     // Gabungkan komponen-komponen dalam format yang diinginkan
     const formattedDate = `${day} ${formattedMonth} ${year}`;
+  
+    return formattedDate;
+}
+
+function formatDateMonth(inputDate) {
+    // Parse tanggal dalam format "YYYY-MM-DD"
+    const dateParts = inputDate.split('-');
+    const year = dateParts[0];
+    const month = dateParts[1];
+  
+    // Daftar nama bulan
+    const monthNames = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+        'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
+    ];
+  
+    // Konversi komponen bulan ke nama bulan
+    const formattedMonth = monthNames[parseInt(month, 10) - 1];
+  
+    // Gabungkan komponen-komponen dalam format yang diinginkan
+    const formattedDate = `${formattedMonth} ${year}`;
   
     return formattedDate;
 }
@@ -548,7 +550,7 @@ function experience_html(experience){
                     <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate? formatDate(experience.exp_enddate).slice(3) : "Now"}</p>
+                    <p class="font-second text-xs font-normal text-white">${formatDateMonth(experience.exp_startdate)} - ${experience.exp_enddate? formatDateMonth(experience.exp_enddate) : "Now"}</p>
                     <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
                 </div>
             </div>
@@ -576,7 +578,7 @@ function experience_html_edit(experience){
                             <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
                         </div>
                         <div class="text-right">
-                            <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate?formatDate(experience.exp_enddate).slice(3):"Now"}</p>
+                            <p class="font-second text-xs font-normal text-white">${formatDateMonth(experience.exp_startdate)} - ${experience.exp_enddate?formatDateMonth(experience.exp_enddate):"Now"}</p>
                             <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
                         </div>
                     </div>
@@ -611,7 +613,7 @@ function education_html(education){
                     <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                    <p class="font-second text-xs font-normal text-white">${formatDateMonth(education.edu_startdate)} - ${formatDateMonth(education.edu_enddate)}</p>
                     <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
                 </div>
             </div>
@@ -642,7 +644,7 @@ function education_html_menu(education){
                             <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
                         </div>
                         <div class="text-right">
-                            <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                            <p class="font-second text-xs font-normal text-white">${formatDateMonth(education.edu_startdate)} - ${formatDateMonth(education.edu_enddate)}</p>
                             <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
                         </div>
                     </div>

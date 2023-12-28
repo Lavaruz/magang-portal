@@ -4,91 +4,104 @@ const USER_ID = $("#user_id").text()
 const URL_ID = window.location.href.substring(window.location.href.lastIndexOf("/") + 1);
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
-    if(seekerData.role == "recruiter"){
-        $("#navbar-recruiter-recruiter").remove()
-        // $("#navbar-recruiter-seeker").remove()
-        $("#navbar-recruiter-seeker").removeClass("hidden")
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").removeClass("hidden")
-    }
-    
-
     if(seekerData.recruiter){
-        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
+        RECRUITER_ID = seekerData.recruiter.id
+        $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
+            if(recruiterData.rec_org_logo){
+                $("#nav-allpost").text(`(${recruiterData.posts.length})`)
+            }
+            updateSeekerData("form-add-post", `/api/v1/recruiter/${RECRUITER_ID}/post`, "POST")
+        })
     }
-    
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    $("#navbar-seeker").removeClass("hidden")
-    // $("#navbar-recruiter").removeClass("hidden")
 
-    RECRUITER_ID = seekerData.recruiter.id
-    $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
-        if(recruiterData.rec_org_logo){
-            $("#nav-allpost").text(`(${recruiterData.posts.length})`)
+    $(".close-x").click(function(){
+        $(this).closest('.popup').addClass("hidden")
+        $(this).closest('#popup').addClass("hidden")
+    })
+
+    $("#button-apply").click(function(){
+        if(seekerData.experiences.length == 0 || seekerData.educations.length == 0 || !seekerData.profile_picture || !seekerData.profile_summary){
+            $("#popup").removeClass("hidden")
+            $(".popup-apply-not-complete").removeClass("hidden")
+        }else{
+            $("#popup").removeClass("hidden")
+            $(".popup-apply").removeClass("hidden")
+        }
+    })
+
+    if(seekerData.attachment){
+        let atc_resume = seekerData.attachment.atc_resume
+        if(atc_resume){
+            // ON POPUP
+            $("#filled-resume").removeClass("hidden")
+            $("#unfilled-resume").addClass("hidden")
+
+            $("#filled-resume a").prop("href", seekerData.attachment.atc_resume).text(atc_resume)
+            $("#filled-resume p span").text(formatDate(getFormattedDate()))
+        }
+    }
+
+
+
+    $.get(`/api/v1/posts/${URL_ID}`, async (postData) => {
+        // check if this post has applied
+        const APPLIED_ID = seekerData.applied.map(apply => apply.id)
+        if(APPLIED_ID.includes(postData.datas.id)){
+            $("#button-apply").prop("disabled", true)
+            $("#seeker-applied").removeClass("hidden")
+            $("#seeker-applied-date").text(`You have applied to this job.`)
         }
 
 
-        $(".close-x").click(function(){
-            $(this).closest('.popup').addClass("hidden")
-            $(this).closest('#popup').addClass("hidden")
-        })
-        $(".back-x").click(function(){
-            let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-            $(".body-percent").eq(body_percent_idx).addClass("hidden")
-            $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
-        })
-        $(".button-next").click(function(){
-            let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-            $(".body-percent").eq(body_percent_idx).addClass("hidden")
-            $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+
+        const Post = postData.datas
+        const responsibility = Post.post_responsibility.split('\n')
+        const requirement = Post.post_requirement.split('\n')
+        const overview = Post.post_overview.split('\n')
+        
+        const RECRUITER = Post.recruiter[0]
+        const rec_overview = RECRUITER.rec_description ? RECRUITER.rec_description.split('\n') : []
     
-            $("#card-post-position").text($("input[name=post_position]").val())
-            $("#card-post-org").text(recruiterData.rec_org_name)
-            $("#card-post-location-type").text($("input[name=post_location_type]").val())
-            $("#card-post-location").text($("input[name=post_location]").val())
-            $("#card-post-work-time").text($("input[name=post_work_time]").val())
-            $("#card-post-work-time-perweek").text($("input[name=post_work_time_perweek]").val())
-        })
-
-
-
-        updateSeekerData("form-add-post", `/api/v1/recruiter/${RECRUITER_ID}/post`, "POST")
+        let resume = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none"><path d="M9 11C9.4125 11 9.76563 10.8531 10.0594 10.5594C10.3531 10.2656 10.5 9.9125 10.5 9.5C10.5 9.0875 10.3531 8.73437 10.0594 8.44062C9.76563 8.14687 9.4125 8 9 8C8.5875 8 8.23437 8.14687 7.94062 8.44062C7.64687 8.73437 7.5 9.0875 7.5 9.5C7.5 9.9125 7.64687 10.2656 7.94062 10.5594C8.23437 10.8531 8.5875 11 9 11ZM6 14H12V13.5687C12 13.2687 11.9187 12.9937 11.7563 12.7437C11.5938 12.4937 11.3687 12.3062 11.0812 12.1812C10.7562 12.0437 10.4219 11.9375 10.0781 11.8625C9.73438 11.7875 9.375 11.75 9 11.75C8.625 11.75 8.26562 11.7875 7.92188 11.8625C7.57812 11.9375 7.24375 12.0437 6.91875 12.1812C6.63125 12.3062 6.40625 12.4937 6.24375 12.7437C6.08125 12.9937 6 13.2687 6 13.5687V14ZM13.875 17H4.125C3.825 17 3.5625 16.8875 3.3375 16.6625C3.1125 16.4375 3 16.175 3 15.875V3.125C3 2.825 3.1125 2.5625 3.3375 2.3375C3.5625 2.1125 3.825 2 4.125 2H10.05C10.2 2 10.3469 2.03125 10.4906 2.09375C10.6344 2.15625 10.7563 2.2375 10.8563 2.3375L14.6625 6.14375C14.7625 6.24375 14.8438 6.36562 14.9062 6.50937C14.9688 6.65312 15 6.8 15 6.95V15.875C15 16.175 14.8875 16.4375 14.6625 16.6625C14.4375 16.8875 14.175 17 13.875 17Z" fill="#A5A5A5"/></svg> Resume</p>`
+        let portfolio = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><path d="M9.6875 6.075L11 5.26875L12.3125 6.075C12.4125 6.1375 12.5094 6.14063 12.6031 6.08438C12.6969 6.02813 12.7438 5.94375 12.7438 5.83125V1.125H9.25625V5.83125C9.25625 5.94375 9.30313 6.02813 9.39688 6.08438C9.49063 6.14063 9.5875 6.1375 9.6875 6.075ZM3.875 12.75C3.575 12.75 3.3125 12.6375 3.0875 12.4125C2.8625 12.1875 2.75 11.925 2.75 11.625V1.125C2.75 0.825 2.8625 0.5625 3.0875 0.3375C3.3125 0.1125 3.575 0 3.875 0H14.375C14.675 0 14.9375 0.1125 15.1625 0.3375C15.3875 0.5625 15.5 0.825 15.5 1.125V11.625C15.5 11.925 15.3875 12.1875 15.1625 12.4125C14.9375 12.6375 14.675 12.75 14.375 12.75H3.875ZM1.625 15C1.325 15 1.0625 14.8875 0.8375 14.6625C0.6125 14.4375 0.5 14.175 0.5 13.875V2.8125C0.5 2.65 0.553125 2.51563 0.659375 2.40938C0.765625 2.30313 0.9 2.25 1.0625 2.25C1.225 2.25 1.35938 2.30313 1.46562 2.40938C1.57187 2.51563 1.625 2.65 1.625 2.8125V13.875H12.6875C12.85 13.875 12.9844 13.9281 13.0906 14.0344C13.1969 14.1406 13.25 14.275 13.25 14.4375C13.25 14.6 13.1969 14.7344 13.0906 14.8406C12.9844 14.9469 12.85 15 12.6875 15H1.625Z" fill="#AAAAAA"/></svg> Portfolio</p>`
+    
+        $("#post-position").text(Post.post_position)
+        $("#post-overview").text(overview.join("</br>"))
+        $(".about-job").append(aboutInfo(Post))
+        $("#responsibility").html(responsibility.join("</br>"))
+        $("#requirement").html(requirement.join("</br>"))
+        $("#rec-org-name").text(RECRUITER.rec_org_name)
+        $("#post-img").attr("src", RECRUITER.rec_org_logo)
+        if(Post.post_resume_req) $("#required-file").append(resume)
+        if(Post.post_portfolio_req) $("#required-file").append(portfolio)
+        
+        
+        $("#org-name").text(RECRUITER.rec_org_name)
+        $("#org-desc").html(rec_overview.join("</br>"))
+        $("#org-img").attr("src", RECRUITER.rec_org_logo)
+    
+        updateSeekerData("form-apply-post", `/api/v1/seeker/${USER_ID}/posts/${Post.id}` ,"POST")
     })
 })
 
-$.get(`/api/v1/posts/${URL_ID}`, async (postData) => {
-    const Post = postData.datas
-    const responsibility = Post.post_responsibility.split('\n')
-    const requirement = Post.post_requirement.split('\n')
-    const overview = Post.post_overview.split('\n')
-    
-    const RECRUITER = Post.recruiter[0]
-    const rec_overview = RECRUITER.rec_description ? RECRUITER.rec_description.split('\n') : []
 
-    let resume = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none"><path d="M9 11C9.4125 11 9.76563 10.8531 10.0594 10.5594C10.3531 10.2656 10.5 9.9125 10.5 9.5C10.5 9.0875 10.3531 8.73437 10.0594 8.44062C9.76563 8.14687 9.4125 8 9 8C8.5875 8 8.23437 8.14687 7.94062 8.44062C7.64687 8.73437 7.5 9.0875 7.5 9.5C7.5 9.9125 7.64687 10.2656 7.94062 10.5594C8.23437 10.8531 8.5875 11 9 11ZM6 14H12V13.5687C12 13.2687 11.9187 12.9937 11.7563 12.7437C11.5938 12.4937 11.3687 12.3062 11.0812 12.1812C10.7562 12.0437 10.4219 11.9375 10.0781 11.8625C9.73438 11.7875 9.375 11.75 9 11.75C8.625 11.75 8.26562 11.7875 7.92188 11.8625C7.57812 11.9375 7.24375 12.0437 6.91875 12.1812C6.63125 12.3062 6.40625 12.4937 6.24375 12.7437C6.08125 12.9937 6 13.2687 6 13.5687V14ZM13.875 17H4.125C3.825 17 3.5625 16.8875 3.3375 16.6625C3.1125 16.4375 3 16.175 3 15.875V3.125C3 2.825 3.1125 2.5625 3.3375 2.3375C3.5625 2.1125 3.825 2 4.125 2H10.05C10.2 2 10.3469 2.03125 10.4906 2.09375C10.6344 2.15625 10.7563 2.2375 10.8563 2.3375L14.6625 6.14375C14.7625 6.24375 14.8438 6.36562 14.9062 6.50937C14.9688 6.65312 15 6.8 15 6.95V15.875C15 16.175 14.8875 16.4375 14.6625 16.6625C14.4375 16.8875 14.175 17 13.875 17Z" fill="#A5A5A5"/></svg> Resume</p>`
-    let portfolio = `<p class="text-white flex gap-2 items-center font-second font-normal text-sm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15" fill="none"><path d="M9.6875 6.075L11 5.26875L12.3125 6.075C12.4125 6.1375 12.5094 6.14063 12.6031 6.08438C12.6969 6.02813 12.7438 5.94375 12.7438 5.83125V1.125H9.25625V5.83125C9.25625 5.94375 9.30313 6.02813 9.39688 6.08438C9.49063 6.14063 9.5875 6.1375 9.6875 6.075ZM3.875 12.75C3.575 12.75 3.3125 12.6375 3.0875 12.4125C2.8625 12.1875 2.75 11.925 2.75 11.625V1.125C2.75 0.825 2.8625 0.5625 3.0875 0.3375C3.3125 0.1125 3.575 0 3.875 0H14.375C14.675 0 14.9375 0.1125 15.1625 0.3375C15.3875 0.5625 15.5 0.825 15.5 1.125V11.625C15.5 11.925 15.3875 12.1875 15.1625 12.4125C14.9375 12.6375 14.675 12.75 14.375 12.75H3.875ZM1.625 15C1.325 15 1.0625 14.8875 0.8375 14.6625C0.6125 14.4375 0.5 14.175 0.5 13.875V2.8125C0.5 2.65 0.553125 2.51563 0.659375 2.40938C0.765625 2.30313 0.9 2.25 1.0625 2.25C1.225 2.25 1.35938 2.30313 1.46562 2.40938C1.57187 2.51563 1.625 2.65 1.625 2.8125V13.875H12.6875C12.85 13.875 12.9844 13.9281 13.0906 14.0344C13.1969 14.1406 13.25 14.275 13.25 14.4375C13.25 14.6 13.1969 14.7344 13.0906 14.8406C12.9844 14.9469 12.85 15 12.6875 15H1.625Z" fill="#AAAAAA"/></svg> Portfolio</p>`
 
-    $("#post-position").text(Post.post_position)
-    $("#post-overview").text(overview.join("</br>"))
-    $(".about-job").append(aboutInfo(Post))
-    $("#responsibility").html(responsibility.join("</br>"))
-    $("#requirement").html(requirement.join("</br>"))
-    $("#rec-org-name").text(RECRUITER.rec_org_name)
-    $("#post-img").attr("src", RECRUITER.rec_org_logo)
-    if(Post.post_resume_req) $("#required-file").append(resume)
-    if(Post.post_portfolio_req) $("#required-file").append(portfolio)
-    
-    
-    $("#org-name").text(RECRUITER.rec_org_name)
-    $("#org-desc").html(rec_overview.join("</br>"))
-    $("#org-img").attr("src", RECRUITER.rec_org_logo)
+$("#button-input-resume").click(function(){
+    $("#custom-input-resume").click()
+})
+$("#custom-input-resume").change(function(){
+    const selectedFile = this.files[0];
+    if (selectedFile) {
+        $("#unfilled-resume").addClass("hidden")
+        $("#filled-resume").removeClass("hidden")
+        const fileURL = URL.createObjectURL(selectedFile);
+        const date = new Date(selectedFile.lastModifiedDate);
+        const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
 
-    updateSeekerData("form-apply-post", `/api/v1/seeker/${USER_ID}/posts/${Post.id}` ,"POST")
+        $("#filled-resume a").prop("href", fileURL).text(selectedFile.name)
+        $("#filled-resume p span").text(formattedDate)
+    }
 })
 
 
@@ -108,7 +121,7 @@ function updateSeekerData(formId, URL, method){
             processData: false,
             success: (response) => {
                 if(response.status_code == 200){
-                    location.reload()
+                    window.location = "/internships"
                 }
             },
             error: function (request, status, error) {
@@ -197,4 +210,14 @@ function aboutInfo(post){
             </div>
         </div>
     `
+}
+
+function getFormattedDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Dapat ditambahkan 1 karena bulan dimulai dari 0.
+    const day = String(today.getDate()).padStart(2, '0');
+  
+    const formattedDate = `${year}-${month}-${day}`;
+    return formattedDate;
 }

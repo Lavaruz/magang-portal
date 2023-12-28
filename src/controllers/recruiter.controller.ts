@@ -167,11 +167,12 @@ export const addPost = async (req: Request, res: Response) => {
 
     if(postData.post_resume_req) postData.post_resume_req = true
     if(postData.post_portfolio_req) postData.post_portfolio_req = true
-    if(Array.isArray(postData.post_thp)) postData.post_thp = postData.post_thp.join(" - ")
-
     console.log(postData.post_thp);
     
-
+    if(postData.post_thp_min && !postData.post_thp_max) postData.post_thp = `Rp.${postData.post_thp_min}+`
+    if(!postData.post_thp_min && postData.post_thp_max) postData.post_thp = `Rp.0-Rp.${postData.post_thp_max}`
+    if(postData.post_thp_min && postData.post_thp_max) postData.post_thp = `Rp.${postData.post_thp_min}-Rp.${postData.post_thp_max}`
+    
     if (recruiter) {
       await Post.create(postData).then(async function(result){
         await recruiter.addPost(result)

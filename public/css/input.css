@@ -70,3 +70,8 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-calendar-picker-indicator{
+  cursor: pointer;
+  background: url('/img/Calendar.svg') no-repeat;
+}

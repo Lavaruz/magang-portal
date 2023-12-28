@@ -163,15 +163,15 @@
 
     <!-- POPUP BASIC INFORMATION -->
 
-    <div class="popup popup-basic border-2 border-header w-[720px] hidden">
+    <div class="popup popup-basic border-2 border-header w-[720px] hidden rounded-2xl overflow-hidden">
         <form id="form-org-basic-information">
-            <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+            <div class="header bg-header flex justify-between px-5 py-3 items-center">
                 <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M3.33341 17.5C2.87508 17.5 2.48272 17.3368 2.15633 17.0104C1.82994 16.684 1.66675 16.2917 1.66675 15.8334V6.66669C1.66675 6.20835 1.82994 5.81599 2.15633 5.4896C2.48272 5.16321 2.87508 5.00002 3.33341 5.00002H6.66675V3.33335C6.66675 2.87502 6.82994 2.48266 7.15633 2.15627C7.48272 1.82988 7.87508 1.66669 8.33341 1.66669H11.6667C12.1251 1.66669 12.5174 1.82988 12.8438 2.15627C13.1702 2.48266 13.3334 2.87502 13.3334 3.33335V5.00002H16.6667C17.1251 5.00002 17.5174 5.16321 17.8438 5.4896C18.1702 5.81599 18.3334 6.20835 18.3334 6.66669V15.8334C18.3334 16.2917 18.1702 16.684 17.8438 17.0104C17.5174 17.3368 17.1251 17.5 16.6667 17.5H3.33341ZM8.33341 5.00002H11.6667V3.33335H8.33341V5.00002Z" fill="white"/>
                   </svg> EDITING BASIC INFORMATION</p>
                 <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
             </div>
-            <div class="body divide-y divide-header bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
+            <div class="body divide-y divide-header bg-body h-[500px] overflow-y-scroll">
                 <div class="p-5">
                     <p class="font-bold text-lg text-white mb-3">Logo</p>
                     <div class="flex items-center gap-5">
@@ -196,7 +196,7 @@
                         <label class="block">
                             <span class="text-white-60 tracking-[1.4px] font-normal text-sm">ORGANIZATION NAME*</span>
                             <!-- Using form state modifiers, the classes can be identical for every input -->
-                            <input id="popup-org-name" type="text" value="Startup Keren" name="first_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            <input id="popup-org-name" type="text" value="Startup Keren" name="rec_org_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                             focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                             "/>
@@ -204,7 +204,7 @@
                         <label class="block">
                             <span class="text-white-60 tracking-[1.4px] font-normal text-sm">SHORT DESCRIPTION*</span>
                             <!-- Using form state modifiers, the classes can be identical for every input -->
-                            <input id="popup-org-desc" type="text" value="Artificial Intelligence Agency" name="last_name" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            <input id="popup-org-desc" type="text" value="Artificial Intelligence Agency" name="rec_org_desc" class="block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                             focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                             "/>
@@ -226,7 +226,7 @@
                         <label class="block">
                             <span class="text-white-60 tracking-[1.4px] font-normal text-sm">YEAR FOUNDED*</span>
                             <!-- Using form state modifiers, the classes can be identical for every input -->
-                            <input id="popup-org-year" type="number" value="2023" name="mobile" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            <input id="popup-org-year" type="number" value="2023" name="rec_org_year" class="block border-0 w-[120px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                             focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                             "/>
@@ -238,7 +238,7 @@
                         <label class="block">
                             <span class="text-white-60 tracking-[1.4px] font-normal text-sm">WEBSITE</span>
                             <!-- Using form state modifiers, the classes can be identical for every input -->
-                            <input id="popup-org-website" type="text" value="www.startupkeren.id" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            <input id="popup-org-website" type="text" value="www.startupkeren.id" name="rec_org_website" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                             focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                             "/>
@@ -246,7 +246,7 @@
                         <label class="block">
                             <span class="text-white-60 tracking-[1.4px] font-normal text-sm">OFFICE ADDRESS</span>
                             <!-- Using form state modifiers, the classes can be identical for every input -->
-                            <input id="popup-org-address" type="South Jakarta" value="South Jakarta" name="mobile" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                            <input id="popup-org-address" type="South Jakarta" value="South Jakarta" name="rec_org_address" class="block border-0 w-[300px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
                             focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
                             "/>
@@ -274,7 +274,7 @@
             <div class="body bg-body rounded-b-2xl p-5 pb-6">
                 <p class="font-bold text-lg text-white">Your Organization's Description</p>
                 <p class="text-white-60 font-second font-medium text-sm mb-3">Create an engaging organization description by concisely stating your startup's mission, unique qualities, and career growth opportunities, while also showcasing awards and company culture.</p>        
-                <textarea id="popup-description-textarea" rows="4" name="rec_description" class="focus:ring-white-60 block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white-60 bg-header rounded-lg" placeholder="Write your summary here..."></textarea>
+                <textarea id="popup-description-textarea" rows="4" name="rec_description" class="focus:ring-white-60 block border-0 resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white bg-header rounded-lg" placeholder="Write your summary here..."></textarea>
                 <div class="flex gap-3 justify-end mt-8">
                     <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
                     <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
@@ -348,237 +348,4 @@
 
 <%- include('./layouts/footer'); -%>
 <script src="/js/RecruiterProfilePage.js"></script>
-<script>
-    const USER_ID = $("#user_id").text()
-
-    $("#edit-basic-info, #completion-basic-info").click(function(){
-        $("#popup").removeClass("hidden")
-        $(".popup-basic").removeClass("hidden")
-    })
-
-    $("#edit-description, #button-description, #completion-description").click(function(){
-        $("#popup").removeClass("hidden")
-        $(".popup-description").removeClass("hidden")
-    })
-
-    $("#edit-gallery, #button-gallery, #completion-gallery").click(function(){
-        $("#popup").removeClass("hidden")
-        $(".popup-gallery").removeClass("hidden")
-    })
-
-    $(".close-x").click(function(){
-        $(this).closest('.popup').addClass("hidden")
-        $(this).closest('#popup').addClass("hidden")
-    })
-
-    $("#navbar-recruiter").removeClass("hidden")
-
-    $("#button-org-logo").click(function(){
-        $("#input-org-logo").click()
-    })
-
-    $("#input-org-logo").on("change", function() {
-        const selectedImage = this.files[0];
-        if (selectedImage) {
-            const imageUrl = URL.createObjectURL(selectedImage);
-            $("#popup-org-logo").attr("src", imageUrl);
-        } else {
-            $("#popup-org-logo").attr("src", "/img/Ellipse 3.svg");
-        }
-    });
-
-    $("#button-save-gallery").click(function(){
-        location.reload()
-    })
-
-
-
-
-
-
-
-
-    $("#add-experience").click(function(){
-        $("#registered-experience").addClass("hidden")
-        $("#adding-new-experience").removeClass("hidden")
-    })
-    
-    $("#add-education").click(function(){
-        $("#registered-education").addClass("hidden")
-        $("#adding-new-education").removeClass("hidden")
-    })
-
-    $(".button-next").click(function(){
-        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-        $(".body-percent").eq(body_percent_idx).addClass("hidden")
-        $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
-    })
-
-    $(".button-back").click(function(){
-        let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-        $(".body-percent").eq(body_percent_idx).addClass("hidden")
-        $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
-    })
-
-    $(".cancle-add").click(function(){
-        $(this).closest(".body").find(".additional-popup").addClass("hidden")
-        $(this).closest(".body").find(".main-popup").removeClass('hidden')
-    })
-
-    $("#still-work-here").change(function(){
-        if($(this).is(":checked")){
-            $("input[name=exp_enddate]").prop("disabled", true)
-        }else{
-            $("input[name=exp_enddate]").prop("disabled", false)
-        }
-    })
-
-    $("#active-search").change(function(){
-        $(this).val($(this).is(":checked"))
-        const form_update = document.getElementById("form-update-active-search");
-        const formData = new FormData(form_update)
-        if($(this).val() == "false") formData.append("active_search", false)
-        
-        $.ajax({
-            url: `/api/v1/seeker/${USER_ID}`,
-            type: "PUT",
-            data: formData,
-            async: false,
-            cache: false,
-            contentType: false,
-            encrypt: "multipart/form-data",
-            processData: false,
-            success: (response) => {
-                if(response.status_code == 200){
-                    location.reload()
-                }
-            },
-            error: function (request, status, error) {
-                alert("Error!")
-            },
-        });
-    })
-
-    
-
-    $("#button-input-resume").click(function(){
-        $("#custom-input-resume").click()
-    })
-
-    
-
-    $(".delete-attachment").click(function(){
-        const ATTACHMENT_NAME = $(this).closest(".attachment-body").find(".field_name").text()
-        updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/attachment/${ATTACHMENT_NAME}`, "DELETE")
-    })
-
-    $("#popup-recruiter-org").find("input").on("input", function(){
-        const nonEmptyInputs = $("#popup-recruiter-org").find("input").filter(function() {
-            return $(this).val().length > 0;
-        });
-
-        if(nonEmptyInputs.length === 5){
-            $("#button-recruiter-org").prop("disabled", false)
-        }else{
-            $("#button-recruiter-org").prop("disabled", true)
-        }
-    })
-
-    $("#popup-recruiter-info").find("input").on("input", function(){
-        const nonEmptyInputs = $("#popup-recruiter-info").find("input").filter(function() {
-            return $(this).val().length > 0;
-        });
-
-        if(nonEmptyInputs.length === 4){
-            $("#button-recruiter-info").prop("disabled", false)
-        }else{
-            $("#button-recruiter-info").prop("disabled", true)
-        }
-    })
-    
-
-
-
-
-
-
-    // -------- update basic information data -------- 
-    updateSeekerData("form-basic-information", `/api/v1/seeker/${USER_ID}`,"PUT")
-
-
-    // -------- update profile experiences -------- 
-    // ADD
-    updateSeekerData("form-add-experience", `/api/v1/seeker/${USER_ID}/experience`, "POST")
-    
-    
-    // -------- add profile educations -------- 
-    // ADD
-    updateSeekerData("form-add-education", `/api/v1/seeker/${USER_ID}/education`, "POST")
-    
-
-    // -------- add attachment -------- 
-    updateSeekerData("form-add-attachment", `/api/v1/seeker/${USER_ID}/attachment`, "POST")
-
-    // -------- Delete EDUCATION || EXPERIENCE ---------
-    $("#popup").on("click", ".delete-svg-button", function(){
-        const CARD_EXPERIENCE_ID = $(this).closest(".card-experience").find(".id").text()
-        const CARD_EDUCATION_ID = $(this).closest(".card-education").find(".id").text()
-        let confirmDeletion = confirm("Are you sure?")
-        if(CARD_EDUCATION_ID && confirmDeletion){
-            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/education/${CARD_EDUCATION_ID}`, "DELETE")
-        }
-        if(CARD_EXPERIENCE_ID && confirmDeletion){
-            updateSeekerDataWithoutForm(`/api/v1/seeker/${USER_ID}/experience/${CARD_EXPERIENCE_ID}`, "DELETE")
-        }
-    })
-    
-    updateSeekerData("form-register-recruiter", `/api/v1/seeker/${USER_ID}/recruiter`, "POST")
-    
-
-
-    function updateSeekerData(formId, URL, method){
-        const form_update = document.getElementById(formId);
-        $(`#${formId}`).submit(function(e){
-            e.preventDefault();
-            let formData = new FormData(form_update)
-            $.ajax({
-                url: URL,
-                type: method,
-                data: formData,
-                async: false,
-                cache: false,
-                contentType: false,
-                encrypt: "multipart/form-data",
-                processData: false,
-                success: (response) => {
-                    if(response.status_code == 200){
-                        location.reload()
-                    }
-                },
-                error: function (request, status, error) {
-                    alert("Error!")
-                },
-            });
-        })
-    }
-
-    function updateSeekerDataWithoutForm(URL, method){
-        $.ajax({
-            url: URL,
-            type: method,
-            success: function (response) {
-                if(startsWithTwo(response.status_code)){
-                    location.reload()
-                }
-            },
-            error: function (error) {
-                alert("Error")
-            }
-        });
-    }
-
-    function startsWithTwo(input) {
-        const regex = /^2\d+/; // '^2' menunjukkan input harus dimulai dengan '2', dan '\d+' menunjukkan satu atau lebih digit.
-        return regex.test(input);
-    }
-</script>
+<script src="/js/NavbarRecruiterRecruiter.js"></script>

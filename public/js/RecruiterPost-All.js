@@ -1,36 +1,13 @@
 let RECRUITER_ID
 let COMPLETION_COUNT = 0
-const id = $("#user_id").text()
+const USER_ID = $("#user_id").text()
 
-$.get(`/api/v1/seeker/${id}`, async (seekerData) => {
-    if(seekerData.role == "recruiter"){
-        // $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-recruiter").removeClass("hidden")
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-    }
-
-    if(seekerData.recruiter){
-        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
-    }
-    
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    // $("#navbar-seeker").removeClass("hidden")
-    $("#navbar-recruiter").removeClass("hidden")
-
+$.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     RECRUITER_ID = seekerData.recruiter.id
     $.get(`/api/v1/recruiter/${RECRUITER_ID}`, async (recruiterData) => {
 
         const RECRUITER_POST_INPROGRESS = recruiterData.posts.filter(post => {
             return post.post_status == "IN-PROGRESS"
-        })
-        const RECRUITER_POST_CLOSED = recruiterData.posts.filter(post => {
-            return post.post_status == "CLOSED"
         })
 
         if(recruiterData.rec_org_logo){
@@ -54,11 +31,18 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
             $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
     
             $("#card-post-position").text($("input[name=post_position]").val())
-            $("#card-post-org").text(recruiterData.rec_org_name)
-            $("#card-post-location-type").text($("input[name=post_location_type]").val())
-            $("#card-post-location").text($("input[name=post_location]").val())
-            $("#card-post-work-time").text($("input[name=post_work_time]").val())
-            $("#card-post-work-time-perweek").text($("input[name=post_work_time_perweek]").val())
+            $("#card-post-org").text(recruiterData.rec_org_name.length < 15 ? recruiterData.rec_org_name : recruiterData.rec_org_name.slice(0,15) + "..")
+            if(recruiterData.rec_org_logo){
+                $("#card-post-photo").prop('src', recruiterData.rec_org_logo)
+            }
+            $("#card-post-location").text(`${$("select[name=post_location_type]").val()} • ${$("input[name=post_location]").val()}`)
+            $("#card-post-worktime").text(`${$("select[name=post_work_time]").val()} • ${$("select[name=post_work_time_perweek]").val()} work week`)
+            if($("input[name=post_thp_min]").val() && $("input[name=post_thp_max]").val()) $("#card-post-salary").text(`Rp.${$("input[name=post_thp_min]").val()}-Rp.${$("input[name=post_thp_max]").val()}`)
+            if($("input[name=post_thp_min]").val() && !$("input[name=post_thp_max]").val()) $("#card-post-salary").text(`Rp.${$("input[name=post_thp_min]").val()}+`)
+            if(!$("input[name=post_thp_min]").val() && $("input[name=post_thp_max]").val()) $("#card-post-salary").text(`Rp.0-Rp.${$("input[name=post_thp_max]").val()}`)
+            $("#post-applied-before").text(`Apply before ${formatDate($("input[name=post_deadline]").val())}`)
+            $("#popup-recruiter-bar-text").text(`${(body_percent_idx+1) * 25}%`)
+            $("#popup-recruiter-bar-progress").css("width", `${(body_percent_idx+1) * 25}%`)
         })
 
         if(recruiterData.posts.length !== 0){
@@ -97,7 +81,10 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
             const POST_ID = $(this).closest(".posts-detailed").find(".post-id").text()
             const URL = `${window.location.origin}/posts/${POST_ID}`
             navigator.clipboard.writeText(URL).then(function() {
-                alert(`Copied! ${URL}`);
+                $("#popup-copylink").removeClass("invisible")
+                setTimeout(function() {
+                    $("#popup-copylink").addClass("invisible");
+                }, 2500);
             }, function() {
                 alert('Copy error')
             });
@@ -109,6 +96,25 @@ $.get(`/api/v1/seeker/${id}`, async (seekerData) => {
     })
 })
 
+
+$("#post-basic-info").find('input[required]').on("input", function(){
+    let allRequiredFilled = true;
+
+    // Periksa setiap elemen required
+    $("#post-basic-info input[required]").each(function() {
+        if ($(this).val() == '') {
+            allRequiredFilled = false;
+            return false; // Keluar dari loop jika ada input yang kosong
+        }
+    });
+
+    // Aktifkan tombol jika semua required telah diisi
+    if (allRequiredFilled) {
+        $('#button-next-post-basic').prop('disabled', false);
+    } else {
+        $('#button-next-post-basic').prop('disabled', true);
+    }
+})
 $("#posts-grid").on("change",".post-status", function(){
     $(this).val($(this).is(":checked"))
     const form_update = $(this).closest("form");
@@ -136,6 +142,15 @@ $("#posts-grid").on("change",".post-status", function(){
         },
     });
 })
+$('#thp_max, #thp_min').on('input', function(e) {
+    let value = e.target.value.replace(/\D/g, ''); // Hanya menerima angka
+    value = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); // Format ribuan
+    $(this).val(value);
+});
+$("#popup-thp-type").change(function(){
+    $('#thp_max, #thp_min').val("")
+})
+
 
 function updateSeekerData(formId, URL, method){
     const form_update = document.getElementById(formId);
@@ -167,7 +182,7 @@ function postLeftDetail(post){
     return`
     <div class="post-left-choose w-100 flex flex-col gap-2 p-3 border border-[#3b3b3b] rounded-lg cursor-pointer">
         <div class="flex justify-between">
-            <p class="font-second text-xs font-medium text-intern-red bg-[#DB3D3D]/20 py-0.5 px-2">INTERNSHIP</p>
+            <p class="font-second text-xs font-medium text-intern-red bg-[#DB3D3D]/20 py-0.5 px-2">${post.post_type.toUpperCase()}</p>
             <div class="flex items-center gap-1.5 py-0.5 px-2 bg-[#343434] rounded-lg">
                 <p class="text-white-60 font-second text-xs font-medium">${post.post_status}</p>
                 <svg xmlns="http://www.w3.org/2000/svg" width="8" height="10" viewBox="0 0 8 10" fill="none">
@@ -178,7 +193,7 @@ function postLeftDetail(post){
         <div class="flex flex-col gap-2">
             <p class="font-extrabold text-base text-white">${post.post_position}</p>
             <div class="flex gap-1">
-                <p class="text-white-80 font-bold font-second text-xs">Posted 2 weeks ago</p>
+                <p class="text-white-80 font-bold font-second text-xs">${timeAgo(post.post_postdate)}</p>
                 <p class="text-white-60 font-medium font-second text-xs">Until ${formatDate(post.post_deadline)}</p>
             </div>
         </div>
@@ -192,8 +207,6 @@ function postLeftDetail(post){
 }
 
 function postRightDetail(post, recruiter){
-    let post_thp = post.post_thp.split(" - ")
-    post_thp = post_thp.map(thp => `Rp${thp}`).join(" - ")
     let overview = post.post_overview.split('\n')
     let responsibility = post.post_responsibility.split('\n')
     let requirement = post.post_requirement.split('\n')
@@ -221,7 +234,7 @@ function postRightDetail(post, recruiter){
                 <img src="${recruiter.rec_org_logo}" alt="" width="100">
             </div>
             <div class="">
-                <div class="flex items-center gap-3 text-xl text-white font-bold">${post.post_position} <p class="font-second text-xs font-medium text-intern-red bg-[#DB3D3D]/20 py-0.5 px-2">INTERNSHIP</p></div>
+                <div class="flex items-center gap-3 text-xl text-white font-bold">${post.post_position} <p class="font-second text-xs font-medium text-intern-red bg-[#DB3D3D]/20 py-0.5 px-2">${post.post_type.toUpperCase()}</p></div>
                 <p class="text-white-60 font-second font-bold text-sm">${recruiter.rec_org_name}</p>
             </div>
         </div>
@@ -246,7 +259,7 @@ function postRightDetail(post, recruiter){
                                 <path d="M6.68188 15H7.83032V12.1597H9.40942L10.9167 15H12.2395L10.5835 11.9854C11.4705 11.6829 12.019 10.8831 12.019 9.87817V9.86792C12.019 8.47852 11.0654 7.60181 9.55298 7.60181H6.68188V15ZM7.83032 11.2163V8.56567H9.40942C10.2913 8.56567 10.8347 9.05786 10.8347 9.87817V9.88843C10.8347 10.7292 10.3271 11.2163 9.44019 11.2163H7.83032Z" fill="#2A2A2A"/>
                                 <path d="M12.9983 16.7944H14.1057V14.0925H14.1313C14.4492 14.718 15.0696 15.1077 15.8335 15.1077C17.187 15.1077 18.074 14.0259 18.074 12.3083V12.3032C18.074 10.5806 17.1921 9.50391 15.8181 9.50391C15.0491 9.50391 14.4543 9.89355 14.1313 10.5344H14.1057V9.60645H12.9983V16.7944ZM15.531 14.1541C14.6953 14.1541 14.1006 13.426 14.1006 12.3083V12.3032C14.1006 11.1804 14.6902 10.4524 15.531 10.4524C16.3975 10.4524 16.946 11.1548 16.946 12.3032V12.3083C16.946 13.4465 16.4026 14.1541 15.531 14.1541Z" fill="#2A2A2A"/>
                                 </svg>
-                            <p class="text-white text-sm font-bold font-bold font-second">${post_thp}</p>
+                            <p class="text-white text-sm font-bold font-bold font-second">${post.post_thp}</p>
                             <p class="font-second text-white-60 text-xs font-medium">Take-home Pay</p>
                         </div>
                         <div class="flex flex-col gap-1">
@@ -371,4 +384,22 @@ function formatDateFull(inputDate) {
     const formattedDate = `${day} ${formattedMonth} ${year}`;
   
     return formattedDate;
+}
+
+function timeAgo(date) {
+    const currentDate = new Date();
+    const postedDate = new Date(date);
+  
+    const timeDifference = currentDate.getTime() - postedDate.getTime();
+    const daysDifference = Math.floor(timeDifference / (1000 * 3600 * 24));
+  
+    if (daysDifference === 0) {
+      return 'Posted today';
+    } else if (daysDifference === 7) {
+      return 'Posted 1 week ago';
+    } else if (daysDifference === 14) {
+      return 'Posted 2 weeks ago';
+    } else {
+      return 'Posted ' + daysDifference + ' days ago';
+    }
 }

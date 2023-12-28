@@ -7,6 +7,7 @@ class Post extends Model {
   declare id: CreationOptional<number>;
   declare post_status: string;
   declare post_position: string;
+  declare post_type: string;
   declare post_need: string;
   declare post_work_time: string;
   declare post_work_time_perweek: string;
@@ -45,6 +46,7 @@ Post.init(
       defaultValue: "IN-PROGRESS"
     },
     post_position: DataTypes.STRING,
+    post_type: DataTypes.STRING,
     post_need: DataTypes.STRING,
     post_work_time: DataTypes.STRING,
     post_work_time_perweek: DataTypes.STRING,

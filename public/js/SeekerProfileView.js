@@ -5,31 +5,6 @@ const USER_ID = $("#user_id").text()
 const POST_ID = segments[segments.indexOf('applicants') + 1];
 const SEEKER_ID = segments[segments.indexOf('seeker') + 1];
 
-
-$.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
-    if(seekerData.role == "recruiter"){
-        // $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-recruiter").removeClass("hidden")
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-    }
-
-    
-
-    if(seekerData.recruiter){
-        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
-    }
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    // $("#navbar-seeker").removeClass("hidden")
-    $("#navbar-recruiter").removeClass("hidden")
-})
-
-
 $.get(`/api/v1/seeker/${SEEKER_ID}`, async (seekerData) => {
     $("#header-firstname").text(`Viewing ${seekerData.first_name}'s Profile`)
     $("#basic-fullname").text(`${seekerData.first_name} ${seekerData.last_name}`)
@@ -294,7 +269,7 @@ function experience_html(experience){
                     <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate? formatDate(experience.exp_enddate).slice(3) : "Now"}</p>
+                    <p class="font-second text-xs font-normal text-white">${formatDateMonth(experience.exp_startdate)} - ${experience.exp_enddate? formatDateMonth(experience.exp_enddate) : "Now"}</p>
                     <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
                 </div>
             </div>
@@ -322,7 +297,7 @@ function experience_html_edit(experience){
                             <p class="font-semibold text-sm text-white-80 font-second">${experience.exp_orgname} • ${experience.exp_time} • ${experience.exp_status} (${experience.exp_location}) </p>
                         </div>
                         <div class="text-right">
-                            <p class="font-second text-xs font-normal text-white">${formatDate(experience.exp_startdate).slice(3)} - ${experience.exp_enddate?formatDate(experience.exp_enddate).slice(3):"Now"}</p>
+                            <p class="font-second text-xs font-normal text-white">${formatDateMonth(experience.exp_startdate)} - ${experience.exp_enddate?formatDateMonth(experience.exp_enddate):"Now"}</p>
                             <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(experience.exp_startdate, experience.exp_enddate?experience.exp_enddate:getFormattedDate()).toUpperCase()}</p>
                         </div>
                     </div>
@@ -357,7 +332,7 @@ function education_html(education){
                     <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                    <p class="font-second text-xs font-normal text-white">${formatDateMonth(education.edu_startdate)} - ${formatDateMonth(education.edu_enddate)}</p>
                     <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
                 </div>
             </div>
@@ -388,7 +363,7 @@ function education_html_menu(education){
                             <p class="font-semibold text-sm text-white-80 font-second">${education.edu_institution} • ${education.edu_status} (${education.edu_location}) </p>
                         </div>
                         <div class="text-right">
-                            <p class="font-second text-xs font-normal text-white">${formatDate(education.edu_startdate).slice(3)} - ${formatDate(education.edu_enddate).slice(3)}</p>
+                            <p class="font-second text-xs font-normal text-white">${formatDateMonth(education.edu_startdate)} - ${formatDateMonth(education.edu_enddate)}</p>
                             <p class="text-xs font-semibold text-[#A5A5A5]">${calculateMonthDifference(education.edu_startdate, education.edu_enddate).toUpperCase()}</p>
                         </div>
                     </div>
@@ -424,4 +399,25 @@ function getFormattedToday() {
     const formattedToday = `${year}-${month}-${day}`;
   
     return formattedToday;
+}
+
+function formatDateMonth(inputDate) {
+    // Parse tanggal dalam format "YYYY-MM-DD"
+    const dateParts = inputDate.split('-');
+    const year = dateParts[0];
+    const month = dateParts[1];
+  
+    // Daftar nama bulan
+    const monthNames = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
+        'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
+    ];
+  
+    // Konversi komponen bulan ke nama bulan
+    const formattedMonth = monthNames[parseInt(month, 10) - 1];
+  
+    // Gabungkan komponen-komponen dalam format yang diinginkan
+    const formattedDate = `${formattedMonth} ${year}`;
+  
+    return formattedDate;
 }

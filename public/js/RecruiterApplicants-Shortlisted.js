@@ -215,7 +215,7 @@ function applicantsCard(applicants){
             <div class="w-[24px] h-[24px] rounded-full overflow-hidden bg-gray-200 object-cover">
                 <img id="post-img" src="${applicants.profile_picture}" alt="" style="width: 100%;">
             </div>
-            <a href="#/recruiter/applicants/${URL_ID}/seeker/${applicants.id} class="font-bold">${applicants.first_name} ${applicants.last_name}</a>
+            <a target="_blank" href="#/recruiter/applicants/${URL_ID}/seeker/${applicants.id} class="font-bold">${applicants.first_name} ${applicants.last_name}</a>
             <p>${applicants.experiences.length !== 0 ? applicants.experiences[0].exp_position : "No Experience"}</p>
             <p>${total_experiences} months</p>
             <p>${applicants.educations.length !== 0 ? applicants.educations[0].edu_program : "No Education"} <br> <span class="text-xs text-white-60">${applicants.educations.length !== 0 ? applicants.educations[0].edu_institution : "-"}</span></p>

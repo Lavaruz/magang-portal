@@ -342,8 +342,6 @@ export const updateEducation = async (req: Request, res: Response) => {
 export const setAttachment = async (req: Request, res: Response) => {
   const seekerId = req.params.id;
   const attachmentData = req.body; // Data pembaruan pengguna dari permintaan PUT
-  
-  console.log(attachmentData);
 
   try {
     const seeker = await Seeker.findByPk(seekerId);
@@ -490,9 +488,44 @@ export const addApplied = async (req: Request, res: Response) => {
     const seeker = await Seeker.findByPk(seekerId);
     const post = await Post.findByPk(postId)
     
+    let attachment = (await seeker.getAttachment())
+    seekerData.atc_resume = attachment ? attachment.atc_resume : null
+
+    if(req.files.length !== 0){
+      if(attachment){
+        if(attachment.atc_resume){
+          const filename = attachment.atc_resume.split("/uploads")[1]
+          const fileToDelete = `public/files/uploads/${filename}`
+          if (fs.existsSync(fileToDelete)) {
+            try {
+              fs.unlinkSync(fileToDelete);
+              console.log(`File ${filename} deleted successfully.`);
+            } catch (err) {
+              console.error(`Error deleting file ${filename}: ${err}`);
+            }
+          } else {
+            console.log(`File ${filename} not found.`);
+          } 
+        }
+      }
+      
+      seekerData.atc_resume = `${req.protocol + "://" + req.get("host")}/files/uploads/${req.files[0].filename}`
+    }
+    let attachmentId = attachment ? attachment.id : null
+
     if (seeker) {
-      seeker.addApplied(post)
-      return response(200, "Success apply", [], res)
+      if(attachmentId){
+        await Attachment.update(seekerData,{where:{id:attachmentId}})
+        await seeker.addApplied(post)
+        return response(200, "Success apply", [], res)
+      }else{
+        // create new attachment
+        await Attachment.create(seekerData).then(async function(result){
+          await seeker.setAttachment(result)
+          await seeker.addApplied(post)
+          return response(200, "Success apply", [], res)
+        })
+      }
     } else {
       res.status(404).json({ error: "Pengguna tidak ditemukan" });
     }

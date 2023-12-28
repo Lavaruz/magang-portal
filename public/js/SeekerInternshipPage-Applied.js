@@ -7,27 +7,6 @@ $(".close-x").click(function(){
 $(".navbar-internship").addClass("selected")
 
 $.get(`/api/v1/seeker/${USER_ID}`, function(seekerData){
-    if(seekerData.role == "recruiter"){
-        $("#navbar-recruiter-recruiter").remove()
-        // $("#navbar-recruiter-seeker").remove()
-        $("#navbar-recruiter-seeker").removeClass("hidden")
-        $("#navbar-seeker-only").remove()
-    }else{
-        $("#navbar-recruiter-recruiter").remove()
-        $("#navbar-recruiter-seeker").remove()
-        $("#navbar-seeker-only").removeClass("hidden")
-    }
-
-    if(seekerData.recruiter){
-        $("#navbar-org-logo").attr("src", seekerData.recruiter.rec_org_logo)
-        $("#navbar-org-name").text(seekerData.recruiter.rec_org_name)
-    }
-    
-    $("#navbar-seeker-logo").attr("src", seekerData.profile_picture)
-    $("#navbar-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-    $("#navbar-seeker").removeClass("hidden")
-    // $("#navbar-recruiter").removeClass("hidden")
-
     const postApplied = seekerData.applied
     postApplied.forEach(post => {
         $.get(`/api/v1/seekerpost/${post.SeekerPost.id}`, function(seekerpostData){
