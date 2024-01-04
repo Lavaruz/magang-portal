@@ -49,7 +49,6 @@ export const getRecruiterById = async (req: Request, res: Response) => {
 
 export const updateRecruiter = async (req: Request, res: Response) => {
     const recruiterId = req.params.id;
-    console.log(req.params);
     
     const updatedRecruiter = req.body; // Data pembaruan pengguna dari permintaan PUT  
   
@@ -108,6 +107,26 @@ export const updateRecruiter = async (req: Request, res: Response) => {
       console.error("Gagal memperbarui pengguna:", error);
       res.status(500).json({ error: "Server error" });
     }
+};
+
+export const verificationRecruiter = async (req: Request, res: Response) => {
+  const recruiterId = req.params.id;
+  
+  const updatedRecruiter = req.body; // Data pembaruan pengguna dari permintaan PUT  
+  updatedRecruiter.rec_verified = true
+
+  try {
+    const recruiter = await Recruiter.findByPk(recruiterId);
+    if (recruiter) {
+      await recruiter.update(updatedRecruiter);
+      response(200, "Success update pengguna", recruiter, res)
+    } else {
+      res.status(404).json({ error: "Pengguna tidak ditemukan" });
+    }
+  } catch (error) {
+    console.error("Gagal memperbarui pengguna:", error);
+    res.status(500).json({ error: "Server error" });
+  }
 };
 
 

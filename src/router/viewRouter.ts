@@ -57,6 +57,10 @@ router.get("/recruiter/applicants/:postId/seeker/:seekerId",validateTokenWebsite
   res.render("SeekerProfileView", {id: req.user.id, role:req.user.role});
 });
 
+router.get("/recruiter/dashboard",validateTokenWebsite, (req: Request, res: Response) => {
+  res.render("RecruiterDashboard", {id: req.user.id, role:req.user.role});
+});
+
 // AUTH
 router.get("/login", (req, res) => {
   res.render("LoginRegisterPage");

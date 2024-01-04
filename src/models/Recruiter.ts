@@ -21,6 +21,7 @@ class Recruiter extends Model {
   declare rec_info_firstname:string;
   declare rec_info_lastname:string;
   declare rec_info_email:string;
+  declare rec_info_company_domain: string;
   declare rec_info_position:string;
   declare rec_tier:string;
   declare ownerId: ForeignKey<Seeker['id']>;
@@ -68,6 +69,7 @@ Recruiter.init(
     rec_info_firstname:DataTypes.STRING,
     rec_info_lastname:DataTypes.STRING,
     rec_info_email:DataTypes.STRING,
+    rec_info_company_domain: DataTypes.STRING,
     rec_info_position:DataTypes.STRING,
     rec_tier:DataTypes.STRING,
 

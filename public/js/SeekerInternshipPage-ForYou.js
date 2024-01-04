@@ -6,7 +6,9 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     $("#menu-applied span").text(`(${seekerData.applied.length})`)
     $("#menu-saved span").text(`(${seekerData.saved.length})`)
 
-    const RECRUITER_ID = seekerData.recruiter.id
+    if(seekerData.recruiter){
+        RECRUITER_ID = seekerData.recruiter.id
+    }
 
     $.get("/api/v1/posts", function(postsData){
         const APPLIED_ID = seekerData.applied.map(apply => apply.id)
@@ -21,6 +23,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
             }
         })
     })
+
 
 })
 

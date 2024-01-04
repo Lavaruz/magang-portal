@@ -145,21 +145,21 @@
                 <p class="font-second text-sm font-semibold text-white-60 mt-3">Your average response time to review a candidate's application. The quicker the better.</p>
                 <p class="font-extrabold text-4xl text-white mt-5 flex items-center gap-2"><span id="response-time">-</span> days</p>
             </div>
-            <div class="recruiter-profile bg-darkest-grey rounded-2xl p-4 pb-5">
+            <div class="recruiter-verification bg-darkest-grey rounded-2xl p-4 pb-5">
                 <div class="w-100 rounded-t-2xl">
                     <p class="text-white flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                         <path d="M5.62504 16.0417L3.04171 15.5208C2.88893 15.4931 2.76046 15.4132 2.65629 15.2812C2.55212 15.1493 2.51393 15 2.54171 14.8333L2.83337 12.3333L1.18754 10.4167C1.07643 10.3056 1.02087 10.1667 1.02087 10C1.02087 9.83333 1.07643 9.69444 1.18754 9.58333L2.83337 7.6875L2.54171 5.1875C2.51393 5.02083 2.55212 4.87153 2.65629 4.73958C2.76046 4.60764 2.88893 4.52778 3.04171 4.5L5.62504 3.97917L6.91671 1.75C7.00004 1.61111 7.1181 1.51389 7.27087 1.45833C7.42365 1.40278 7.57643 1.40972 7.72921 1.47917L10 2.54167L12.2709 1.47917C12.4237 1.40972 12.5799 1.39583 12.7396 1.4375C12.8993 1.47917 13.0139 1.57639 13.0834 1.72917L14.3959 3.97917L16.9584 4.5C17.1112 4.52778 17.2396 4.60764 17.3438 4.73958C17.448 4.87153 17.4862 5.02083 17.4584 5.1875L17.1667 7.6875L18.8125 9.58333C18.9237 9.69444 18.9792 9.83333 18.9792 10C18.9792 10.1667 18.9237 10.3056 18.8125 10.4167L17.1667 12.3333L17.4584 14.8333C17.4862 15 17.448 15.1493 17.3438 15.2812C17.2396 15.4132 17.1112 15.4931 16.9584 15.5208L14.3959 16.0417L13.0834 18.2708C13.0139 18.4236 12.8993 18.5208 12.7396 18.5625C12.5799 18.6042 12.4237 18.5903 12.2709 18.5208L10 17.4583L7.72921 18.5208C7.57643 18.5903 7.42365 18.5972 7.27087 18.5417C7.1181 18.4861 7.00004 18.3889 6.91671 18.25L5.62504 16.0417ZM8.66671 12.3333C8.79171 12.4583 8.93754 12.5208 9.10421 12.5208C9.27087 12.5208 9.41671 12.4583 9.54171 12.3333L13.3959 8.52083C13.507 8.40972 13.5591 8.26736 13.5521 8.09375C13.5452 7.92014 13.4792 7.77083 13.3542 7.64583C13.2292 7.52083 13.0799 7.4618 12.9063 7.46875C12.7327 7.47569 12.5764 7.54167 12.4375 7.66667L9.10421 10.9792L7.58337 9.375C7.45837 9.23611 7.30212 9.17014 7.11462 9.17708C6.92712 9.18403 6.77087 9.25694 6.64587 9.39583C6.52087 9.53472 6.4549 9.69444 6.44796 9.875C6.44101 10.0556 6.50699 10.2083 6.64587 10.3333L8.66671 12.3333Z" fill="white"/>
                       </svg> VERIFICATION</p>
                 </div>
                 <p class="font-second text-sm font-semibold text-white-60 mt-3">Verification makes job seekers feel safe when applying to a job vacancy.</p>
-                <button type="button" id="button-recruiter" class="w-[220px] bg-teal-100 font-second py-3 m-auto text-sm font-medium text-teal-8 mt-5 rounded-lg">Apply for Verification</button>
+                <button type="button" id="button-verification" class="w-[220px] bg-teal-100 font-second py-3 m-auto text-sm font-medium text-teal-8 mt-5 rounded-lg">Apply for Verification</button>
             </div>
         </div>
     </div>
 </section>
 
 
-<section id="popup" class="fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100 hidden">
+<section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
 
     <!-- POPUP BASIC INFORMATION -->
 
@@ -300,7 +300,7 @@
             <div class="p-5 pt-2">
                 <form id="form-add-gallery">
                     <p class="font-medium font-second text-sm text-white mt-3 mb-5">Upload up to 4 images. Maximum file size is 2 MB.</p>
-                    <div id="popup-container-gallery" class="flex gap-5 overflow-x-scroll w-full mb-5">
+                    <div id="popup-container-gallery" class="flex gap-5 overflow-x-scroll w-full mb-5 pt-3">
                         <div id="popup-add-gallery">
                             <div id="button-add-gallery" class="w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
@@ -321,27 +321,68 @@
 
     <!-- POPUP VERIFICATION -->
 
-    <div class="popup popup-verification border-2 border-header w-[720px] hidden">
-        <div class="header bg-header rounded-t-2xl flex justify-between px-5 py-3 items-center">
+    <div class="hidden popup popup-verification border-2 border-header w-[720px] rounded-2xl overflow-hidden">
+        <div class="header bg-header flex justify-between px-5 py-3 items-center">
             <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M5.62516 16.0417L3.04183 15.5208C2.88905 15.4931 2.76058 15.4132 2.65641 15.2812C2.55225 15.1493 2.51405 15 2.54183 14.8333L2.8335 12.3333L1.18766 10.4167C1.07655 10.3056 1.021 10.1667 1.021 10C1.021 9.83333 1.07655 9.69444 1.18766 9.58333L2.8335 7.6875L2.54183 5.1875C2.51405 5.02083 2.55225 4.87153 2.65641 4.73958C2.76058 4.60764 2.88905 4.52778 3.04183 4.5L5.62516 3.97917L6.91683 1.75C7.00016 1.61111 7.11822 1.51389 7.271 1.45833C7.42377 1.40278 7.57655 1.40972 7.72933 1.47917L10.0002 2.54167L12.271 1.47917C12.4238 1.40972 12.58 1.39583 12.7397 1.4375C12.8995 1.47917 13.0141 1.57639 13.0835 1.72917L14.396 3.97917L16.9585 4.5C17.1113 4.52778 17.2397 4.60764 17.3439 4.73958C17.4481 4.87153 17.4863 5.02083 17.4585 5.1875L17.1668 7.6875L18.8127 9.58333C18.9238 9.69444 18.9793 9.83333 18.9793 10C18.9793 10.1667 18.9238 10.3056 18.8127 10.4167L17.1668 12.3333L17.4585 14.8333C17.4863 15 17.4481 15.1493 17.3439 15.2812C17.2397 15.4132 17.1113 15.4931 16.9585 15.5208L14.396 16.0417L13.0835 18.2708C13.0141 18.4236 12.8995 18.5208 12.7397 18.5625C12.58 18.6042 12.4238 18.5903 12.271 18.5208L10.0002 17.4583L7.72933 18.5208C7.57655 18.5903 7.42377 18.5972 7.271 18.5417C7.11822 18.4861 7.00016 18.3889 6.91683 18.25L5.62516 16.0417ZM8.66683 12.3333C8.79183 12.4583 8.93766 12.5208 9.10433 12.5208C9.271 12.5208 9.41683 12.4583 9.54183 12.3333L13.396 8.52083C13.5071 8.40972 13.5592 8.26736 13.5522 8.09375C13.5453 7.92014 13.4793 7.77083 13.3543 7.64583C13.2293 7.52083 13.08 7.4618 12.9064 7.46875C12.7328 7.47569 12.5766 7.54167 12.4377 7.66667L9.10433 10.9792L7.5835 9.375C7.4585 9.23611 7.30225 9.17014 7.11475 9.17708C6.92725 9.18403 6.771 9.25694 6.646 9.39583C6.521 9.53472 6.45502 9.69444 6.44808 9.875C6.44113 10.0556 6.50711 10.2083 6.646 10.3333L8.66683 12.3333Z" fill="white"/>
               </svg> APPLYING FOR VERIFICATION</p>
             <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
         </div>
-        <div class="body bg-body rounded-b-2xl h-[500px] overflow-y-scroll">
-            <div id="registered-education" class="main-popup">
-                <div class="divide-y divide-header">
+        <form id="form-verification">
+            <div class="body bg-body min-h-[200px] overflow-y-scroll">
+                <div id="" class="body-percent">
                     <div class="p-5">
-                        <p class="font-bold text-lg text-white mb-1">Verification boosts your organizations credibility</p>
-                        <p class="text-white-60 text-sm font-second font-medium">To apply for a Verified Badge, you will have to submit a few legal documents to verify your organization's legitimacy.</p>
+                        <div class="">
+                            <p class="font-bold text-lg text-white mb-1">Verification boosts your organizations credibility</p>
+                            <p class="text-white-60 text-sm font-second font-medium">To apply for a Verified Badge, you must have an email with a  company domain -- not the generic ones like @gmail.com, @yahoo.com, etc.</p>
+                        </div>
+                        <label class="block mt-5">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">COMPANY EMAIL</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <input id="popup-input-company-domain" type="email" value="" pattern="^(?!.*@(gmail|yahoo)\.).*$" name="rec_info_company_domain" placeholder="john.doe@domain.com" class="peer block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white font-second
+                            focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                            focus:invalid:border-red-500 focus:invalid:ring-red-500
+                            "/>
+                            <p class="mt-2 invisible peer-invalid:visible font-second text-red-500 text-xs">Your company email must not use a generic domain.</p>
+                        </label>
+                    </div>
+                    <div class="flex gap-3 justify-end p-5 pb-6">
+                        <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                        <button type="button" disabled id="button-send-code" class="button-next disabled:bg-teal-100/50 rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Send Code</button>
                     </div>
                 </div>
-                <div class="flex gap-3 justify-end mt-8 p-5 pb-6">
-                    <button class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
-                    <button class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Save</button>
+                <div class="hidden body-percent">
+                    <div class="p-5">
+                        <div class="">
+                            <p class="font-bold text-lg text-white mb-1">💌 Please check your inbox!</p>
+                            <p class="text-white-60 text-sm font-second font-medium">We have sent a 6-digit verification code to your email at [email]. If you couldn't find it, please check your junk/spam folder, or click on Resend Code.</p>
+                        </div>
+                        <label class="block mt-5">
+                            <span class="text-white-60 tracking-[1.4px] font-normal text-sm">VERIFICATION CODE</span>
+                            <!-- Using form state modifiers, the classes can be identical for every input -->
+                            <div class="mt-1 flex items-center gap-3">
+                                <input id="popup-org-desc" type="text" value="" pattern="" name="verification_code" placeholder="Paste Verification Code here..." class="peer block border-0 w-[360px] px-3 py-[10px] bg-header rounded-lg text-sm placeholder-white-60 text-white font-second
+                                focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                focus:invalid:border-red-500 focus:invalid:ring-red-500
+                                "/>
+                                <button type="button" class="button-next rounded-lg bg-teal-100 text-teal-8 py-2 px-3 font-second text-base">Verify</button>
+                                <button class="button-back rounded-lg bg-teal-8 text-teal-100 py-2 px-3 font-second text-base">Resend Code</button>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="body-percent hidden">
+                    <div class="flex flex-col justify-center items-center py-10 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="56" height="31" viewBox="0 0 56 31" fill="none">
+                            <path d="M14.75 31L0.625 16.875L4.1875 13.375L14.8125 24L18.3125 27.5L14.75 31ZM28.875 31L14.75 16.875L18.25 13.3125L28.875 23.9375L51.875 0.9375L55.375 4.5L28.875 31ZM28.875 16.875L25.3125 13.375L37.6875 1L41.25 4.5L28.875 16.875Z" fill="#2BDE68"/>
+                        </svg>
+                        <p class="font-bold text-lg text-white mt-2">Cool! Your application has been submitted.</p>
+                        <p class="font-medium font-second text-sm text-white-60">We'll notify you via email when you have been approved for a Verification Badge!</p>
+                        <button id="" type="submit" class="mt-5 rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base mb-10">I'll check my email, then.</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 
 </section>

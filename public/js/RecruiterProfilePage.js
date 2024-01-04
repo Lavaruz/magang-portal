@@ -27,6 +27,10 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
             $("#popup-org-logo").attr("src", recruiterData.rec_org_logo);
         }
 
+        if(recruiterData.rec_verified){
+            $(".recruiter-verification").remove()
+        }
+
         if(recruiterData.rec_org_name && recruiterData.rec_org_desc && recruiterData.rec_org_size && recruiterData.rec_org_year && recruiterData.rec_org_website && recruiterData.rec_org_website){
             $("#completion-basic-info").remove()
             COMPLETION_COUNT += 33
@@ -61,7 +65,8 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
         if(recruiterData.gallery.length !== 0){
             $("#gallery").html("")
             recruiterData.gallery.forEach(photo => {
-                $("#gallery").prepend(`
+                // DISPLAY ON PROFILE
+                $("#gallery").append(`
                     <div class="">
                         <div class="overflow-hidden w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
                             <img src="${photo.gal_photo}" alt="profile-picture" class="w-full h-full object-cover">
@@ -70,11 +75,16 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
                 `)
 
                 // POPUP GALLERY
-
                 $(`
-                    <div>
-                        <div class="overflow-hidden w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
+                    <div class="relative">
+                        <p class="hidden gallery-id">${photo.id}</p>
+                        <div class="overflow-hidden w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center">
                             <img src="${photo.gal_photo}" alt="profile-picture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute top-[-12px] right-[-12px] w-[24px] h-[24px] rounded-full bg-white flex items-center justify-center cursor-pointer delete-gallery">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M4.66675 14C4.30008 14 3.98619 13.8694 3.72508 13.6083C3.46397 13.3472 3.33341 13.0333 3.33341 12.6667V4H2.66675V2.66667H6.00008V2H10.0001V2.66667H13.3334V4H12.6667V12.6667C12.6667 13.0333 12.5362 13.3472 12.2751 13.6083C12.014 13.8694 11.7001 14 11.3334 14H4.66675ZM6.00008 11.3333H7.33341V5.33333H6.00008V11.3333ZM8.66675 11.3333H10.0001V5.33333H8.66675V11.3333Z" fill="#AAAAAA"/>
+                            </svg>
                         </div>
                     </div>
                 `).insertBefore($("#popup-add-gallery"))
@@ -94,6 +104,8 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
         updateSeekerData("form-description", `/api/v1/recruiter/${RECRUITER_ID}`,"PUT")
         
         updateSeekerData("form-org-basic-information", `/api/v1/recruiter/${RECRUITER_ID}`,"PUT")
+
+        updateSeekerData("form-verification", `/api/v1/recruiter/${RECRUITER_ID}/verification`,"PUT")
 
 
 
@@ -116,7 +128,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
             if(selectedImage){
                 const imageUrl = URL.createObjectURL(selectedImage);
                 $(`
-                    <div>
+                    <div class="relative">
                         <div class="overflow-hidden w-[240px] h-[240px] bg-darkest-grey rounded-lg flex justify-center items-center cursor-pointer">
                             <img src="${imageUrl}" alt="profile-picture" class="w-full h-full object-cover">
                         </div>
@@ -150,21 +162,31 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
 $("#edit-basic-info, #completion-basic-info").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-basic").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 
 $("#edit-description, #button-description, #completion-description").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-description").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 
 $("#edit-gallery, #button-gallery, #completion-gallery").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-gallery").removeClass("hidden")
+    $("body").addClass('no-scroll');
+})
+
+$("#button-verification").click(function(){
+    $("#popup").removeClass("hidden")
+    $(".popup-verification").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 
 $(".close-x").click(function(){
     $(this).closest('.popup').addClass("hidden")
     $(this).closest('#popup').addClass("hidden")
+    $("body").removeClass('no-scroll');
 })
 
 $("#navbar-recruiter").removeClass("hidden")
@@ -187,6 +209,33 @@ $("#button-save-gallery").click(function(){
     location.reload()
 })
 
+$("#popup-input-company-domain").on('input', function() {
+    var regex = /^(?!.*@(gmail|yahoo)\.com$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let testValidation = regex.test($(this).val());
+
+    if (testValidation) {
+        $("#button-send-code").prop('disabled', false);
+    } else {
+        $("#button-send-code").prop('disabled', true);
+    }
+});
+
+$(".button-next").click(function(){
+    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+    $(".body-percent").eq(body_percent_idx).addClass("hidden")
+    $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
+})
+
+$(".button-back").click(function(){
+    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
+    $(".body-percent").eq(body_percent_idx).addClass("hidden")
+    $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
+})
+
+$("#popup-container-gallery").on("click",".delete-gallery",function(){
+    const GALLERY_ID = $(this).parent().find(".gallery-id").text()
+    $(this).parent().remove()
+})
 
 
 
@@ -202,18 +251,6 @@ $("#add-experience").click(function(){
 $("#add-education").click(function(){
     $("#registered-education").addClass("hidden")
     $("#adding-new-education").removeClass("hidden")
-})
-
-$(".button-next").click(function(){
-    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-    $(".body-percent").eq(body_percent_idx).addClass("hidden")
-    $(".body-percent").eq(body_percent_idx+1).removeClass("hidden")
-})
-
-$(".button-back").click(function(){
-    let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
-    $(".body-percent").eq(body_percent_idx).addClass("hidden")
-    $(".body-percent").eq(body_percent_idx-1).removeClass("hidden")
 })
 
 $(".cancle-add").click(function(){

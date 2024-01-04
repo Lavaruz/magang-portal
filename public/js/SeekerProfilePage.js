@@ -195,26 +195,32 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
 $("#edit-basic-info, #completion-profile-picture").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-basic").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 $("#edit-profile-summary, #completion-profile-summary, #button-profile-summary").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-summary").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 $("#edit-experiences, #completion-experiences, #button-experiences").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-experiences").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 $("#edit-education, #completion-education, #button-education").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-education").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 $("#edit-attachment, #completion-resume").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-attachments").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 $("#button-recruiter").click(function(){
     $("#popup").removeClass("hidden")
     $(".popup-recruiter").removeClass("hidden")
+    $("body").addClass('no-scroll');
 })
 
 // Close button to close popup
@@ -222,6 +228,7 @@ $("#button-recruiter").click(function(){
 $(".close-x").click(function(){
     $(this).closest('.popup').addClass("hidden")
     $(this).closest('#popup').addClass("hidden")
+    $("body").removeClass('no-scroll');
 })
 
 $("#navbar-seeker").removeClass("hidden")

@@ -1,0 +1,65 @@
+<%- include('./layouts/header'); -%>
+<%- include('./layouts/navbar-all'); -%>
+
+<p id="user_id" style="display: none;"><%= id %></p>
+
+<section id="main" class="w-[1036px] m-auto pb-14">
+    <div class="mt-8">
+        <p class="text-xl text-white font-bold">Hi, <span id="dashboard-firstname">Jarwo!</span> 👋</p>
+        <p class="font-second text-base text-medium text-white-60">Here's an overview of your recruitment journey so far.</p>
+    </div>
+        
+    <div id="active-post" class="w-100 rounded-lg bg-darkest-grey p-4 mt-5">
+        <div class="flex gap-4 items-center">
+            <p class="text-base font-bold text-white">Active Post</p>
+            <p class="flex items-center gap-1 text-teal-100 font-second text-xs font-medium">View All Posts <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M8.4 7.99999L5.8 5.39999C5.67778 5.27777 5.61667 5.12221 5.61667 4.93333C5.61667 4.74444 5.67778 4.58888 5.8 4.46666C5.92222 4.34444 6.07778 4.28333 6.26667 4.28333C6.45556 4.28333 6.61111 4.34444 6.73334 4.46666L9.8 7.53333C9.86667 7.59999 9.91389 7.67221 9.94167 7.74999C9.96945 7.82777 9.98334 7.9111 9.98334 7.99999C9.98334 8.08888 9.96945 8.17221 9.94167 8.24999C9.91389 8.32777 9.86667 8.39999 9.8 8.46666L6.73334 11.5333C6.61111 11.6555 6.45556 11.7167 6.26667 11.7167C6.07778 11.7167 5.92222 11.6555 5.8 11.5333C5.67778 11.4111 5.61667 11.2555 5.61667 11.0667C5.61667 10.8778 5.67778 10.7222 5.8 10.6L8.4 7.99999Z" fill="#3DD1DB"/>
+            </svg></p>
+        </div>
+        <div id="active-post-cards" class="flex items-center gap-3 overflow-x-scroll mt-4">
+            <!-- HERE -->
+        </div>
+    </div>
+
+    <div id="interview-and-applicants" class="grid grid-cols-2 gap-4 w-100 mt-5">
+        <div class="w-100 rounded-lg bg-darkest-grey p-4">
+            <div class="flex justify-between items-center">
+                <p id="interview-count" class="text-base font-bold text-white">Upcoming Interviews <span></span></p>
+                <p class="flex items-center gap-1 text-teal-100 font-second text-xs font-medium">View All Interviews <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8.4 7.99999L5.8 5.39999C5.67778 5.27777 5.61667 5.12221 5.61667 4.93333C5.61667 4.74444 5.67778 4.58888 5.8 4.46666C5.92222 4.34444 6.07778 4.28333 6.26667 4.28333C6.45556 4.28333 6.61111 4.34444 6.73334 4.46666L9.8 7.53333C9.86667 7.59999 9.91389 7.67221 9.94167 7.74999C9.96945 7.82777 9.98334 7.9111 9.98334 7.99999C9.98334 8.08888 9.96945 8.17221 9.94167 8.24999C9.91389 8.32777 9.86667 8.39999 9.8 8.46666L6.73334 11.5333C6.61111 11.6555 6.45556 11.7167 6.26667 11.7167C6.07778 11.7167 5.92222 11.6555 5.8 11.5333C5.67778 11.4111 5.61667 11.2555 5.61667 11.0667C5.61667 10.8778 5.67778 10.7222 5.8 10.6L8.4 7.99999Z" fill="#3DD1DB"/>
+                </svg></p>
+            </div>
+            <div id="interview-cards" class="flex flex-col gap-4 mt-4">
+                <!-- HERE -->
+            </div>
+        </div>
+        <div class="w-100 rounded-lg bg-darkest-grey p-4">
+            <div class="flex justify-between items-center">
+                <p id="applicant-count" class="font-base font-bold text-white">New Applicants <span></span></p>
+                <p class="flex items-center gap-1 text-teal-100 font-second text-xs font-medium">View All Applicants <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8.4 7.99999L5.8 5.39999C5.67778 5.27777 5.61667 5.12221 5.61667 4.93333C5.61667 4.74444 5.67778 4.58888 5.8 4.46666C5.92222 4.34444 6.07778 4.28333 6.26667 4.28333C6.45556 4.28333 6.61111 4.34444 6.73334 4.46666L9.8 7.53333C9.86667 7.59999 9.91389 7.67221 9.94167 7.74999C9.96945 7.82777 9.98334 7.9111 9.98334 7.99999C9.98334 8.08888 9.96945 8.17221 9.94167 8.24999C9.91389 8.32777 9.86667 8.39999 9.8 8.46666L6.73334 11.5333C6.61111 11.6555 6.45556 11.7167 6.26667 11.7167C6.07778 11.7167 5.92222 11.6555 5.8 11.5333C5.67778 11.4111 5.61667 11.2555 5.61667 11.0667C5.61667 10.8778 5.67778 10.7222 5.8 10.6L8.4 7.99999Z" fill="#3DD1DB"/>
+                </svg></p>
+            </div>
+            <div id="applicant-cards" class="flex flex-col gap-4 mt-4">
+                <!-- HERE -->
+            </div>
+        </div>
+    </div>
+
+    <div id="response-time" class="w-[400px] rounded-lg bg-darkest-grey p-4 mt-5">
+        <p class="text-base font-bold text-white">Response Performance</p>
+        <p class="font-second text-sm text-medium text-white-60">Your average response time to review a candidate's application. The quicker the better.</p>
+        <div class="flex gap-2 text-[32px] text-teal-100 font-extrabold items-center mt-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M13.3333 4C12.9556 4 12.6389 3.87222 12.3833 3.61667C12.1278 3.36111 12 3.04444 12 2.66667C12 2.28889 12.1278 1.97222 12.3833 1.71667C12.6389 1.46111 12.9556 1.33333 13.3333 1.33333H18.6667C19.0444 1.33333 19.3611 1.46111 19.6167 1.71667C19.8722 1.97222 20 2.28889 20 2.66667C20 3.04444 19.8722 3.36111 19.6167 3.61667C19.3611 3.87222 19.0444 4 18.6667 4H13.3333ZM16 18.6667C16.3778 18.6667 16.6944 18.5389 16.95 18.2833C17.2056 18.0278 17.3333 17.7111 17.3333 17.3333V12C17.3333 11.6222 17.2056 11.3056 16.95 11.05C16.6944 10.7944 16.3778 10.6667 16 10.6667C15.6222 10.6667 15.3056 10.7944 15.05 11.05C14.7944 11.3056 14.6667 11.6222 14.6667 12V17.3333C14.6667 17.7111 14.7944 18.0278 15.05 18.2833C15.3056 18.5389 15.6222 18.6667 16 18.6667ZM16 29.3333C14.3556 29.3333 12.8056 29.0167 11.35 28.3833C9.89444 27.75 8.62222 26.8889 7.53333 25.8C6.44444 24.7111 5.58333 23.4389 4.95 21.9833C4.31667 20.5278 4 18.9778 4 17.3333C4 15.6889 4.31667 14.1389 4.95 12.6833C5.58333 11.2278 6.44444 9.95556 7.53333 8.86667C8.62222 7.77778 9.89444 6.91667 11.35 6.28333C12.8056 5.65 14.3556 5.33333 16 5.33333C17.3778 5.33333 18.7 5.55556 19.9667 6C21.2333 6.44444 22.4222 7.08889 23.5333 7.93333L24.4667 7C24.7111 6.75556 25.0222 6.63333 25.4 6.63333C25.7778 6.63333 26.0889 6.75556 26.3333 7C26.5778 7.24444 26.7 7.55556 26.7 7.93333C26.7 8.31111 26.5778 8.62222 26.3333 8.86667L25.4 9.8C26.2444 10.9111 26.8889 12.1 27.3333 13.3667C27.7778 14.6333 28 15.9556 28 17.3333C28 18.9778 27.6833 20.5278 27.05 21.9833C26.4167 23.4389 25.5556 24.7111 24.4667 25.8C23.3778 26.8889 22.1056 27.75 20.65 28.3833C19.1944 29.0167 17.6444 29.3333 16 29.3333Z" fill="#3DD1DB"/>
+            </svg>
+            <p>3.1 days</p>
+        </div>
+    </div>
+    
+    
+</section>
+
+<%- include('./layouts/footer'); -%>
+<script src="/js/RecruiterDashboard.js"></script>
+<script src="/js/NavbarRecruiterRecruiter.js"></script>

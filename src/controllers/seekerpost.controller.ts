@@ -176,15 +176,29 @@ function getFormattedToday(): string {
   const year: number = today.getFullYear();
   let month: number | string = today.getMonth() + 1;
   let day: number | string = today.getDate();
+  const hours: number | string = today.getHours();
+  const minutes: number | string = today.getMinutes();
 
-  // Padding digit bulan dan tanggal dengan '0' jika diperlukan
+  // Padding digit bulan, tanggal, jam, dan menit dengan '0' jika diperlukan
   month = month < 10 ? '0' + month : month;
   day = day < 10 ? '0' + day : day;
+  const formattedHours = hours < 10 ? '0' + hours : hours;
+  const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
 
-  // Menggabungkan tahun, bulan, dan tanggal dengan format yang diinginkan
-  const formattedToday: string = `${year}-${month}-${day}`;
+  // Menggabungkan tahun, bulan, tanggal, jam, dan menit dengan format yang diinginkan
+  const formattedToday: string = `${formattedHours}:${formattedMinutes} • ${day} ${getMonthName(month)} ${year}`;
 
   return formattedToday;
+}
+
+// Fungsi untuk mendapatkan nama bulan berdasarkan angka bulan
+function getMonthName(month: number | string): string {
+  const monthNames: string[] = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
+
+  return monthNames[Number(month) - 1];
 }
 
 function formatDate(inputDate) {

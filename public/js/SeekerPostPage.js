@@ -17,6 +17,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     $(".close-x").click(function(){
         $(this).closest('.popup').addClass("hidden")
         $(this).closest('#popup').addClass("hidden")
+        $("body").removeClass('no-scroll');
     })
 
     $("#button-apply").click(function(){
@@ -27,6 +28,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
             $("#popup").removeClass("hidden")
             $(".popup-apply").removeClass("hidden")
         }
+        $("body").addClass('no-scroll');
     })
 
     if(seekerData.attachment){
@@ -36,7 +38,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
             $("#filled-resume").removeClass("hidden")
             $("#unfilled-resume").addClass("hidden")
 
-            $("#filled-resume a").prop("href", seekerData.attachment.atc_resume).text(atc_resume)
+            $("#filled-resume a").prop("href", seekerData.attachment.atc_resume).text(atc_resume.split("uploads/")[1])
             $("#filled-resume p span").text(formatDate(getFormattedDate()))
         }
     }
@@ -103,6 +105,11 @@ $("#custom-input-resume").change(function(){
         $("#filled-resume a").prop("href", fileURL).text(selectedFile.name)
         $("#filled-resume p span").text(formattedDate)
     }
+})
+$("#filled-resume-delete").click(function(){
+    $("#custom-input-resume").val("")
+    $("#unfilled-resume").removeClass("hidden")
+    $("#filled-resume").addClass("hidden")
 })
 
 

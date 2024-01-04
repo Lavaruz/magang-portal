@@ -19,6 +19,7 @@ $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
         $(".close-x").click(function(){
             $(this).closest('.popup').addClass("hidden")
             $(this).closest('#popup').addClass("hidden")
+            $("body").removeClass('no-scroll');
         })
         $(".back-x").click(function(){
             let body_percent_idx = $(".body-percent").index($(this).closest(".body-percent"))
@@ -306,7 +307,7 @@ function postRightDetail(post, recruiter){
                     <button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                         <path d="M12.8667 5.94998L10.0333 3.14998L10.9667 2.21665C11.2222 1.96109 11.5361 1.83331 11.9083 1.83331C12.2806 1.83331 12.5944 1.96109 12.85 2.21665L13.7833 3.14998C14.0389 3.40554 14.1722 3.71387 14.1833 4.07498C14.1944 4.43609 14.0722 4.74442 13.8167 4.99998L12.8667 5.94998ZM11.9 6.93331L4.83333 14H2V11.1666L9.06667 4.09998L11.9 6.93331Z" fill="white"/>
                         </svg> Edit Post</button>
-                    <a href="/posts/${post.id}/recruiter"><button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <a terget="_blank" href="/posts/${post.id}/recruiter"><button class="gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
                         <path d="M8.49999 10.6667C9.33332 10.6667 10.0417 10.375 10.625 9.79166C11.2083 9.20832 11.5 8.49999 11.5 7.66666C11.5 6.83332 11.2083 6.12499 10.625 5.54166C10.0417 4.95832 9.33332 4.66666 8.49999 4.66666C7.66666 4.66666 6.95832 4.95832 6.37499 5.54166C5.79166 6.12499 5.49999 6.83332 5.49999 7.66666C5.49999 8.49999 5.79166 9.20832 6.37499 9.79166C6.95832 10.375 7.66666 10.6667 8.49999 10.6667ZM8.49999 9.46666C7.99999 9.46666 7.57499 9.29166 7.22499 8.94166C6.87499 8.59166 6.69999 8.16666 6.69999 7.66666C6.69999 7.16666 6.87499 6.74166 7.22499 6.39166C7.57499 6.04166 7.99999 5.86666 8.49999 5.86666C8.99999 5.86666 9.42499 6.04166 9.77499 6.39166C10.125 6.74166 10.3 7.16666 10.3 7.66666C10.3 8.16666 10.125 8.59166 9.77499 8.94166C9.42499 9.29166 8.99999 9.46666 8.49999 9.46666ZM8.49999 12.6667C6.87777 12.6667 5.39999 12.2139 4.06666 11.3083C2.73332 10.4028 1.76666 9.18888 1.16666 7.66666C1.76666 6.14443 2.73332 4.93055 4.06666 4.02499C5.39999 3.11943 6.87777 2.66666 8.49999 2.66666C10.1222 2.66666 11.6 3.11943 12.9333 4.02499C14.2667 4.93055 15.2333 6.14443 15.8333 7.66666C15.2333 9.18888 14.2667 10.4028 12.9333 11.3083C11.6 12.2139 10.1222 12.6667 8.49999 12.6667Z" fill="white"/>
                         </svg> View as Seeker</button></a>
                     <button class="copy-link gap-2 flex m-auto w-full py-3 text-white font-second text-xs font-medium justify-center rounded-lg bg-[#343434]"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
@@ -335,6 +336,10 @@ function postRightDetail(post, recruiter){
                     <div class="bg-background-grey p-3 pb-4 rounded-lg">
                         <p class="text-white-60 font-second text-xs font-bold mb-3">Deadline</p>
                         <p class="font-second text-sm font-normal text-white">${formatDateFull(post.post_deadline)}</p>
+                    </div>
+                    <div class="bg-background-grey p-3 pb-4 rounded-lg">
+                        <p class="text-white-60 font-second text-xs font-bold mb-3">Number of Positions</p>
+                        <p class="font-second text-sm font-normal text-white">${post.post_need}</p>
                     </div>
                 </div>
             </div>

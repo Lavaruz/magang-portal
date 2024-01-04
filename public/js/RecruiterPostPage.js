@@ -2,7 +2,8 @@ let RECRUITER_ID
 let COMPLETION_COUNT = 0
 const USER_ID = $("#user_id").text()
 const URL_ID = window.location.href.match(/\/posts\/(\d+)\//)[1];
-console.log(URL_ID);
+
+$("#seeker-applied-date span").text(getFormattedToday())
 
 $.get(`/api/v1/seeker/${USER_ID}`, async (seekerData) => {
     if(seekerData.role == "recruiter"){
@@ -222,4 +223,22 @@ function aboutInfo(post){
             </div>
         </div>
     `
+}
+
+function getFormattedToday() {
+    const months = [
+        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ];
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const monthIndex = today.getMonth();
+    const month = months[monthIndex];
+    const day = today.getDate();
+
+    // Menggabungkan tanggal, bulan, dan tahun dengan format yang diinginkan
+    const formattedToday = `${day} ${month} ${year}`;
+
+    return formattedToday;
 }

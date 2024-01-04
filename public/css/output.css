@@ -586,28 +586,20 @@ video {
   right: 0px;
 }
 
+.right-\[-12px\] {
+  right: -12px;
+}
+
 .top-0 {
   top: 0px;
 }
 
+.top-\[-12px\] {
+  top: -12px;
+}
+
 .top-\[100px\] {
   top: 100px;
-}
-
-.top-\[200px\] {
-  top: 200px;
-}
-
-.top-\[374px\] {
-  top: 374px;
-}
-
-.top-\[24px\] {
-  top: 24px;
-}
-
-.top-\[26px\] {
-  top: 26px;
 }
 
 .z-10 {
@@ -645,6 +637,10 @@ video {
 
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .mb-2 {
@@ -848,6 +844,14 @@ video {
   max-height: 500px;
 }
 
+.max-h-\[40px\] {
+  max-height: 40px;
+}
+
+.max-h-\[20px\] {
+  max-height: 20px;
+}
+
 .min-h-\[100px\] {
   min-height: 100px;
 }
@@ -874,6 +878,10 @@ video {
 
 .min-h-\[72vh\] {
   min-height: 72vh;
+}
+
+.min-h-\[40px\] {
+  min-height: 40px;
 }
 
 .w-11 {
@@ -1033,8 +1041,28 @@ video {
   min-width: 44px;
 }
 
+.min-w-\[40px\] {
+  min-width: 40px;
+}
+
+.min-w-\[100px\] {
+  min-width: 100px;
+}
+
 .max-w-\[44px\] {
   max-width: 44px;
+}
+
+.max-w-\[40px\] {
+  max-width: 40px;
+}
+
+.max-w-\[100px\] {
+  max-width: 100px;
+}
+
+.basis-1\/4 {
+  flex-basis: 25%;
 }
 
 .-translate-x-1\/2 {
@@ -1234,6 +1262,26 @@ video {
 
 .self-auto {
   align-self: auto;
+}
+
+.self-start {
+  align-self: flex-start;
+}
+
+.self-center {
+  align-self: center;
+}
+
+.justify-self-start {
+  justify-self: start;
+}
+
+.justify-self-end {
+  justify-self: end;
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .overflow-hidden {
@@ -1694,6 +1742,11 @@ video {
   padding-bottom: 2px;
 }
 
+.py-\[1px\] {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -1989,10 +2042,6 @@ body {
   color: white;
 }
 
-div::-webkit-scrollbar {
-  display: none;
-}
-
 .popup-text-header {
   display: flex;
   align-items: center;
@@ -2141,6 +2190,11 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   background: url('/img/Calendar.svg') no-repeat;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  background: url('/img/Clock.svg') no-repeat;
+}
+
 .applied-card::before {
   content: "";
   position: absolute;
@@ -2151,6 +2205,32 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   background-color: rgba(0, 0, 0, 0.3);
   z-index: -1;
   /* Memastikan lapisan hitam berada di belakang elemen */
+}
+
+div::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+
+div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+
+div::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+
+div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.no-scroll{
+  overflow: hidden;
 }
 
 .after\:absolute::after {
@@ -2306,6 +2386,11 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   border-color: rgb(236 72 153 / var(--tw-border-opacity));
 }
 
+.focus\:invalid\:border-red-500:invalid:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
 .focus\:invalid\:ring-\[\#FC4545\]:invalid:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(252 69 69 / var(--tw-ring-opacity));
@@ -2314,6 +2399,11 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
 .focus\:invalid\:ring-pink-500:invalid:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(236 72 153 / var(--tw-ring-opacity));
+}
+
+.focus\:invalid\:ring-red-500:invalid:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(239 68 68 / var(--tw-ring-opacity));
 }
 
 .disabled\:bg-header\/50:disabled {
@@ -2355,6 +2445,10 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   content: var(--tw-content);
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.peer:invalid ~ .peer-invalid\:visible {
+  visibility: visible;
 }
 
 @media (prefers-color-scheme: dark) {

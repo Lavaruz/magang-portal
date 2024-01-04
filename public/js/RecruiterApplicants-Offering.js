@@ -180,6 +180,12 @@ function formatDateFull(inputDate) {
 }
 
 function applicantsCard(applicants, seekerpost){
+
+    console.log(seekerpost.Offering.offeringStatus);
+    if(seekerpost.Offering.offeringStatus){
+        $(`input[value=${seekerpost.Offering.offeringStatus}]`).prop("checked", true)
+    }
+
     let total_experiences = 0
     if(applicants.experiences.length !== 0){
         let experiences = applicants.experiences.map(exp => {
@@ -200,7 +206,7 @@ function applicantsCard(applicants, seekerpost){
             <img id="post-img" src="${applicants.profile_picture}" alt="" style="width: 100%;">
         </div>
         <a target="_blank" href="/recruiter/applicants/${URL_ID}/seeker/${applicants.id}" class="font-bold">${applicants.first_name} ${applicants.last_name}</a>
-        <p class="${seekerpost.Offering.offeringStatus? "text-white":"text-red-500"} interview-date">${seekerpost.Offering.offeringStatus ? seekerpost.Offering.offeringStatus : "No Date"}</p>
+        <p class="${seekerpost.Offering.offeringStatus? "text-white":"text-red-500"} interview-date">${seekerpost.Offering.offeringStatus ? seekerpost.Offering.offeringStatus : "Not Sent"}</p>
         <p>${total_experiences} months</p>
         <p>${applicants.educations.length !== 0 ? applicants.educations[0].edu_program : "No Education"} <br> <span class="text-xs text-white-60">${applicants.educations.length !== 0 ? applicants.educations[0].edu_institution : "-"}</span></p>
         <p>Freshgraduate</p>

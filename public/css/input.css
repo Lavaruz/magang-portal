@@ -25,9 +25,7 @@ body {
   font-weight: bold;
   color: white;
 }
-div::-webkit-scrollbar {
-  display: none;
-}
+
 .popup-text-header {
     @apply font-normal text-white text-base tracking-[1.6px] flex items-center gap-2;
 }
@@ -76,6 +74,11 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   background: url('/img/Calendar.svg') no-repeat;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  background: url('/img/Clock.svg') no-repeat;
+}
+
 .applied-card::before {
   content: "";
   position: absolute;
@@ -85,4 +88,27 @@ input[type=date]::-webkit-calendar-picker-indicator, input[type=month]::-webkit-
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: -1; /* Memastikan lapisan hitam berada di belakang elemen */
+}
+
+div::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+div::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+div::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+div::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.no-scroll{
+  overflow: hidden;
 }
