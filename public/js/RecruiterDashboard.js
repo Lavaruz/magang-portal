@@ -121,7 +121,7 @@ function applicantCard(applicant){
                 </div>
                 <p class="text-white-80 font-second text-sm font-medium"><span class="text-teal-100">${applicant.first_name} ${applicant.last_name}</span> has applied to your <span class="text-teal-100">Software Engineer</span> post.</p>
             </div>
-            <p class="basis-1/4 self-start text-center bg-[#343434] font-second font-medium text-xs text-white-60 px-2 py-[1px] rounded-lg">2 MINS AGO</p>
+            <p class="basis-1/4 self-start text-center bg-[#343434] font-second font-medium text-xs text-white-60 px-2 py-[1px] rounded-lg">${formatTimeAgo(applicant.SeekerPost.createdAt)}</p>
         </div>
     `
 }
@@ -168,3 +168,30 @@ function formatDateFull(inputDate) {
   
     return formattedDate;
 }
+
+function formatTimeAgo(timestamp) {
+    const date = new Date(timestamp);
+    const now = new Date();
+  
+    const diffTime = Math.abs(now - date);
+    const diffMinutes = Math.floor(diffTime / (1000 * 60));
+    const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  
+    if (diffMinutes < 60) {
+      return `${diffMinutes} MIN AGO`;
+    } else if (diffHours < 24) {
+      return `${diffHours} HOUR AGO`;
+    } else if (diffDays === 1) {
+      return 'YESTERDAY';
+    } else {
+      const day = date.getDate();
+      const monthNames = [
+        'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
+        'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'
+      ];
+      const month = monthNames[date.getMonth()];
+  
+      return `${day} ${month}`;
+    }
+  }
