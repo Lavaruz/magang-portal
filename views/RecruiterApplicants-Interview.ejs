@@ -91,7 +91,7 @@
 </section>
 
 <section id="popup" class="hidden fixed top-0 bottom-0 left-0 right-0 bg-darkest-grey/50 flex items-center justify-center h-100">
-    <div class="hidden popup-edit-interview w-[720px] m-auto absolute z-10 max-h-[500px] overflow-y-scroll rounded-2xl border-2 border-header">
+    <div class="hidden popup-create-interview w-[720px] m-auto absolute z-10 max-h-[500px] overflow-y-scroll rounded-2xl border-2 border-header">
         <div class="header bg-header flex justify-between px-5 py-3 items-center">
             <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2">SCHEDULE FOR INTERVIEW</p>
             <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
@@ -148,7 +148,85 @@
                             <label class="">
                                 <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MEETING LINK*</span>
                                 <!-- Using form state modifiers, the classes can be identical for every input -->
-                                <input name="interviewLink" type="text" placeholder="" class="block w-[360px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                                <input name="interviewLink" type="text" placeholder="" class="block w-[360px] px-3 py-[10px] font-second bg-header rounded-lg text-sm placeholder-white-60 text-white
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
+                                "/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-lg font-bold text-white">Message / Notes</p>
+                        <p class="text-sm text-white-60 font-normal font-second mb-3">Send a personalized message to your candidate to further describe the interview details.</p>
+                        <textarea name="interviewMessage" id="message" rows="4" class="direct-list block resize-none px-3 py-[10px] w-full h-[240px] font-second text-sm text-white bg-header rounded-lg border-none focus:ring-white-60" placeholder="Write your message here..."></textarea>
+                    </div>
+                </div>
+                <div class="flex gap-3 justify-end mt-8 mb-4 mx-5">
+                    <button type="button" class="close-x rounded-lg bg-teal-8 text-teal-100 py-2 px-10 font-second text-base">Cancel</button>
+                    <button type="submit" class="rounded-lg bg-teal-100 text-teal-8 py-2 px-14 font-second text-base">Schedule</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="hidden popup-edit-interview w-[720px] m-auto absolute z-10 max-h-[500px] overflow-y-scroll rounded-2xl border-2 border-header">
+        <div class="header bg-header flex justify-between px-5 py-3 items-center">
+            <p class="font-normal text-white text-base tracking-[1.6px] flex items-center gap-2">SCHEDULE FOR INTERVIEW</p>
+            <p class="close-x cursor-pointer font-second font-medium text-sm text-teal-100">Close x</p>
+        </div>
+        <form id="form-edit-schedule-interview">
+            <div class="body bg-body rounded-b-2xl min-h-[200px] overflow-y-scroll">
+                <div class="divide-y divide-header">
+                    <div class="flex items-center gap-3 p-5">
+                        <div class="w-[40px] h-[40px] rounded-full overflow-hidden bg-gray-200 object-cover">
+                            <img id="interview-seeker-img-edit" src="/img/Tokped.svg" alt="" style="width: 100%;">
+                        </div>
+                        <p id="interview-seeker-name-edit" class="text-lg font-bold text-white">Assami Muzaki</p>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-lg font-bold text-white">Date & Time</p>
+                        <div class="flex items-center gap-5">
+                            <label class="">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">DATE*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="interviewDate" name="interviewDate" type="date" placeholder="09-14-2001" class="block w-[240px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
+                                "/>
+                            </label>
+                            <label class="">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">START TIME</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="interviewStartTime" name="interviewDate" type="time" placeholder="" class="block w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
+                                "/>
+                            </label>
+                            <label class="">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">END TIME</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input id="interviewEndTime" name="interviewDate" type="time" placeholder="" class="block w-[140px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white
+                                    focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
+                                    focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
+                                "/>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-lg font-bold text-white">Location</p>
+                        <div class="flex items-center gap-5">
+                            <label class="block">
+                                <span class="label">INTERVIEW TYPE</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <select name="interviewType" class="block border-0 w-[160px] px-3 py-[10px] bg-header rounded-lg text-base placeholder-white-60 text-white focus:ring-white-60">
+                                    <option value="Online" selected>Online</option>
+                                    <option value="Offline">Offline</option>
+                                </select>
+                            </label>
+                            <label class="">
+                                <span class="text-white-60 tracking-[1.4px] font-normal text-sm">MEETING LINK*</span>
+                                <!-- Using form state modifiers, the classes can be identical for every input -->
+                                <input name="interviewLink" type="text" placeholder="" class="block w-[360px] px-3 py-[10px] font-second bg-header rounded-lg text-sm placeholder-white-60 text-white
                                     focus:outline-none focus:border-white-60 focus:ring-1 focus:ring-white-60
                                     focus:invalid:border-[#FC4545] focus:invalid:ring-[#FC4545] border-0
                                 "/>

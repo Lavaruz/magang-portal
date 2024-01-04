@@ -63,20 +63,36 @@ $(".close-x").click(function(){
 })
 
 $("#applicants-list").on("click", ".button-edit-interview", function(){
-    $("#popup").removeClass("hidden")
-    $(".popup-edit-interview").removeClass("hidden")
-
-    $("#form-schedule-interview input,#form-schedule-interview textarea").val("")
-
     let SEEKERID = $(this).parent().find(".seeker-id").text()
     let SEEKERPOSTTID = $(this).parent().find(".seekerpost-id").text()
 
-    $.get(`/api/v1/seeker/${SEEKERID}`, async (seekerData) => {
-        $("#interview-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
-        $("#interview-seeker-img").prop("src", seekerData.profile_picture)
-    })
     $.get(`/api/v1/seekerpost/${SEEKERPOSTTID}`, async (seekerpostData) => {
-        updateSeekerData("form-schedule-interview", `/api/v1/seekerpost/interview/${seekerpostData.datas.Scheduled.id}`, "PUT")
+        if(seekerpostData.datas.Scheduled.interviewDate){
+            const [datePart, timePart] = seekerpostData.datas.Scheduled.interviewDate.split(' • '); // Memisahkan tanggal dan waktu
+            const [time1Part, time2Part] = timePart.split(' - ');
+            $("#popup").removeClass("hidden")
+            $(".popup-edit-interview").removeClass("hidden")
+            $("#form-schedule-interview input,#form-schedule-interview textarea").val("")
+            $.get(`/api/v1/seeker/${SEEKERID}`, async (seekerData) => {
+                $("#interview-seeker-name-edit").text(`${seekerData.first_name} ${seekerData.last_name}`)
+                $("#interview-seeker-img-edit").prop("src", seekerData.profile_picture)
+                $("#interviewDate").val(formatDate(datePart))
+                $("#interviewStartTime").val(time1Part)
+                $("#interviewEndTime").val(time2Part)
+                $("input[name=interviewType]").val(seekerpostData.datas.Scheduled.interviewType)
+                $("input[name=interviewLink]").val(seekerpostData.datas.Scheduled.interviewLink)
+                $("textarea[name=interviewMessage]").text(seekerpostData.datas.Scheduled.interviewMessage)
+            })
+        }else{
+            $("#popup").removeClass("hidden")
+            $(".popup-create-interview").removeClass("hidden")
+            $("#form-schedule-interview input,#form-schedule-interview textarea").val("")
+            $.get(`/api/v1/seeker/${SEEKERID}`, async (seekerData) => {
+                $("#interview-seeker-name").text(`${seekerData.first_name} ${seekerData.last_name}`)
+                $("#interview-seeker-img").prop("src", seekerData.profile_picture)
+            })
+            updateSeekerData("form-schedule-interview", `/api/v1/seekerpost/interview/${seekerpostData.datas.Scheduled.id}`, "PUT")
+        }
     })
     
 })
@@ -175,27 +191,6 @@ function updateSeekerData(formId, URL, method){
     })
 }
 
-function formatDate(inputDate) {
-    // Parse tanggal dalam format "YYYY-MM-DD"
-    const dateParts = inputDate.split('-');
-    const year = dateParts[0];
-    const month = dateParts[1];
-    const day = dateParts[2];
-  
-    // Daftar nama bulan
-    const monthNames = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
-      'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'
-    ];
-  
-    // Konversi komponen bulan ke nama bulan
-    const formattedMonth = monthNames[parseInt(month, 10) - 1];
-    // Gabungkan komponen-komponen dalam format yang diinginkan
-    const formattedDate = `${day} ${formattedMonth}`;
-  
-    return formattedDate;
-}
-
 function formatDateFull(inputDate) {
     // Parse tanggal dalam format "YYYY-MM-DD"
     const dateParts = inputDate.split('-');
@@ -285,3 +280,12 @@ function calculateMonthDifference(startDate, endDate) {
 
     return totalMonths;
 }
+
+function formatDate(dateString) {
+    const [day, month, year] = dateString.split(' ');
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const monthIndex = months.indexOf(month) + 1;
+  
+    return `${year}-${monthIndex.toString().padStart(2, '0')}-${day.padStart(2, '0')}`;
+  }
+  
